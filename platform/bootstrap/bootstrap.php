@@ -35,7 +35,6 @@ if (!isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] == '') {
  * --------------------------------------------------------------------
  */
 
-require BOOTSTRAPPATH.'preg_error_message.php';
 require BOOTSTRAPPATH.'print_d.php';
 
 
