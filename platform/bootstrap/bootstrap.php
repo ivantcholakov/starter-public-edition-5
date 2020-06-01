@@ -20,6 +20,13 @@ define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 
 require BOOTSTRAPPATH.'is_php.php';
 
+// Fix $_SERVER['REQUEST_URI'] if it is missing.
+if (!isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] == '') {
+    $_SERVER['REQUEST_URI'] = $_SERVER['SCRIPT_NAME'];
+    if (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '') {
+        $_SERVER['REQUEST_URI'] .= '?'.$_SERVER['QUERY_STRING'];
+    }
+}
 
 
 /*
@@ -72,5 +79,4 @@ require BOOTSTRAPPATH.'str_replace_limit.php';
  * URL-based detection, stored within a global variable.
  *---------------------------------------------------------------
  */
-global $DETECT_URL;
-$DETECT_URL = detect_url();
+define('DETECTED_URL', detect_url()['current_url']);
