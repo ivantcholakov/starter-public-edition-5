@@ -88,6 +88,11 @@ phpunit
 # platform/composer.lock
 
 #-------------------------
+# NPM
+#-------------------------
+platform/node_modules
+
+#-------------------------
 # IDE / Development Files
 #-------------------------
 
