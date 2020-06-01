@@ -12,6 +12,12 @@ if (!function_exists('detect_url')) {
 
     function detect_url() {
 
+        static $result = array();
+
+        if (!empty($result)) {
+            return $result;
+        }
+
         // See http://www.mediawiki.org/wiki/Manual:$wgServer
         $is_https = detect_https();
         $server_protocol = $is_https ? 'https' : 'http';
@@ -72,7 +78,7 @@ if (!function_exists('detect_url')) {
         $current_uri_string = parse_url($current_url, PHP_URL_PATH);
         $current_query_string = parse_url($current_url, PHP_URL_QUERY);
 
-        return compact(
+        $result = compact(
             'base_url',
             'base_uri',
             'current_url',
@@ -87,6 +93,8 @@ if (!function_exists('detect_url')) {
             'script_path',
             'port'
         );
+
+        return $result;
     }
 
 }
