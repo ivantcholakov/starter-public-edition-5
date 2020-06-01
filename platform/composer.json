@@ -1,10 +1,11 @@
 {
-	"config": {
-		"preferred-install": "dist",
-		"optimize-autoloader": true
-	},
-	"require": {
-		"php": ">=7.2",
-		"codeigniter4/framework": "^4"
-	}
+    "config": {
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "require": {
+        "php": ">=7.2",
+        "codeigniter4/framework": "^4",
+        "roave/security-advisories": "dev-master"
+    }
 }
