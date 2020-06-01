@@ -14,7 +14,7 @@
  * @link: https://codeigniter4.github.io/CodeIgniter4/
  */
 
-define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(__DIR__.'/../bootstrap')), '/').'/');
+define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(__DIR__.'/../../bootstrap')), '/').'/');
 
 if (BOOTSTRAPPATH == '' || BOOTSTRAPPATH == '/' || !is_dir(BOOTSTRAPPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);

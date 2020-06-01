@@ -20,7 +20,7 @@ class Paths
 	 * Include the path if the folder is not in the same directory
 	 * as this file.
 	 */
-	public $systemDirectory = __DIR__ . '/../../vendor/codeigniter4/framework/system';
+	public $systemDirectory = __DIR__ . '/../../../vendor/codeigniter4/framework/system';
 
 	/*
 	 *---------------------------------------------------------------
@@ -48,7 +48,7 @@ class Paths
 	 * for maximum security, keeping it out of the app and/or
 	 * system directories.
 	 */
-	public $writableDirectory = __DIR__ . '/../../writable';
+	public $writableDirectory = __DIR__ . '/../../../writable';
 
 	/*
 	 * ---------------------------------------------------------------
@@ -61,7 +61,7 @@ class Paths
 	 * for maximum security, keeping it out of the app and/or
 	 * system directories.
 	 */
-	public $testsDirectory = __DIR__ . '/../../tests';
+	public $testsDirectory = __DIR__ . '/../../../tests';
 
 	/*
 	 * ---------------------------------------------------------------
