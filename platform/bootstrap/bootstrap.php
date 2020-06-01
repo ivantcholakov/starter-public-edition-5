@@ -76,7 +76,7 @@ require BOOTSTRAPPATH.'str_replace_limit.php';
 
 /*
  *---------------------------------------------------------------
- * URL-based detection, stored within a global variable.
+ * Base URL detection.
  *---------------------------------------------------------------
  */
-define('DETECTED_URL', detect_url()['current_url']);
+define('DETECTED_URL', detect_url()['base_url']);
