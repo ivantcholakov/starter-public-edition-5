@@ -2,7 +2,7 @@
 
 /**
  * A Url Detection Routine
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * @depends detect_https(), detect_host(), merge_paths()
