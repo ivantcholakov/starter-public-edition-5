@@ -1,9 +1,8 @@
 {
-	"name": "codeigniter4/appstarter",
-	"type": "project",
-	"description": "CodeIgniter4 starter app",
-	"homepage": "https://codeigniter.com",
-	"license": "MIT",
+	"config": {
+		"preferred-install": "dist",
+		"optimize-autoloader": true
+	},
 	"require": {
 		"php": ">=7.2",
 		"codeigniter4/framework": "^4"
@@ -22,10 +21,5 @@
 		"post-update-cmd": [
 			"@composer dump-autoload"
 		]
-	},
-	"support": {
-		"forum": "http://forum.codeigniter.com/",
-		"source": "https://github.com/codeigniter4/CodeIgniter4",
-		"slack": "https://codeigniterchat.slack.com"
 	}
 }
