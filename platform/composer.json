@@ -18,6 +18,7 @@
         "symfony/polyfill-intl-icu": "^1.17",
         "symfony/polyfill-intl-messageformatter": "^1.17",
         "symfony/polyfill-intl-normalizer": "^1.17",
-        "symfony/polyfill-uuid": "^1.17"
+        "symfony/polyfill-uuid": "^1.17",
+        "symfony/string": "^5.1"
     }
 }
