@@ -22,6 +22,7 @@
         "symfony/string": "^5.1",
         "symfony/options-resolver": "^5.1",
         "symfony/filesystem": "^5.1",
-        "symfony/finder": "^5.1"
+        "symfony/finder": "^5.1",
+        "twig/twig": "^3.0"
     }
 }
