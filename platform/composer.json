@@ -4,7 +4,7 @@
         "optimize-autoloader": true
     },
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.2.5",
         "codeigniter4/framework": "^4",
         "roave/security-advisories": "dev-master",
         "symfony/polyfill-php73": "^1.17",
