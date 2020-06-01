@@ -6,6 +6,18 @@
     "require": {
         "php": ">=7.2",
         "codeigniter4/framework": "^4",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "symfony/polyfill-php73": "^1.17",
+        "symfony/polyfill-php74": "^1.17",
+        "symfony/polyfill-php80": "^1.17",
+        "symfony/polyfill-ctype": "^1.17",
+        "symfony/polyfill-mbstring": "^1.17",
+        "symfony/polyfill-iconv": "^1.17",
+        "symfony/polyfill-intl-grapheme": "^1.17",
+        "symfony/polyfill-intl-idn": "^1.17",
+        "symfony/polyfill-intl-icu": "^1.17",
+        "symfony/polyfill-intl-messageformatter": "^1.17",
+        "symfony/polyfill-intl-normalizer": "^1.17",
+        "symfony/polyfill-uuid": "^1.17"
     }
 }
