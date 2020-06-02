@@ -160,7 +160,7 @@ require_once COMMONPATH . 'System/Autoloader/FileLocator.php';
 
 require_once SYSTEMPATH . 'Config/BaseService.php';
 
-//require_once COMMONPATH . 'Config/Services.php';
+require_once COMMONPATH . 'Config/Services.php';
 
 if (file_exists(APPPATH . 'Config/Services.php'))
 {
@@ -171,7 +171,7 @@ if (file_exists(APPPATH . 'Config/Services.php'))
 // Use Config\Services as CodeIgniter\Services
 if (! class_exists('CodeIgniter\Services', false))
 {
-    if (! class_exists(Config\Services::class, false))
+    if (! class_exists('Config\Services', false))
     {
         class_alias('Common\Config\Services', 'CodeIgniter\Services');
     }
