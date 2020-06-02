@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php namespace Common\Config;
+
+require_once SYSTEMPATH . 'Config/AutoloadConfig.php';
 
 /**
  * -------------------------------------------------------------------
@@ -7,7 +9,7 @@
  * This file defines the namespaces and class maps so the Autoloader
  * can find the files as needed.
  */
-class Autoload extends \Common\Config\Autoload
+class Autoload extends \CodeIgniter\Config\AutoloadConfig
 {
     public $psr4 = [];
 
@@ -48,9 +50,8 @@ class Autoload extends \Common\Config\Autoload
          *   `];
          */
         $psr4 = [
-            'App'         => APPPATH,                // To ensure filters, etc still found,
-            APP_NAMESPACE => APPPATH,                // For custom namespace
-            'Config'      => APPPATH . 'Config',
+            'App'            => \COMMONPATH,
+            'Common\Config' => \COMMONPATH . 'Config',
         ];
 
         /**
