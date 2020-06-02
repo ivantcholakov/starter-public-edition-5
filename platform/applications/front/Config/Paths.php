@@ -20,7 +20,16 @@ class Paths
 	 * Include the path if the folder is not in the same directory
 	 * as this file.
 	 */
-	public $systemDirectory = __DIR__ . '/../../../vendor/codeigniter4/framework/system';
+	public $systemDirectory = \PATHS_SYSTEM_DIRECTORY;
+
+	/*
+	 *---------------------------------------------------------------
+	 * SYSTEM FOLDER NAME
+	 *---------------------------------------------------------------
+	 *
+	 * This variable must contain the name of your "common" folder.
+	 */
+	public $commonDirectory = \PATHS_COMMON_DIRECTORY;
 
 	/*
 	 *---------------------------------------------------------------
@@ -35,7 +44,7 @@ class Paths
 	 *
 	 * NO TRAILING SLASH!
 	 */
-	public $appDirectory = __DIR__ . '/..';
+	public $appDirectory = \PATHS_APP_DIRECTORY;
 
 	/*
 	 * ---------------------------------------------------------------
@@ -48,7 +57,7 @@ class Paths
 	 * for maximum security, keeping it out of the app and/or
 	 * system directories.
 	 */
-	public $writableDirectory = __DIR__ . '/../../../writable';
+	public $writableDirectory = \PATHS_WRITABLE_DIRECTORY;
 
 	/*
 	 * ---------------------------------------------------------------
@@ -61,7 +70,7 @@ class Paths
 	 * for maximum security, keeping it out of the app and/or
 	 * system directories.
 	 */
-	public $testsDirectory = __DIR__ . '/../../../tests';
+	public $testsDirectory = \PATHS_TESTS_DIRECTORY;
 
 	/*
 	 * ---------------------------------------------------------------
@@ -73,5 +82,5 @@ class Paths
 	 * default this is in `app/Views`. This value
 	 * is used when no value is provided to `Services::renderer()`.
 	 */
-	public $viewDirectory = __DIR__ . '/../Views';
+	public $viewDirectory = \PATHS_VIEW_DIRECTORY;
 }

@@ -13,13 +13,3 @@
  *
  * @link: https://codeigniter4.github.io/CodeIgniter4/
  */
-
-define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(__DIR__.'/../../bootstrap')), '/').'/');
-
-if (BOOTSTRAPPATH == '' || BOOTSTRAPPATH == '/' || !is_dir(BOOTSTRAPPATH)) {
-    header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-    echo 'Your bootstrap folder path (BOOTSTRAPPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3);
-}
-
-require BOOTSTRAPPATH.'bootstrap.php';
