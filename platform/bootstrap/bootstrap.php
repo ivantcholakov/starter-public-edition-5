@@ -257,3 +257,11 @@ require BOOTSTRAPPATH.'str_to_bool.php';
 require BOOTSTRAPPATH.'arrays.php';
 require BOOTSTRAPPATH.'is_serialized.php';
 require BOOTSTRAPPATH.'str_replace_limit.php';
+
+
+/*
+ * --------------------------------------------------------------------
+ * A custom PHP5-style autoloader
+ * --------------------------------------------------------------------
+ */
+require BOOTSTRAPPATH.'autoload.php';
