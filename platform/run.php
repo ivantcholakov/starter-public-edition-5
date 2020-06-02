@@ -31,11 +31,46 @@ require_once BOOTSTRAPPATH.'bootstrap.php';
 
 $app = require BOOTSTRAPPATH.'bootstrap_ci.php';
 
-/*
- *---------------------------------------------------------------
- * LAUNCH THE APPLICATION
- *---------------------------------------------------------------
- * Now that everything is setup, it's time to actually fire
- * up the engines and make this app do its thang.
- */
-$app->run();
+if (defined('SPARKED') && SPARKED) {
+
+    /*
+     *---------------------------------------------------------------
+     * SPARK CLI
+     *---------------------------------------------------------------
+     * Now that everything is setup, it's time to actually fire
+     * up the engines and make this app do its thang.
+     */
+
+    // Grab our Console
+    $console = new \CodeIgniter\CLI\Console($app);
+
+    // We want errors to be shown when using it from the CLI.
+    error_reporting(-1);
+    ini_set('display_errors', 1);
+
+    // Show basic information before we do anything else.
+    $console->showHeader();
+
+    // Fire off the command in the main framework.
+    $response = $console->run();
+
+    if ($response->getStatusCode() >= 300)
+    {
+        exit($response->getStatusCode());
+    }
+
+}
+else
+{
+
+    /*
+     *---------------------------------------------------------------
+     * LAUNCH THE APPLICATION
+     *---------------------------------------------------------------
+     * Now that everything is setup, it's time to actually fire
+     * up the engines and make this app do its thang.
+     */
+
+    $app->run();
+
+}
