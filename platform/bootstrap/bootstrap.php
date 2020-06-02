@@ -6,6 +6,19 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+/*
+ *---------------------------------------------------------------
+ * Get and check version data
+ *---------------------------------------------------------------
+ */
+require BOOTSTRAPPATH.'versions.php';
+
+if (version_compare(PHP_VERSION, PLATFORM_PHP_VERSION_MIN, '<')) {
+
+    header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+    echo 'PHP '.PLATFORM_PHP_VERSION_MIN.' or newer is required.';
+    exit(3);
+}
 
 /*
  * --------------------------------------------------------------------
@@ -194,6 +207,7 @@ define('PATHS_VIEW_DIRECTORY', realpath(VIEWPATH));
  * Making sure PEAR packages are to be searched in this site first
  * --------------------------------------------------------------------
  */
+
 set_include_path(COMMONPATH.'ThirdParty/Pear'.PATH_SEPARATOR.get_include_path());
 
 
