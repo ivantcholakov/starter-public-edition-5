@@ -34,7 +34,7 @@ require APPPATH.'Config/Paths.php';
 $paths = new Config\Paths();
 
 // Location of the framework bootstrap file.
-$app = require rtrim($paths->systemDirectory, '/ ') . '/bootstrap.php';
+$app = require BOOTSTRAPPATH.'bootstrap_ci.php';
 
 /*
  *---------------------------------------------------------------
