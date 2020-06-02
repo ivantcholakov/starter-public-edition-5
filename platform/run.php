@@ -37,7 +37,7 @@ require_once BOOTSTRAPPATH.'bootstrap.php';
 
 // Location of the Paths config file.
 // This is the line that might need to be changed, depending on your folder structure.
-$pathsPath = realpath(FCPATH . '../platform/applications/front/Config/Paths.php');
+$pathsPath = realpath(APPPATH . 'Config/Paths.php');
 // ^^^ Change this if you move your application folder
 
 /*
