@@ -38,6 +38,16 @@
 
         <h2>The small framework with powerful features</h2>
 
+        <p>
+            Quick Test:
+            <br />
+            Original String : <?= $original_string ?>
+            <br />
+            Encrypted String: <?= $encrypted_string ?>
+            <br />
+            Decrypted String: <?= $decrypted_string ?>
+        </p>
+
     </div>
 
 </header>
