@@ -174,6 +174,7 @@ if (! class_exists('CodeIgniter\Services', false))
     if (! class_exists('Config\Services', false))
     {
         class_alias('Common\Config\Services', 'CodeIgniter\Services');
+        class_alias('Common\Config\Services', 'Config\Services');
     }
     else
     {
