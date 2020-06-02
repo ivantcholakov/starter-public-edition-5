@@ -244,6 +244,18 @@ require BOOTSTRAPPATH.'autoload.php';
 
 /*
  * --------------------------------------------------------------------
+ * Load Customized source of CodeIgniter if exists
+ * --------------------------------------------------------------------
+ */
+
+if (is_file(COMMONPATH.'System/CodeIgniter.php'))
+{
+    require_once COMMONPATH.'System/CodeIgniter.php';
+}
+
+
+/*
+ * --------------------------------------------------------------------
  * Initialize Config\Paths
  * Config\Paths seems to need directories without trailing slash
  * --------------------------------------------------------------------
