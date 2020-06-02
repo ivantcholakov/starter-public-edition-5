@@ -60,7 +60,7 @@ if (! defined('APPPATH'))
  */
 if (! defined('ROOTPATH'))
 {
-    define('ROOTPATH', realpath(APPPATH . '../') . DIRECTORY_SEPARATOR);
+    define('ROOTPATH', realpath(APPPATH . '../../') . DIRECTORY_SEPARATOR);
 }
 
 /**
