@@ -261,7 +261,26 @@ class Autoloader
         // in common CodeIgniter folders.
         if (! $mapped_file)
         {
-            $mapped_file = $this->loadLegacy($class);
+            $prefix = 'Config\\';
+            if (strpos($class, $prefix) !== false)
+            {
+                $new_prefix = 'Common\\Config\\';
+                $common_class = $new_prefix.substr($class, strlen($prefix));
+                $mapped_file = $this->loadInNamespace($common_class);
+
+                if (! $mapped_file)
+                {
+                    $mapped_file = $this->loadLegacy($class);
+                }
+                else
+                {
+                    class_alias($common_class, $class);
+                }
+            }
+            else
+            {
+                $mapped_file = $this->loadLegacy($class);
+            }
         }
 
         return $mapped_file;
