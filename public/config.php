@@ -13,4 +13,4 @@ if (!isset($FCPATH)) {
     $FCPATH = $DEFAULTFCPATH;
 }
 
-$PLATFORMRUN = $PLATFORMPATH.'/run.php';
+$PLATFORMRUN = $PLATFORMPATH.'/bootstrap/run.php';
