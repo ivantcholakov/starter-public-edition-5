@@ -185,20 +185,6 @@ define('TESTSPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/..
 
 /*
  * --------------------------------------------------------------------
- * Config\Paths seems to needs directories without trailing slash
- * --------------------------------------------------------------------
- */
-
-define('PATHS_SYSTEM_DIRECTORY', realpath(BASEPATH));
-define('PATHS_COMMON_DIRECTORY', realpath(COMMONPATH));
-define('PATHS_APP_DIRECTORY', realpath(APPPATH));
-define('PATHS_WRITABLE_DIRECTORY', realpath(WRITABLEPATH));
-define('PATHS_TESTS_DIRECTORY', realpath(TESTSPATH));
-define('PATHS_VIEW_DIRECTORY', realpath(VIEWPATH));
-
-
-/*
- * --------------------------------------------------------------------
  * Making sure PEAR packages are to be searched in this site first
  * --------------------------------------------------------------------
  */
@@ -265,3 +251,36 @@ require BOOTSTRAPPATH.'str_replace_limit.php';
  * --------------------------------------------------------------------
  */
 require BOOTSTRAPPATH.'autoload.php';
+
+
+/*
+ * --------------------------------------------------------------------
+ * Initialize Config\Paths
+ * Config\Paths seems to need directories without trailing slash
+ * --------------------------------------------------------------------
+ */
+
+define('PATHS_SYSTEM_DIRECTORY', realpath(BASEPATH));
+define('PATHS_COMMON_DIRECTORY', realpath(COMMONPATH));
+define('PATHS_APP_DIRECTORY', realpath(APPPATH));
+define('PATHS_WRITABLE_DIRECTORY', realpath(WRITABLEPATH));
+define('PATHS_TESTS_DIRECTORY', realpath(TESTSPATH));
+define('PATHS_VIEW_DIRECTORY', realpath(VIEWPATH));
+
+// Load our paths config file
+
+require_once COMMONPATH.'Config/Paths.php';
+
+if (file_exists(APPPATH . 'Config/Paths.php'))
+{
+    // In this case Config\Paths should extend Common\Config\Paths
+    require_once APPPATH . 'Config/Paths.php';
+}
+
+if (! class_exists('Config\Paths', false))
+{
+    class_alias('Common\Config\Paths', 'Config\Paths');
+}
+
+// Don't delete or rename the variable $paths.
+$paths = new Config\Paths();

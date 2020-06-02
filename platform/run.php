@@ -2,7 +2,7 @@
 
 /*
  *---------------------------------------------------------------
- * The Bootstrap folder, for a custom initialization.
+ * The Bootstrap folder, for our custom initialization.
  *---------------------------------------------------------------
  */
 define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/bootstrap')), '/').'/');
@@ -29,11 +29,6 @@ require_once BOOTSTRAPPATH.'bootstrap.php';
  * and fires up an environment-specific bootstrapping.
  */
 
-// Load our paths config file
-require APPPATH.'Config/Paths.php';
-$paths = new Config\Paths();
-
-// Location of the framework bootstrap file.
 $app = require BOOTSTRAPPATH.'bootstrap_ci.php';
 
 /*

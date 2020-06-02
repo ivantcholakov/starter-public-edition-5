@@ -159,7 +159,6 @@ require_once COMMONPATH . 'System/Autoloader/Autoloader.php';
 require_once COMMONPATH . 'System/Autoloader/FileLocator.php';
 
 require_once SYSTEMPATH . 'Config/BaseService.php';
-
 require_once COMMONPATH . 'Config/Services.php';
 
 if (file_exists(APPPATH . 'Config/Services.php'))
