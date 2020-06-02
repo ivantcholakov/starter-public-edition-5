@@ -132,6 +132,7 @@ if (! class_exists(Config\Autoload::class, false))
 
     if (file_exists(APPPATH . 'Config/Autoload.php'))
     {
+        // In this case Config\Autoload should extend Common\Config\Autoload
         require_once APPPATH . 'Config/Autoload.php';
     }
 
@@ -140,12 +141,18 @@ if (! class_exists(Config\Autoload::class, false))
         class_alias('Common\Config\Autoload', 'Config\Autoload');
     }
 
-    if (file_exists(COMMONPATH . 'Config/Modules.php'))
+    require_once COMMONPATH . 'Config/Modules.php';
+
+    if (file_exists(APPPATH . 'Config/Modules.php'))
     {
-        require_once COMMONPATH . 'Config/Modules.php';
+        // In this case Config\Modules should extend Common\Config\Modules
+        require_once APPPATH . 'Config/Modules.php';
     }
 
-    require_once APPPATH . 'Config/Modules.php';
+    if (! class_exists(Config\Modules::class, false))
+    {
+        class_alias('Common\Config\Modules', 'Config\Modules');
+    }
 }
 
 require_once SYSTEMPATH . 'Autoloader/Autoloader.php';
