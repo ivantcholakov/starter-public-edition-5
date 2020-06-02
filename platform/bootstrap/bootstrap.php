@@ -33,6 +33,7 @@ if ( ! function_exists('is_php'))
  * Get and check version data
  *---------------------------------------------------------------
  */
+
 require BOOTSTRAPPATH.'versions.php';
 
 
@@ -205,48 +206,12 @@ define('TESTSPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/..
 
 /*
  * --------------------------------------------------------------------
- * Making sure PEAR packages are to be searched in this site first
- * --------------------------------------------------------------------
- */
-
-set_include_path(COMMONPATH.'ThirdParty/Pear'.PATH_SEPARATOR.get_include_path());
-
-
-/*
- * --------------------------------------------------------------------
- * Debugging
+ * Various helper functions
  * --------------------------------------------------------------------
  */
 
 require BOOTSTRAPPATH.'print_d.php';
-
-
-/*
- * --------------------------------------------------------------------
- * Essential functions to serve bootstrap process further
- * --------------------------------------------------------------------
- */
-
-require BOOTSTRAPPATH.'resolve_path.php';
-require BOOTSTRAPPATH.'merge_paths.php';
-require BOOTSTRAPPATH.'detect_https.php';
-require BOOTSTRAPPATH.'detect_host.php';
-require BOOTSTRAPPATH.'detect_url.php';
-
-
-/*
- *---------------------------------------------------------------
- * Base URL detection
- *---------------------------------------------------------------
- */
-define('DETECTED_BASE_URL', detect_url()['base_url']);
-
-
-/*
- * --------------------------------------------------------------------
- * Other possibly missing functions (PHP, PECL)
- * --------------------------------------------------------------------
- */
+require BOOTSTRAPPATH.'helpers.php';
 
 if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
     require BOOTSTRAPPATH.'http_build_url.php';
@@ -255,14 +220,18 @@ if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
 
 /*
  * --------------------------------------------------------------------
- * Common purpose functions
+ * Making sure PEAR packages are to be searched in this site first
  * --------------------------------------------------------------------
  */
+set_include_path(COMMONPATH.'ThirdParty/Pear'.PATH_SEPARATOR.get_include_path());
 
-require BOOTSTRAPPATH.'str_to_bool.php';
-require BOOTSTRAPPATH.'arrays.php';
-require BOOTSTRAPPATH.'is_serialized.php';
-require BOOTSTRAPPATH.'str_replace_limit.php';
+
+/*
+ *---------------------------------------------------------------------
+ * Base URL detection
+ *---------------------------------------------------------------------
+ */
+define('DETECTED_BASE_URL', detect_url()['base_url']);
 
 
 /*
