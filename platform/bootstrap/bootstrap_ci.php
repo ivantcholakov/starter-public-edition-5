@@ -128,9 +128,16 @@ require_once SYSTEMPATH . 'Common.php';
 
 if (! class_exists(Config\Autoload::class, false))
 {
-    if (file_exists(COMMONPATH . 'Config/Autoload.php'))
+    require_once COMMONPATH . 'Config/Autoload.php';
+
+    if (file_exists(APPPATH . 'Config/Autoload.php'))
     {
-        require_once COMMONPATH . 'Config/Autoload.php';
+        require_once APPPATH . 'Config/Autoload.php';
+    }
+
+    if (! class_exists(Config\Autoload::class, false))
+    {
+        class_alias('Common\Config\Autoload', 'Config\Autoload');
     }
 
     if (file_exists(COMMONPATH . 'Config/Modules.php'))
@@ -138,7 +145,6 @@ if (! class_exists(Config\Autoload::class, false))
         require_once COMMONPATH . 'Config/Modules.php';
     }
 
-    require_once APPPATH . 'Config/Autoload.php';
     require_once APPPATH . 'Config/Modules.php';
 }
 

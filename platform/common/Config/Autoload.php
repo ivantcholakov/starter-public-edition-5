@@ -50,8 +50,12 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
          *   `];
          */
         $psr4 = [
-            'App'            => \COMMONPATH,
+            'Common'        => \COMMONPATH,
             'Common\Config' => \COMMONPATH . 'Config',
+
+            'App'           => APPPATH,                // To ensure filters, etc still found,
+            APP_NAMESPACE   => APPPATH,                // For custom namespace
+            'Config'        => APPPATH . 'Config',
         ];
 
         /**
