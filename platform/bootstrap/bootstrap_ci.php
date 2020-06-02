@@ -155,7 +155,7 @@ if (! class_exists(Config\Autoload::class, false))
     }
 }
 
-require_once SYSTEMPATH . 'Autoloader/Autoloader.php';
+require_once COMMONPATH . 'System/Autoloader/Autoloader.php';
 require_once SYSTEMPATH . 'Config/BaseService.php';
 require_once APPPATH . 'Config/Services.php';
 
