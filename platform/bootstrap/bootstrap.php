@@ -219,7 +219,7 @@ require BOOTSTRAPPATH.'detect_url.php';
  * Base URL detection
  *---------------------------------------------------------------
  */
-define('DETECTED_URL', detect_url()['base_url']);
+define('DETECTED_BASE_URL', detect_url()['base_url']);
 
 
 /*
