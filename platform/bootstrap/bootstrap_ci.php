@@ -206,7 +206,7 @@ if (is_file(COMPOSER_PATH))
 // into $_SERVER and $_ENV
 require_once SYSTEMPATH . 'Config/DotEnv.php';
 
-$env = new \CodeIgniter\Config\DotEnv(ROOTPATH);
+$env = new \CodeIgniter\Config\DotEnv(APPPATH);
 $env->load();
 
 // Always load the URL helper -
