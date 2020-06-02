@@ -222,6 +222,19 @@ helper('url');
  * the pieces all working together.
  */
 
+require_once COMMONPATH.'Config/App.php';
+
+if (file_exists(APPPATH . 'Config/App.php'))
+{
+    // In this case Config\App should extend Common\Config\App
+    require_once APPPATH . 'Config/App.php';
+}
+
+if (! class_exists('Config\App', false))
+{
+    class_alias('Common\Config\App', 'Config\App');
+}
+
 $appConfig = config(\Config\App::class);
 $app       = new \CodeIgniter\CodeIgniter($appConfig);
 $app->initialize();
