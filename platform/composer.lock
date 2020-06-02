@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7df1adbcd6a2c4cbfb8450ce6006baf",
+    "content-hash": "28002e0b47861222ddf2dd41ea979aca",
     "packages": [
         {
             "name": "codeigniter4/framework",
