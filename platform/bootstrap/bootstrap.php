@@ -199,6 +199,15 @@ define('PATHS_VIEW_DIRECTORY', realpath(VIEWPATH));
 
 /*
  * --------------------------------------------------------------------
+ * Defining ROOTPATH now, so it to point at correct directory
+ * --------------------------------------------------------------------
+ */
+
+define('ROOTPATH', realpath(APPSPATH . '../') . DIRECTORY_SEPARATOR);
+
+
+/*
+ * --------------------------------------------------------------------
  * Making sure PEAR packages are to be searched in this site first
  * --------------------------------------------------------------------
  */
