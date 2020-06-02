@@ -156,13 +156,29 @@ if (! class_exists(Config\Autoload::class, false))
 }
 
 require_once COMMONPATH . 'System/Autoloader/Autoloader.php';
+require_once COMMONPATH . 'System/Autoloader/FileLocator.php';
+
 require_once SYSTEMPATH . 'Config/BaseService.php';
-require_once APPPATH . 'Config/Services.php';
+
+//require_once COMMONPATH . 'Config/Services.php';
+
+if (file_exists(APPPATH . 'Config/Services.php'))
+{
+    // In this case Config\Modules should extend Common\Config\Services
+    require_once APPPATH . 'Config/Services.php';
+}
 
 // Use Config\Services as CodeIgniter\Services
 if (! class_exists('CodeIgniter\Services', false))
 {
-    class_alias('Config\Services', 'CodeIgniter\Services');
+    if (! class_exists(Config\Services::class, false))
+    {
+        class_alias('Common\Config\Services', 'CodeIgniter\Services');
+    }
+    else
+    {
+        class_alias('Config\Services', 'CodeIgniter\Services');
+    }
 }
 
 $loader = CodeIgniter\Services::autoloader();
