@@ -6,6 +6,28 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+if ( ! function_exists('is_php'))
+{
+    /**
+     * Determines if the current version of PHP is equal to or greater than the supplied value
+     *
+     * @param       string
+     * @return      bool        TRUE if the current version is $version or higher
+     */
+    function is_php($version)
+    {
+        static $_is_php;
+        $version = (string) $version;
+
+        if ( ! isset($_is_php[$version]))
+        {
+            $_is_php[$version] = version_compare(PHP_VERSION, $version, '>=');
+        }
+
+        return $_is_php[$version];
+    }
+}
+
 /*
  *---------------------------------------------------------------
  * Get and check version data
@@ -19,8 +41,6 @@ require BOOTSTRAPPATH.'versions.php';
  * Environment and request type detection
  * --------------------------------------------------------------------
  */
-
-require BOOTSTRAPPATH.'is_php.php';
 
 define('IS_WINDOWS_OS', strtolower(substr(php_uname('s'), 0, 3 )) == 'win');
 define('IS_CLI', (PHP_SAPI == 'cli') or defined('STDIN'));
