@@ -42,6 +42,7 @@ $RECYCLE.BIN/
 # These should never be under version control,
 # as it poses a security risk.
 platform/.env
+platform/applications/front/.env
 platform/.vagrant
 .vagrant
 Vagrantfile
