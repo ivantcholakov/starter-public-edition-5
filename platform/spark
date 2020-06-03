@@ -24,7 +24,8 @@ define('SPARKED', true);
  */
 
 // Refuse to run when called from php-cgi
-if (substr(php_sapi_name(), 0, 3) === 'cgi')
+//if (substr(php_sapi_name(), 0, 3) === 'cgi')
+if (! ((PHP_SAPI == 'cli') || defined('STDIN')))
 {
     die("The cli tool is not supported when running php-cgi. It needs php-cli to function!\n\n");
 }
