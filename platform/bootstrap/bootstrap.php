@@ -2,7 +2,7 @@
 
 /**
  * A Custom Bootstrap File
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2020
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -44,7 +44,7 @@ require BOOTSTRAPPATH.'versions.php';
  */
 
 define('IS_WINDOWS_OS', strtolower(substr(php_uname('s'), 0, 3 )) == 'win');
-define('IS_CLI', (PHP_SAPI == 'cli') or defined('STDIN'));
+define('IS_CLI', (PHP_SAPI == 'cli') || defined('STDIN'));
 define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 
@@ -73,8 +73,11 @@ if (isset($FCPATH)) {
 if (FCPATH == '' || FCPATH == '/' || !is_dir(FCPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your front controller directory path (FCPATH) does not appear to be set correctly.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
+
+// Ensure the current directory is pointing to the current front controller's directory
+chdir(FCPATH);
 
 if (isset($DEFAULTFCPATH)) {
     define('DEFAULTFCPATH', rtrim(str_replace('\\', '/', realpath($DEFAULTFCPATH)), '/').'/');
@@ -86,11 +89,8 @@ if (isset($DEFAULTFCPATH)) {
 if (DEFAULTFCPATH == '' || DEFAULTFCPATH == '/' || !is_dir(DEFAULTFCPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your front controller directory path of the default site (DEFAULTFCPATH) does not appear to be set correctly.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
-
-// Ensure the current directory is pointing to the default front controller's directory
-chdir(DEFAULTFCPATH);
 
 if (isset($PLATFORMPATH)) {
     define('PLATFORMPATH', rtrim(str_replace('\\', '/', realpath($PLATFORMPATH)), '/').'/');
@@ -102,7 +102,7 @@ if (isset($PLATFORMPATH)) {
 if (PLATFORMPATH == '' || PLATFORMPATH == '/' || !is_dir(PLATFORMPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your platform directory ($PLATFORMPATH) does not appear to be set correctly.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($PLATFORMRUN)) {
@@ -115,7 +115,7 @@ if (isset($PLATFORMRUN)) {
 if (PLATFORMRUN == '' || !is_file(PLATFORMRUN)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your platform starter file ($PLATFORMRUN) does not appear to be set correctly.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 define('APPSPATH', PLATFORMPATH.'applications/');
@@ -124,7 +124,7 @@ define('APPSPATH', PLATFORMPATH.'applications/');
 if (!is_dir(APPSPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your application root directory path (APPSPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($APPNAME)) {
@@ -137,7 +137,7 @@ if (isset($APPNAME)) {
 if (APPNAME == '') {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your application name ($APPNAME) does not appear to be set correctly.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($DEFAULTAPPNAME)) {
@@ -150,7 +150,7 @@ if (isset($DEFAULTAPPNAME)) {
 if (DEFAULTAPPNAME == '') {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your default application name ($DEFAULTAPPNAME) does not appear to be set correctly.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 // The url segment of the application, counted from the root public directory of the site.
@@ -166,7 +166,7 @@ define('APPPATH', APPSPATH.APPNAME.'/');
 if (!is_dir(APPPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your application name ($APPNAME) does not appear to be set correctly.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 // Path to the system directory
@@ -176,7 +176,7 @@ define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../
 if (BASEPATH == '' || BASEPATH == '/' || !is_dir(BASEPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your system directory path (BASEPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 // The path to the "Views" directory
@@ -188,7 +188,7 @@ define('COMMONPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/.
 if (COMMONPATH == '' || COMMONPATH == '/' || !is_dir(COMMONPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your common directory path (COMMONPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 // This is the common writable directory to be used by this platform.
@@ -197,7 +197,7 @@ define('WRITABLEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'
 if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your writable directory path (WRITABLEPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }
 
 // This is the common writable directory to be used by this platform.

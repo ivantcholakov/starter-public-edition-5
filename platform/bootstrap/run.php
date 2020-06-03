@@ -10,7 +10,7 @@ define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__))
 if (BOOTSTRAPPATH == '' || BOOTSTRAPPATH == '/' || !is_dir(BOOTSTRAPPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your bootstrap folder path (BOOTSTRAPPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3);
+    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
 }
 
 /*
