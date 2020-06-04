@@ -209,8 +209,8 @@ if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
 // This is the common writable directory to be used by this platform.
 define('TESTSPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../tests')), '/').'/');
 
-// Ensure the current directory is pointing to the current front controller's directory
-chdir(IS_CLI && defined('CLIPATH') ? CLIPATH : FCPATH);
+// Set the current directory correctly for CLI requests.
+chdir(defined('CLIPATH') ? CLIPATH : FCPATH);
 
 
 /*
