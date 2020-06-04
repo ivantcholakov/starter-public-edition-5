@@ -39,4 +39,4 @@ if (! ((PHP_SAPI == 'cli') || defined('STDIN')))
  * and fires up an environment-specific bootstrapping.
  */
 
-require dirname(__FILE__) . '/../public/index.php';
+require dirname(__FILE__) . '/../../../public/index.php';
