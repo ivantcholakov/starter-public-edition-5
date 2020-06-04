@@ -76,9 +76,6 @@ if (FCPATH == '' || FCPATH == '/' || !is_dir(FCPATH)) {
     exit(3); // EXIT_CONFIG
 }
 
-// Ensure the current directory is pointing to the current front controller's directory
-chdir(FCPATH);
-
 if (isset($DEFAULTFCPATH)) {
     define('DEFAULTFCPATH', rtrim(str_replace('\\', '/', realpath($DEFAULTFCPATH)), '/').'/');
 } else {
@@ -169,8 +166,17 @@ if (!is_dir(APPPATH)) {
     exit(3); // EXIT_CONFIG
 }
 
+// The path to the Composer loader file.
+define('COMPOSER_PATH', PLATFORMPATH.'vendor/autoload.php');
+
+if (!is_file(COMPOSER_PATH)) {
+    header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+    echo 'Your path to the Composer loader file (COMPOSER_PATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
+    exit(3); // EXIT_CONFIG
+}
+
 // Path to the system directory
-define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../vendor/codeigniter4/framework/system')), '/').'/');
+define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(COMPOSER_PATH).'/codeigniter4/framework/system')), '/').'/');
 
 // Is the system path correct?
 if (BASEPATH == '' || BASEPATH == '/' || !is_dir(BASEPATH)) {
@@ -202,6 +208,9 @@ if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
 
 // This is the common writable directory to be used by this platform.
 define('TESTSPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../tests')), '/').'/');
+
+// Ensure the current directory is pointing to the current front controller's directory
+chdir(IS_CLI && defined('CLIPATH') ? CLIPATH : FCPATH);
 
 
 /*
