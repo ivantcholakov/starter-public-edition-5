@@ -209,8 +209,11 @@ if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
 // This is the common writable directory to be used by this platform.
 define('TESTSPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../tests')), '/').'/');
 
-// Set the current directory correctly for CLI requests.
-chdir(defined('CLIPATH') ? CLIPATH : FCPATH);
+// Making sure PEAR packages are to be searched in this site first
+set_include_path(COMMONPATH.'ThirdParty/Pear'.PATH_SEPARATOR.get_include_path());
+
+// Ensure the current directory is pointing to the front controller's directory
+chdir(FCPATH);
 
 
 /*
@@ -225,14 +228,6 @@ require BOOTSTRAPPATH.'helpers.php';
 if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
     require BOOTSTRAPPATH.'http_build_url.php';
 }
-
-
-/*
- * --------------------------------------------------------------------
- * Making sure PEAR packages are to be searched in this site first
- * --------------------------------------------------------------------
- */
-set_include_path(COMMONPATH.'ThirdParty/Pear'.PATH_SEPARATOR.get_include_path());
 
 
 /*
