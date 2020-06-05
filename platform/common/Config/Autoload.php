@@ -76,6 +76,7 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
          */
         $classmap = [
             'CodeIgniter\View\View' => COMMONPATH.'System/View/View.php',
+            'CodeIgniter\Config\Services' => COMMONPATH.'System/Config/Services.php',
             'CodeIgniter\Debug\Toolbar\Collectors\BaseCollector' => COMMONPATH.'System/Debug/Toolbar/Collectors/BaseCollector.php',
         ];
 
