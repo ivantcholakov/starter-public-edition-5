@@ -824,7 +824,7 @@ class Services extends BaseService
 	 *
 	 * @return \CodeIgniter\Debug\Toolbar
 	 */
-	public static function toolbar(\Config\Toolbar $config = null, bool $getShared = true)
+	public static function toolbar(\CodeIgniter\Config\BaseConfig $config = null, bool $getShared = true)
 	{
 		if ($getShared)
 		{
