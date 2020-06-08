@@ -191,6 +191,8 @@ class View implements RendererInterface
     {
         $this->renderVars['start'] = microtime(true);
 
+        $options = \Common\Modules\System\View\Driver::parse_options($options);
+
         // Store the results here so even if
         // multiple views are called in a view, it won't
         // clean it unless we mean it to.
@@ -319,6 +321,8 @@ class View implements RendererInterface
     public function renderString(string $view, array $options = null, bool $saveData = null): string
     {
         $start = microtime(true);
+
+        $options = \Common\Modules\System\View\Driver::parse_options($options);
 
         if (is_null($saveData))
         {

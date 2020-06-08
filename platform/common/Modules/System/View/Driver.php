@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\View;
+namespace Common\Modules\System\View;
 
 class Driver
 {
@@ -14,7 +14,7 @@ class Driver
         return $result;
     }
 
-    protected static function parse_options($options)
+    public static function parse_options($options)
     {
         if (!is_array($options)) {
 
