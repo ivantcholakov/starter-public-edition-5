@@ -66,7 +66,7 @@ class Driver
 
                 if (in_array($key, static::validDrivers())) {
 
-                    $drivers[] = [['name' => $key], ['type' => static::isRenderer($key) ? 'renderer' : 'parser'], ['options' => $value]];
+                    $drivers[] = ['name' => $key, 'type' => static::isRenderer($key) ? 'renderer' : 'parser', 'options' => $value];
 
                 } else {
 
@@ -77,13 +77,12 @@ class Driver
 
                 if (in_array($value, static::validDrivers())) {
 
-                    $drivers[] = [['name' => $value], ['type' => static::isRenderer($value) ? 'renderer' : 'parser'], ['options' => []]];
+                    $drivers[] = ['name' => $value, 'type' => static::isRenderer($value) ? 'renderer' : 'parser', 'options' => []];
 
                 } else {
 
                     $result[] = $value;
                 }
-
             }
         }
 
