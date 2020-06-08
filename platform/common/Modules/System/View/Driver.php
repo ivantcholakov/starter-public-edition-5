@@ -14,6 +14,16 @@ class Driver
         return $result;
     }
 
+    public static function is_renderer($driver)
+    {
+        $renderers = [
+            'parser',
+            'twig',
+        ];
+
+        return in_array($driver, $renderers);
+    }
+
     public static function parse_options($options)
     {
         if (!is_array($options)) {
@@ -36,7 +46,7 @@ class Driver
 
                 if (in_array($key, static::valid_drivers())) {
 
-                    $drivers[] = [['driver' => $key], ['options' => $value]];
+                    $drivers[] = [['name' => $key], ['type' => static::is_renderer($key) ? 'renderer' : 'parser'], ['options' => $value]];
 
                 } else {
 
@@ -47,7 +57,7 @@ class Driver
 
                 if (in_array($value, static::valid_drivers())) {
 
-                    $drivers[] = [['driver' => $value], ['options' => []]];
+                    $drivers[] = [['name' => $value], ['type' => static::is_renderer($value) ? 'renderer' : 'parser'], ['options' => []]];
 
                 } else {
 
@@ -60,6 +70,16 @@ class Driver
         if (!empty($drivers)) {
 
             $result['drivers'] = $drivers;
+            $result['drivers_contain_renderer'] = false;
+
+            foreach ($drivers as $driver) {
+
+                if ($driver['type'] == 'renderer') {
+
+                    $result['drivers_contain_renderer'] = true;
+                    break;
+                }
+            }
         }
 
         return $result;
