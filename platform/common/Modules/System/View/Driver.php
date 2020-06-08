@@ -59,10 +59,10 @@ class Driver
 
         if (!empty($drivers)) {
 
-            $options['drivers'] = $drivers;
+            $result['drivers'] = $drivers;
         }
 
-        return $options;
+        return $result;
     }
 
 }
