@@ -7,7 +7,6 @@ class Driver
     public static function valid_drivers()
     {
         $result = [
-            'php',
             'parser',
             'twig',
         ];
@@ -18,7 +17,6 @@ class Driver
     public static function is_renderer($driver)
     {
         $renderers = [
-            'php',
             'parser',
             'twig',
         ];
@@ -72,16 +70,6 @@ class Driver
         if (!empty($drivers)) {
 
             $result['drivers'] = $drivers;
-            $result['drivers_contain_renderer'] = false;
-
-            foreach ($drivers as $driver) {
-
-                if ($driver['type'] == 'renderer') {
-
-                    $result['drivers_contain_renderer'] = true;
-                    break;
-                }
-            }
         }
 
         return $result;
