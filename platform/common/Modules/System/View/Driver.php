@@ -7,6 +7,7 @@ class Driver
     public static function valid_drivers()
     {
         $result = [
+            'php',
             'parser',
             'twig',
         ];
@@ -17,6 +18,7 @@ class Driver
     public static function is_renderer($driver)
     {
         $renderers = [
+            'php',
             'parser',
             'twig',
         ];
