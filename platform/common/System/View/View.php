@@ -191,7 +191,7 @@ class View implements RendererInterface
     {
         $this->renderVars['start'] = microtime(true);
 
-        $options = \Common\Modules\System\View\Driver::parse_options($options);
+        $options = \Common\Modules\System\View\Driver::parseOptions($options);
 
         // Store the results here so even if
         // multiple views are called in a view, it won't
@@ -322,7 +322,7 @@ class View implements RendererInterface
     {
         $start = microtime(true);
 
-        $options = \Common\Modules\System\View\Driver::parse_options($options);
+        $options = \Common\Modules\System\View\Driver::parseOptions($options);
 
         if (is_null($saveData))
         {

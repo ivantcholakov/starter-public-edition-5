@@ -4,21 +4,27 @@ namespace Common\Modules\System\View;
 
 class Driver
 {
-    public static function valid_drivers()
+    public static function validDrivers()
     {
         $result = [
             'parser',
             'twig',
+            'handlebars',
+            'mustache',
+            'markdown',
+            'textile',
         ];
 
         return $result;
     }
 
-    public static function is_renderer($driver)
+    public static function isRenderer($driver)
     {
         $renderers = [
             'parser',
             'twig',
+            'handlebars',
+            'mustache',
         ];
 
         return in_array($driver, $renderers);
@@ -38,7 +44,7 @@ class Driver
         return $result;
     }
 
-    public static function parse_options($options)
+    public static function parseOptions($options)
     {
         if (!is_array($options)) {
 
@@ -58,9 +64,9 @@ class Driver
 
             if (is_string($key)) {
 
-                if (in_array($key, static::valid_drivers())) {
+                if (in_array($key, static::validDrivers())) {
 
-                    $drivers[] = [['name' => $key], ['type' => static::is_renderer($key) ? 'renderer' : 'parser'], ['options' => $value]];
+                    $drivers[] = [['name' => $key], ['type' => static::isRenderer($key) ? 'renderer' : 'parser'], ['options' => $value]];
 
                 } else {
 
@@ -69,9 +75,9 @@ class Driver
 
             } elseif (is_string($value)) {
 
-                if (in_array($value, static::valid_drivers())) {
+                if (in_array($value, static::validDrivers())) {
 
-                    $drivers[] = [['name' => $value], ['type' => static::is_renderer($value) ? 'renderer' : 'parser'], ['options' => []]];
+                    $drivers[] = [['name' => $value], ['type' => static::isRenderer($value) ? 'renderer' : 'parser'], ['options' => []]];
 
                 } else {
 
