@@ -24,6 +24,20 @@ class Driver
         return in_array($driver, $renderers);
     }
 
+    public static function getFileExtensions()
+    {
+        $result = [
+            'parser' => ['tpl'],
+            'twig' => ['twig', 'html.twig'],
+            'handlebars' => ['handlebars', 'hbs'],
+            'mustache' => ['mustache'],
+            'markdown' => ['md', 'markdown', 'fbmd'],
+            'textile' => ['textile'],
+        ];
+
+        return $result;
+    }
+
     public static function parse_options($options)
     {
         if (!is_array($options)) {
