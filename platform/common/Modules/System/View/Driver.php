@@ -7,12 +7,12 @@ class Driver
     public static function validDrivers()
     {
         $result = [
-            'parser',
+//            'parser',
             'twig',
-            'handlebars',
-            'mustache',
-            'markdown',
-            'textile',
+//            'handlebars',
+//            'mustache',
+//            'markdown',
+//            'textile',
         ];
 
         return $result;
