@@ -82,6 +82,26 @@ class Driver
         return isset($extensions[$driverName]) ? $extensions[$driverName] : [];
     }
 
+    public static function getDriversByFileExtensions()
+    {
+        static $drivers = null;
+
+        if ($drivers === null) {
+
+            $drivers = [];
+            $allExtensions = static::getFileExtensions();
+
+            foreach ($allExtensions as $driverName => $extensions) {
+
+                foreach ($extensions as $extension) {
+                    $drivers[$extension] = $driverName;
+                }
+            }
+        }
+
+        return $drivers;
+    }
+
     public static function parseOptions($options)
     {
         if (!is_array($options)) {
