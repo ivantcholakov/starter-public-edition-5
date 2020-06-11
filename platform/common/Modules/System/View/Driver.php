@@ -6,6 +6,7 @@ class Driver
 {
     public static function validDrivers()
     {
+        // TODO: Get this from a configuration file.
         $result = [
 //            'parser',
             'twig',
@@ -20,6 +21,7 @@ class Driver
 
     public static function isRenderer($driver)
     {
+        // TODO: Get this from a configuration file.
         $renderers = [
             'parser',
             'twig',
@@ -30,18 +32,49 @@ class Driver
         return in_array($driver, $renderers);
     }
 
-    public static function getFileExtensions()
+    public static function getFileExtensions($driverName = null)
     {
-        $result = [
-            'parser' => ['tpl'],
-            'twig' => ['twig', 'html.twig'],
-            'handlebars' => ['handlebars', 'hbs'],
-            'mustache' => ['mustache'],
-            'markdown' => ['md', 'markdown', 'fbmd'],
-            'textile' => ['textile'],
-        ];
+        static $extensions = null;
 
-        return $result;
+        if ($extensions === null) {
+
+            $extensions = [];
+
+            // TODO: Get this from a configuration file.
+            $configuredExtensions = [
+                'parser' => 'tpl',
+                'twig' => ['twig', 'html.twig'],
+                'handlebars' => ['handlebars', 'hbs'],
+                'mustache' => 'mustache',
+                'markdown' => ['md', 'markdown', 'fbmd'],
+                'textile' => 'textile',
+            ];
+
+            foreach ($configuredExtensions as $key => $value) {
+
+                if (!is_array($value)) {
+                    $value = (array) $value;
+                }
+
+                foreach ($value as & $item) {
+                    $item = ltrim($item, '.');
+                }
+
+                unset($item);
+
+                $extensions[$key] = $value;
+            }
+
+        }
+
+        $driverName = (string) $driverName;
+
+        if ($driverName == '') {
+
+            return $extensions;
+        }
+
+        return isset($extensions[$driverName]) ? $extensions[$driverName] : [];
     }
 
     public static function parseOptions($options)
