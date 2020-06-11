@@ -50,7 +50,13 @@ class Driver
                 'textile' => 'textile',
             ];
 
+            $validDrivers = static::validDrivers();
+
             foreach ($configuredExtensions as $key => $value) {
+
+                if (in_array($key, $validDrivers)) {
+                   continue;
+                }
 
                 if (!is_array($value)) {
                     $value = (array) $value;
@@ -64,7 +70,6 @@ class Driver
 
                 $extensions[$key] = $value;
             }
-
         }
 
         $driverName = (string) $driverName;
