@@ -19,6 +19,28 @@ class Driver
         return $result;
     }
 
+    public static function Type($driverName)
+    {
+        static $types = null;
+
+        if ($types === null) {
+
+            // TODO: Get this from a configuration file.
+            $types = [
+                'parser' => 'renderer',
+                'twig' => 'renderer',
+                'handlebars' => 'renderer',
+                'mustache' => 'renderer',
+                'markdown' => 'parser',
+                'textile' => 'parser',
+            ];
+        }
+
+        $driverName = (string) $driverName;
+
+        return isset($types[$driverName]) ? $types[$driverName] : null;
+    }
+
     public static function isRenderer($driver)
     {
         // TODO: Get this from a configuration file.
@@ -240,7 +262,7 @@ class Driver
 
                 if (in_array($key, static::validDrivers())) {
 
-                    $drivers[] = ['name' => $key, 'type' => static::isRenderer($key) ? 'renderer' : 'parser', 'options' => $value];
+                    $drivers[] = ['name' => $key, 'type' => static::Type($key), 'hasFileExtension' => static::hasFileExtension($key), 'options' => $value];
 
                 } else {
 
@@ -251,7 +273,7 @@ class Driver
 
                 if (in_array($value, static::validDrivers())) {
 
-                    $drivers[] = ['name' => $value, 'type' => static::isRenderer($value) ? 'renderer' : 'parser', 'options' => []];
+                    $drivers[] = ['name' => $value, 'type' => static::Type($value), 'hasFileExtension' => static::hasFileExtension($value), 'options' => []];
 
                 } else {
 
