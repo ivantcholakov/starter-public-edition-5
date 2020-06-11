@@ -104,9 +104,55 @@ class Driver
                     $drivers[$extension] = $driverName;
                 }
             }
+
+            // Sort by keys, move the longer extensions to top.
+            // This is for ensuring correct extension detection.
+            uksort($drivers, function ($a, $b) {
+		return strlen($b) - strlen($a);
+            });
         }
 
         return $drivers;
+    }
+
+    public static function detect($fileName, & $detectedExtension = null, & $detectedFilename = null)
+    {
+        static $drivers = null;
+
+        if ($drivers === null) {
+
+            $drivers = static::getDriversByFileExtensions();
+        }
+
+        $fileName = (string) $fileName;
+        $detectedExtension = null;
+        $detectedFilename = null;
+
+        // Test whether a pure extension was given.
+        if (isset($drivers[$fileName])) {
+
+            $detectedExtension = $fileName;
+
+            return $drivers[$fileName];
+        }
+
+        foreach ($drivers as $key => $value) {
+
+            $k = preg_quote($key);
+
+            if (preg_match('/.*\.('.$k.')$/', $fileName, $matches)) {
+
+                $detectedExtension = $matches[1];
+                $detectedFilename = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($fileName, PATHINFO_BASENAME));
+
+                return $value;
+            }
+        }
+
+        $detectedExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+        $detectedFilename = pathinfo($fileName, PATHINFO_FILENAME);
+
+        return null;
     }
 
     public static function parseOptions($options)
