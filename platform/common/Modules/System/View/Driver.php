@@ -41,19 +41,6 @@ class Driver
         return isset($types[$driverName]) ? $types[$driverName] : null;
     }
 
-    public static function isRenderer($driver)
-    {
-        // TODO: Get this from a configuration file.
-        $renderers = [
-            'parser',
-            'twig',
-            'handlebars',
-            'mustache',
-        ];
-
-        return in_array($driver, $renderers);
-    }
-
     public static function getFileExtensions($driverName = null)
     {
         static $extensions = null;
