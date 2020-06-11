@@ -82,6 +82,13 @@ class Driver
         return isset($extensions[$driverName]) ? $extensions[$driverName] : [];
     }
 
+    public static function hasFileExtension($driverName)
+    {
+        $extensions = static::getFileExtensions($driverName);
+
+        return !empty($extensions);
+    }
+
     public static function getDriversByFileExtensions()
     {
         static $drivers = null;
