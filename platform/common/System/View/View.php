@@ -193,6 +193,9 @@ class View implements RendererInterface
 
         $options = \Common\Modules\System\View\Driver::parseOptions($options);
 
+        $fileExt = pathinfo($view, PATHINFO_EXTENSION);
+        $realPath = empty($fileExt) ? $view . '.php' : $view; // allow Views as .html, .tpl, etc (from CI3)
+
         // Store the results here so even if
         // multiple views are called in a view, it won't
         // clean it unless we mean it to.
@@ -200,8 +203,7 @@ class View implements RendererInterface
         {
             $saveData = $this->saveData;
         }
-        $fileExt                     = pathinfo($view, PATHINFO_EXTENSION);
-        $realPath                    = empty($fileExt) ? $view . '.php' : $view; // allow Views as .html, .tpl, etc (from CI3)
+
         $this->renderVars['view']    = $realPath;
         $this->renderVars['options'] = $options;
 
