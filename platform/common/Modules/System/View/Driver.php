@@ -51,8 +51,8 @@ class Driver
 
             // TODO: Get this from a configuration file.
             $configuredExtensions = [
-                'parser' => 'tpl',
-                'twig' => ['twig', 'html.twig'],
+                'parser' => 'parser',
+                'twig' => ['html.twig', 'twig'],
                 'handlebars' => ['handlebars', 'hbs'],
                 'mustache' => 'mustache',
                 'markdown' => ['md', 'markdown', 'fbmd'],
@@ -63,7 +63,7 @@ class Driver
 
             foreach ($configuredExtensions as $key => $value) {
 
-                if (in_array($key, $validDrivers)) {
+                if (!in_array($key, $validDrivers)) {
                    continue;
                 }
 
@@ -98,7 +98,7 @@ class Driver
         return !empty($extensions);
     }
 
-    public static function getDriversByFileExtensions()
+    public static function getDriversByFileExtensions($extension = null)
     {
         static $drivers = null;
 
@@ -109,16 +109,22 @@ class Driver
 
             foreach ($allExtensions as $driverName => $extensions) {
 
-                foreach ($extensions as $extension) {
-                    $drivers[$extension] = $driverName;
+                foreach ($extensions as $ext) {
+                    $drivers[$ext] = $driverName;
                 }
             }
 
             // Sort by keys, move the longer extensions to top.
             // This is for ensuring correct extension detection.
             uksort($drivers, function ($a, $b) {
+
 		return strlen($b) - strlen($a);
             });
+        }
+
+        if ($extension != '') {
+
+            return $drivers[$extension] ?? null;
         }
 
         return $drivers;
