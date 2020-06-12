@@ -8,8 +8,8 @@ class Driver
     {
         // TODO: Get this from a configuration file.
         $result = [
-//            'parser',
             'twig',
+//            'parser',
 //            'handlebars',
 //            'mustache',
 //            'markdown',
@@ -27,8 +27,8 @@ class Driver
 
             // TODO: Get this from a configuration file.
             $types = [
-                'parser' => 'renderer',
                 'twig' => 'renderer',
+                'parser' => 'renderer',
                 'handlebars' => 'renderer',
                 'mustache' => 'renderer',
                 'markdown' => 'parser',
@@ -51,8 +51,8 @@ class Driver
 
             // TODO: Get this from a configuration file.
             $configuredExtensions = [
-                'parser' => 'parser',
                 'twig' => ['html.twig', 'twig'],
+                'parser' => 'parser',
                 'handlebars' => ['handlebars', 'hbs'],
                 'mustache' => 'mustache',
                 'markdown' => ['md', 'markdown', 'fbmd'],
@@ -113,13 +113,6 @@ class Driver
                     $drivers[$ext] = $driverName;
                 }
             }
-
-            // Sort by keys, move the longer extensions to top.
-            // This is for ensuring correct extension detection.
-            uksort($drivers, function ($a, $b) {
-
-		return strlen($b) - strlen($a);
-            });
         }
 
         if ($extension != '') {
@@ -279,6 +272,87 @@ class Driver
 
             $result['drivers'] = $drivers;
         }
+
+        return $result;
+    }
+
+    public static function parseViewOptions(string $view, array $options = null)
+    {
+        $options = static::parseOptions($options);
+        $driverChain = !empty($options['drivers']) ? $options['drivers'] : [];
+
+        // This is to be the first driver from the chain.
+        $driver = null;
+        $driverName = null;
+
+        if (!empty($driverChain)) {
+
+            if ($driverChain[0]['hasFileExtension']) {
+
+                $driver = $driverChain[0];
+                $driverName = $driver['name'];
+                $driverChain = array_slice($driverChain, 1);
+            }
+        }
+
+        $viewExtension = pathinfo($view, PATHINFO_EXTENSION);
+        $viewHasExtension = $viewExtension != '' && $viewExtension != 'html';
+
+        $detectedExtension = null;
+        $detectedFilename = null;
+        $detectedDriverName = static::detect($view, $detectedExtension, $detectedFilename);
+
+        if (
+            $viewHasExtension
+            &&
+            $detectedDriverName != ''
+            &&
+            $driverName != ''
+            &&
+            $detectedDriverName != $driverName
+        ) {
+
+            // Filename and options target different drivers.
+            throw \CodeIgniter\View\Exceptions\ViewException\ViewException::forInvalidFile($view);
+        }
+
+        $fileName = $detectedFilename;
+
+        if ($detectedDriverName != '' && $detectedExtension != '') {
+
+            $extensions = [$detectedExtension];
+
+            if ($driverName == '') {
+                $driver = ['name' => $detectedDriverName, 'type' => static::Type($detectedDriverName), 'hasFileExtension' => static::hasFileExtension($detectedDriverName), 'options' => []];
+            }
+
+        } elseif ($driverName != '') {
+
+            $extensions = static::getFileExtensions($driverName);
+
+        } else {
+
+            $extensions = [];
+
+            $allExtensions = static::getFileExtensions();
+
+            foreach ($allExtensions as $key => $value) {
+
+                foreach ($value as $ext) {
+                    $extensions[] = $ext;
+                }
+            }
+
+            $extensions[] = 'php';
+        }
+
+        $result = compact(
+            'options',
+            'driverChain',
+            'driver',
+            'fileName',
+            'extensions'
+        );
 
         return $result;
     }
