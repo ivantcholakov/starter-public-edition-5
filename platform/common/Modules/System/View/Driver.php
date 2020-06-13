@@ -272,12 +272,15 @@ class Driver
 
             $extensions = [];
 
-            $allExtensions = static::getFileExtensions();
+            if ($detectedExtension != 'php') {
 
-            foreach ($allExtensions as $key => $value) {
+                $allExtensions = static::getFileExtensions();
 
-                foreach ($value as $ext) {
-                    $extensions[] = $ext;
+                foreach ($allExtensions as $key => $value) {
+
+                    foreach ($value as $ext) {
+                        $extensions[] = $ext;
+                    }
                 }
             }
 
