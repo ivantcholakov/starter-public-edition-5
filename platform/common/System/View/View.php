@@ -321,7 +321,7 @@ class View implements RendererInterface
             $file = $this->viewPath . $view;
 
             if (!is_file($file)) {
-                $file = $this->loader->locateFile($this->renderVars['view'], 'Views', $extension);
+                $file = $this->loader->locateFile($view, 'Views', $extension);
             }
 
             if ($file != '') {
