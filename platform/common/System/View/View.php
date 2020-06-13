@@ -150,6 +150,13 @@ class View implements RendererInterface
      */
     protected $currentSection;
 
+    /**
+     * Holds temporary data within an isolated context.
+     *
+     * @var array
+     */
+    protected $viewOptions = [];
+
     //--------------------------------------------------------------------
 
     /**
@@ -191,11 +198,6 @@ class View implements RendererInterface
     {
         $this->renderVars['start'] = microtime(true);
 
-        $options = \Common\Modules\System\View\Driver::parseOptions($options);
-
-        $fileExt = pathinfo($view, PATHINFO_EXTENSION);
-        $realPath = empty($fileExt) ? $view . '.php' : $view; // allow Views as .html, .tpl, etc (from CI3)
-
         // Store the results here so even if
         // multiple views are called in a view, it won't
         // clean it unless we mean it to.
@@ -204,32 +206,22 @@ class View implements RendererInterface
             $saveData = $this->saveData;
         }
 
-        $this->renderVars['view']    = $realPath;
-        $this->renderVars['options'] = $options;
+        $this->viewOptions = $this->findView(\Common\Modules\System\View\Driver::parseViewOptions($view, $options, $saveData));
+
+        $this->renderVars['view']    = $this->viewOptions['view'];
+        $this->renderVars['options'] = $this->viewOptions['options'];
+        $this->renderVars['file']    = $this->viewOptions['file'];
 
         // Was it cached?
         if (isset($this->renderVars['options']['cache']))
         {
-            $this->renderVars['cacheName'] = $this->renderVars['options']['cache_name'] ?? str_replace('.php', '', $this->renderVars['view']);
+            $this->renderVars['cacheName'] = $this->renderVars['options']['cache_name'] ?? $this->viewOptions['fileName'];
 
             if ($output = cache($this->renderVars['cacheName']))
             {
                 $this->logPerformance($this->renderVars['start'], microtime(true), $this->renderVars['view']);
                 return $output;
             }
-        }
-
-        $this->renderVars['file'] = $this->viewPath . $this->renderVars['view'];
-
-        if (! is_file($this->renderVars['file']))
-        {
-            $this->renderVars['file'] = $this->loader->locateFile($this->renderVars['view'], 'Views', empty($fileExt) ? 'php' : $fileExt);
-        }
-
-        // locateFile will return an empty string if the file cannot be found.
-        if (empty($this->renderVars['file']))
-        {
-            throw ViewException::forInvalidFile($this->renderVars['view']);
         }
 
         // Make our view data available to the view.
@@ -239,17 +231,28 @@ class View implements RendererInterface
             $this->tempData = $this->data;
         }
 
-        extract($this->tempData);
-
         if ($saveData)
         {
             $this->data = $this->tempData;
         }
 
-        ob_start();
-        include($this->renderVars['file']); // PHP will be processed
-        $output = ob_get_contents();
-        @ob_end_clean();
+        if ($this->viewOptions['extension'] == 'php') {
+
+            extract($this->tempData);
+
+            ob_start();
+            include($this->renderVars['file']); // PHP will be processed
+            $output = ob_get_contents();
+            @ob_end_clean();
+
+        } else {
+
+            // Call another renderer here.
+
+            // Testing Twig, hardcoded stuff:
+
+            $output = \Common\Modules\System\View\Twig::render($this->renderVars['file'], $this->tempData, $this->viewOptions['driver']['options']);
+        }
 
         // When using layouts, the data has already been stored
         // in $this->sections, and no other valid output
@@ -301,6 +304,55 @@ class View implements RendererInterface
         $this->tempData = null;
 
         return $output;
+    }
+
+    protected function findView(array $viewOptions)
+    {
+        extract($viewOptions);
+
+        $view = null;
+        $file = null;
+        $found = false;
+
+        foreach ($extensions as $extension) {
+
+            $view = $fileName.'.'.$extension;
+
+            $file = $this->viewPath . $view;
+
+            if (!is_file($file)) {
+                $file = $this->loader->locateFile($this->renderVars['view'], 'Views', $extension);
+            }
+
+            if ($file != '') {
+
+                // locateFile will return an empty string if the file cannot be found.
+                $found = true;
+                break;
+            }
+        }
+
+        if (!$found) {
+            throw ViewException::forInvalidFile($fileName);
+        }
+
+        if ($extension != 'php' && empty($driver)) {
+
+            $driverName = \Common\Modules\System\View\Driver::getDriversByFileExtensions($extension);
+
+            if ($driverName != '') {
+
+                $driver = ['name' => $driverName, 'type' => \Common\Modules\System\View\Driver::Type($driverName), 'hasFileExtension' => \Common\Modules\System\View\Driver::hasFileExtension($driverName), 'options' => []];
+                $viewOptions['driver'] = $driver;
+            }
+        }
+
+        $viewOptions['extension'] = $extension;
+        $viewOptions['view'] = $view;
+        $viewOptions['file'] = $file;
+        $viewOptions['path'] = rtrim(str_replace('\\', '/', realpath(dirname($viewOptions['file']))), '/').'/';
+
+        return $viewOptions;
     }
 
     //--------------------------------------------------------------------

@@ -58,7 +58,7 @@
 
     <h1>About this page</h1>
 
-    <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+    <p>The page you are looking at is being generated dynamically by CodeIgniter. (Template: PHP)</p>
 
 </section>
 

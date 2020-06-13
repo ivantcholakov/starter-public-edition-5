@@ -163,69 +163,6 @@ class Driver
         return null;
     }
 
-    public function findFile($fileName, $forDriver = null, & $detectedDriver = null, & $detectedExtension = null, & $detectedFilename = null)
-    {
-        $fileName = (string) $fileName;
-        $detectedDriver = null;
-        $detectedExtension = null;
-        $detectedFilename = null;
-        $forDriver = (string) $forDriver;
-
-        if (is_file($fileName)) {
-
-            $detectedDriver = static::detect($fileName, $detectedExtension, $detectedFilename);
-
-            if ($detectedDriver == '') {
-
-                $detectedExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-                $detectedFilename = pathinfo($fileName, PATHINFO_FILENAME);
-            }
-
-            if ($forDriver == '' || $forDriver == $detectedDriver) {
-
-                return $fileName;
-            }
-        }
-
-        $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-
-        if ($ext == '' || $ext == 'html') {
-
-            $drivers = & static::getDriversByFileExtensions();
-
-            foreach ($drivers as $key => $value) {
-
-                if ($forDriver != '' && $forDriver != $value) {
-                    continue;
-                }
-
-                $f = $fileName.'.'.$key;
-
-                if (is_file($f)) {
-
-                    $detectedDriver = $this->detect($f, $detectedExtension, $detectedFilename);
-
-                    return $f;
-                }
-            }
-
-            $f = $fileName.'.php';
-
-            if (is_file($f)) {
-
-                $detectedExtension = 'php';
-                $detectedFilename = $fileName;
-
-                return $f;
-            }
-        }
-
-        $detectedExtension = $ext;
-        $detectedFilename = pathinfo($fileName, PATHINFO_FILENAME);
-
-        return null;
-    }
-
     public static function parseOptions($options)
     {
         if (!is_array($options)) {
@@ -276,8 +213,9 @@ class Driver
         return $result;
     }
 
-    public static function parseViewOptions(string $view, array $options = null)
+    public static function parseViewOptions(string $view, array $options = null, bool $saveData = null)
     {
+        $originalOptions = $options;
         $options = static::parseOptions($options);
         $driverChain = !empty($options['drivers']) ? $options['drivers'] : [];
 
@@ -347,7 +285,9 @@ class Driver
         }
 
         $result = compact(
+            'originalOptions',
             'options',
+            'saveData',
             'driverChain',
             'driver',
             'fileName',
