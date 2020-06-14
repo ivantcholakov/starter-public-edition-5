@@ -243,7 +243,7 @@ if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
  * Base URL detection
  *---------------------------------------------------------------------
  */
-define('DETECTED_BASE_URL', detect_url()['base_url']);
+define('DETECTED_BASE_URL', detect_url('base_url'));
 
 
 /*

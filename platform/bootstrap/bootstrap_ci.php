@@ -226,7 +226,7 @@ $appConfig = config(\Config\App::class);
 
 if (!empty($appConfig->restrictAccessToTrustedHostsOnly) && !is_cli())
 {
-    $detectedHost = detect_url()['server_name'];
+    $detectedHost = detect_url('server_name');
     $trustedHosts = $appConfig->trustedHosts ?? null;
 
     if (empty($trustedHosts) || !is_array($trustedHosts))
