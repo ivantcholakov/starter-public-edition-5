@@ -223,7 +223,60 @@ if (! class_exists('Config\App', false))
 }
 
 $appConfig = config(\Config\App::class);
-$app       = new \CodeIgniter\CodeIgniter($appConfig);
+
+if (!empty($appConfig->restrictAccessToTrustedHostsOnly) && !is_cli())
+{
+    $detectedHost = detect_url()['server_name'];
+    $trustedHosts = $appConfig->trustedHosts ?? null;
+
+    if (empty($trustedHosts) || !is_array($trustedHosts))
+    {
+        $trustedHosts = ['localhost'];
+    }
+
+    $trustedHostFound = false;
+
+    foreach ($trustedHosts as $trustedHost)
+    {
+        if (!is_string($trustedHost))
+        {
+            continue;
+        }
+
+        if (strpos($trustedHost, '/') === 0)
+        {
+            // The setting is a pattern.
+            if (preg_match($trustedHost, $detectedHost))
+            {
+                $trustedHostFound = true;
+                break;
+            }
+        }
+        else
+        {
+            // The setting is a string to be matched exactly.
+            if ($trustedHost === $detectedHost)
+            {
+                $trustedHostFound = true;
+                break;
+            }
+        }
+    }
+
+    if (!$trustedHostFound)
+    {
+        header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+        echo 'Not trusted host/server/domain name.';
+        exit(3); // EXIT_CONFIG
+    }
+
+    unset($detectedHost);
+    unset($trustedHosts);
+    unset($trustedHostFound);
+    unset($trustedHost);
+}
+
+$app = new \CodeIgniter\CodeIgniter($appConfig);
 $app->initialize();
 
 return $app;

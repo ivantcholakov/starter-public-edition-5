@@ -4,6 +4,39 @@ use CodeIgniter\Config\BaseConfig;
 
 class App extends BaseConfig
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Restrict Site Access To Trusted Hosts Only
+    |--------------------------------------------------------------------------
+    |
+    | On production site access should be enabled only for trusted
+    | host/server/domain names; 'restrictAccessToTrustedHosts' option should be
+    | set to true.
+    |
+    | Define yor trusted hosts below, within the array option
+    | 'trustedHosts'. If 'trustedHosts' setting is empty, only 'localhost'
+    | would be allowed by default.
+    |
+    | Examples:
+    |
+    | 'localhost'                       - exact match;
+    | '::1'                             - exact match;
+    | '127.0.0.1'                       - exact match;
+    | 'yoursite.com'                    - exact match;
+    | 'dev.yoursite.com'                - exact match;
+    | '/^.+\.yoursite\.com$/'           - a pattern to be used by preg_match();
+    | '/^.+\.yoursite\.com$/'           - a pattern;
+    | '/^(en|de|bg)\.yoursite\.com$/'   - a pattern.
+    |
+    */
+
+    public $restrictAccessToTrustedHostsOnly = true;
+
+    public $trustedHosts = [
+        'localhost',
+        '::1',
+        '127.0.0.1',
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -15,10 +48,17 @@ class App extends BaseConfig
     |
     |    http://example.com/
     |
+    |--------------------------------------------------------------------------
+    | THE FOLLOWING COMMENT NEEDS A UPDATE:
     | If this is not set then CodeIgniter will try guess the protocol, domain
     | and path to your installation. However, you should always configure this
     | explicitly and never rely on auto-guessing, especially in production
     | environments.
+    |--------------------------------------------------------------------------
+    |
+    | If 'baseURL' auto-guessing (auto-detection) is allowed, access to the site
+    | should be restricted to to trusted hosts only, see the settings
+    | 'restrictAccessToTrustedHostsOnly' and 'trustedHosts' above.
     |
     */
     //public $baseURL = 'http://localhost:8080/';
