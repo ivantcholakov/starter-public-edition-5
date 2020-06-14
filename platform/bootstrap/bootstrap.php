@@ -65,6 +65,7 @@ if (!isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] == '') {
 
 if (isset($FCPATH)) {
     define('FCPATH', rtrim(str_replace('\\', '/', realpath($FCPATH)), '/').'/');
+    unset($FCPATH);
 } else {
     define('FCPATH', '');
 }
@@ -78,6 +79,7 @@ if (FCPATH == '' || FCPATH == '/' || !is_dir(FCPATH)) {
 
 if (isset($DEFAULTFCPATH)) {
     define('DEFAULTFCPATH', rtrim(str_replace('\\', '/', realpath($DEFAULTFCPATH)), '/').'/');
+    unset($DEFAULTFCPATH);
 } else {
     define('DEFAULTFCPATH', '');
 }
@@ -91,6 +93,7 @@ if (DEFAULTFCPATH == '' || DEFAULTFCPATH == '/' || !is_dir(DEFAULTFCPATH)) {
 
 if (isset($PLATFORMPATH)) {
     define('PLATFORMPATH', rtrim(str_replace('\\', '/', realpath($PLATFORMPATH)), '/').'/');
+    unset($PLATFORMPATH);
 } else {
     define('PLATFORMPATH', '');
 }
@@ -104,6 +107,7 @@ if (PLATFORMPATH == '' || PLATFORMPATH == '/' || !is_dir(PLATFORMPATH)) {
 
 if (isset($PLATFORMRUN)) {
     define('PLATFORMRUN', str_replace('\\', '/', realpath($PLATFORMRUN)));
+    unset($PLATFORMRUN);
 } else {
     define('PLATFORMRUN', '');
 }
@@ -126,6 +130,7 @@ if (!is_dir(APPSPATH)) {
 
 if (isset($APPNAME)) {
     define('APPNAME', trim(str_replace(array('\\', '-'), array('/', '_'), $APPNAME), ' /'));
+    unset($APPNAME);
 } else {
     define('APPNAME', '');
 }
@@ -139,6 +144,7 @@ if (APPNAME == '') {
 
 if (isset($DEFAULTAPPNAME)) {
     define('DEFAULTAPPNAME', trim(str_replace(array('\\', '-'), array('/', '_'), $DEFAULTAPPNAME), ' /'));
+    unset($DEFAULTAPPNAME);
 } else {
     define('DEFAULTAPPNAME', '');
 }
