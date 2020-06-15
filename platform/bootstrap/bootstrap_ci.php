@@ -267,7 +267,7 @@ if (!empty($appConfig->restrictAccessToTrustedHostsOnly) && !is_cli())
     {
         header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
         echo 'Not trusted host/server/domain name.';
-        exit(3); // EXIT_CONFIG
+        exit;
     }
 
     unset($detectedHost);
