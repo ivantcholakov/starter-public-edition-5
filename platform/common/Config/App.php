@@ -57,7 +57,7 @@ class App extends BaseConfig
     |--------------------------------------------------------------------------
     |
     | If 'baseURL' auto-guessing (auto-detection) is allowed, access to the site
-    | should be restricted to to trusted hosts only, see the settings
+    | should be restricted to trusted hosts only, see the settings
     | 'restrictAccessToTrustedHostsOnly' and 'trustedHosts' above.
     |
     */
