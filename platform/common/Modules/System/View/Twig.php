@@ -4,6 +4,11 @@ namespace Common\Modules\System\View;
 
 class Twig
 {
+    public function __construct($options)
+    {
+
+    }
+
     public static function getEnvironmentOptions()
     {
         $result = [
