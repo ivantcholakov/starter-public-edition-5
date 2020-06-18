@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Twig extends \Common\Modules\System\Config\Twig
+class Twig extends \Common\Modules\Twig\Config\Twig
 {
     public $debug = false;
 

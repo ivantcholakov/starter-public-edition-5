@@ -1,26 +1,22 @@
 <?php
 
-namespace Common\Modules\System\View;
+namespace Common\Modules\Twig;
 
 class Twig
 {
     protected $config;
 
+    protected $renderer;
+
+    protected $filesystemLoader;
+
     public function __construct()
     {
         $this->config = config('Twig')->config;
-    }
 
-    public function render($template, $data, $options)
-    {
-        // Just playing ...
+        $this->filesystemLoader = new \Twig\Loader\FilesystemLoader([]);
 
-        $directory = pathinfo($template, PATHINFO_DIRNAME);
-        $basename = pathinfo($template, PATHINFO_BASENAME);
-
-        $loader = new \Twig\Loader\FilesystemLoader($directory);
-
-        $parser = new \Twig\Environment($loader, array_only(
+        $this->renderer = new \Twig\Environment($this->filesystemLoader, array_only(
             $this->config,
             [
                 'debug',
@@ -32,20 +28,30 @@ class Twig
                 'optimizations',
             ]
         ));
+    }
+
+    public function render($template, $data, $options)
+    {
+        // Just playing ...
+
+        $directory = pathinfo($template, PATHINFO_DIRNAME);
+        $basename = pathinfo($template, PATHINFO_BASENAME);
+
+        $this->filesystemLoader->prependPath($directory);
 
         $function = new \Twig\TwigFunction('base_url', function($uri = null) {
             return base_url($uri);
         });
 
-        $parser->addFunction($function);
+        $this->renderer->addFunction($function);
 
         $function = new \Twig\TwigFunction('site_url', function($uri = null) {
             return site_url($uri);
         });
 
-        $parser->addFunction($function);
+        $this->renderer->addFunction($function);
 
-        $result = $parser->render($basename, $data);
+        $result = $this->renderer->render($basename, $data);
 
         return $result;
     }

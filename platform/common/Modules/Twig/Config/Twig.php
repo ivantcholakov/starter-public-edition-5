@@ -1,4 +1,4 @@
-<?php namespace Common\Modules\System\Config;
+<?php namespace Common\Modules\Twig\Config;
 
 use CodeIgniter\Config\BaseConfig;
 
