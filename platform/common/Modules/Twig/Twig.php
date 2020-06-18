@@ -98,6 +98,11 @@ class Twig
         return $result;
     }
 
+    public function getRenderer()
+    {
+        return $this->renderer;
+    }
+
     protected function createFilesystemLoader(array $options = null)
     {
         if (empty($options)) {
@@ -129,8 +134,4 @@ class Twig
         return $loader;
     }
 
-    public function getRenderer()
-    {
-        return $this->renderer;
-    }
 }

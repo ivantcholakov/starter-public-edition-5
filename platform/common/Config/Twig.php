@@ -33,6 +33,12 @@ class Twig extends \Common\Modules\Twig\Config\Twig
     {
         parent::__construct();
 
+        // Twig Extensions ---------------------------------------------------
+
+        $this->extensions = [
+
+        ];
+
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------

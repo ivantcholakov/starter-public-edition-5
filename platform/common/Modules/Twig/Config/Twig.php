@@ -17,5 +17,10 @@ class Twig extends BaseConfig
     public function __construct()
     {
         parent::__construct();
+
+        $this->config['extensions'] = [
+
+        ];
+
     }
 }
