@@ -9,20 +9,9 @@ class Twig
 
     }
 
-    public static function getEnvironmentOptions()
+    public static function getConfig()
     {
-        $result = [
-            'debug' => false,
-            'charset' => 'UTF-8',
-            'base_template_class' => 'Twig_Template',
-            'strict_variables' => false,
-            'autoescape' => 'html',
-            'cache' => false,
-            'auto_reload' => null,
-            'optimizations' => -1,
-        ];
-
-        return $result;
+        return config('Twig')->config;
     }
 
     public static function render($template, $data, $options)
@@ -34,7 +23,7 @@ class Twig
 
         $loader = new \Twig\Loader\FilesystemLoader($directory);
 
-        $parser = new \Twig\Environment($loader, static::getEnvironmentOptions());
+        $parser = new \Twig\Environment($loader, static::getConfig());
 
         $function = new \Twig\TwigFunction('base_url', function($uri = null) {
             return base_url($uri);
