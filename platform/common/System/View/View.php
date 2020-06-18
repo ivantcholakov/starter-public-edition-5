@@ -250,8 +250,8 @@ class View implements RendererInterface
             // Call another renderer here.
 
             // Testing Twig, hardcoded stuff:
-
-            $output = \Common\Modules\System\View\Twig::render($this->renderVars['file'], $this->tempData, $this->viewOptions['driver']['options']);
+            $renderer = new \Common\Modules\System\View\Twig();
+            $output = $renderer->render($this->renderVars['file'], $this->tempData, $this->viewOptions['driver']['options']);
         }
 
         // When using layouts, the data has already been stored

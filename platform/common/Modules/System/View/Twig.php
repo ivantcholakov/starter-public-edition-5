@@ -4,17 +4,14 @@ namespace Common\Modules\System\View;
 
 class Twig
 {
-    public function __construct($options)
-    {
+    protected $config;
 
+    public function __construct()
+    {
+        $this->config = config('Twig')->config;
     }
 
-    public static function getConfig()
-    {
-        return config('Twig')->config;
-    }
-
-    public static function render($template, $data, $options)
+    public function render($template, $data, $options)
     {
         // Just playing ...
 
@@ -23,7 +20,18 @@ class Twig
 
         $loader = new \Twig\Loader\FilesystemLoader($directory);
 
-        $parser = new \Twig\Environment($loader, static::getConfig());
+        $parser = new \Twig\Environment($loader, array_only(
+            $this->config,
+            [
+                'debug',
+                'charset',
+                'strict_variables',
+                'autoescape',
+                'cache',
+                'auto_reload',
+                'optimizations',
+            ]
+        ));
 
         $function = new \Twig\TwigFunction('base_url', function($uri = null) {
             return base_url($uri);
@@ -42,7 +50,7 @@ class Twig
         return $result;
     }
 
-    public static function renderString($template, $data, $options)
+    public function renderString($template, $data, $options)
     {
         /*
         $parser = new \Twig_Environment(new \Twig_Loader_Chain(array(new \Parser_Twig_Loader_String, new \Parser_Twig_Loader_Filesystem())),
