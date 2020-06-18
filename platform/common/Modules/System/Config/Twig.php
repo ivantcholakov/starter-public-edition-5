@@ -4,7 +4,7 @@ use CodeIgniter\Config\BaseConfig;
 
 class Twig extends BaseConfig implements ArrayAccess
 {
-    public $options = [
+    protected $options = [
         'debug' => false,
         'charset' => 'UTF-8',
         'strict_variables' => false,
