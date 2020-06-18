@@ -9,7 +9,10 @@ class Home extends BaseController
         $encrypted_string = \GibberishAES::enc($original_string, $pass);
         $decrypted_string = \GibberishAES::dec($encrypted_string, $pass);
 
-        return view('welcome_message.html', compact('original_string', 'encrypted_string', 'decrypted_string'));
+        $twig = new \Common\Modules\Twig\Twig();
+        $hello = $twig->renderString('Hello {{ name }}!', ['name' => 'Ivan']);
+
+        return view('welcome_message.html', compact('original_string', 'encrypted_string', 'decrypted_string', 'hello'));
     }
 
     //--------------------------------------------------------------------

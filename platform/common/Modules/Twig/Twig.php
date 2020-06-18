@@ -30,7 +30,7 @@ class Twig
         ));
     }
 
-    public function render($template, $data, $options)
+    public function render($template, $data = [], $options = [])
     {
         // Just playing ...
 
@@ -56,16 +56,11 @@ class Twig
         return $result;
     }
 
-    public function renderString($template, $data, $options)
+    public function renderString($template, $data = [], $options = [])
     {
-        /*
-        $parser = new \Twig_Environment(new \Twig_Loader_Chain(array(new \Parser_Twig_Loader_String, new \Parser_Twig_Loader_Filesystem())),
-            static::getEnvironmentOptions()
-        );
+        $template = $this->renderer->createTemplate($template);
+        $result = $template->render($data);
 
-        $template = $parser->render($template, $data);
-        */
-        $result = '';
         return $result;
     }
 }
