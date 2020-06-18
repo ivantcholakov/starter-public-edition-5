@@ -4,7 +4,7 @@ use CodeIgniter\Config\BaseConfig;
 
 class Twig extends BaseConfig implements ArrayAccess
 {
-    protected $options = [
+    protected $_options = [
         'debug' => false,
         'charset' => 'UTF-8',
         'strict_variables' => false,
@@ -21,7 +21,7 @@ class Twig extends BaseConfig implements ArrayAccess
 
     public function offsetExists($key): bool
     {
-        return array_key_exists($key, $this->options);
+        return array_key_exists($key, $this->_options);
     }
 
     public function offsetGet($key)
@@ -31,26 +31,26 @@ class Twig extends BaseConfig implements ArrayAccess
             return null;
         }
 
-        return $this->options[$key];
+        return $this->_options[$key];
     }
 
     public function offsetSet($key, $value): void
     {
-        $this->options[$key] = $value;
+        $this->_options[$key] = $value;
     }
 
     public function offsetUnset($key): void
     {
-        unset($this->options[$key]);
+        unset($this->_options[$key]);
     }
 
     public function count(): int
     {
-        return count($this->options);
+        return count($this->_options);
     }
 
     public function getIterator(): ArrayIterator
     {
-        return new ArrayIterator($this->options);
+        return new ArrayIterator($this->_options);
     }
 }
