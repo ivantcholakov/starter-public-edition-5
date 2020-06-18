@@ -2,6 +2,8 @@
 
 class Twig extends \Common\Modules\Twig\Config\Twig
 {
+    // Twig Environment ------------------------------------------------------
+
     public $debug = false;
 
     public $charset = 'UTF-8';
@@ -16,6 +18,17 @@ class Twig extends \Common\Modules\Twig\Config\Twig
 
     public $optimizations = -1;
 
+    // Filesystem Loader -----------------------------------------------------
+
+    public $paths = [
+        APPPATH . 'Views',
+        COMMONPATH . 'Views',
+        // [MYPATH, 'add'],      // An alternative way, 'add' is by default;
+        // [MYPATH, 'prepend'],  // Or this way.
+    ];
+
+    //------------------------------------------------------------------------
+
     public function __construct()
     {
         parent::__construct();
@@ -24,9 +37,9 @@ class Twig extends \Common\Modules\Twig\Config\Twig
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------
 
-        $this->config = array_merge(
-            $this->config, array_except(get_object_vars($this),
-            array_keys(get_class_vars(parent::class)))
+        $this->config = array_merge_recursive_distinct(
+            $this->config,
+            array_except(get_object_vars($this), array_keys(get_class_vars(parent::class)))
         );
     }
 

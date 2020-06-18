@@ -8,15 +8,13 @@ class Twig
 
     protected $renderer;
 
-    protected $filesystemLoader;
-
     public function __construct()
     {
         $this->config = config('Twig')->config;
 
-        $this->filesystemLoader = new \Twig\Loader\FilesystemLoader([]);
+        $filesystemLoader = $this->createFilesystemLoader();
 
-        $this->renderer = new \Twig\Environment($this->filesystemLoader, array_only(
+        $this->renderer = new \Twig\Environment($filesystemLoader, array_only(
             $this->config,
             [
                 'debug',
@@ -30,14 +28,25 @@ class Twig
         ));
     }
 
-    public function render($template, $data = [], $options = [])
+    public function render($template, array $data = null, array $options = null)
     {
-        // Just playing ...
+        if (empty($data)) {
+            $data = [];
+        }
+
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $options = array_merge_recursive($this->config, $options);
+        $paths = $options['paths'] ?? [];
+        $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
+        $this->renderer->setLoader($filesystemLoader);
 
         $directory = pathinfo($template, PATHINFO_DIRNAME);
         $basename = pathinfo($template, PATHINFO_BASENAME);
 
-        $this->filesystemLoader->prependPath($directory);
+        $filesystemLoader->prependPath($directory);
 
         $function = new \Twig\TwigFunction('base_url', function($uri = null) {
             return base_url($uri);
@@ -56,11 +65,72 @@ class Twig
         return $result;
     }
 
-    public function renderString($template, $data = [], $options = [])
+    public function renderString($template, array $data = null, array $options = null)
     {
+        if (empty($data)) {
+            $data = [];
+        }
+
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $options = array_merge_recursive($this->config, $options);
+        $paths = $options['paths'] ?? [];
+        $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
+        $this->renderer->setLoader($filesystemLoader);
+
+        $function = new \Twig\TwigFunction('base_url', function($uri = null) {
+            return base_url($uri);
+        });
+
+        $this->renderer->addFunction($function);
+
+        $function = new \Twig\TwigFunction('site_url', function($uri = null) {
+            return site_url($uri);
+        });
+
+        $this->renderer->addFunction($function);
+
         $template = $this->renderer->createTemplate($template);
         $result = $template->render($data);
 
         return $result;
+    }
+
+    protected function createFilesystemLoader(array $options = null)
+    {
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $loader = new \Twig\Loader\FilesystemLoader([]);
+
+        $paths = $options['paths'] ?? [];
+
+        foreach ($paths as $path) {
+
+            if (is_array($path)) {
+
+                $count = count($path);
+
+                if ($count > 1 && $path[1] == 'prepend') {
+                    $loader->prependPath($path[0]);
+                } elseif ($count > 0) {
+                    $loader->addPath($path[0]);
+                }
+
+            } else {
+
+                $loader->addPath($path);
+            }
+        }
+
+        return $loader;
+    }
+
+    public function getRenderer()
+    {
+        return $this->renderer;
     }
 }
