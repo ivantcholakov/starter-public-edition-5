@@ -4,13 +4,10 @@ namespace Common\Modules\Twig;
 
 class Twig
 {
-    protected $config;
-
     protected $renderer;
 
     public function __construct()
     {
-        $this->config = config('Twig')->config;
     }
 
     public function render($template, array $data = null, array $options = null)
@@ -29,7 +26,9 @@ class Twig
             unset($options['cache']);
         }
 
-        $options = array_merge_recursive_distinct($this->config, $options);
+        $config = config('Twig')->config;
+        $options = array_merge_recursive_distinct($config, $options);
+        unset($config);
 
         $paths = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
@@ -77,7 +76,9 @@ class Twig
             unset($options['cache']);
         }
 
-        $options = array_merge_recursive_distinct($this->config, $options);
+        $config = config('Twig')->config;
+        $options = array_merge_recursive_distinct($config, $options);
+        unset($config);
 
         $paths = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
