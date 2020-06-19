@@ -37,6 +37,18 @@ class Twig extends \Common\Modules\Twig\Config\Twig
             ['\Twig\Extension\DebugExtension' => $this->debug], // true - enabled.
         ];
 
+        // Sandbox policy ----------------------------------------------------
+
+        $this->sandbox_tags = [];
+
+        $this->sandbox_filters = [];
+
+        $this->sandbox_methods = [];
+
+        $this->sandbox_properties = [];
+
+        $this->sandbox_functions = [];
+
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------

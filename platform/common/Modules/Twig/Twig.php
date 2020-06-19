@@ -183,15 +183,15 @@ class Twig
             $options = [];
         }
 
-        $options = $options['extensions'] ?? [];
+        $ext_options = $options['extensions'] ?? [];
 
-        if (!is_array($options)) {
-            $options = [];
+        if (!is_array($ext_options)) {
+            $ext_options = [];
         }
 
         $extensions = [];
 
-        foreach ($options as $value) {
+        foreach ($ext_options as $value) {
 
             if (is_array($value)) {
 
@@ -209,6 +209,14 @@ class Twig
                 $this->renderer->addExtension(new $extension);
             }
         }
+
+        $this->renderer->addExtension(new \Twig\Extension\SandboxExtension(new \Twig\Sandbox\SecurityPolicy(
+            !empty($options['sandbox_tags']) && is_array($options['sandbox_tags']) ? $options['sandbox_tags'] : [],
+            !empty($options['sandbox_filters']) && is_array($options['sandbox_filters']) ? $options['sandbox_filters'] : [],
+            !empty($options['sandbox_methods']) && is_array($options['sandbox_methods']) ? $options['sandbox_methods'] : [],
+            !empty($options['sandbox_properties']) && is_array($options['sandbox_properties']) ? $options['sandbox_properties'] : [],
+            !empty($options['sandbox_functions']) && is_array($options['sandbox_functions']) ? $options['sandbox_functions'] : []
+        )));
     }
 
 }
