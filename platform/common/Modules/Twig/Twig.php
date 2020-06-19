@@ -71,8 +71,6 @@ class Twig
             $this->loadFunctions($options);
         }
 
-        $this->renderer->addFunction($function);
-
         $result = $this->renderer->render($basename, $data);
 
         return $result;
