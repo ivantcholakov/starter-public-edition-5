@@ -4,8 +4,6 @@ class Twig extends \Common\Modules\Twig\Config\Twig
 {
     // Twig Environment ------------------------------------------------------
 
-    public $debug = false;
-
     public $charset = 'UTF-8';
 
     public $strict_variables = false;
@@ -33,10 +31,12 @@ class Twig extends \Common\Modules\Twig\Config\Twig
     {
         parent::__construct();
 
+        $this->debug = ENVIRONMENT !== 'production';
+
         // Twig Extensions ---------------------------------------------------
 
         $this->extensions = [
-
+            ['\Twig\Extension\DebugExtension' => $this->debug],
         ];
 
         //--------------------------------------------------------------------

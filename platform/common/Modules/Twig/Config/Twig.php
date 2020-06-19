@@ -19,7 +19,7 @@ class Twig extends BaseConfig
         parent::__construct();
 
         $this->config['extensions'] = [
-
+            ['\Twig\Extension\DebugExtension' => false],
         ];
 
     }

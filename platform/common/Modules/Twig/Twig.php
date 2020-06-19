@@ -4,12 +4,16 @@ namespace Common\Modules\Twig;
 
 class Twig
 {
+    protected $shared;
+
     protected $config;
 
     protected $renderer;
 
-    public function __construct()
+    public function __construct($shared = false)
     {
+        $this->shared = !empty($shared);
+
         $this->config = config('Twig')->config;
 
         $filesystemLoader = $this->createFilesystemLoader();
@@ -26,6 +30,11 @@ class Twig
                 'optimizations',
             ]
         ));
+
+        if ($this->shared) {
+
+            $this->loadExtensions($this->config);
+        }
     }
 
     public function render($template, array $data = null, array $options = null)
@@ -38,7 +47,14 @@ class Twig
             $options = [];
         }
 
-        $options = array_merge_recursive($this->config, $options);
+        if (isset($options['cache'])) {
+
+            // A name collision.
+            unset($options['cache']);
+        }
+
+        $options = array_merge_recursive_distinct($this->config, $options);
+
         $paths = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
         $this->renderer->setLoader($filesystemLoader);
@@ -48,6 +64,13 @@ class Twig
 
         $filesystemLoader->prependPath($directory);
 
+        if (!$this->shared) {
+
+            $this->loadExtensions($options);
+        }
+
+
+        // TODO: Remove this.
         $function = new \Twig\TwigFunction('base_url', function($uri = null) {
             return base_url($uri);
         });
@@ -57,6 +80,7 @@ class Twig
         $function = new \Twig\TwigFunction('site_url', function($uri = null) {
             return site_url($uri);
         });
+        // /TODO
 
         $this->renderer->addFunction($function);
 
@@ -75,16 +99,31 @@ class Twig
             $options = [];
         }
 
-        $options = array_merge_recursive($this->config, $options);
+        if (isset($options['cache'])) {
+
+            // A name collision.
+            unset($options['cache']);
+        }
+
+        $options = array_merge_recursive_distinct($this->config, $options);
+
         $paths = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
         $this->renderer->setLoader($filesystemLoader);
 
+        if (!$this->shared) {
+
+            $this->loadExtensions($options);
+        }
+
+
+        // TODO: Remove this.
         $function = new \Twig\TwigFunction('base_url', function($uri = null) {
             return base_url($uri);
         });
 
         $this->renderer->addFunction($function);
+        // /TODO
 
         $function = new \Twig\TwigFunction('site_url', function($uri = null) {
             return site_url($uri);
@@ -111,9 +150,13 @@ class Twig
 
         $loader = new \Twig\Loader\FilesystemLoader([]);
 
-        $paths = $options['paths'] ?? [];
+        $options = $options['paths'] ?? [];
 
-        foreach ($paths as $path) {
+        if (!is_array($options)) {
+            $options = [];
+        }
+
+        foreach ($options as $path) {
 
             if (is_array($path)) {
 
@@ -132,6 +175,40 @@ class Twig
         }
 
         return $loader;
+    }
+
+    protected function loadExtensions(array $options = null)
+    {
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $options = $options['extensions'] ?? [];
+
+        if (!is_array($options)) {
+            $options = [];
+        }
+
+        $extensions = [];
+
+        foreach ($options as $value) {
+
+            if (is_array($value)) {
+
+                $extensions = array_merge($extensions, $value);
+
+            } else {
+
+                $extension[$value] = true;
+            }
+        }
+
+        foreach ($extensions as $extension => $enabled) {
+
+            if ($enabled) {
+                $this->renderer->addExtension(new $extension);
+            }
+        }
     }
 
 }
