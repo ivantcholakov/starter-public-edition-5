@@ -10,6 +10,17 @@
     <script type="text/javascript" src="{{ base_url('build/runtime.js')|e('html_attr') }}"></script>
     <script type="text/javascript" src="{{ base_url('build/0.js')|e('html_attr') }}"></script>
     <script type="text/javascript" src="{{ base_url('build/app.js')|e('html_attr') }}"></script>
+
+    <style>
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -54,6 +65,9 @@
             Ellipsize: {{ decrypted_string|ellipsize(10, 1, '...') }}
             <br />
             {% verbatim %}{{ (1.0 is float ? 'Yes' : 'No') }}{% endverbatim %}: {{ (1.0 is float ? 'Yes' : 'No') }}
+            <br />
+            {% verbatim %}{{ print_d(_context) }}{% endverbatim %}: {{ print_d(_context) }}
+            <div class="clearfix"></div>
         </p>
 
     </div>

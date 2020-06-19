@@ -41,10 +41,9 @@ class Twig extends BaseConfig
             'text',
         ];
 
-        // Extra-Functions ---------------------------------------------------
+        // Functions ---------------------------------------------------------
 
         $this->config['functions'] = [
-            'print_d',
             'base_url',
             'site_url',
         ];
@@ -58,7 +57,7 @@ class Twig extends BaseConfig
             'ellipsize',
         ];
 
-        // Extra-Tests (is * operators) --------------------------------------
+        // Tests (is * operators) --------------------------------------------
 
         $this->config['tests'] = [
             ['array', 'is_array'],
@@ -73,6 +72,12 @@ class Twig extends BaseConfig
             ['string', 'is_string'],
             //['zero', ['Parser_Twig_Extension_Php', 'php_empty']],
         ];
+
+        // Global Variables --------------------------------------------------
+
+        // [ ['_debug', false], ... ]  // An enxample.
+
+        $this->config['globals'] = [];
 
         // Sandbox policy ----------------------------------------------------
 

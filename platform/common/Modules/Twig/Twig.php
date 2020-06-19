@@ -38,6 +38,7 @@ class Twig
             $this->loadFunctions($this->config);
             $this->loadFilters($this->config);
             $this->loadTests($this->config);
+            $this->loadGlobals($this->config);
         }
     }
 
@@ -75,6 +76,7 @@ class Twig
             $this->loadFunctions($options);
             $this->loadFilters($options);
             $this->loadTests($options);
+            $this->loadGlobals($options);
         }
 
         $result = $this->renderer->render($basename, $data);
@@ -111,6 +113,7 @@ class Twig
             $this->loadFunctions($options);
             $this->loadFilters($options);
             $this->loadTests($options);
+            $this->loadGlobals($options);
         }
 
         $template = $this->renderer->createTemplate($template);
@@ -392,7 +395,38 @@ class Twig
                     break;
             }
         }
+    }
 
+    protected function loadGlobals(array $options = null)
+    {
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $globals = $options['globals'] ?? [];
+
+        if (!is_array($globals)) {
+            $globals = [];
+        }
+
+        foreach ($globals as $item) {
+
+            if (!is_array($item)) {
+                continue;
+            }
+
+            $count = count($item);
+
+            if ($count < 2) {
+                continue;
+            }
+
+            if (!is_string($item[0]) || $item[0] == '') {
+                continue;
+            }
+
+            $this->renderer->addGlobal($item[0], $item[1]);
+        }
     }
 
 }
