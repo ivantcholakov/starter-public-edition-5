@@ -794,12 +794,14 @@ if (!function_exists('array_merge_recursive_distinct')) {
             return [];
         }
 
-        $result = array_shift($args);
+        $arg0 = array_shift($args);
 
-        if (!is_array($result)) {
+        if (!is_array($arg0)) {
 
             throw new InvalidArgumentException('array_merge_recursive_distinct(): Array arguments are expected.');
         }
+
+        $result = array_merge([], $arg0);
 
         if (empty($args)) {
 
