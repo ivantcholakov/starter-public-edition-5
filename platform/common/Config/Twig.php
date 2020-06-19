@@ -12,15 +12,6 @@ class Twig extends \Common\Modules\Twig\Config\Twig
 
         $this->cache = false;
 
-        // Filesystem Loader -------------------------------------------------
-
-        $this->paths = [
-            APPPATH . 'Views',
-            COMMONPATH . 'Views',
-            // [MYPATH, 'add'],      // An alternative way, 'add' is by default;
-            // [MYPATH, 'prepend'],  // Or this way.
-        ];
-
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------

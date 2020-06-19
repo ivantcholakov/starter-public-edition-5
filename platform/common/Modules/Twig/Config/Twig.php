@@ -20,6 +20,15 @@ class Twig extends BaseConfig
         $this->config['auto_reload'] = null;
         $this->config['optimizations'] = -1;
 
+        // Filesystem Loader -------------------------------------------------
+
+        $this->config['paths'] = [
+            APPPATH . 'Views',
+            COMMONPATH . 'Views',
+            // [MYPATH, 'add'],      // An alternative way, 'add' is by default;
+            // [MYPATH, 'prepend'],  // Or this way.
+        ];
+
         // Twig Extensions ---------------------------------------------------
 
         $this->config['extensions'] = [
