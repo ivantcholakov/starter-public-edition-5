@@ -2,36 +2,34 @@
 
 class Twig extends \Common\Modules\Twig\Config\Twig
 {
-    // Twig Environment ------------------------------------------------------
-
-    public $charset = 'UTF-8';
-
-    public $strict_variables = false;
-
-    public $autoescape = 'html';
-
-    public $cache = false;
-
-    public $auto_reload = null;
-
-    public $optimizations = -1;
-
-    // Filesystem Loader -----------------------------------------------------
-
-    public $paths = [
-        APPPATH . 'Views',
-        COMMONPATH . 'Views',
-        // [MYPATH, 'add'],      // An alternative way, 'add' is by default;
-        // [MYPATH, 'prepend'],  // Or this way.
-    ];
-
-    //------------------------------------------------------------------------
-
     public function __construct()
     {
         parent::__construct();
 
+        // Twig Environment --------------------------------------------------
+
         $this->debug = ENVIRONMENT !== 'production';
+
+        $this->charset = 'UTF-8';
+
+        $this->strict_variables = false;
+
+        $this->autoescape = 'html';
+
+        $this->cache = false;
+
+        $this->auto_reload = null;
+
+        $this->optimizations = -1;
+
+        // Filesystem Loader -------------------------------------------------
+
+        $this->paths = [
+            APPPATH . 'Views',
+            COMMONPATH . 'Views',
+            // [MYPATH, 'add'],      // An alternative way, 'add' is by default;
+            // [MYPATH, 'prepend'],  // Or this way.
+        ];
 
         // Twig Extensions ---------------------------------------------------
 

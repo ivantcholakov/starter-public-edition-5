@@ -20,6 +20,7 @@ class Twig extends BaseConfig
 
         $this->config['extensions'] = [
             ['\Twig\Extension\DebugExtension' => false],
+            ['\Twig\Extension\StringLoaderExtension' => true],
         ];
 
     }
