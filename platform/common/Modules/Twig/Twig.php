@@ -34,6 +34,7 @@ class Twig
         if ($this->shared) {
 
             $this->loadExtensions($this->config);
+            $this->loadFunctions($this->config);
         }
     }
 
@@ -67,20 +68,8 @@ class Twig
         if (!$this->shared) {
 
             $this->loadExtensions($options);
+            $this->loadFunctions($options);
         }
-
-
-        // TODO: Remove this.
-        $function = new \Twig\TwigFunction('base_url', function($uri = null) {
-            return base_url($uri);
-        });
-
-        $this->renderer->addFunction($function);
-
-        $function = new \Twig\TwigFunction('site_url', function($uri = null) {
-            return site_url($uri);
-        });
-        // /TODO
 
         $this->renderer->addFunction($function);
 
@@ -114,22 +103,8 @@ class Twig
         if (!$this->shared) {
 
             $this->loadExtensions($options);
+            $this->loadFunctions($options);
         }
-
-
-        // TODO: Remove this.
-        $function = new \Twig\TwigFunction('base_url', function($uri = null) {
-            return base_url($uri);
-        });
-
-        $this->renderer->addFunction($function);
-        // /TODO
-
-        $function = new \Twig\TwigFunction('site_url', function($uri = null) {
-            return site_url($uri);
-        });
-
-        $this->renderer->addFunction($function);
 
         $template = $this->renderer->createTemplate($template);
         $result = $template->render($data);
@@ -221,6 +196,58 @@ class Twig
             !empty($options['sandbox_properties']) && is_array($options['sandbox_properties']) ? $options['sandbox_properties'] : [],
             !empty($options['sandbox_functions']) && is_array($options['sandbox_functions']) ? $options['sandbox_functions'] : []
         )));
+    }
+
+    protected function loadFunctions(array $options = null)
+    {
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $functions = $options['functions'] ?? [];
+
+        if (!is_array($functions)) {
+            $functions = [];
+        }
+
+        foreach ($functions as $item) {
+
+            if (!is_array($item)) {
+                $item = array((string) $item);
+            }
+
+            $count = count($item);
+
+            if (empty($count)) {
+                continue;
+            }
+
+            switch (count($item)) {
+
+                case 1:
+
+                    $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[0]));
+                    break;
+
+                case 2:
+
+                    $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[1]));
+                    break;
+
+                case 3:
+
+                    $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[1], $item[2]));
+                    break;
+
+                default:
+
+                    if ($item[3] !== false) {
+                        $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[1], $item[2]));
+                    }
+
+                    break;
+            }
+        }
     }
 
 }

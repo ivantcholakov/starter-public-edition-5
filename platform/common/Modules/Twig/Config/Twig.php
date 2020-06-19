@@ -35,6 +35,19 @@ class Twig extends BaseConfig
             ['\Twig\Extension\StringLoaderExtension' => true],
         ];
 
+        // Load Helpers ------------------------------------------------------
+
+        $this->config['helpers'] = [
+
+        ];
+
+        // Extra-Functions ---------------------------------------------------
+
+        $this->config['functions'] = [
+            'base_url',
+            'site_url',
+        ];
+
         // Sandbox policy ----------------------------------------------------
 
         $this->config['sandbox_tags'] = [];
