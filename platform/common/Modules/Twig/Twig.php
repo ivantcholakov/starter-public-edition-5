@@ -35,6 +35,7 @@ class Twig
 
             $this->loadExtensions($this->config);
             $this->loadFunctions($this->config);
+            $this->loadFilters($this->config);
         }
     }
 
@@ -69,6 +70,7 @@ class Twig
 
             $this->loadExtensions($options);
             $this->loadFunctions($options);
+            $this->loadFilters($options);
         }
 
         $result = $this->renderer->render($basename, $data);
@@ -102,6 +104,7 @@ class Twig
 
             $this->loadExtensions($options);
             $this->loadFunctions($options);
+            $this->loadFilters($options);
         }
 
         $template = $this->renderer->createTemplate($template);
@@ -220,7 +223,7 @@ class Twig
                 continue;
             }
 
-            switch (count($item)) {
+            switch ($count) {
 
                 case 1:
 
@@ -241,6 +244,59 @@ class Twig
 
                     if ($item[3] !== false) {
                         $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[1], $item[2]));
+                    }
+
+                    break;
+            }
+        }
+    }
+
+    protected function loadFilters(array $options = null)
+    {
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $filters = $options['filters'] ?? [];
+
+        if (!is_array($filters)) {
+            $filters = [];
+        }
+
+        foreach ($filters as $item) {
+
+            if (!is_array($item)) {
+                $item = array((string) $item);
+            }
+
+            $count = count($item);
+
+            if (empty($count)) {
+                continue;
+            }
+
+            switch ($count) {
+
+                case 1:
+
+                    $this->renderer->addFilter(new \Twig\TwigFilter($item[0], $item[0]));
+                    break;
+
+                case 2:
+
+                    $this->renderer->addFilter(new \Twig\TwigFilter($item[0], $item[1]));
+                    break;
+
+                case 3:
+
+                    $this->renderer->addFilter(new \Twig\TwigFilter($item[0], $item[1], $item[2]));
+                    break;
+
+                default:
+
+                    if ($item[3] !== false)
+                    {
+                        $this->renderer->addFilter(new \Twig\TwigFilter($item[0], $item[1], $item[2]));
                     }
 
                     break;
