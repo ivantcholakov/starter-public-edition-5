@@ -33,6 +33,7 @@ class Twig extends BaseConfig
 
         $this->config['extensions'] = [
             ['\Twig\Extension\StringLoaderExtension' => true],
+            ['\Twig\Extra\String\StringExtension' => true],
         ];
 
         // Load Helpers ------------------------------------------------------

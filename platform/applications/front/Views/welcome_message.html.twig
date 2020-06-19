@@ -68,6 +68,8 @@
             <br />
             {% verbatim %}{{ print_d(_context) }}{% endverbatim %}: {{ print_d(_context) }}
             <div class="clearfix"></div>
+            <br />
+            {% verbatim %}{{ 'Lorem ipsum'|u.truncate(8, '...') }}{% endverbatim %}: {{ 'Lorem ipsum'|u.truncate(8, '...') }}
         </p>
 
     </div>
