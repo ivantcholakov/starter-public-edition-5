@@ -816,6 +816,8 @@ if (!function_exists('array_merge_recursive_distinct')) {
             foreach ($arr as $key => $value) {
 
                 if (
+                    !is_int($key)
+                    &&
                     is_array($value)
                     &&
                     isset($result[$key])
@@ -827,7 +829,11 @@ if (!function_exists('array_merge_recursive_distinct')) {
 
                 } else {
 
-                    $result[$key] = $value;
+                    if (is_int($key)) {
+                        $result[] = $value;
+                    } else {
+                        $result[$key] = $value;
+                    }
                 }
             }
         }
