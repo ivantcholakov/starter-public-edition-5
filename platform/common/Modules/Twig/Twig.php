@@ -203,6 +203,10 @@ class Twig
             }
         }
 
+        if (!empty($options['debug'])) {
+            $extensions['\Twig\Extension\DebugExtension'] = true;
+        }
+
         foreach ($extensions as $extension => $enabled) {
 
             if ($enabled) {
