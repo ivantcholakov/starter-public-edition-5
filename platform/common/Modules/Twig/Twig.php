@@ -294,8 +294,7 @@ class Twig
 
                 default:
 
-                    if ($item[3] !== false)
-                    {
+                    if ($item[3] !== false) {
                         $this->renderer->addFilter(new \Twig\TwigFilter($item[0], $item[1], $item[2]));
                     }
 
