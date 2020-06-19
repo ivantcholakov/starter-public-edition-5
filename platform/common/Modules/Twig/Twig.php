@@ -4,42 +4,13 @@ namespace Common\Modules\Twig;
 
 class Twig
 {
-    protected $shared;
-
     protected $config;
 
     protected $renderer;
 
-    public function __construct($shared = false)
+    public function __construct()
     {
-        $this->shared = !empty($shared);
-
         $this->config = config('Twig')->config;
-
-        $filesystemLoader = $this->createFilesystemLoader();
-
-        $this->renderer = new \Twig\Environment($filesystemLoader, array_only(
-            $this->config,
-            [
-                'debug',
-                'charset',
-                'strict_variables',
-                'autoescape',
-                'cache',
-                'auto_reload',
-                'optimizations',
-            ]
-        ));
-
-        if ($this->shared) {
-
-            $this->loadHelpers($this->config);
-            $this->loadExtensions($this->config);
-            $this->loadFunctions($this->config);
-            $this->loadFilters($this->config);
-            $this->loadTests($this->config);
-            $this->loadGlobals($this->config);
-        }
     }
 
     public function render($template, array $data = null, array $options = null)
@@ -62,26 +33,32 @@ class Twig
 
         $paths = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
-        $this->renderer->setLoader($filesystemLoader);
 
         $directory = pathinfo($template, PATHINFO_DIRNAME);
         $basename = pathinfo($template, PATHINFO_BASENAME);
 
         $filesystemLoader->prependPath($directory);
 
-        if (!$this->shared) {
+        $this->renderer = new \Twig\Environment($filesystemLoader, array_only(
+            $options, [
+                'debug',
+                'charset',
+                'strict_variables',
+                'autoescape',
+                'cache',
+                'auto_reload',
+                'optimizations',
+            ]
+        ));
 
-            $this->loadHelpers($options);
-            $this->loadExtensions($options);
-            $this->loadFunctions($options);
-            $this->loadFilters($options);
-            $this->loadTests($options);
-            $this->loadGlobals($options);
-        }
+        $this->loadHelpers($options);
+        $this->loadExtensions($options);
+        $this->loadFunctions($options);
+        $this->loadFilters($options);
+        $this->loadTests($options);
+        $this->loadGlobals($options);
 
-        $result = $this->renderer->render($basename, $data);
-
-        return $result;
+        return $this->renderer->render($basename, $data);
     }
 
     public function renderString($template, array $data = null, array $options = null)
@@ -104,27 +81,29 @@ class Twig
 
         $paths = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
-        $this->renderer->setLoader($filesystemLoader);
 
-        if (!$this->shared) {
+        $this->renderer = new \Twig\Environment($filesystemLoader, array_only(
+            $options, [
+                'debug',
+                'charset',
+                'strict_variables',
+                'autoescape',
+                'cache',
+                'auto_reload',
+                'optimizations',
+            ]
+        ));
 
-            $this->loadHelpers($options);
-            $this->loadExtensions($options);
-            $this->loadFunctions($options);
-            $this->loadFilters($options);
-            $this->loadTests($options);
-            $this->loadGlobals($options);
-        }
+        $this->loadHelpers($options);
+        $this->loadExtensions($options);
+        $this->loadFunctions($options);
+        $this->loadFilters($options);
+        $this->loadTests($options);
+        $this->loadGlobals($options);
 
         $template = $this->renderer->createTemplate($template);
-        $result = $template->render($data);
 
-        return $result;
-    }
-
-    public function getRenderer()
-    {
-        return $this->renderer;
+        return $template->render($data);
     }
 
     protected function createFilesystemLoader(array $options = null)
