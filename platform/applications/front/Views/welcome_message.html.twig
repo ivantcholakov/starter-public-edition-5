@@ -52,6 +52,8 @@
             Base64 Filter: {{ decrypted_string|base64_encode }}
             <br />
             Ellipsize: {{ decrypted_string|ellipsize(10, 1, '...') }}
+            <br />
+            {% verbatim %}{{ (1.0 is float ? 'Yes' : 'No') }}{% endverbatim %}: {{ (1.0 is float ? 'Yes' : 'No') }}
         </p>
 
     </div>

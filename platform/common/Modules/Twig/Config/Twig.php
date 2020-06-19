@@ -44,6 +44,7 @@ class Twig extends BaseConfig
         // Extra-Functions ---------------------------------------------------
 
         $this->config['functions'] = [
+            'print_d',
             'base_url',
             'site_url',
         ];
@@ -55,6 +56,22 @@ class Twig extends BaseConfig
             'base64_decode',
             ['base64_encode', 'base64_encode', ['is_safe' => ['html', 'html_attr', 'js']]],
             'ellipsize',
+        ];
+
+        // Extra-Tests (is * operators) --------------------------------------
+
+        $this->config['tests'] = [
+            ['array', 'is_array'],
+            ['bool', 'is_bool'],
+            ['boolean', 'is_bool'],
+            ['float', 'is_float'],
+            ['int', 'is_int'],
+            ['integer', 'is_integer'],
+            ['numeric', 'is_numeric'],
+            ['object', 'is_object'],
+            ['scalar', 'is_scalar'],
+            ['string', 'is_string'],
+            //['zero', ['Parser_Twig_Extension_Php', 'php_empty']],
         ];
 
         // Sandbox policy ----------------------------------------------------

@@ -37,6 +37,7 @@ class Twig
             $this->loadExtensions($this->config);
             $this->loadFunctions($this->config);
             $this->loadFilters($this->config);
+            $this->loadTests($this->config);
         }
     }
 
@@ -73,6 +74,7 @@ class Twig
             $this->loadExtensions($options);
             $this->loadFunctions($options);
             $this->loadFilters($options);
+            $this->loadTests($options);
         }
 
         $result = $this->renderer->render($basename, $data);
@@ -108,6 +110,7 @@ class Twig
             $this->loadExtensions($options);
             $this->loadFunctions($options);
             $this->loadFilters($options);
+            $this->loadTests($options);
         }
 
         $template = $this->renderer->createTemplate($template);
@@ -337,6 +340,59 @@ class Twig
                     break;
             }
         }
+    }
+
+    protected function loadTests(array $options = null)
+    {
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $tests = $options['tests'] ?? [];
+
+        if (!is_array($tests)) {
+            $tests = [];
+        }
+
+        foreach ($tests as $item) {
+
+            if (!is_array($item)) {
+                $item = array((string) $item);
+            }
+
+            $count = count($item);
+
+            if ($count == 0) {
+                continue;
+            }
+
+            switch ($count) {
+
+                case 1:
+
+                    $this->renderer->addTest(new \Twig\TwigTest($item[0], $item[0]));
+                    break;
+
+                case 2:
+
+                    $this->renderer->addTest(new \Twig\TwigTest($item[0], $item[1]));
+                    break;
+
+                case 3:
+
+                    $this->renderer->addTest(new \Twig\TwigTest($item[0], $item[1], $item[2]));
+                    break;
+
+                default:
+
+                    if ($item[3] !== false) {
+                        $this->renderer->addTest(new \Twig\TwigTest($item[0], $item[1], $item[2]));
+                    }
+
+                    break;
+            }
+        }
+
     }
 
 }
