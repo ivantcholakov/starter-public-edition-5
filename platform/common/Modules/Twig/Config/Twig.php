@@ -48,6 +48,14 @@ class Twig extends BaseConfig
             'site_url',
         ];
 
+        // Filters -----------------------------------------------------------
+
+        $this->config['filters'] = [
+            // PHP
+            'base64_decode',
+            ['base64_encode', 'base64_encode', ['is_safe' => ['html', 'html_attr', 'js']]],
+        ];
+
         // Sandbox policy ----------------------------------------------------
 
         $this->config['sandbox_tags'] = [];
