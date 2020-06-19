@@ -512,6 +512,7 @@ return array(
     'Twig\\Extension\\SandboxExtension' => $vendorDir . '/twig/twig/src/Extension/SandboxExtension.php',
     'Twig\\Extension\\StagingExtension' => $vendorDir . '/twig/twig/src/Extension/StagingExtension.php',
     'Twig\\Extension\\StringLoaderExtension' => $vendorDir . '/twig/twig/src/Extension/StringLoaderExtension.php',
+    'Twig\\Extra\\String\\StringExtension' => $vendorDir . '/twig/string-extra/src/StringExtension.php',
     'Twig\\FileExtensionEscapingStrategy' => $vendorDir . '/twig/twig/src/FileExtensionEscapingStrategy.php',
     'Twig\\Lexer' => $vendorDir . '/twig/twig/src/Lexer.php',
     'Twig\\Loader\\ArrayLoader' => $vendorDir . '/twig/twig/src/Loader/ArrayLoader.php',

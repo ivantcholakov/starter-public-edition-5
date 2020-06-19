@@ -2038,6 +2038,63 @@
         ]
     },
     {
+        "name": "twig/string-extra",
+        "version": "v3.0.3",
+        "version_normalized": "3.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twigphp/string-extra.git",
+            "reference": "9905d4410f1214df183fbb1a5e7848c560fdd551"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twigphp/string-extra/zipball/9905d4410f1214df183fbb1a5e7848c560fdd551",
+            "reference": "9905d4410f1214df183fbb1a5e7848c560fdd551",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.2.5",
+            "symfony/string": "^5.0",
+            "twig/twig": "^2.4|^3.0"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "^4.4|^5.0"
+        },
+        "time": "2020-02-06T15:26:33+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.12-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Twig\\Extra\\String\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
+            }
+        ],
+        "description": "A Twig extension for Symfony String",
+        "homepage": "https://twig.symfony.com",
+        "keywords": [
+            "html",
+            "string",
+            "twig",
+            "unicode"
+        ]
+    },
+    {
         "name": "twig/twig",
         "version": "v3.0.3",
         "version_normalized": "3.0.3.0",
