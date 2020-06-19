@@ -38,7 +38,7 @@ class Twig extends BaseConfig
         // Load Helpers ------------------------------------------------------
 
         $this->config['helpers'] = [
-
+            'text',
         ];
 
         // Extra-Functions ---------------------------------------------------
@@ -54,6 +54,7 @@ class Twig extends BaseConfig
             // PHP
             'base64_decode',
             ['base64_encode', 'base64_encode', ['is_safe' => ['html', 'html_attr', 'js']]],
+            'ellipsize',
         ];
 
         // Sandbox policy ----------------------------------------------------

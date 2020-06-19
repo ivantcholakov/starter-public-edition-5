@@ -50,6 +50,8 @@
             Decrypted String: {{ decrypted_string }}
             <br />
             Base64 Filter: {{ decrypted_string|base64_encode }}
+            <br />
+            Ellipsize: {{ decrypted_string|ellipsize(10, 1, '...') }}
         </p>
 
     </div>

@@ -33,6 +33,7 @@ class Twig
 
         if ($this->shared) {
 
+            $this->loadHelpers($this->config);
             $this->loadExtensions($this->config);
             $this->loadFunctions($this->config);
             $this->loadFilters($this->config);
@@ -68,6 +69,7 @@ class Twig
 
         if (!$this->shared) {
 
+            $this->loadHelpers($options);
             $this->loadExtensions($options);
             $this->loadFunctions($options);
             $this->loadFilters($options);
@@ -102,6 +104,7 @@ class Twig
 
         if (!$this->shared) {
 
+            $this->loadHelpers($options);
             $this->loadExtensions($options);
             $this->loadFunctions($options);
             $this->loadFilters($options);
@@ -153,6 +156,39 @@ class Twig
         return $loader;
     }
 
+    protected function loadHelpers(array $options = null)
+    {
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $helpers = $options['helpers'] ?? [];
+
+        if (!is_array($helpers)) {
+            $helpers = [];
+        }
+
+        foreach ($helpers as $item) {
+
+            if (is_array($item)) {
+
+                if (empty($item)) {
+                    continue;
+                }
+
+            } else {
+
+                $item = (string) $item;
+
+                if ($item == '') {
+                    continue;
+                }
+            }
+
+            helper($item);
+        }
+    }
+
     protected function loadExtensions(array $options = null)
     {
         if (empty($options)) {
@@ -167,15 +203,15 @@ class Twig
 
         $extensions = [];
 
-        foreach ($ext_options as $value) {
+        foreach ($ext_options as $item) {
 
-            if (is_array($value)) {
+            if (is_array($item)) {
 
-                $extensions = array_merge($extensions, $value);
+                $extensions = array_merge($extensions, $item);
 
             } else {
 
-                $extension[$value] = true;
+                $extension[$item] = true;
             }
         }
 
