@@ -34,7 +34,7 @@ class Twig extends \Common\Modules\Twig\Config\Twig
         // Twig Extensions ---------------------------------------------------
 
         $this->extensions = [
-            ['\Twig\Extension\DebugExtension' => $this->debug],
+            ['\Twig\Extension\DebugExtension' => $this->debug], // true - enabled.
         ];
 
         //--------------------------------------------------------------------
