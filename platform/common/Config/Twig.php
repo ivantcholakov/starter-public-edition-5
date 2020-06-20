@@ -8,12 +8,10 @@ class Twig extends \Common\Modules\Twig\Config\Twig
 
         // Do not edit the following statement.
         $parent_vars = array_except(
-            get_object_vars($this), [
-                'config',
-                'registrars',
-                'didDiscovery',
-                'moduleConfig',
-            ]
+            get_object_vars($this), array_merge(
+                array_keys(get_class_vars(parent::class)),
+                ['config']
+            )
         );
 
         // Twig Environment --------------------------------------------------
@@ -77,12 +75,10 @@ class Twig extends \Common\Modules\Twig\Config\Twig
         $this->config = array_merge_recursive_distinct(
             $this->config, $parent_vars,
             array_except(
-                get_object_vars($this), [
-                    'config',
-                    'registrars',
-                    'didDiscovery',
-                    'moduleConfig',
-                ]
+                get_object_vars($this), array_merge(
+                    array_keys(get_class_vars(parent::class)),
+                    ['config']
+                )
             )
         );
     }
