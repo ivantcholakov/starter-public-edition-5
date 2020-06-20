@@ -198,6 +198,8 @@ class View implements RendererInterface
     {
         $this->renderVars['start'] = microtime(true);
 
+        $driverManager = new \Common\Modules\System\View\DriverManager();
+
         // Store the results here so even if
         // multiple views are called in a view, it won't
         // clean it unless we mean it to.
@@ -206,7 +208,7 @@ class View implements RendererInterface
             $saveData = $this->saveData;
         }
 
-        $this->viewOptions = $this->findView(\Common\Modules\System\View\Driver::parseViewOptions($view, $options, $saveData));
+        $this->viewOptions = $this->findView(\Common\Modules\System\View\DriverManager::parseViewOptions($view, $options, $saveData));
 
         $this->renderVars['view']    = $this->viewOptions['view'];
         $this->renderVars['options'] = $this->viewOptions['options'];
@@ -338,11 +340,11 @@ class View implements RendererInterface
 
         if ($extension != 'php' && empty($driver)) {
 
-            $driverName = \Common\Modules\System\View\Driver::getDriversByFileExtensions($extension);
+            $driverName = \Common\Modules\System\View\DriverManager::getDriversByFileExtensions($extension);
 
             if ($driverName != '') {
 
-                $driver = ['name' => $driverName, 'type' => \Common\Modules\System\View\Driver::Type($driverName), 'hasFileExtension' => \Common\Modules\System\View\Driver::hasFileExtension($driverName), 'options' => []];
+                $driver = ['name' => $driverName, 'type' => \Common\Modules\System\View\DriverManager::Type($driverName), 'hasFileExtension' => \Common\Modules\System\View\DriverManager::hasFileExtension($driverName), 'options' => []];
                 $viewOptions['driver'] = $driver;
             }
         }
@@ -376,7 +378,9 @@ class View implements RendererInterface
     {
         $start = microtime(true);
 
-        $options = \Common\Modules\System\View\Driver::parseOptions($options);
+        $driverManager = new \Common\Modules\System\View\DriverManager();
+
+        $options = \Common\Modules\System\View\DriverManager::parseOptions($options);
 
         if (is_null($saveData))
         {

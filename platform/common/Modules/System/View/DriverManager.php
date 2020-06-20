@@ -2,21 +2,77 @@
 
 namespace Common\Modules\System\View;
 
-class Driver
+class DriverManager
 {
+    protected static $sharedConfig = [];
+
+    public function __construct()
+    {
+        if (empty(self::$sharedConfig)) {
+
+            $this->loadValidDrivers();
+        }
+    }
+
+    public function getValidDrivers() {
+
+        return self::$sharedConfig['validDrivers'];
+    }
+
+    public function isValidDriver($name) {
+
+        return in_array($name, self::$sharedConfig['validDrivers']);
+    }
+
+    protected function loadValidDrivers()
+    {
+        $config = config('Views')->config;
+
+        $options = $config['validDrivers'] ?? [];
+
+        if (empty($options)) {
+            $options = [];
+        }
+
+        if (!is_array($options)) {
+            $options = [$options];
+        }
+
+        $items = [];
+
+        foreach ($options as $item) {
+
+            if (is_array($item)) {
+
+                $items = array_merge($items, $item);
+
+            } else {
+
+                $items[$item] = true;
+            }
+        }
+
+        $result = [];
+
+        foreach ($items as $item => $enabled) {
+
+            if (!is_string($item)) {
+                continue;
+            }
+
+            if (!empty($enabled)) {
+                $result[] = $item;
+            }
+        }
+
+        self::$sharedConfig['validDrivers'] = $result;
+    }
+
+    // -----------------------------------------------------------------------
+
     public static function validDrivers()
     {
-        // TODO: Get this from a configuration file.
-        $result = [
-            'twig',
-//            'parser',
-//            'handlebars',
-//            'mustache',
-//            'markdown',
-//            'textile',
-        ];
-
-        return $result;
+        return self::$sharedConfig['validDrivers'];
     }
 
     public static function Type($driverName)
