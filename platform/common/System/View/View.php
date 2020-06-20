@@ -157,6 +157,13 @@ class View implements RendererInterface
      */
     protected $viewOptions = [];
 
+    /**
+     * Holds temporary data within an isolated context.
+     *
+     * @var \Common\Modules\System\View\DriverManager
+     */
+    protected $driverManager;
+
     //--------------------------------------------------------------------
 
     /**
@@ -176,6 +183,7 @@ class View implements RendererInterface
         $this->logger   = is_null($logger) ? Services::logger() : $logger;
         $this->debug    = is_null($debug) ? CI_DEBUG : $debug;
         $this->saveData = $config->saveData ?? null;
+        $this->driverManager = new \Common\Modules\System\View\DriverManager();
     }
 
     //--------------------------------------------------------------------
@@ -198,8 +206,6 @@ class View implements RendererInterface
     {
         $this->renderVars['start'] = microtime(true);
 
-        $driverManager = new \Common\Modules\System\View\DriverManager();
-
         // Store the results here so even if
         // multiple views are called in a view, it won't
         // clean it unless we mean it to.
@@ -208,7 +214,7 @@ class View implements RendererInterface
             $saveData = $this->saveData;
         }
 
-        $this->viewOptions = $this->findView($driverManager->parseViewOptions($view, $options, $saveData));
+        $this->viewOptions = $this->findView($this->driverManager->parseViewOptions($view, $options, $saveData));
 
         $this->renderVars['view']    = $this->viewOptions['view'];
         $this->renderVars['options'] = $this->viewOptions['options'];
@@ -344,7 +350,7 @@ class View implements RendererInterface
 
             if ($driverName != '') {
 
-                $driver = ['name' => $driverName, 'type' => \Common\Modules\System\View\DriverManager::Type($driverName), 'hasFileExtension' => \Common\Modules\System\View\DriverManager::hasFileExtension($driverName), 'options' => []];
+                $driver = ['name' => $driverName, 'type' => $this->driverManager->getDriverType($driverName), 'hasFileExtension' => \Common\Modules\System\View\DriverManager::hasFileExtension($driverName), 'options' => []];
                 $viewOptions['driver'] = $driver;
             }
         }
@@ -378,9 +384,7 @@ class View implements RendererInterface
     {
         $start = microtime(true);
 
-        $driverManager = new \Common\Modules\System\View\DriverManager();
-
-        $options = $driverManager->parseOptions($options);
+        $options = $this->driverManager->parseOptions($options);
 
         if (is_null($saveData))
         {

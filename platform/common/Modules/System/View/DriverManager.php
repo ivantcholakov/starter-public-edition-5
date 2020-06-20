@@ -186,15 +186,6 @@ class DriverManager
         return self::$sharedConfig['validDrivers'];
     }
 
-    public static function Type($driverName)
-    {
-        $driverName = (string) $driverName;
-
-        return isset(self::$sharedConfig['driverTypes'][$driverName])
-            ? self::$sharedConfig['driverTypes'][$driverName]
-            : null;
-    }
-
     public static function getFileExtensions($driverName = null)
     {
         $driverName = (string) $driverName;
@@ -303,7 +294,7 @@ class DriverManager
 
                 if (in_array($key, static::validDrivers())) {
 
-                    $drivers[] = ['name' => $key, 'type' => static::Type($key), 'hasFileExtension' => static::hasFileExtension($key), 'options' => $value];
+                    $drivers[] = ['name' => $key, 'type' => $this->getDriverType($key), 'hasFileExtension' => static::hasFileExtension($key), 'options' => $value];
 
                 } else {
 
@@ -314,7 +305,7 @@ class DriverManager
 
                 if (in_array($value, static::validDrivers())) {
 
-                    $drivers[] = ['name' => $value, 'type' => static::Type($value), 'hasFileExtension' => static::hasFileExtension($value), 'options' => []];
+                    $drivers[] = ['name' => $value, 'type' => $this->getDriverType($value), 'hasFileExtension' => static::hasFileExtension($value), 'options' => []];
 
                 } else {
 
@@ -379,7 +370,7 @@ class DriverManager
             $extensions = [$detectedExtension];
 
             if ($driverName == '') {
-                $driver = ['name' => $detectedDriverName, 'type' => static::Type($detectedDriverName), 'hasFileExtension' => static::hasFileExtension($detectedDriverName), 'options' => []];
+                $driver = ['name' => $detectedDriverName, 'type' => $this->getDriverType($detectedDriverName), 'hasFileExtension' => static::hasFileExtension($detectedDriverName), 'options' => []];
             }
 
         } elseif ($driverName != '') {
