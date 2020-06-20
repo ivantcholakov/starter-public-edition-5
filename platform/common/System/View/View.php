@@ -257,7 +257,7 @@ class View implements RendererInterface
 
             // Call another renderer here.
 
-            $renderer = $this->driverManager->createDriver($this->viewOptions['driver']['name']);
+            $renderer = $this->driverManager->createRenderer($this->viewOptions['driver']['name']);
             $output = $renderer->render($this->renderVars['file'], $this->tempData, $this->viewOptions['driver']['options']);
         }
 

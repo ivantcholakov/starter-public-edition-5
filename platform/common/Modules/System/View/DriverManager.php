@@ -432,22 +432,22 @@ class DriverManager
         return $result;
     }
 
-    public function createDriver($driverName)
+    public function createRenderer($driverName)
     {
         $driverName = (string) $driverName;
 
         if ($driverName == '') {
-            throw new \InvalidArgumentException('No view-driver name has been provided.');
+            throw new \InvalidArgumentException('No renderer-driver name has been provided.');
         }
 
         if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {
-            throw new \InvalidArgumentException('Invalid view-driver name has been provided.');
+            throw new \InvalidArgumentException('Invalid renderer-driver name has been provided.');
         }
 
         $class = (string) $this->getDriverClass($driverName);
 
         if ($class == '') {
-            throw new \InvalidArgumentException('No class name of view-driver has been configured.');
+            throw new \InvalidArgumentException('No class name of renderer-driver has been configured.');
         }
 
         return new $class();
