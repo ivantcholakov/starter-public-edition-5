@@ -158,7 +158,7 @@ class View implements RendererInterface
     protected $viewOptions = [];
 
     /**
-     * Holds temporary data within an isolated context.
+     * Selects a renderer-driver to be applied on a view.
      *
      * @var \Common\Modules\System\View\DriverManager
      */
@@ -346,11 +346,17 @@ class View implements RendererInterface
 
         if ($extension != 'php' && empty($driver)) {
 
-            $driverName = \Common\Modules\System\View\DriverManager::getDriversByFileExtensions($extension);
+            $driverName = $this->driverManager->getDriversByFileExtensions($extension);
 
             if ($driverName != '') {
 
-                $driver = ['name' => $driverName, 'type' => $this->driverManager->getDriverType($driverName), 'hasFileExtension' => \Common\Modules\System\View\DriverManager::hasFileExtension($driverName), 'options' => []];
+                $driver = [
+                    'name' => $driverName,
+                    'type' => $this->driverManager->getDriverType($driverName),
+                    'hasFileExtension' => $this->driverManager->hasFileExtension($driverName),
+                    'options' => []
+                ];
+
                 $viewOptions['driver'] = $driver;
             }
         }

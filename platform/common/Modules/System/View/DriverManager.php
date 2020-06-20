@@ -179,14 +179,7 @@ class DriverManager
             : null;
     }
 
-    // -----------------------------------------------------------------------
-
-    public static function validDrivers()
-    {
-        return self::$sharedConfig['validDrivers'];
-    }
-
-    public static function getFileExtensions($driverName = null)
+    public function getFileExtensions($driverName = null)
     {
         $driverName = (string) $driverName;
 
@@ -200,21 +193,21 @@ class DriverManager
            : [];
     }
 
-    public static function hasFileExtension($driverName)
+    public function hasFileExtension($driverName)
     {
-        $extensions = static::getFileExtensions($driverName);
+        $extensions = $this->getFileExtensions($driverName);
 
         return !empty($extensions);
     }
 
-    public static function getDriversByFileExtensions($extension = null)
+    public function getDriversByFileExtensions($extension = null)
     {
         static $drivers = null;
 
         if ($drivers === null) {
 
             $drivers = [];
-            $allExtensions = static::getFileExtensions();
+            $allExtensions = $this->getFileExtensions();
 
             foreach ($allExtensions as $driverName => $extensions) {
 
@@ -232,13 +225,13 @@ class DriverManager
         return $drivers;
     }
 
-    public static function detect($fileName, & $detectedExtension = null, & $detectedFilename = null)
+    public function detect($fileName, & $detectedExtension = null, & $detectedFilename = null)
     {
         static $drivers = null;
 
         if ($drivers === null) {
 
-            $drivers = static::getDriversByFileExtensions();
+            $drivers = $this->getDriversByFileExtensions();
         }
 
         $fileName = (string) $fileName;
@@ -292,9 +285,14 @@ class DriverManager
 
             if (is_string($key)) {
 
-                if (in_array($key, static::validDrivers())) {
+                if (in_array($key, self::$sharedConfig['validDrivers'])) {
 
-                    $drivers[] = ['name' => $key, 'type' => $this->getDriverType($key), 'hasFileExtension' => static::hasFileExtension($key), 'options' => $value];
+                    $drivers[] = [
+                        'name' => $key,
+                        'type' => $this->getDriverType($key),
+                        'hasFileExtension' => $this->hasFileExtension($key),
+                        'options' => $value
+                    ];
 
                 } else {
 
@@ -303,9 +301,14 @@ class DriverManager
 
             } elseif (is_string($value)) {
 
-                if (in_array($value, static::validDrivers())) {
+                if (in_array($value, self::$sharedConfig['validDrivers'])) {
 
-                    $drivers[] = ['name' => $value, 'type' => $this->getDriverType($value), 'hasFileExtension' => static::hasFileExtension($value), 'options' => []];
+                    $drivers[] = [
+                        'name' => $value,
+                        'type' => $this->getDriverType($value),
+                        'hasFileExtension' => $this->hasFileExtension($value),
+                        'options' => []
+                    ];
 
                 } else {
 
@@ -370,12 +373,18 @@ class DriverManager
             $extensions = [$detectedExtension];
 
             if ($driverName == '') {
-                $driver = ['name' => $detectedDriverName, 'type' => $this->getDriverType($detectedDriverName), 'hasFileExtension' => static::hasFileExtension($detectedDriverName), 'options' => []];
+
+                $driver = [
+                    'name' => $detectedDriverName,
+                    'type' => $this->getDriverType($detectedDriverName),
+                    'hasFileExtension' => $this->hasFileExtension($detectedDriverName),
+                    'options' => []
+                ];
             }
 
         } elseif ($driverName != '') {
 
-            $extensions = static::getFileExtensions($driverName);
+            $extensions = $this->getFileExtensions($driverName);
 
         } else {
 
@@ -383,7 +392,7 @@ class DriverManager
 
             if ($detectedExtension != 'php') {
 
-                $allExtensions = static::getFileExtensions();
+                $allExtensions = $this->getFileExtensions();
 
                 foreach ($allExtensions as $key => $value) {
 
