@@ -11,6 +11,7 @@ class DriverManager
         if (empty(self::$sharedConfig)) {
 
             $this->loadValidDrivers();
+            $this->loadDriverTypes();
         }
     }
 
@@ -19,9 +20,23 @@ class DriverManager
         return self::$sharedConfig['validDrivers'];
     }
 
-    public function isValidDriver($name) {
+    public function isValidDriver($driverName) {
 
-        return in_array($name, self::$sharedConfig['validDrivers']);
+        return in_array((string) $driverName, self::$sharedConfig['validDrivers']);
+    }
+
+    public function getDriverTypes()
+    {
+        return self::$sharedConfig['driverTypes'];
+    }
+
+    public function getDriverType($driverName)
+    {
+        $driverName = (string) $driverName;
+
+        return isset(self::$sharedConfig['driverTypes'][$driverName])
+            ? self::$sharedConfig['driverTypes'][$driverName]
+            : null;
     }
 
     protected function loadValidDrivers()
@@ -68,6 +83,30 @@ class DriverManager
         self::$sharedConfig['validDrivers'] = $result;
     }
 
+    protected function loadDriverTypes()
+    {
+        $config = config('Views')->config;
+
+        $options = $config['driverTypes'] ?? [];
+
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $result = [];
+
+        foreach ($options as $key => $value) {
+
+            if (!is_string($key) && !is_string($value)) {
+                continue;
+            }
+
+            $result[$key] = $value;
+        }
+
+        self::$sharedConfig['driverTypes'] = $result;
+    }
+
     // -----------------------------------------------------------------------
 
     public static function validDrivers()
@@ -77,24 +116,11 @@ class DriverManager
 
     public static function Type($driverName)
     {
-        static $types = null;
-
-        if ($types === null) {
-
-            // TODO: Get this from a configuration file.
-            $types = [
-                'twig' => 'renderer',
-                'parser' => 'renderer',
-                'handlebars' => 'renderer',
-                'mustache' => 'renderer',
-                'markdown' => 'parser',
-                'textile' => 'parser',
-            ];
-        }
-
         $driverName = (string) $driverName;
 
-        return isset($types[$driverName]) ? $types[$driverName] : null;
+        return isset(self::$sharedConfig['driverTypes'][$driverName])
+            ? self::$sharedConfig['driverTypes'][$driverName]
+            : null;
     }
 
     public static function getFileExtensions($driverName = null)
