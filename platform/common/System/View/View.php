@@ -380,7 +380,7 @@ class View implements RendererInterface
 
         $driverManager = new \Common\Modules\System\View\DriverManager();
 
-        $options = \Common\Modules\System\View\DriverManager::parseOptions($options);
+        $options = $driverManager->parseOptions($options);
 
         if (is_null($saveData))
         {

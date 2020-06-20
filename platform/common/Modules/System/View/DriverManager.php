@@ -281,7 +281,7 @@ class DriverManager
         return null;
     }
 
-    public static function parseOptions($options)
+    public function parseOptions($options)
     {
         if (!is_array($options)) {
 
@@ -334,7 +334,7 @@ class DriverManager
     public function parseViewOptions(string $view, array $options = null, bool $saveData = null)
     {
         $originalOptions = $options;
-        $options = static::parseOptions($options);
+        $options = $this->parseOptions($options);
         $driverChain = !empty($options['drivers']) ? $options['drivers'] : [];
 
         // This is to be the first driver from the chain.
