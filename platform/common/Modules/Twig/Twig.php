@@ -207,6 +207,10 @@ class Twig
 
         foreach ($extensions as $extension => $enabled) {
 
+            if (!is_string($extension)) {
+                continue;
+            }
+
             if ($enabled) {
                 $this->renderer->addExtension(new $extension);
             }
