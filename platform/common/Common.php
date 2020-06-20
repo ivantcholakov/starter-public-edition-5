@@ -14,6 +14,7 @@
  * @link: https://codeigniter4.github.io/CodeIgniter4/
  */
 
+// TODO: Remove this.
 if (! function_exists('view_string'))
 {
     /**
