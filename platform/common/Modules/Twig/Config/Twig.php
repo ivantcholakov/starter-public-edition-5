@@ -45,6 +45,10 @@ class Twig extends BaseConfig
         // Functions ---------------------------------------------------------
 
         $this->config['functions'] = [
+            // Static Class Methods and Properties
+            ['call_static', ['\Common\Modules\Twig\Extension\StaticExtension', 'call_static']],
+            ['get_static', ['\Common\Modules\Twig\Extension\StaticExtension', 'get_static']],
+
             'base_url',
             'site_url',
         ];
@@ -52,6 +56,18 @@ class Twig extends BaseConfig
         // Filters -----------------------------------------------------------
 
         $this->config['filters'] = [
+            // Type Casting
+            ['boolean', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'boolean'], ['is_safe' => ['html']]],
+            ['bool', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'boolean'], ['is_safe' => ['html']]],
+            ['integer', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'integer'], ['is_safe' => ['html']]],
+            ['int', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'integer'], ['is_safe' => ['html']]],
+            ['float', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
+            ['double', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
+            ['real', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
+            ['string', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'string']],
+            ['array', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'twig_array']],
+            ['object', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'object']],
+            ['null', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'null'], ['is_safe' => ['html']]],
             // PHP
             'base64_decode',
             ['base64_encode', 'base64_encode', ['is_safe' => ['html', 'html_attr', 'js']]],
