@@ -55,6 +55,20 @@ class Twig extends BaseConfig
             // PHP
             'base64_decode',
             ['base64_encode', 'base64_encode', ['is_safe' => ['html', 'html_attr', 'js']]],
+            ['count', 'count', ['is_safe' => ['html']]],
+            ['gettype', 'gettype', ['is_safe' => ['html']]],
+            ['ltrim', ['\Common\Modules\Twig\Extension\PHPExtension', 'ltrim']],
+            ['rtrim', ['\Common\Modules\Twig\Extension\PHPExtension', 'rtrim']],
+            'sprintf',
+            'str_repeat',
+            ['stripos', 'stripos', ['is_safe' => ['html']]],
+            ['strpos', 'strpos', ['is_safe' => ['html']]],
+            ['wordwrap', ['\Common\Modules\Twig\Extension\PHPExtension', 'wordwrap']],
+            ['array_plus', ['\Common\Modules\Twig\Extension\PHPExtension', 'array_plus']],
+            ['array_replace', ['\Common\Modules\Twig\Extension\PHPExtension', 'array_replace']],
+            ['ord', 'ord', ['is_safe' => ['html', 'html_attr', 'js', 'css']]],
+            'chr',
+            // CodeIgniter's Helpers
             'ellipsize',
         ];
 
@@ -71,7 +85,7 @@ class Twig extends BaseConfig
             ['object', 'is_object'],
             ['scalar', 'is_scalar'],
             ['string', 'is_string'],
-            //['zero', ['Parser_Twig_Extension_Php', 'php_empty']],
+            ['zero', ['\Common\Modules\Twig\Extension\PHPExtension', 'php_empty']],
         ];
 
         // Global Variables --------------------------------------------------
