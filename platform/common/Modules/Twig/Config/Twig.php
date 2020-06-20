@@ -122,4 +122,7 @@ class Twig extends BaseConfig
 
         $this->config['sandbox_functions'] = [];
     }
+
+    //------------------------------------------------------------------------
+
 }
