@@ -197,7 +197,7 @@ class Twig
 
             } else {
 
-                $extension[$item] = true;
+                $extensions[$item] = true;
             }
         }
 
