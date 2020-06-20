@@ -47,6 +47,15 @@ if (! function_exists('view_string'))
             unset($options['saveData']);
         }
 
+        $allowPHP = false;
+
+        if (array_key_exists('allowPHP', $options))
+        {
+            $allowPHP = !empty($options['allowPHP']);
+        }
+
+        $options['allowPHP'] = false;
+
         return $renderer->setData($data, 'raw')
                         ->renderString($stringTemplate, $options, $saveData);
     }
