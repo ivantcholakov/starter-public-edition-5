@@ -12,31 +12,8 @@ class DriverManager
 
             $this->loadValidDrivers();
             $this->loadDriverTypes();
+            $this->loadFileExtensions();
         }
-    }
-
-    public function getValidDrivers() {
-
-        return self::$sharedConfig['validDrivers'];
-    }
-
-    public function isValidDriver($driverName) {
-
-        return in_array((string) $driverName, self::$sharedConfig['validDrivers']);
-    }
-
-    public function getDriverTypes()
-    {
-        return self::$sharedConfig['driverTypes'];
-    }
-
-    public function getDriverType($driverName)
-    {
-        $driverName = (string) $driverName;
-
-        return isset(self::$sharedConfig['driverTypes'][$driverName])
-            ? self::$sharedConfig['driverTypes'][$driverName]
-            : null;
     }
 
     protected function loadValidDrivers()
@@ -101,10 +78,76 @@ class DriverManager
                 continue;
             }
 
+            if (!in_array($key, self::$sharedConfig['validDrivers'])) {
+               continue;
+            }
+
             $result[$key] = $value;
         }
 
         self::$sharedConfig['driverTypes'] = $result;
+    }
+
+    protected function loadFileExtensions()
+    {
+        $config = config('Views')->config;
+
+        $options = $config['fileExtensions'] ?? [];
+
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $result = [];
+
+        foreach ($options as $key => $value) {
+
+            if (!is_string($key)) {
+                continue;
+            }
+
+            if (!in_array($key, self::$sharedConfig['validDrivers'])) {
+               continue;
+            }
+
+            if (!is_array($value)) {
+                $value = [$value];
+            }
+
+            foreach ($value as & $item) {
+                $item = ltrim($item, '.');
+            }
+
+            unset($item);
+
+            $result[$key] = $value;
+        }
+
+        self::$sharedConfig['fileExtensions'] = $result;
+    }
+
+    public function getValidDrivers() {
+
+        return self::$sharedConfig['validDrivers'];
+    }
+
+    public function isValidDriver($driverName) {
+
+        return in_array((string) $driverName, self::$sharedConfig['validDrivers']);
+    }
+
+    public function getDriverTypes()
+    {
+        return self::$sharedConfig['driverTypes'];
+    }
+
+    public function getDriverType($driverName)
+    {
+        $driverName = (string) $driverName;
+
+        return isset(self::$sharedConfig['driverTypes'][$driverName])
+            ? self::$sharedConfig['driverTypes'][$driverName]
+            : null;
     }
 
     // -----------------------------------------------------------------------
@@ -125,52 +168,16 @@ class DriverManager
 
     public static function getFileExtensions($driverName = null)
     {
-        static $extensions = null;
-
-        if ($extensions === null) {
-
-            $extensions = [];
-
-            // TODO: Get this from a configuration file.
-            $configuredExtensions = [
-                'twig' => ['html.twig', 'twig'],
-                'parser' => 'parser',
-                'handlebars' => ['handlebars', 'hbs'],
-                'mustache' => 'mustache',
-                'markdown' => ['md', 'markdown', 'fbmd'],
-                'textile' => 'textile',
-            ];
-
-            $validDrivers = static::validDrivers();
-
-            foreach ($configuredExtensions as $key => $value) {
-
-                if (!in_array($key, $validDrivers)) {
-                   continue;
-                }
-
-                if (!is_array($value)) {
-                    $value = (array) $value;
-                }
-
-                foreach ($value as & $item) {
-                    $item = ltrim($item, '.');
-                }
-
-                unset($item);
-
-                $extensions[$key] = $value;
-            }
-        }
-
         $driverName = (string) $driverName;
 
         if ($driverName == '') {
 
-            return $extensions;
+            return self::$sharedConfig['fileExtensions'];
         }
 
-        return isset($extensions[$driverName]) ? $extensions[$driverName] : [];
+        return isset(self::$sharedConfig['fileExtensions'][$driverName])
+           ? self::$sharedConfig['fileExtensions'][$driverName]
+           : [];
     }
 
     public static function hasFileExtension($driverName)
