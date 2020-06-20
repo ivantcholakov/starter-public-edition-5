@@ -331,7 +331,7 @@ class DriverManager
         return $result;
     }
 
-    public static function parseViewOptions(string $view, array $options = null, bool $saveData = null)
+    public function parseViewOptions(string $view, array $options = null, bool $saveData = null)
     {
         $originalOptions = $options;
         $options = static::parseOptions($options);

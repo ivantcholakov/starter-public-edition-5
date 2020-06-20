@@ -208,7 +208,7 @@ class View implements RendererInterface
             $saveData = $this->saveData;
         }
 
-        $this->viewOptions = $this->findView(\Common\Modules\System\View\DriverManager::parseViewOptions($view, $options, $saveData));
+        $this->viewOptions = $this->findView($driverManager->parseViewOptions($view, $options, $saveData));
 
         $this->renderVars['view']    = $this->viewOptions['view'];
         $this->renderVars['options'] = $this->viewOptions['options'];
