@@ -211,7 +211,7 @@ class Twig
                 continue;
             }
 
-            if ($enabled) {
+            if (!empty($enabled)) {
                 $this->renderer->addExtension(new $extension);
             }
         }
