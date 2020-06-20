@@ -13,6 +13,7 @@ class DriverManager
             $this->loadValidDrivers();
             $this->loadDriverTypes();
             $this->loadFileExtensions();
+            $this->loadDriverClasses();
         }
     }
 
@@ -124,6 +125,34 @@ class DriverManager
         }
 
         self::$sharedConfig['fileExtensions'] = $result;
+    }
+
+    protected function loadDriverClasses()
+    {
+        $config = config('Views')->config;
+
+        $options = $config['driverClasses'] ?? [];
+
+        if (empty($options)) {
+            $options = [];
+        }
+
+        $result = [];
+
+        foreach ($options as $key => $value) {
+
+            if (!is_string($key) && !is_string($value)) {
+                continue;
+            }
+
+            if (!in_array($key, self::$sharedConfig['validDrivers'])) {
+               continue;
+            }
+
+            $result[$key] = $value;
+        }
+
+        self::$sharedConfig['driverClasses'] = $result;
     }
 
     public function getValidDrivers() {
