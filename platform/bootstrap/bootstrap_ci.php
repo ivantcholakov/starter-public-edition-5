@@ -224,6 +224,11 @@ if (! class_exists('Config\App', false))
 
 $appConfig = config(\Config\App::class);
 
+// For supporting legacy code.
+if (!defined('IS_UTF8_CHARSET')) {
+    define('IS_UTF8_CHARSET', strtolower($appConfig->charset) === 'utf-8');
+}
+
 if (!empty($appConfig->restrictAccessToTrustedHostsOnly) && !is_cli())
 {
     $detectedHost = detect_url('server_name');
