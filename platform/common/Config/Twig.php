@@ -14,6 +14,10 @@ class Twig extends \Common\Modules\Twig\Config\Twig
             )
         );
 
+        //--------------------------------------------------------------------
+        // Configuration Options, You May Edit Them
+        //--------------------------------------------------------------------
+
         // Twig Environment --------------------------------------------------
 
         $this->debug = ENVIRONMENT !== 'production';
