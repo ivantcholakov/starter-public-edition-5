@@ -225,6 +225,20 @@ class DriverManager
         return $drivers;
     }
 
+    public function getDriverClasses()
+    {
+        return self::$sharedConfig['driverClasses'];
+    }
+
+    public function getDriverClass($driverName)
+    {
+        $driverName = (string) $driverName;
+
+        return isset(self::$sharedConfig['driverClasses'][$driverName])
+            ? self::$sharedConfig['driverClasses'][$driverName]
+            : null;
+    }
+
     public function detect($fileName, & $detectedExtension = null, & $detectedFilename = null)
     {
         static $drivers = null;
@@ -416,6 +430,27 @@ class DriverManager
         );
 
         return $result;
+    }
+
+    public function createDriver($driverName)
+    {
+        $driverName = (string) $driverName;
+
+        if ($driverName == '') {
+            throw new \InvalidArgumentException('No view-driver name has been provided.');
+        }
+
+        if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {
+            throw new \InvalidArgumentException('Invalid view-driver name has been provided.');
+        }
+
+        $class = (string) $this->getDriverClass($driverName);
+
+        if ($class == '') {
+            throw new \InvalidArgumentException('No class name of view-driver has been configured.');
+        }
+
+        return new $class();
     }
 
 }

@@ -257,8 +257,7 @@ class View implements RendererInterface
 
             // Call another renderer here.
 
-            // Testing Twig, hardcoded stuff:
-            $renderer = new \Common\Modules\Twig\Twig();
+            $renderer = $this->driverManager->createDriver($this->viewOptions['driver']['name']);
             $output = $renderer->render($this->renderVars['file'], $this->tempData, $this->viewOptions['driver']['options']);
         }
 
