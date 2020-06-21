@@ -291,7 +291,7 @@ class DriverManager
         return $driverOptions;
     }
 
-    protected function detectDriver($fileName, & $detectedExtension = null, & $detectedFilename = null)
+    protected function detectDriverFromFilename($fileName, & $detectedExtension = null, & $detectedFilename = null)
     {
         static $drivers = null;
 
@@ -355,7 +355,7 @@ class DriverManager
 
         $detectedExtension = null;
         $detectedFilename = null;
-        $detectedDriverName = $this->detectDriver($view, $detectedExtension, $detectedFilename);
+        $detectedDriverName = $this->detectDriverFromFilename($view, $detectedExtension, $detectedFilename);
 
         if (
             $viewHasExtension
