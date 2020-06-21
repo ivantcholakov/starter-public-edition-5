@@ -291,21 +291,20 @@ class DriverManager
         return $driverOptions;
     }
 
-    protected function detectDriverFromFilename($view, & $detectedExtension = null, & $detectedName = null)
+    protected function detectDriverFromFilename(string $view)
     {
-        $drivers = $this->getDriversByFileExtensions();
-
-        $view = (string) $view;
+        $detectedDriverName = null;
         $detectedExtension = null;
-        $detectedName = null;
+        $detectedViewName = null;
 
-        // Test whether a pure extension was given.
-        if (isset($drivers[$view])) {
+        $detectedDriver = [
+            'view' => & $view,
+            'detectedDriverName' => & $detectedDriverName,
+            'detectedViewName' => & $detectedViewName,
+            'detectedExtension' => & $detectedExtension,
+        ];
 
-            $detectedExtension = $view;
-
-            return $drivers[$view];
-        }
+        $drivers = $this->getDriversByFileExtensions();
 
         foreach ($drivers as $key => $value) {
 
@@ -314,16 +313,17 @@ class DriverManager
             if (preg_match('/.*\.('.$k.')$/', $view, $matches)) {
 
                 $detectedExtension = $matches[1];
-                $detectedName = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($view, PATHINFO_BASENAME));
+                $detectedViewName = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($view, PATHINFO_FILENAME));
+                $detectedDriverName = $value;
 
-                return $value;
+                return $detectedDriver;
             }
         }
 
         $detectedExtension = pathinfo($view, PATHINFO_EXTENSION);
-        $detectedName = pathinfo($view, PATHINFO_FILENAME);
+        $detectedViewName = pathinfo($view, PATHINFO_FILENAME);
 
-        return null;
+        return $detectedDriver;
     }
 
     public function parseViewOptions(string $view, array $options = null, bool $saveData = null)
@@ -348,9 +348,11 @@ class DriverManager
         $viewExtension = pathinfo($view, PATHINFO_EXTENSION);
         $viewHasExtension = $viewExtension != '' && $viewExtension != 'html';
 
-        $detectedExtension = null;
-        $detectedName = null;
-        $detectedDriverName = $this->detectDriverFromFilename($view, $detectedExtension, $detectedName);
+        $detectedDriver = $this->detectDriverFromFilename($view);
+
+        $detectedDriverName = $detectedDriver['detectedDriverName'];
+        $detectedViewName = $detectedDriver['detectedViewName'];
+        $detectedExtension = $detectedDriver['detectedExtension'];
 
         if (
             $viewHasExtension
@@ -366,7 +368,7 @@ class DriverManager
             throw \CodeIgniter\View\Exceptions\ViewException\ViewException::forInvalidFile((string) $view);
         }
 
-        $fileName = $detectedName;
+        $fileName = $detectedViewName;
 
         if ($detectedDriverName != '' && $detectedExtension != '') {
 
