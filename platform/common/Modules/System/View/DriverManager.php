@@ -247,7 +247,7 @@ class DriverManager
             $options = $options != '' ? [$options] : [];
         }
 
-        $result = [];
+        $driverOptions = [];
 
         if (!empty($options)) {
 
@@ -257,7 +257,7 @@ class DriverManager
 
                     if (in_array($key, self::$sharedConfig['validDrivers'])) {
 
-                        $result[] = [
+                        $driverOptions[] = [
                             'name' => $key,
                             'type' => $this->getDriverType($key),
                             'hasFileExtension' => $this->hasFileExtension($key),
@@ -266,14 +266,14 @@ class DriverManager
 
                     } else {
 
-                        $result[$key] = $value;
+                        $driverOptions[$key] = $value;
                     }
 
                 } elseif (is_string($value)) {
 
                     if (in_array($value, self::$sharedConfig['validDrivers'])) {
 
-                        $result[] = [
+                        $driverOptions[] = [
                             'name' => $value,
                             'type' => $this->getDriverType($value),
                             'hasFileExtension' => $this->hasFileExtension($value),
@@ -282,13 +282,13 @@ class DriverManager
 
                     } else {
 
-                        $result[] = $value;
+                        $driverOptions[] = $value;
                     }
                 }
             }
         }
 
-        return $result;
+        return $driverOptions;
     }
 
     protected function detectDriver($fileName, & $detectedExtension = null, & $detectedFilename = null)
