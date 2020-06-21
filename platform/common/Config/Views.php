@@ -24,7 +24,7 @@ class Views extends \Common\Modules\System\Config\Views
             ['twig' => true],
         //    ['mustache' => true],
         //    ['handlebars' => true],
-        //    ['markdown' => true],
+            ['markdown' => true],
         //    ['textile' => true],
         ];
 

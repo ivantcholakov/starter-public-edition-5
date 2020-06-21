@@ -14,7 +14,7 @@ class Views extends BaseConfig
             'twig',
 //            'mustache',
 //            'handlebars',
-//            'markdown',
+            'markdown',
 //            'textile',
         ];
 
@@ -22,7 +22,7 @@ class Views extends BaseConfig
             'twig' => ['html.twig', 'twig'],
 //            'mustache' => 'mustache',
 //            'handlebars' => ['handlebars', 'hbs'],
-//            'markdown' => ['md', 'markdown', 'fbmd'],
+            'markdown' => ['md', 'markdown', 'fbmd'],
 //            'textile' => 'textile',
         ];
 
@@ -30,12 +30,13 @@ class Views extends BaseConfig
             'twig' => 'renderer',
 //            'mustache' => 'renderer',
 //            'handlebars' => 'renderer',
-//            'markdown' => 'parser',
+            'markdown' => 'parser',
 //            'textile' => 'parser',
         ];
 
         $this->config['driverClasses'] = [
             'twig' => '\Common\Modules\Twig\Twig',
+            'markdown' => '\Common\Modules\Markdown\Markdown',
         ];
     }
 
