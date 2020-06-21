@@ -239,6 +239,41 @@ class DriverManager
             : null;
     }
 
+    protected function detectDriverFromFilename(string $view)
+    {
+        $detectedDriverName = null;
+        $detectedExtension = null;
+        $detectedViewName = null;
+
+        $detectedDriver = [
+            'view' => & $view,
+            'detectedDriverName' => & $detectedDriverName,
+            'detectedViewName' => & $detectedViewName,
+            'detectedExtension' => & $detectedExtension,
+        ];
+
+        $drivers = $this->getDriversByFileExtensions();
+
+        foreach ($drivers as $key => $value) {
+
+            $k = preg_quote($key);
+
+            if (preg_match('/.*\.('.$k.')$/', $view, $matches)) {
+
+                $detectedExtension = $matches[1];
+                $detectedViewName = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($view, PATHINFO_FILENAME));
+                $detectedDriverName = $value;
+
+                return $detectedDriver;
+            }
+        }
+
+        $detectedExtension = pathinfo($view, PATHINFO_EXTENSION);
+        $detectedViewName = pathinfo($view, PATHINFO_FILENAME);
+
+        return $detectedDriver;
+    }
+
     public function parseDriverOptions($options)
     {
         if (!is_array($options)) {
@@ -289,41 +324,6 @@ class DriverManager
         }
 
         return $driverOptions;
-    }
-
-    protected function detectDriverFromFilename(string $view)
-    {
-        $detectedDriverName = null;
-        $detectedExtension = null;
-        $detectedViewName = null;
-
-        $detectedDriver = [
-            'view' => & $view,
-            'detectedDriverName' => & $detectedDriverName,
-            'detectedViewName' => & $detectedViewName,
-            'detectedExtension' => & $detectedExtension,
-        ];
-
-        $drivers = $this->getDriversByFileExtensions();
-
-        foreach ($drivers as $key => $value) {
-
-            $k = preg_quote($key);
-
-            if (preg_match('/.*\.('.$k.')$/', $view, $matches)) {
-
-                $detectedExtension = $matches[1];
-                $detectedViewName = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($view, PATHINFO_FILENAME));
-                $detectedDriverName = $value;
-
-                return $detectedDriver;
-            }
-        }
-
-        $detectedExtension = pathinfo($view, PATHINFO_EXTENSION);
-        $detectedViewName = pathinfo($view, PATHINFO_FILENAME);
-
-        return $detectedDriver;
     }
 
     public function parseViewOptions(string $view, array $options = null, bool $saveData = null)
