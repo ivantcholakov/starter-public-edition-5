@@ -293,12 +293,7 @@ class DriverManager
 
     protected function detectDriverFromFilename($fileName, & $detectedExtension = null, & $detectedFilename = null)
     {
-        static $drivers = null;
-
-        if ($drivers === null) {
-
-            $drivers = $this->getDriversByFileExtensions();
-        }
+        $drivers = $this->getDriversByFileExtensions();
 
         $fileName = (string) $fileName;
         $detectedExtension = null;
