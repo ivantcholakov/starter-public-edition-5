@@ -26,6 +26,8 @@ class Views extends BaseConfig
 //            'textile' => 'textile',
         ];
 
+        // 'renderer', 'parser' - PHP is not allowed as predecessor renderer.
+        // 'filter'             - PHP is allowed if there is no predecessor renderer.
         $this->config['driverTypes'] = [
             'twig' => 'renderer',
 //            'mustache' => 'renderer',
