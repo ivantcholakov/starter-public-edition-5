@@ -239,46 +239,6 @@ class DriverManager
             : null;
     }
 
-    public function detect($fileName, & $detectedExtension = null, & $detectedFilename = null)
-    {
-        static $drivers = null;
-
-        if ($drivers === null) {
-
-            $drivers = $this->getDriversByFileExtensions();
-        }
-
-        $fileName = (string) $fileName;
-        $detectedExtension = null;
-        $detectedFilename = null;
-
-        // Test whether a pure extension was given.
-        if (isset($drivers[$fileName])) {
-
-            $detectedExtension = $fileName;
-
-            return $drivers[$fileName];
-        }
-
-        foreach ($drivers as $key => $value) {
-
-            $k = preg_quote($key);
-
-            if (preg_match('/.*\.('.$k.')$/', $fileName, $matches)) {
-
-                $detectedExtension = $matches[1];
-                $detectedFilename = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($fileName, PATHINFO_BASENAME));
-
-                return $value;
-            }
-        }
-
-        $detectedExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-        $detectedFilename = pathinfo($fileName, PATHINFO_FILENAME);
-
-        return null;
-    }
-
     public function parseOptions($options)
     {
         if (!is_array($options)) {
@@ -339,6 +299,46 @@ class DriverManager
         return $result;
     }
 
+    protected function detectDriver($fileName, & $detectedExtension = null, & $detectedFilename = null)
+    {
+        static $drivers = null;
+
+        if ($drivers === null) {
+
+            $drivers = $this->getDriversByFileExtensions();
+        }
+
+        $fileName = (string) $fileName;
+        $detectedExtension = null;
+        $detectedFilename = null;
+
+        // Test whether a pure extension was given.
+        if (isset($drivers[$fileName])) {
+
+            $detectedExtension = $fileName;
+
+            return $drivers[$fileName];
+        }
+
+        foreach ($drivers as $key => $value) {
+
+            $k = preg_quote($key);
+
+            if (preg_match('/.*\.('.$k.')$/', $fileName, $matches)) {
+
+                $detectedExtension = $matches[1];
+                $detectedFilename = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($fileName, PATHINFO_BASENAME));
+
+                return $value;
+            }
+        }
+
+        $detectedExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+        $detectedFilename = pathinfo($fileName, PATHINFO_FILENAME);
+
+        return null;
+    }
+
     public function parseViewOptions(string $view, array $options = null, bool $saveData = null)
     {
         $originalOptions = $options;
@@ -364,7 +364,7 @@ class DriverManager
 
         $detectedExtension = null;
         $detectedFilename = null;
-        $detectedDriverName = static::detect($view, $detectedExtension, $detectedFilename);
+        $detectedDriverName = $this->detectDriver($view, $detectedExtension, $detectedFilename);
 
         if (
             $viewHasExtension
