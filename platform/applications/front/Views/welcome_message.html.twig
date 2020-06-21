@@ -50,26 +50,7 @@
         <h2>The small framework with powerful features</h2>
 
         <p>
-            {{ hello|raw }}
-            <br />
-            Quick Test:
-            <br />
-            Original String : {{ original_string }}
-            <br />
-            Encrypted String: {{ encrypted_string }}
-            <br />
-            Decrypted String: {{ decrypted_string }}
-            <br />
-            Base64 Filter: {{ decrypted_string|base64_encode }}
-            <br />
-            Ellipsize: {{ decrypted_string|ellipsize(10, 1, '...') }}
-            <br />
-            {% verbatim %}{{ (1.0 is float ? 'Yes' : 'No') }}{% endverbatim %}: {{ (1.0 is float ? 'Yes' : 'No') }}
-            <br />
-            {% verbatim %}{{ print_d(_context) }}{% endverbatim %}: {{ print_d(_context) }}
-            <div class="clearfix"></div>
-            <br />
-            {% verbatim %}{{ 'Lorem ipsum'|u.truncate(8, '...') }}{% endverbatim %}: {{ 'Lorem ipsum'|u.truncate(8, '...') }}
+            {{ readme|raw }}
         </p>
 
     </div>
