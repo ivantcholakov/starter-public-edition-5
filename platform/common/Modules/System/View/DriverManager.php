@@ -447,7 +447,7 @@ class DriverManager
         $class = (string) $this->getDriverClass($driverName);
 
         if ($class == '') {
-            throw new \InvalidArgumentException('No class name of renderer-driver has been configured.');
+            throw new \RuntimeException('No class name of renderer-driver has been configured.');
         }
 
         return new $class();
