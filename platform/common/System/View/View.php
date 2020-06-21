@@ -340,7 +340,7 @@ class View implements RendererInterface
         }
 
         if (!$found) {
-            throw ViewException::forInvalidFile($fileName);
+            throw ViewException::forInvalidFile((string) $fileName);
         }
 
         if ($extension != 'php' && empty($driver)) {
