@@ -239,7 +239,7 @@ class DriverManager
             : null;
     }
 
-    public function parseOptions($options)
+    public function parseDriverOptions($options)
     {
         if (!is_array($options)) {
 
@@ -247,53 +247,45 @@ class DriverManager
             $options = $options != '' ? [$options] : [];
         }
 
-        if (empty($options)) {
-
-            return $options;
-        }
-
-        $drivers = [];
         $result = [];
 
-        foreach ($options as $key => $value) {
+        if (!empty($options)) {
 
-            if (is_string($key)) {
+            foreach ($options as $key => $value) {
 
-                if (in_array($key, self::$sharedConfig['validDrivers'])) {
+                if (is_string($key)) {
 
-                    $drivers[] = [
-                        'name' => $key,
-                        'type' => $this->getDriverType($key),
-                        'hasFileExtension' => $this->hasFileExtension($key),
-                        'options' => $value
-                    ];
+                    if (in_array($key, self::$sharedConfig['validDrivers'])) {
 
-                } else {
+                        $result[] = [
+                            'name' => $key,
+                            'type' => $this->getDriverType($key),
+                            'hasFileExtension' => $this->hasFileExtension($key),
+                            'options' => $value
+                        ];
 
-                    $result[$key] = $value;
-                }
+                    } else {
 
-            } elseif (is_string($value)) {
+                        $result[$key] = $value;
+                    }
 
-                if (in_array($value, self::$sharedConfig['validDrivers'])) {
+                } elseif (is_string($value)) {
 
-                    $drivers[] = [
-                        'name' => $value,
-                        'type' => $this->getDriverType($value),
-                        'hasFileExtension' => $this->hasFileExtension($value),
-                        'options' => []
-                    ];
+                    if (in_array($value, self::$sharedConfig['validDrivers'])) {
 
-                } else {
+                        $result[] = [
+                            'name' => $value,
+                            'type' => $this->getDriverType($value),
+                            'hasFileExtension' => $this->hasFileExtension($value),
+                            'options' => []
+                        ];
 
-                    $result[] = $value;
+                    } else {
+
+                        $result[] = $value;
+                    }
                 }
             }
-        }
-
-        if (!empty($drivers)) {
-
-            $result['drivers'] = $drivers;
         }
 
         return $result;
@@ -342,8 +334,7 @@ class DriverManager
     public function parseViewOptions(string $view, array $options = null, bool $saveData = null)
     {
         $originalOptions = $options;
-        $options = $this->parseOptions($options);
-        $driverChain = !empty($options['drivers']) ? $options['drivers'] : [];
+        $driverChain = $this->parseDriverOptions($options);
 
         // This is to be the first driver from the chain.
         $driver = null;
