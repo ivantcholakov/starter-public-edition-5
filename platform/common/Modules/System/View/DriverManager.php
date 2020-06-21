@@ -363,7 +363,7 @@ class DriverManager
         ) {
 
             // Filename and options target different drivers.
-            throw \CodeIgniter\View\Exceptions\ViewException\ViewException::forInvalidFile($view);
+            throw \CodeIgniter\View\Exceptions\ViewException\ViewException::forInvalidFile((string) $view);
         }
 
         $fileName = $detectedName;
