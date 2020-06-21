@@ -20,19 +20,13 @@ class Markdown
             $options = [];
         }
 
-        if (isset($options['cache'])) {
-
-            // A name collision.
-            unset($options['cache']);
-        }
-
         $config = config('Markdown')->config;
         $options = array_merge_recursive_distinct($config, $options);
         unset($config);
 
         $this->renderer = new \ParsedownExtra();
 
-        return @ $this->renderer->text(file_get_contents($template));
+        return $this->renderer->text(file_get_contents($template));
     }
 
     public function renderString($template, array $data = null, array $options = null)
@@ -45,19 +39,13 @@ class Markdown
             $options = [];
         }
 
-        if (isset($options['cache'])) {
-
-            // A name collision.
-            unset($options['cache']);
-        }
-
         $config = config('Markdown')->config;
         $options = array_merge_recursive_distinct($config, $options);
         unset($config);
 
         $this->renderer = new \ParsedownExtra();
 
-        return @ $this->renderer->text($template);
+        return $this->renderer->text($template);
     }
 
 }
