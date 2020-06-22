@@ -341,7 +341,7 @@ class View implements RendererInterface
     {
         $start = microtime(true);
 
-        $this->output = '';
+        $this->output = $view;
 
         $this->driverChain = $this->driverManager->getDriverChain('string', $options, $view);
 
@@ -375,12 +375,8 @@ class View implements RendererInterface
             foreach ($this->driverChain as $this->currentDriver) {
 
                 $this->currentRenderer = $this->driverManager->createRenderer($this->currentDriver['name']);
-
-                if (!empty($this->currentDriver['first'])) {
-                    $this->output = $this->currentRenderer->renderString($this->output, !empty($this->currentDriver['first']) ? $this->tempData : [], $this->currentDriver['options']);
-                }
+                $this->output = $this->currentRenderer->renderString($this->output, !empty($this->currentDriver['first']) ? $this->tempData : [], $this->currentDriver['options']);
             }
-
         }
 
         $this->logPerformance($start, microtime(true), $this->excerpt($view));

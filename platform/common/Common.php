@@ -14,50 +14,55 @@
  * @link: https://codeigniter4.github.io/CodeIgniter4/
  */
 
-// TODO: Remove this.
-if (! function_exists('view_string'))
+if (!function_exists('render_string'))
 {
     /**
-     * Grabs the current RendererInterface-compatible class
-     * and tells it to render the specified view.
-     *
-     * NOTE: Does not provide any escaping of the data, so that must
-     * all be handled manually by the developer.
+     * Renders a given string template.
      *
      * @param string $stringTemplate
      * @param array  $data
-     * @param array  $options - reserved for third-party extensions.
+     * @param string|array $options - driver-specific options.
+     *
+     * Examples: $output = render_string('Hello {{ name }}!', ['name' => 'John'], 'twig');
+     *           $output = render_string('Hello {{ name }}!', ['name' => 'John'], ['twig' => ['debug' => false]]);
+     *
+     * PHP is not to be rendered.
      *
      * @return string
      */
-    function view_string(string $stringTemplate, array $data = [], array $options = []): string
+    function render_string(string $stringTemplate, $data = [], $options = []): string
     {
-        /**
-         * @var CodeIgniter\View\View $renderer
-         */
-        $renderer = Services::renderer();
+        $output = $stringTemplate;
 
-        // The default option true might cause mess here.
-        //$saveData = config(View::class)->saveData;
-        $saveData = false;
-        //
+        if (!is_array($data)) {
 
-        if (array_key_exists('saveData', $options))
-        {
-            $saveData = (bool) $options['saveData'];
-            unset($options['saveData']);
+            $data = (string) $data;
+            $data = $data != '' ? [$data] : [];
         }
 
-        $allowPHP = false;
+        if (!is_array($options)) {
 
-        if (array_key_exists('allowPHP', $options))
-        {
-            $allowPHP = !empty($options['allowPHP']);
+            $options = (string) $options;
+            $options = $options != '' ? [$options] : [];
         }
 
-        $options['allowPHP'] = false;
+        $driverManager = new \Common\Modules\System\View\DriverManager();
+        $driverChain = $driverManager->getDriverChain('string', $options);
 
-        return $renderer->setData($data, 'raw')
-                        ->renderString($stringTemplate, $options, $saveData);
+        if (empty($driverChain)) {
+
+            throw new \InvalidArgumentException('No valid renderer-driver has been specified (\'twig\', \'markdown\', etc.).');
+
+        } else {
+
+            foreach ($driverChain as $currentDriver) {
+
+                $currentRenderer = $driverManager->createRenderer($currentDriver['name']);
+                $output = $currentRenderer->renderString($output, !empty($currentDriver['first']) ? $data : [], $currentDriver['options']);
+            }
+        }
+
+        return (string) $output;
     }
+
 }
