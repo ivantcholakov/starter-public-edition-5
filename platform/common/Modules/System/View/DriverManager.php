@@ -454,6 +454,8 @@ class DriverManager
                         throw \CodeIgniter\View\Exceptions\ViewException\ViewException::forInvalidFile((string) $view);
                     }
 
+                    $_options = $list[0]['options'];
+
                     $list[0] = $this->findView(
                         pathinfo($view, PATHINFO_FILENAME),
                         $detectedDriverName != '' && $detectedExtension != ''
@@ -462,6 +464,9 @@ class DriverManager
                         $viewPath,
                         $loader
                     );
+
+                    $list[0]['options'] = $_options;
+                    unset($_options);
                 }
             }
         }
