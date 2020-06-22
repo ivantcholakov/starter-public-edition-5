@@ -22,12 +22,6 @@ class Twig
             $options = [];
         }
 
-        if (isset($options['cache'])) {
-
-            // A name collision.
-            unset($options['cache']);
-        }
-
         $config = config('Twig')->config;
         $options = array_merge_recursive_distinct($config, $options);
         unset($config);
@@ -72,12 +66,6 @@ class Twig
 
         if (empty($options)) {
             $options = [];
-        }
-
-        if (isset($options['cache'])) {
-
-            // A name collision.
-            unset($options['cache']);
         }
 
         $config = config('Twig')->config;
