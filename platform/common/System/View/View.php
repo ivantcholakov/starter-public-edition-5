@@ -151,13 +151,6 @@ class View implements RendererInterface
     protected $currentSection;
 
     /**
-     * Holds a list about renderes/parsers/filters to be executed.
-     *
-     * @var array
-     */
-    protected $driverChain = [];
-
-    /**
      * Selects a renderer-driver to be applied on a view.
      *
      * @var \Common\Modules\System\View\DriverManager
@@ -206,6 +199,8 @@ class View implements RendererInterface
     {
         $this->renderVars['start'] = microtime(true);
 
+        $this->output = null;
+
         // Store the results here so even if
         // multiple views are called in a view, it won't
         // clean it unless we mean it to.
@@ -225,10 +220,10 @@ class View implements RendererInterface
         {
             $this->renderVars['cacheName'] = $this->renderVars['options']['cache_name'] ?? $this->driverChain[0]['fileName'];
 
-            if ($output = cache($this->renderVars['cacheName']))
+            if ($this->output = cache($this->renderVars['cacheName']))
             {
                 $this->logPerformance($this->renderVars['start'], microtime(true), $this->renderVars['view']);
-                return $output;
+                return $this->output;
             }
         }
 
@@ -244,31 +239,43 @@ class View implements RendererInterface
             $this->data = $this->tempData;
         }
 
-        if ($this->driverChain[0]['extension'] == 'php') {
+        $this->currentDriver = null;
+        $this->currentRenderer = null;
 
-            extract($this->tempData);
+        foreach ($this->driverChain as $this->currentDriver) {
 
-            ob_start();
-            include($this->renderVars['file']); // PHP will be processed
-            $output = ob_get_contents();
-            @ob_end_clean();
+            if ($this->currentDriver['target'] == 'view') {
 
-        } else {
+                if ($this->currentDriver['name'] == 'php') {
 
-            // Call another renderer here.
+                    extract($this->tempData);
 
-            $renderer = $this->driverManager->createRenderer($this->driverChain[0]['name']);
-            $output = $renderer->render($this->renderVars['file'], $this->tempData, $this->driverChain[0]['options']);
+                    ob_start();
+                    include($this->currentDriver['file']); // PHP will be processed
+                    $this->output = ob_get_contents();
+                    @ob_end_clean();
+
+                } else {
+
+                    $this->currentRenderer = $this->driverManager->createRenderer($this->currentDriver['name']);
+                    $this->output = $this->currentRenderer->render($this->currentDriver['file'], $this->tempData, $this->currentDriver['options']);
+                }
+
+            } else {
+
+                $this->currentRenderer = $this->driverManager->createRenderer($this->currentDriver['name']);
+                $this->output = $this->currentRenderer->renderString($this->output, [], $this->currentDriver['options']);
+            }
         }
 
         // When using layouts, the data has already been stored
         // in $this->sections, and no other valid output
-        // is allowed in $output so we'll overwrite it.
+        // is allowed in $this->output so we'll overwrite it.
         if (! is_null($this->layout) && empty($this->currentSection))
         {
             $layoutView   = $this->layout;
             $this->layout = null;
-            $output       = $this->render($layoutView, $options, $saveData);
+            $this->output       = $this->render($layoutView, $options, $saveData);
         }
 
         $this->logPerformance($this->renderVars['start'], microtime(true), $this->renderVars['view']);
@@ -296,8 +303,8 @@ class View implements RendererInterface
                     }
                 }
                 $this->renderVars['file'] = ++$this->viewsCount . ' ' . $this->renderVars['file'];
-                $output                   = '<!-- DEBUG-VIEW START ' . $this->renderVars['file'] . ' -->' . PHP_EOL
-                    . $output . PHP_EOL
+                $this->output                   = '<!-- DEBUG-VIEW START ' . $this->renderVars['file'] . ' -->' . PHP_EOL
+                    . $this->output . PHP_EOL
                     . '<!-- DEBUG-VIEW ENDED ' . $this->renderVars['file'] . ' -->' . PHP_EOL;
             }
         }
@@ -305,12 +312,12 @@ class View implements RendererInterface
         // Should we cache?
         if (isset($this->renderVars['options']['cache']))
         {
-            cache()->save($this->renderVars['cacheName'], $output, (int) $this->renderVars['options']['cache']);
+            cache()->save($this->renderVars['cacheName'], $this->output, (int) $this->renderVars['options']['cache']);
         }
 
         $this->tempData = null;
 
-        return $output;
+        return $this->output;
     }
 
     //--------------------------------------------------------------------
@@ -334,6 +341,8 @@ class View implements RendererInterface
     {
         $start = microtime(true);
 
+        $this->output = null;
+
         $options = $this->driverManager->parseOptions($options);
 
         if (is_null($saveData))
@@ -356,14 +365,14 @@ class View implements RendererInterface
         ob_start();
         $incoming = '?>' . $view;
         eval($incoming);
-        $output = ob_get_contents();
+        $this->output = ob_get_contents();
         @ob_end_clean();
 
         $this->logPerformance($start, microtime(true), $this->excerpt($view));
 
         $this->tempData = null;
 
-        return $output;
+        return $this->output;
     }
 
     //--------------------------------------------------------------------
