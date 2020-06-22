@@ -229,6 +229,8 @@ class Twig
             $functions = [];
         }
 
+        $loadedFunctions = [];
+
         foreach ($functions as $item) {
 
             if (!is_array($item)) {
@@ -246,25 +248,36 @@ class Twig
                 case 1:
 
                     $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[0]));
+                    $loadedFunctions[] = $item[0];
                     break;
 
                 case 2:
 
                     $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[1]));
+                    $loadedFunctions[] = $item[0];
                     break;
 
                 case 3:
 
                     $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[1], $item[2]));
+                    $loadedFunctions[] = $item[0];
                     break;
 
                 default:
 
                     if ($item[3] !== false) {
                         $this->renderer->addFunction(new \Twig\TwigFunction($item[0], $item[1], $item[2]));
+                        $loadedFunctions[] = $item[0];
                     }
 
                     break;
+            }
+        }
+
+        if (!empty($options['debug'])) {
+
+            if (!in_array('print_d', $loadedFunctions)) {
+                $this->renderer->addFunction(new \Twig\TwigFunction('print_d', 'print_d', ['is_safe' => ['html']]));
             }
         }
     }

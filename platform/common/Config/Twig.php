@@ -43,10 +43,7 @@ class Twig extends \Common\Modules\Twig\Config\Twig
 
         // Functions ---------------------------------------------------------
 
-        $this->functions = [
-            //['print_d', 'print_d', ['is_safe' => ['html']], $this->debug],
-            ['print_d', 'print_d', ['is_safe' => ['html']]],
-        ];
+        $this->functions = [];
 
         // Filters -----------------------------------------------------------
 
