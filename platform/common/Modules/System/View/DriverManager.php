@@ -179,11 +179,25 @@ class DriverManager
             : null;
     }
 
-    public function getFileExtensions($driverName = null)
+    public function getFileExtensions($driverName = null, $flat = false)
     {
         $driverName = (string) $driverName;
 
         if ($driverName == '') {
+
+            if ($flat) {
+
+                $result = [];
+
+                foreach (self::$sharedConfig['fileExtensions'] as $key => $extensions) {
+
+                    foreach ($extensions as $extension) {
+                        $result[] = $extension;
+                    }
+                }
+
+                return $result;
+            }
 
             return self::$sharedConfig['fileExtensions'];
         }
@@ -261,7 +275,7 @@ class DriverManager
             if (preg_match('/.*\.('.$k.')$/', $view, $matches)) {
 
                 $detectedExtension = $matches[1];
-                $detectedViewName = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($view, PATHINFO_FILENAME));
+                $detectedViewName = preg_replace('/(.*)\.'.$k.'$/', '$1', $view);
                 $detectedDriverName = $value;
 
                 return $detectedDriver;
@@ -326,98 +340,142 @@ class DriverManager
         return $driverOptions;
     }
 
-    public function parseViewOptions(string $view, array $options = null, bool $saveData = null)
+    protected function findView($fileName, $extensions, string $viewPath, $loader)
     {
-        $originalOptions = $options;
-        $driverChain = $this->parseDriverOptions($options);
+        $result = [];
 
-        // This is to be the first driver from the chain.
-        $driver = null;
-        $driverName = null;
+        $view = null;
+        $file = null;
+        $found = false;
 
-        if (!empty($driverChain)) {
+        foreach ($extensions as $extension) {
 
-            if ($driverChain[0]['hasFileExtension']) {
+            $view = $fileName.'.'.$extension;
 
-                $driver = $driverChain[0];
-                $driverName = $driver['name'];
-                $driverChain = array_slice($driverChain, 1);
+            $file = $viewPath . $view;
+
+            if (!is_file($file)) {
+                $file = $loader->locateFile($view, 'Views', $extension);
+            }
+
+            if ($file != '') {
+
+                // locateFile will return an empty string if the file cannot be found.
+                $found = true;
+                break;
             }
         }
 
-        $viewExtension = pathinfo($view, PATHINFO_EXTENSION);
-        $viewHasExtension = $viewExtension != '' && $viewExtension != 'html';
-
-        $detectedDriver = $this->detectDriverFromFilename($view);
-
-        $detectedDriverName = $detectedDriver['detectedDriverName'];
-        $detectedViewName = $detectedDriver['detectedViewName'];
-        $detectedExtension = $detectedDriver['detectedExtension'];
-
-        if (
-            $viewHasExtension
-            &&
-            $detectedDriverName != ''
-            &&
-            $driverName != ''
-            &&
-            $detectedDriverName != $driverName
-        ) {
-
-            // Filename and options target different drivers.
-            throw \CodeIgniter\View\Exceptions\ViewException\ViewException::forInvalidFile((string) $view);
+        if (!$found) {
+            throw \CodeIgniter\View\Exceptions\ViewException::forInvalidFile((string) $fileName);
         }
 
-        $fileName = $detectedViewName;
+        $driverName = $extension != 'php'
+            ? $this->getDriversByFileExtensions($extension)
+            : 'php';
 
-        if ($detectedDriverName != '' && $detectedExtension != '') {
+        $result['name'] = $driverName;
+        $result['type'] = $driverName != 'php' ? $this->getDriverType($driverName) : 'renderer';
+        $result['hasFileExtension'] = $driverName != 'php' ? $this->hasFileExtension($driverName) : true;
+        $result['options'] = [];
+        $result['view'] = $fileName;
+        $result['viewName'] = $view;
+        $result['extension'] = $extension;
+        $result['file'] = $file;
+        $result['path'] = rtrim(str_replace('\\', '/', realpath(dirname($result['file']))), '/').'/';
+        $result['target'] = 'view';
 
-            $extensions = [$detectedExtension];
+        return $result;
+    }
 
-            if ($driverName == '') {
+    public function getDriverChain(string $target, array $options = null, string $view = null, string $viewPath = null, $loader = null)
+    {
+        if (!in_array($target, ['view', 'string'])) {
+            throw new \InvalidArgumentException('The $target argument should be \'view\' or \'string\'.');
+        }
 
-                $driver = [
-                    'name' => $detectedDriverName,
-                    'type' => $this->getDriverType($detectedDriverName),
-                    'hasFileExtension' => $this->hasFileExtension($detectedDriverName),
-                    'options' => []
-                ];
+        if ($target == 'view') {
+
+            if (is_null($viewPath)) {
+
+                $paths = config('Paths');
+
+                $viewPath = $paths->viewDirectory;
+                $viewPath = rtrim($viewPath, '/ ') . '/';
             }
 
-        } elseif ($driverName != '') {
-
-            $extensions = $this->getFileExtensions($driverName);
+            $loader = is_null($loader) ? Services::locator() : $loader;
 
         } else {
 
-            $extensions = [];
-
-            if ($detectedExtension != 'php') {
-
-                $allExtensions = $this->getFileExtensions();
-
-                foreach ($allExtensions as $key => $value) {
-
-                    foreach ($value as $ext) {
-                        $extensions[] = $ext;
-                    }
-                }
-            }
-
-            $extensions[] = 'php';
+            // Clear non-relevant parameters, just in case.
+            $view = null;
+            unset($viewPath);
+            unset($loader);
         }
 
-        $result = compact(
-            'originalOptions',
-            'options',
-            'saveData',
-            'driverChain',
-            'driver',
-            'fileName',
-            'extensions'
-        );
+        $list = $this->parseDriverOptions($options);
 
-        return $result;
+        if ($target == 'view') {
+
+            if (empty($list)) {
+
+                $list[] = $this->findView(
+                    pathinfo($view, PATHINFO_FILENAME),
+                    array_merge(['php'], $this->getFileExtensions(null, true)),
+                    $viewPath,
+                    $loader
+                );
+
+            } else {
+
+                if (!in_array($list[0]['type'], ['renderer', 'parser'])) {
+
+                    $list = array_merge(
+                        $this->findView(
+                            pathinfo($view, PATHINFO_FILENAME),
+                            array_merge(['php'], $this->getFileExtensions(null, true)),
+                            $viewPath,
+                            $loader
+                        ),
+                        $list
+                    );
+
+                } else {
+
+                    $detectedDriver = $this->detectDriverFromFilename($view);
+                    $detectedDriverName = $detectedDriver['detectedDriverName'];
+                    $detectedViewName = $detectedDriver['detectedViewName'];
+                    $detectedExtension = $detectedDriver['detectedExtension'];
+
+                    if ($detectedDriverName !=  '' && $detectedDriverName != $list[0]['name']) {
+
+                        // Filename and options target different drivers.
+                        throw \CodeIgniter\View\Exceptions\ViewException\ViewException::forInvalidFile((string) $view);
+                    }
+
+                    $list[0] = $this->findView(
+                        pathinfo($view, PATHINFO_FILENAME),
+                        $detectedDriverName != '' && $detectedExtension != ''
+                            ? [$detectedExtension]
+                            : $this->getFileExtensions($list[0]['name']),
+                        $viewPath,
+                        $loader
+                    );
+                }
+            }
+        }
+
+        foreach ($list as & $item) {
+
+            if (!isset($item['target']) || $item['target'] == 0) {
+                $item['target'] = 'string';
+            }
+        }
+
+        unset($item);
+
+        return $list;
     }
 
     public function createRenderer($driverName)
@@ -430,6 +488,11 @@ class DriverManager
 
         if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {
             throw new \InvalidArgumentException('Invalid renderer-driver name has been provided.');
+        }
+
+        if ($driverName == 'php') {
+
+            return new \Common\Modules\System\View\PHP();
         }
 
         $class = (string) $this->getDriverClass($driverName);

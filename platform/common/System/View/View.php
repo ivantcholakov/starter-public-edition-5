@@ -151,11 +151,11 @@ class View implements RendererInterface
     protected $currentSection;
 
     /**
-     * Holds temporary data within an isolated context.
+     * Holds a list about renderes/parsers/filters to be executed.
      *
      * @var array
      */
-    protected $viewOptions = [];
+    protected $driverChain = [];
 
     /**
      * Selects a renderer-driver to be applied on a view.
@@ -214,16 +214,16 @@ class View implements RendererInterface
             $saveData = $this->saveData;
         }
 
-        $this->viewOptions = $this->findView($this->driverManager->parseViewOptions($view, $options, $saveData));
+        $this->driverChain = $this->driverManager->getDriverChain('view', $options, $view, $this->viewPath, $this->loader);
 
-        $this->renderVars['view']    = $this->viewOptions['view'];
-        $this->renderVars['options'] = $this->viewOptions['options'];
-        $this->renderVars['file']    = $this->viewOptions['file'];
+        $this->renderVars['view']    = $this->driverChain[0]['view'];
+        $this->renderVars['options'] = $options;
+        $this->renderVars['file']    = $this->driverChain[0]['file'];
 
         // Was it cached?
         if (isset($this->renderVars['options']['cache']))
         {
-            $this->renderVars['cacheName'] = $this->renderVars['options']['cache_name'] ?? $this->viewOptions['fileName'];
+            $this->renderVars['cacheName'] = $this->renderVars['options']['cache_name'] ?? $this->driverChain[0]['fileName'];
 
             if ($output = cache($this->renderVars['cacheName']))
             {
@@ -244,7 +244,7 @@ class View implements RendererInterface
             $this->data = $this->tempData;
         }
 
-        if ($this->viewOptions['extension'] == 'php') {
+        if ($this->driverChain[0]['extension'] == 'php') {
 
             extract($this->tempData);
 
@@ -257,8 +257,8 @@ class View implements RendererInterface
 
             // Call another renderer here.
 
-            $renderer = $this->driverManager->createRenderer($this->viewOptions['driver']['name']);
-            $output = $renderer->render($this->renderVars['file'], $this->tempData, $this->viewOptions['driver']['options']);
+            $renderer = $this->driverManager->createRenderer($this->driverChain[0]['name']);
+            $output = $renderer->render($this->renderVars['file'], $this->tempData, $this->driverChain[0]['options']);
         }
 
         // When using layouts, the data has already been stored
@@ -311,61 +311,6 @@ class View implements RendererInterface
         $this->tempData = null;
 
         return $output;
-    }
-
-    protected function findView(array $viewOptions)
-    {
-        extract($viewOptions);
-
-        $view = null;
-        $file = null;
-        $found = false;
-
-        foreach ($extensions as $extension) {
-
-            $view = $fileName.'.'.$extension;
-
-            $file = $this->viewPath . $view;
-
-            if (!is_file($file)) {
-                $file = $this->loader->locateFile($view, 'Views', $extension);
-            }
-
-            if ($file != '') {
-
-                // locateFile will return an empty string if the file cannot be found.
-                $found = true;
-                break;
-            }
-        }
-
-        if (!$found) {
-            throw ViewException::forInvalidFile((string) $fileName);
-        }
-
-        if ($extension != 'php' && empty($driver)) {
-
-            $driverName = $this->driverManager->getDriversByFileExtensions($extension);
-
-            if ($driverName != '') {
-
-                $driver = [
-                    'name' => $driverName,
-                    'type' => $this->driverManager->getDriverType($driverName),
-                    'hasFileExtension' => $this->driverManager->hasFileExtension($driverName),
-                    'options' => []
-                ];
-
-                $viewOptions['driver'] = $driver;
-            }
-        }
-
-        $viewOptions['extension'] = $extension;
-        $viewOptions['view'] = $view;
-        $viewOptions['file'] = $file;
-        $viewOptions['path'] = rtrim(str_replace('\\', '/', realpath(dirname($viewOptions['file']))), '/').'/';
-
-        return $viewOptions;
     }
 
     //--------------------------------------------------------------------
