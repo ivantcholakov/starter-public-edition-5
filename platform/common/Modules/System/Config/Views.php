@@ -15,7 +15,7 @@ class Views extends BaseConfig
 //            'mustache',
 //            'handlebars',
             'markdown',
-//            'textile',
+            'textile',
         ];
 
         $this->config['fileExtensions'] = [
@@ -23,7 +23,7 @@ class Views extends BaseConfig
 //            'mustache' => 'mustache',
 //            'handlebars' => ['handlebars', 'hbs'],
             'markdown' => ['md', 'markdown', 'fbmd'],
-//            'textile' => 'textile',
+            'textile' => 'textile',
         ];
 
         // 'renderer', 'parser' - Engines that use templates with standard file extensions.
@@ -35,12 +35,13 @@ class Views extends BaseConfig
 //            'mustache' => 'renderer',
 //            'handlebars' => 'renderer',
             'markdown' => 'parser',
-//            'textile' => 'parser',
+            'textile' => 'parser',
         ];
 
         $this->config['driverClasses'] = [
             'twig' => '\Common\Modules\Twig\Twig',
             'markdown' => '\Common\Modules\Markdown\Markdown',
+            'textile' => '\Common\Modules\Textile\Textile',
         ];
     }
 
