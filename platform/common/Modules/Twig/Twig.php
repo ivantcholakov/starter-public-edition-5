@@ -12,6 +12,8 @@ class Twig
 
     public function render($template, array $data = null, array $options = null)
     {
+        $template = (string) $template;
+
         if (empty($data)) {
             $data = [];
         }
@@ -62,6 +64,8 @@ class Twig
 
     public function renderString($template, array $data = null, array $options = null)
     {
+        $template = (string) $template;
+
         if (empty($data)) {
             $data = [];
         }

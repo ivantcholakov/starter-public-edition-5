@@ -468,7 +468,7 @@ class DriverManager
 
         foreach ($list as & $item) {
 
-            if (!isset($item['target']) || $item['target'] == 0) {
+            if (!isset($item['target']) || $item['target'] == '') {
                 $item['target'] = 'string';
             }
         }
