@@ -19,7 +19,7 @@ class Views extends BaseConfig
         ];
 
         $this->config['fileExtensions'] = [
-            'twig' => ['html.twig', 'twig'],
+            'twig' => 'twig',
 //            'mustache' => 'mustache',
 //            'handlebars' => ['handlebars', 'hbs'],
             'markdown' => ['md', 'markdown', 'fbmd'],
