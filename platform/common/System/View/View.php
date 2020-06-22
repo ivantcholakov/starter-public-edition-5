@@ -199,7 +199,7 @@ class View implements RendererInterface
     {
         $this->renderVars['start'] = microtime(true);
 
-        $this->output = null;
+        $this->output = '';
 
         // Store the results here so even if
         // multiple views are called in a view, it won't
@@ -244,7 +244,7 @@ class View implements RendererInterface
 
         foreach ($this->driverChain as $this->currentDriver) {
 
-            if ($this->currentDriver['target'] == 'view') {
+            if (!empty($this->currentDriver['first'])) {
 
                 if ($this->currentDriver['name'] == 'php') {
 
@@ -275,7 +275,7 @@ class View implements RendererInterface
         {
             $layoutView   = $this->layout;
             $this->layout = null;
-            $this->output       = $this->render($layoutView, $options, $saveData);
+            $this->output = $this->render($layoutView, $options, $saveData);
         }
 
         $this->logPerformance($this->renderVars['start'], microtime(true), $this->renderVars['view']);
@@ -341,9 +341,9 @@ class View implements RendererInterface
     {
         $start = microtime(true);
 
-        $this->output = null;
+        $this->output = '';
 
-        $options = $this->driverManager->parseOptions($options);
+        $this->driverChain = $this->driverManager->getDriverChain('string', $options, $view);
 
         if (is_null($saveData))
         {
@@ -360,13 +360,28 @@ class View implements RendererInterface
             $this->data = $this->tempData;
         }
 
-        extract($this->tempData);
+        if (empty($this->driverChain)) {
 
-        ob_start();
-        $incoming = '?>' . $view;
-        eval($incoming);
-        $this->output = ob_get_contents();
-        @ob_end_clean();
+            extract($this->tempData);
+
+            ob_start();
+            $incoming = '?>' . $view;
+            eval($incoming);
+            $this->output = ob_get_contents();
+            @ob_end_clean();
+
+        } else {
+
+            foreach ($this->driverChain as $this->currentDriver) {
+
+                $this->currentRenderer = $this->driverManager->createRenderer($this->currentDriver['name']);
+
+                if (!empty($this->currentDriver['first'])) {
+                    $this->output = $this->currentRenderer->renderString($this->output, !empty($this->currentDriver['first']) ? $this->tempData : [], $this->currentDriver['options']);
+                }
+            }
+
+        }
 
         $this->logPerformance($start, microtime(true), $this->excerpt($view));
 

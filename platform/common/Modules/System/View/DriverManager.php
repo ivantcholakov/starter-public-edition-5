@@ -466,14 +466,19 @@ class DriverManager
             }
         }
 
-        foreach ($list as & $item) {
+        if (!empty($list)) {
 
-            if (!isset($item['target']) || $item['target'] == '') {
-                $item['target'] = 'string';
+            foreach ($list as & $item) {
+
+                if (!isset($item['target']) || $item['target'] == '') {
+                    $item['target'] = 'string';
+                }
             }
-        }
 
-        unset($item);
+            unset($item);
+
+            $list[0]['first'] = true;
+        }
 
         return $list;
     }
