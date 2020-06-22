@@ -404,7 +404,7 @@ class DriverManager
                 $viewPath = rtrim($viewPath, '/ ') . '/';
             }
 
-            $loader = is_null($loader) ? Services::locator() : $loader;
+            $loader = is_null($loader) ? \Config\Services::locator() : $loader;
 
         } else {
 

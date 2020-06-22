@@ -2,8 +2,6 @@
 
 namespace Common\Modules\System\View;
 
-// Experimental.
-
 class PHP
 {
     public function __construct()

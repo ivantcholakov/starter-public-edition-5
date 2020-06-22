@@ -12,7 +12,7 @@ class Home extends BaseController
             $readme = render_string(file_get_contents($readme_file), null, 'markdown');
         }
 
-        return view('welcome_message', compact('readme'));
+        return render('welcome_message', compact('readme'));
     }
 
     //--------------------------------------------------------------------

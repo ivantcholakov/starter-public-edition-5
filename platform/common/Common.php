@@ -66,3 +66,52 @@ if (!function_exists('render_string'))
     }
 
 }
+
+if (!function_exists('render'))
+{
+    /**
+     * Renders a given view without messing up with other templates data.
+     *
+     * @param string $view
+     * @param array  $data
+     * @param string|array $options - driver-specific options.
+     *
+     * @return string
+     */
+    function render(string $view, $data = [], $options = []): string
+    {
+        $output = '';
+
+        if (!is_array($data)) {
+
+            $data = (string) $data;
+            $data = $data != '' ? [$data] : [];
+        }
+
+        if (!is_array($options)) {
+
+            $options = (string) $options;
+            $options = $options != '' ? [$options] : [];
+        }
+
+        $driverManager = new \Common\Modules\System\View\DriverManager();
+        $driverChain = $driverManager->getDriverChain('view', $options, $view);
+
+        $currentDriver = null;
+        $currentRenderer = null;
+
+        foreach ($driverChain as $currentDriver) {
+
+            $currentRenderer = $driverManager->createRenderer($currentDriver['name']);
+
+            if (!empty($currentDriver['first'])) {
+                $output = $currentRenderer->render($currentDriver['file'], $data, $currentDriver['options']);
+            } else {
+                $output = $currentRenderer->renderString($output, [], $currentDriver['options']);
+            }
+        }
+
+        return (string) $output;
+    }
+
+}
