@@ -239,7 +239,7 @@ class View implements RendererInterface
             $this->tempData = $this->data;
         }
 
-        if ($saveData)
+        if (isset($this->tempData['saveData']) && $this->tempData['saveData'])
         {
             $this->data = $this->tempData;
         }
@@ -346,12 +346,12 @@ class View implements RendererInterface
             $this->tempData = $this->data;
         }
 
-        extract($this->tempData);
-
-        if ($saveData)
+        if (isset($this->tempData['saveData']) && $this->tempData['saveData'])
         {
             $this->data = $this->tempData;
         }
+
+        extract($this->tempData);
 
         ob_start();
         $incoming = '?>' . $view;
