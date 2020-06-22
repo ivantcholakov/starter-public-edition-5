@@ -26,6 +26,7 @@
         "twig/twig": "^3.0",
         "twig/string-extra": "^3.0",
         "erusev/parsedown": "^1.7",
-        "erusev/parsedown-extra": "^0.8.1"
+        "erusev/parsedown-extra": "^0.8.1",
+        "netcarver/textile": "^3.7"
     }
 }

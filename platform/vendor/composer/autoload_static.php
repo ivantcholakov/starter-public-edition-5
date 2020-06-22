@@ -56,6 +56,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         array (
             'Psr\\Log\\' => 8,
         ),
+        'N' => 
+        array (
+            'Netcarver\\Textile\\' => 18,
+        ),
         'L' => 
         array (
             'Laminas\\ZendFrameworkBridge\\' => 28,
@@ -151,6 +155,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Netcarver\\Textile\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (
@@ -516,6 +524,9 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Laminas\\ZendFrameworkBridge\\RewriteRules' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/RewriteRules.php',
         'Locale' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Locale.php',
         'MessageFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/MessageFormatter.php',
+        'Netcarver\\Textile\\DataBag' => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile/DataBag.php',
+        'Netcarver\\Textile\\Parser' => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile/Parser.php',
+        'Netcarver\\Textile\\Tag' => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile/Tag.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NumberFormatter' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/NumberFormatter.php',
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',

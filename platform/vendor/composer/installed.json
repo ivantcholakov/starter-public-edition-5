@@ -326,6 +326,61 @@
         ]
     },
     {
+        "name": "netcarver/textile",
+        "version": "v3.7.6",
+        "version_normalized": "3.7.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/textile/php-textile.git",
+            "reference": "1846fd5aeace2a0dd57c4f770f693d12bcd7fa26"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/textile/php-textile/zipball/1846fd5aeace2a0dd57c4f770f693d12bcd7fa26",
+            "reference": "1846fd5aeace2a0dd57c4f770f693d12bcd7fa26",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "php-coveralls/php-coveralls": "2.1.*",
+            "phpunit/phpunit": "5.7.*",
+            "squizlabs/php_codesniffer": "3.*",
+            "symfony/yaml": "2.4.*"
+        },
+        "time": "2020-01-08T21:13:37+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.7-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Netcarver\\Textile\\": "src/Netcarver/Textile/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Textile markup language parser",
+        "homepage": "https://github.com/textile/php-textile",
+        "keywords": [
+            "document",
+            "format",
+            "html",
+            "language",
+            "markup",
+            "parser",
+            "php-textile",
+            "plaintext",
+            "textile"
+        ]
+    },
+    {
         "name": "paragonie/random_compat",
         "version": "v9.99.99",
         "version_normalized": "9.99.99.0",
