@@ -429,7 +429,7 @@ class DriverManager
 
             } else {
 
-                if (!in_array($list[0]['type'], ['renderer', 'parser'])) {
+                if (!$list[0]['hasExtension']) {
 
                     $list = array_merge(
                         $this->findView(
