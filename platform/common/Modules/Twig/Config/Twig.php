@@ -16,7 +16,7 @@ class Twig extends BaseConfig
         $this->config['charset'] = 'UTF-8';
         $this->config['strict_variables'] = false;
         $this->config['autoescape'] = 'html';
-        $this->config['cache'] = false;
+        $this->config['cache'] = ENVIRONMENT === 'production' ? TWIG_CACHE : FALSE;
         $this->config['auto_reload'] = null;
         $this->config['optimizations'] = -1;
 

@@ -64,6 +64,8 @@ platform/writable/uploads/*
 
 platform/writable/debugbar/*
 
+platform/writable/twig/*
+
 php_errors.log
 
 #-------------------------
