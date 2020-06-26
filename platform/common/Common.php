@@ -14,8 +14,10 @@
  * @link: https://codeigniter4.github.io/CodeIgniter4/
  */
 
-if (!function_exists('render_string'))
-{
+// Renderers -------------------------------------------------------------------
+
+if (!function_exists('render_string')) {
+
     /**
      * Renders a given string template.
      *
@@ -67,8 +69,8 @@ if (!function_exists('render_string'))
 
 }
 
-if (!function_exists('render'))
-{
+if (!function_exists('render')) {
+
     /**
      * Renders a given view without messing up with other templates data.
      *
@@ -115,3 +117,60 @@ if (!function_exists('render'))
     }
 
 }
+
+// Global Registry -------------------------------------------------------------
+
+if (!function_exists('registry')) {
+
+    function registry($key)
+    {
+        return \Config\Services::registry(true)->get($key);
+    }
+
+}
+
+if (!function_exists('registry_all')) {
+
+    function registry_all()
+    {
+        return \Config\Services::registry(true)->getAll();
+    }
+
+}
+
+if (!function_exists('registry_set')) {
+
+    function registry_set($key, $value = null)
+    {
+        \Config\Services::registry(true)->set($key, $value);
+    }
+
+}
+
+if (!function_exists('registry_has')) {
+
+    function registry_has($key)
+    {
+        return \Config\Services::registry(true)->has($key);
+    }
+
+}
+
+if (!function_exists('registry_delete')) {
+
+    function registry_delete($key)
+    {
+        return \Config\Services::registry(true)->delete($key);
+    }
+
+}
+
+if (!function_exists('registry_destroy')) {
+
+    function registry_destroy()
+    {
+        \Config\Services::registry(true)->destroy();
+    }
+
+}
+

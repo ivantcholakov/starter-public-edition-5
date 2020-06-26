@@ -48,7 +48,9 @@ class Twig extends BaseConfig
             // Static Class Methods and Properties
             ['call_static', ['\Common\Modules\Twig\Extension\StaticExtension', 'call_static']],
             ['get_static', ['\Common\Modules\Twig\Extension\StaticExtension', 'get_static']],
-
+            // Platform Routines
+            'registry',
+            // URL/URI Handling
             'base_url',
             'site_url',
         ];

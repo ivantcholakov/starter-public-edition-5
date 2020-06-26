@@ -30,4 +30,15 @@ class Services extends CoreServices
     //
     //        return new \CodeIgniter\Example();
     //    }
+
+    public static function registry($getShared = true)
+    {
+        if ($getShared) {
+
+            return static::getSharedInstance('registry');
+        }
+
+        return new \Common\Libraries\Registry();
+    }
+
 }
