@@ -167,6 +167,7 @@ if (!function_exists('registry_delete')) {
 
 if (!function_exists('registry_destroy')) {
 
+    // Use this function for testing purposes only.
     function registry_destroy()
     {
         \Config\Services::registry(true)->destroy();

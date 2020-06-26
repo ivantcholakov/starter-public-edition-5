@@ -4,6 +4,8 @@ class Home extends BaseController
 {
     public function index()
     {
+        registry_set('test', 'Registry Test');
+
         $readme = null;
         $readme_file = realpath(PLATFORMPATH.'../'.'README.md');
 
