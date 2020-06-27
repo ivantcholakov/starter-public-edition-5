@@ -4,7 +4,7 @@ class Home extends BaseController
 {
     public function index()
     {
-        registry_set('test', 'Registry Test');
+        registry_set('test', render_string('Hello, {{ name }}!', ['name' => 'Ivan'], ['mustache']));
 
         $readme = null;
         $readme_file = realpath(PLATFORMPATH.'../'.'README.md');
