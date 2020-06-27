@@ -66,6 +66,7 @@ platform/writable/debugbar/*
 
 platform/writable/twig/*
 platform/writable/mustache/*
+platform/writable/handlebars/*
 
 php_errors.log
 
