@@ -75,3 +75,8 @@ defined('TWIG_CACHE') || define('TWIG_CACHE', WRITABLEPATH.'twig/'.APPNAME.'/');
 // Mustache Cache Directory
 //--------------------------------------------------------------------
 defined('MUSTACHE_CACHE') || define('MUSTACHE_CACHE', WRITABLEPATH.'mustache/'.APPNAME.'/');
+
+//--------------------------------------------------------------------
+// Handlebars Cache Directory
+//--------------------------------------------------------------------
+defined('HANDLEBARS_CACHE') || define('HANDLEBARS_CACHE', WRITABLEPATH.'handlebars/'.APPNAME.'/');
