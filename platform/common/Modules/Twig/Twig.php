@@ -6,10 +6,6 @@ class Twig
 {
     protected $renderer;
 
-    public function __construct()
-    {
-    }
-
     public function render($template, array $data = null, array $options = null)
     {
         $template = (string) $template;

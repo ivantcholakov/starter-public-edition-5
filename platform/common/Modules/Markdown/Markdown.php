@@ -6,10 +6,6 @@ class Markdown
 {
     protected $renderer;
 
-    public function __construct()
-    {
-    }
-
     public function render($template, array $data = null, array $options = null)
     {
         $this->renderer = new \ParsedownExtra();
