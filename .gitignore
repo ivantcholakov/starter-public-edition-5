@@ -65,6 +65,7 @@ platform/writable/uploads/*
 platform/writable/debugbar/*
 
 platform/writable/twig/*
+platform/writable/mustache/*
 
 php_errors.log
 
