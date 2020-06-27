@@ -36,11 +36,11 @@ class Mustache extends BaseConfig
 
         $this->config['logger'] = null;
 
-        $this->config['strict_callables'] = null;
+        $this->config['strict_callables'] = false;
 
         $this->config['delimiters'] = null;
 
-        $this->config['pragmas'] = null;
+        $this->config['pragmas'] = [];
     }
 
     //------------------------------------------------------------------------
