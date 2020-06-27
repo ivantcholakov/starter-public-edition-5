@@ -31,6 +31,10 @@ class Mustache
             }
         }
 
+        if (array_key_exists('charset', $options)) {
+            $options['charset'] = strtoupper($options['charset']);
+        }
+
         $base_dir = pathinfo($template, PATHINFO_DIRNAME);
         $filename = pathinfo($template, PATHINFO_FILENAME);
         $extension = pathinfo($template, PATHINFO_EXTENSION);
@@ -79,6 +83,10 @@ class Mustache
             } else {
                 unset($options['cache']);
             }
+        }
+
+        if (array_key_exists('charset', $options)) {
+            $options['charset'] = strtoupper($options['charset']);
         }
 
         $options['loader'] = new \Mustache_Loader_StringLoader();
