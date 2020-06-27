@@ -9,4 +9,5 @@ return array(
     'ParsedownExtra' => array($vendorDir . '/erusev/parsedown-extra'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),
+    'Handlebars' => array($vendorDir . '/salesforce/handlebars-php/src'),
 );

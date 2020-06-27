@@ -210,6 +210,13 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
                 0 => __DIR__ . '/..' . '/mustache/mustache/src',
             ),
         ),
+        'H' => 
+        array (
+            'Handlebars' => 
+            array (
+                0 => __DIR__ . '/..' . '/salesforce/handlebars-php/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -547,6 +554,21 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Composer\\Installers\\YawikInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/YawikInstaller.php',
         'Composer\\Installers\\ZendInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZendInstaller.php',
         'Composer\\Installers\\ZikulaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZikulaInstaller.php',
+        'Handlebars\\Autoloader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Autoloader.php',
+        'Handlebars\\Cache' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache.php',
+        'Handlebars\\Cache\\APC' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache/APC.php',
+        'Handlebars\\Cache\\Disk' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache/Disk.php',
+        'Handlebars\\Cache\\Dummy' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache/Dummy.php',
+        'Handlebars\\Context' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Context.php',
+        'Handlebars\\Handlebars' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Handlebars.php',
+        'Handlebars\\HandlebarsString' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/HandlebarsString.php',
+        'Handlebars\\Helpers' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Helpers.php',
+        'Handlebars\\Loader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Loader.php',
+        'Handlebars\\Loader\\FilesystemLoader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Loader/FilesystemLoader.php',
+        'Handlebars\\Loader\\StringLoader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Loader/StringLoader.php',
+        'Handlebars\\Parser' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Parser.php',
+        'Handlebars\\Template' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Template.php',
+        'Handlebars\\Tokenizer' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Tokenizer.php',
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/IntlDateFormatter.php',
         'IntlException' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/IntlException.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',

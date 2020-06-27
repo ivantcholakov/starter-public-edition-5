@@ -42,6 +42,7 @@
         "erusev/parsedown-extra": "^0.8.1",
         "netcarver/textile": "^3.7",
         "oomphinc/composer-installers-extender": "^1.1",
-        "npm-asset/jquery": "1.12.4"
+        "npm-asset/jquery": "1.12.4",
+        "salesforce/handlebars-php": "^2.3"
     }
 }
