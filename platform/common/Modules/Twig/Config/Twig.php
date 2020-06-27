@@ -12,6 +12,8 @@ class Twig extends BaseConfig
 
         // Twig Environment --------------------------------------------------
 
+        // See https://twig.symfony.com/doc/3.x/api.html
+
         // "When set to true, the generated templates have a __toString() method
         // that you can use to display the generated nodes (default to false)."
         $this->config['debug'] = ENVIRONMENT !== 'production';
