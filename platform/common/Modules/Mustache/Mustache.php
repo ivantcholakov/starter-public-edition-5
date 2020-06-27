@@ -6,7 +6,7 @@ class Mustache
 {
     protected $renderer;
 
-    public function render($template, array $data = null, array $options = null)
+    public function render($template, $data = null, array $options = null)
     {
         $template = (string) $template;
 
@@ -60,7 +60,7 @@ class Mustache
         return $this->renderer->render($filename, $data);
     }
 
-    public function renderString($template, array $data = null, array $options = null)
+    public function renderString($template, $data = null, array $options = null)
     {
         $template = (string) $template;
 

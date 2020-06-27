@@ -290,6 +290,10 @@ class DriverManager
 
     public function parseDriverOptions($options)
     {
+        if (is_object($options)) {
+            $options = get_object_vars($options);
+        }
+
         if (!is_array($options)) {
 
             $options = (string) $options;
@@ -388,7 +392,7 @@ class DriverManager
         return $result;
     }
 
-    public function getDriverChain(string $target, array $options = null, string $view = null, string $viewPath = null, $loader = null)
+    public function getDriverChain(string $target, $options = null, string $view = null, string $viewPath = null, $loader = null)
     {
         if (!in_array($target, ['view', 'string'])) {
             throw new \InvalidArgumentException('The $target argument should be \'view\' or \'string\'.');

@@ -375,7 +375,7 @@ class View implements RendererInterface
             foreach ($this->driverChain as $this->currentDriver) {
 
                 $this->currentRenderer = $this->driverManager->createRenderer($this->currentDriver['name']);
-                $this->output = $this->currentRenderer->renderString($this->output, !empty($this->currentDriver['first']) ? $this->tempData : [], $this->currentDriver['options']);
+                $this->output = $this->currentRenderer->renderString(!empty($this->currentDriver['first']) ? $view : $this->output, !empty($this->currentDriver['first']) ? $this->tempData : [], $this->currentDriver['options']);
             }
         }
 

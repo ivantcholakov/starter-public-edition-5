@@ -6,11 +6,15 @@ class Twig
 {
     protected $renderer;
 
-    public function render($template, array $data = null, array $options = null)
+    public function render($template, $data = null, array $options = null)
     {
         $template = (string) $template;
 
-        if (empty($data)) {
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
+        if (empty($data) || !is_array($data)) {
             $data = [];
         }
 
@@ -52,11 +56,15 @@ class Twig
         return $this->renderer->render($basename, $data);
     }
 
-    public function renderString($template, array $data = null, array $options = null)
+    public function renderString($template, $data = null, array $options = null)
     {
         $template = (string) $template;
 
-        if (empty($data)) {
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
+        if (empty($data) || !is_array($data)) {
             $data = [];
         }
 

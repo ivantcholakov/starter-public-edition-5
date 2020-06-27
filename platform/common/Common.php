@@ -32,17 +32,16 @@ if (!function_exists('render_string')) {
      *
      * @return string
      */
-    function render_string(string $stringTemplate, $data = [], $options = []): string
+    function render_string(string $stringTemplate = null, $data = [], $options = []): string
     {
-        $output = $stringTemplate;
+        $stringTemplate = (string) $stringTemplate;
+        $output = '';
 
-        if (!is_array($data)) {
-
-            $data = (string) $data;
-            $data = $data != '' ? [$data] : [];
+        if (!is_array($data) && !is_object($data)) {
+            $data = [];
         }
 
-        if (!is_array($options)) {
+        if (!is_array($options) && !is_object($data)) {
 
             $options = (string) $options;
             $options = $options != '' ? [$options] : [];
@@ -60,7 +59,7 @@ if (!function_exists('render_string')) {
             foreach ($driverChain as $currentDriver) {
 
                 $currentRenderer = $driverManager->createRenderer($currentDriver['name']);
-                $output = $currentRenderer->renderString($output, !empty($currentDriver['first']) ? $data : [], $currentDriver['options']);
+                $output = $currentRenderer->renderString(!empty($currentDriver['first']) ? $stringTemplate : $output, !empty($currentDriver['first']) ? $data : [], $currentDriver['options']);
             }
         }
 
@@ -80,17 +79,16 @@ if (!function_exists('render')) {
      *
      * @return string
      */
-    function render(string $view, $data = [], $options = []): string
+    function render(string $view = null, $data = [], $options = []): string
     {
+        $view = (string) $view;
         $output = '';
 
-        if (!is_array($data)) {
-
-            $data = (string) $data;
-            $data = $data != '' ? [$data] : [];
+        if (!is_array($data) && !is_object($data)) {
+            $data = [];
         }
 
-        if (!is_array($options)) {
+        if (!is_array($options) && !is_object($data)) {
 
             $options = (string) $options;
             $options = $options != '' ? [$options] : [];
