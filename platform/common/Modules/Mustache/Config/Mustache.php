@@ -16,6 +16,8 @@ class Mustache extends BaseConfig
 
         $this->config['cache'] = ENVIRONMENT === 'production' ? MUSTACHE_CACHE : null;
 
+        // "It is strongly recommended that you configure your umask properly
+        // rather than overriding permissions here."
         $this->config['cache_file_mode'] = 0666;
 
         $this->config['cache_lambda_templates'] = null;
