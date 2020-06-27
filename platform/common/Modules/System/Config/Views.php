@@ -13,7 +13,7 @@ class Views extends BaseConfig
         $this->config['validDrivers'] = [
             'twig',
             'mustache',
-//            'handlebars',
+            'handlebars',
             'markdown',
             'textile',
         ];
@@ -21,7 +21,7 @@ class Views extends BaseConfig
         $this->config['fileExtensions'] = [
             'twig' => ['twig', 'html.twig'],
             'mustache' => 'mustache',
-//            'handlebars' => ['handlebars', 'hbs'],
+            'handlebars' => ['handlebars', 'hbs'],
             'markdown' => ['md', 'markdown', 'fbmd'],
             'textile' => 'textile',
         ];
@@ -33,7 +33,7 @@ class Views extends BaseConfig
         $this->config['driverTypes'] = [
             'twig' => 'renderer',
             'mustache' => 'renderer',
-//            'handlebars' => 'renderer',
+            'handlebars' => 'renderer',
             'markdown' => 'parser',
             'textile' => 'parser',
         ];
@@ -41,6 +41,7 @@ class Views extends BaseConfig
         $this->config['driverClasses'] = [
             'twig' => '\Common\Modules\Twig\Twig',
             'mustache' => '\Common\Modules\Mustache\Mustache',
+            'handlebars' => '\Common\Modules\Handlebars\Handlebars',
             'markdown' => '\Common\Modules\Markdown\Markdown',
             'textile' => '\Common\Modules\Textile\Textile',
         ];
