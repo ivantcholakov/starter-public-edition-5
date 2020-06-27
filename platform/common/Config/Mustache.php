@@ -18,6 +18,8 @@ class Mustache extends \Common\Modules\Mustache\Config\Mustache
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
+        $this->cache = ENVIRONMENT === 'production' ? MUSTACHE_CACHE : null;
+
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------

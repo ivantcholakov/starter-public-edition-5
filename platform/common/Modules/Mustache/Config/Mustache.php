@@ -14,9 +14,9 @@ class Mustache extends BaseConfig
 
         $this->config['template_class_prefix'] = '__Mustache_';
 
-        $this->config['cache'] = null;
+        $this->config['cache'] = ENVIRONMENT === 'production' ? MUSTACHE_CACHE : null;
 
-        $this->config['cache_file_mode'] = null;
+        $this->config['cache_file_mode'] = 0666;
 
         $this->config['cache_lambda_templates'] = null;
 
@@ -30,7 +30,7 @@ class Mustache extends BaseConfig
 
         $this->config['escape'] = null;
 
-        $this->config['entity_flags'] = null;
+        $this->config['entity_flags'] = ENT_QUOTES;
 
         $this->config['charset'] = 'UTF-8';
 
