@@ -35,8 +35,16 @@ class Mustache
         $filename = pathinfo($template, PATHINFO_FILENAME);
         $extension = pathinfo($template, PATHINFO_EXTENSION);
 
+        if (array_key_exists('loader', $options) && !is_object($options['loader'])) {
+            unset($options['loader']);
+        }
+
         if (empty($options['loader'])) {
             $options['loader'] = new \Mustache_Loader_FilesystemLoader($base_dir, ['extension' => '.'.$extension]);
+        }
+
+        if (array_key_exists('partials_loader', $options) && !is_object($options['partials_loader'])) {
+            unset($options['partials_loader']);
         }
 
         if (empty($options['partials_loader'])) {
