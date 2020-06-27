@@ -4,9 +4,15 @@ class Home extends BaseController
 {
     public function index()
     {
+        $ivan = json_decode('{"name": "Ivan", "value" : 1000, "in_ca": true}');
+
+        $ivan->taxed_value = function() use ($ivan) {
+            return $ivan->value - ($ivan->value * 0.4);
+        };
+
         registry_set('test', render(
             'test.mustache',
-            ['name' => 'Ivan', 'value' => 1000, 'taxed_value' => 600, 'in_ca' => true]
+            $ivan
         ));
 
         $readme = null;
