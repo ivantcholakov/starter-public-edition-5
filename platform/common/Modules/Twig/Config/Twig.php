@@ -12,12 +12,39 @@ class Twig extends BaseConfig
 
         // Twig Environment --------------------------------------------------
 
+        // "When set to true, the generated templates have a __toString() method
+        // that you can use to display the generated nodes (default to false)."
         $this->config['debug'] = ENVIRONMENT !== 'production';
+
+        // "The charset used by the templates."
         $this->config['charset'] = 'UTF-8';
-        $this->config['strict_variables'] = false;
-        $this->config['autoescape'] = 'html';
-        $this->config['cache'] = ENVIRONMENT === 'production' ? TWIG_CACHE : FALSE;
+
+        // "An absolute path where to store the compiled templates, or false
+        // to disable caching (which is the default)."
+        $this->config['cache'] = ENVIRONMENT === 'production' ? TWIG_CACHE : false;
+
+        // "When developing with Twig, it’s useful to recompile the template whenever
+        // the source code changes. If you don’t provide a value for the auto_reload
+        // option, it will be determined automatically based on the debug value."
         $this->config['auto_reload'] = null;
+
+        // "If set to false, Twig will silently ignore invalid variables (variables
+        // and or attributes/methods that do not exist) and replace them with
+        // a null value. When set to true, Twig throws an exception instead
+        // (default to false)."
+        $this->config['strict_variables'] = false;
+
+        // "Sets the default auto-escaping strategy (name, html, js, css, url, html_attr,
+        // or a PHP callback that takes the template “filename” and returns the escaping
+        // strategy to use – the callback cannot be a function name to avoid collision
+        // with built-in escaping strategies); set it to false to disable auto-escaping.
+        // The name escaping strategy determines the escaping strategy to use for a template
+        // based on the template filename extension (this strategy does not incur any
+        // overhead at runtime as auto-escaping is done at compilation time.)"
+        $this->config['autoescape'] = 'html';
+
+        // "A flag that indicates which optimizations to apply
+        // (default to -1 – all optimizations are enabled; set it to 0 to disable)."
         $this->config['optimizations'] = -1;
 
         // Filesystem Loader -------------------------------------------------

@@ -22,7 +22,7 @@ class Twig extends \Common\Modules\Twig\Config\Twig
 
         $this->debug = ENVIRONMENT !== 'production';
 
-        $this->cache = ENVIRONMENT === 'production' ? TWIG_CACHE : FALSE;
+        $this->cache = ENVIRONMENT === 'production' ? TWIG_CACHE : false;
 
         // Filesystem Loader -------------------------------------------------
 
