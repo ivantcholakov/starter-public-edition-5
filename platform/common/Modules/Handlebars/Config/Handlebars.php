@@ -27,6 +27,10 @@ class Handlebars extends BaseConfig
         // A Handlebars loader instance for partials. Uses a StringLoader if not specified.
         $this->config['partials_loader'] = null;
 
+        // An array of alliases of partial names: [['initial_name' => 'alias'], ...]
+        // The loader for partials would try to locate them by aliases only, if defined.
+        $this->config['partials_alias'] = [];
+
         // An array of helper functions. Normally a function like
         // function ($sender, $name, $arguments), $arguments is unscaped arguments and
         // is a string, not an array.
@@ -37,6 +41,9 @@ class Handlebars extends BaseConfig
 
         // Parametes to pass to the escape function.
         $this->config['escapeArgs'] = [ENT_QUOTES, 'UTF-8'];
+
+        // Enables @data variables (boolean, default: false).
+        $this->config['enableDataVariables'] = false;
     }
 
     //------------------------------------------------------------------------
