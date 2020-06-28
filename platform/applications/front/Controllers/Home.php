@@ -4,7 +4,6 @@ class Home extends BaseController
 {
     public function index()
     {
-        /*
         $ivan = json_decode('{"name": "Ivan", "value" : 1000, "in_ca": true}');
 
         $ivan->taxed_value = function() use ($ivan) {
@@ -12,15 +11,8 @@ class Home extends BaseController
         };
 
         registry_set('test', render(
-            'test.handlebars',
+            'test.mustache',
             $ivan
-        ));
-        */
-
-        registry_set('test', render_string(
-            'Hello, {{name}}!',
-            ['name' => 'Ivan'],
-            'handlebars'
         ));
 
         $readme = null;
