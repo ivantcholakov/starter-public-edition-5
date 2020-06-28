@@ -26,6 +26,12 @@ class Handlebars extends BaseConfig
 
         // A Handlebars loader instance for partials. Uses a StringLoader if not specified.
         $this->config['partials_loader'] = null;
+
+        // An array of helper functions. Normally a function like
+        // function ($sender, $name, $arguments), $arguments is unscaped arguments and
+        // is a string, not an array.
+        $this->config['helpers'] = null;
+
     }
 
     //------------------------------------------------------------------------

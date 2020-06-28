@@ -71,6 +71,14 @@ class Handlebars
             $options['partials_loader'] = new \Handlebars\Loader\FilesystemLoader($base_dir, ['extension' => '.'.$extension]);
         }
 
+        if (array_key_exists('helpers', $options) && !is_array($options['helpers']) && !$options['helpers'] instanceof \Traversable) {
+            unset($options['helpers']);
+        }
+
+        if (!empty($options['helpers'])) {
+            $options['helpers'] = new \Handlebars\Helpers($options['helpers']);
+        }
+
         $this->renderer = new \Handlebars\Handlebars($options);
 
         return $this->renderer->render($filename, $data);
@@ -120,6 +128,14 @@ class Handlebars
 
         unset($options['cache_file_prefix']);
         unset($options['cache_file_suffix']);
+
+        if (array_key_exists('helpers', $options) && !is_array($options['helpers']) && !$options['helpers'] instanceof \Traversable) {
+            unset($options['helpers']);
+        }
+
+        if (!empty($options['helpers'])) {
+            $options['helpers'] = new \Handlebars\Helpers($options['helpers']);
+        }
 
         $this->renderer = new \Handlebars\Handlebars($options);
 
