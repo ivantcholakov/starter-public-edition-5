@@ -11,7 +11,7 @@ class Home extends BaseController
         };
 
         registry_set('test', render(
-            'test.mustache',
+            'test.handlebars',
             $ivan
         ));
 
