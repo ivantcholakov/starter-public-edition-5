@@ -19,6 +19,11 @@ class Handlebars
         }
 
         $config = config('Handlebars')->config;
+
+        if (isset($config['escapeArgs']) && isset($options['escapeArgs'])) {
+            unset($config['escapeArgs']);
+        }
+
         $options = array_merge_recursive_distinct($config, $options);
         unset($config);
 
@@ -97,6 +102,11 @@ class Handlebars
         }
 
         $config = config('Handlebars')->config;
+
+        if (isset($config['escapeArgs']) && isset($options['escapeArgs'])) {
+            unset($config['escapeArgs']);
+        }
+
         $options = array_merge_recursive_distinct($config, $options);
         unset($config);
 

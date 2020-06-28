@@ -24,6 +24,10 @@ class Handlebars extends \Common\Modules\Handlebars\Config\Handlebars
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------
 
+        if (isset($this->config['escapeArgs']) && isset($this->escapeArgs)) {
+            unset($this->config['escapeArgs']);
+        }
+
         $this->config = array_merge_recursive_distinct(
             $this->config, $parent_vars,
             array_except(

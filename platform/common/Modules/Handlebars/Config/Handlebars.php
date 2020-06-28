@@ -32,6 +32,11 @@ class Handlebars extends BaseConfig
         // is a string, not an array.
         $this->config['helpers'] = null;
 
+        // A callable escape function to use.
+        $this->config['escape'] = 'htmlspecialchars';
+
+        // Parametes to pass to the escape function.
+        $this->config['escapeArgs'] = [ENT_QUOTES, 'UTF-8'];
     }
 
     //------------------------------------------------------------------------
