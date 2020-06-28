@@ -63,7 +63,7 @@ class Mustache extends BaseConfig
         // "A Mustache logger instance. No logging will occur unless this is set.
         // Using a PSR-3 compatible logging library—such as Monolog—is highly recommended.
         // A simple stream logger implementation is available as well."
-        $this->config['logger'] = null;
+        $this->config['logger'] = \Config\Services::logger();
 
         // "Only treat Closure instances and invokable classes as callable.
         // If true, values like array('ClassName', 'methodName') and
