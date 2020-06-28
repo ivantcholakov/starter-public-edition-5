@@ -31,6 +31,49 @@ class Handlebars
             }
         }
 
+        if (!array_key_exists('cache_file_prefix', $options)) {
+            $options['cache_file_prefix'] = '';
+        }
+
+        if (!array_key_exists('cache_file_suffix', $options)) {
+            $options['cache_file_suffix'] = '';
+        }
+
+        if (isset($options['cache']) && $options['cache'] != '') {
+
+            $options['cache'] = new \Handlebars\Cache\Disk(
+                $options['cache'],
+                $options['cache_file_prefix'],
+                $options['cache_file_suffix']
+            );
+        }
+
+        unset($options['cache_file_prefix']);
+        unset($options['cache_file_suffix']);
+
+        $base_dir = pathinfo($template, PATHINFO_DIRNAME);
+        $filename = pathinfo($template, PATHINFO_FILENAME);
+        $extension = pathinfo($template, PATHINFO_EXTENSION);
+
+        if (array_key_exists('loader', $options) && !is_object($options['loader'])) {
+            unset($options['loader']);
+        }
+
+        if (empty($options['loader'])) {
+            $options['loader'] = new \Handlebars\Loader\FilesystemLoader($base_dir, ['extension' => '.'.$extension]);
+        }
+
+        if (array_key_exists('partials_loader', $options) && !is_object($options['partials_loader'])) {
+            unset($options['partials_loader']);
+        }
+
+        if (empty($options['partials_loader'])) {
+            $options['partials_loader'] = new \Handlebars\Loader\FilesystemLoader($base_dir, ['extension' => '.'.$extension]);
+        }
+
+        $this->renderer = new \Handlebars\Handlebars($options);
+
+        return $this->renderer->render($filename, $data);
     }
 
     public function renderString($template, $data = null, array $options = null)
@@ -58,6 +101,29 @@ class Handlebars
             }
         }
 
+        if (!array_key_exists('cache_file_prefix', $options)) {
+            $options['cache_file_prefix'] = '';
+        }
+
+        if (!array_key_exists('cache_file_suffix', $options)) {
+            $options['cache_file_suffix'] = '';
+        }
+
+        if (isset($options['cache']) && $options['cache'] != '') {
+
+            $options['cache'] = new \Handlebars\Cache\Disk(
+                $options['cache'],
+                $options['cache_file_prefix'],
+                $options['cache_file_suffix']
+            );
+        }
+
+        unset($options['cache_file_prefix']);
+        unset($options['cache_file_suffix']);
+
+        $this->renderer = new \Handlebars\Handlebars($options);
+
+        return $this->renderer->render($template, $data);
     }
 
 }
