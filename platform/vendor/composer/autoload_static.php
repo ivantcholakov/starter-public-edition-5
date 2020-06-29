@@ -31,6 +31,7 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         array (
             'Twig\\Extra\\String\\' => 18,
             'Twig\\' => 5,
+            'Test\\Markdownify\\' => 17,
         ),
         'S' => 
         array (
@@ -64,6 +65,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         array (
             'Netcarver\\Textile\\' => 18,
         ),
+        'M' => 
+        array (
+            'Markdownify\\' => 12,
+        ),
         'L' => 
         array (
             'Laminas\\ZendFrameworkBridge\\' => 28,
@@ -88,6 +93,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Test\\Markdownify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pixel418/markdownify/test',
         ),
         'Symfony\\Polyfill\\Uuid\\' => 
         array (
@@ -168,6 +177,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Netcarver\\Textile\\' => 
         array (
             0 => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile',
+        ),
+        'Markdownify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pixel418/markdownify/src',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (
@@ -661,6 +674,9 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Laminas\\ZendFrameworkBridge\\Replacements' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Replacements.php',
         'Laminas\\ZendFrameworkBridge\\RewriteRules' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/RewriteRules.php',
         'Locale' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Locale.php',
+        'Markdownify\\Converter' => __DIR__ . '/..' . '/pixel418/markdownify/src/Converter.php',
+        'Markdownify\\ConverterExtra' => __DIR__ . '/..' . '/pixel418/markdownify/src/ConverterExtra.php',
+        'Markdownify\\Parser' => __DIR__ . '/..' . '/pixel418/markdownify/src/Parser.php',
         'MessageFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/MessageFormatter.php',
         'Mustache_Autoloader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Autoloader.php',
         'Mustache_Cache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache.php',
@@ -857,6 +873,9 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Symfony\\Polyfill\\Php74\\Php74' => __DIR__ . '/..' . '/symfony/polyfill-php74/Php74.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Uuid\\Uuid' => __DIR__ . '/..' . '/symfony/polyfill-uuid/Uuid.php',
+        'Test\\Markdownify\\ConverterExtraTest' => __DIR__ . '/..' . '/pixel418/markdownify/test/ConverterExtraTest.php',
+        'Test\\Markdownify\\ConverterTest' => __DIR__ . '/..' . '/pixel418/markdownify/test/ConverterTest.php',
+        'Test\\Markdownify\\ConverterTestCase' => __DIR__ . '/..' . '/pixel418/markdownify/test/ConverterTestCase.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
         'Twig\\Cache\\FilesystemCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/FilesystemCache.php',
         'Twig\\Cache\\NullCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/NullCache.php',

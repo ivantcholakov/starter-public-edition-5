@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Twig\\Extra\\String\\' => array($vendorDir . '/twig/string-extra/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
+    'Test\\Markdownify\\' => array($vendorDir . '/pixel418/markdownify/test'),
     'Symfony\\Polyfill\\Uuid\\' => array($vendorDir . '/symfony/polyfill-uuid'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php74\\' => array($vendorDir . '/symfony/polyfill-php74'),
@@ -28,6 +29,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'OomphInc\\ComposerInstallersExtender\\' => array($vendorDir . '/oomphinc/composer-installers-extender/src'),
     'Netcarver\\Textile\\' => array($vendorDir . '/netcarver/textile/src/Netcarver/Textile'),
+    'Markdownify\\' => array($vendorDir . '/pixel418/markdownify/src'),
     'Laminas\\ZendFrameworkBridge\\' => array($vendorDir . '/laminas/laminas-zendframework-bridge/src'),
     'Laminas\\Escaper\\' => array($vendorDir . '/laminas/laminas-escaper/src'),
     'Kint\\' => array($vendorDir . '/kint-php/kint/src'),

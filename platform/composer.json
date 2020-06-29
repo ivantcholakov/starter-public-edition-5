@@ -43,6 +43,7 @@
         "netcarver/textile": "^3.7",
         "oomphinc/composer-installers-extender": "^1.1",
         "npm-asset/jquery": "1.12.4",
-        "salesforce/handlebars-php": "^2.3"
+        "salesforce/handlebars-php": "^2.3",
+        "pixel418/markdownify": "^2.3"
     }
 }

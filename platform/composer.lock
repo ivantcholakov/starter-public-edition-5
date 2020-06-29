@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "752995f0522c56e4a0bce72368c46e25",
+    "content-hash": "5f8c13d8cc9f6c560e61394262cc28c8",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -654,6 +654,59 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "pixel418/markdownify",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Elephant418/Markdownify.git",
+                "reference": "891be2176858712c6c4581da410e96fc2019e3f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Elephant418/Markdownify/zipball/891be2176858712c6c4581da410e96fc2019e3f0",
+                "reference": "891be2176858712c6c4581da410e96fc2019e3f0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "lib",
+            "autoload": {
+                "psr-4": {
+                    "Markdownify\\": "src",
+                    "Test\\Markdownify\\": "test"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milian Wolff",
+                    "email": "mail@milianw.de",
+                    "homepage": "http://milianw.de"
+                },
+                {
+                    "name": "Thomas Zilliox",
+                    "email": "hello@tzi.fr",
+                    "homepage": "https://tzi.fr"
+                }
+            ],
+            "description": "The HTML to Markdown converter for PHP ",
+            "homepage": "https://github.com/elephant418/Markdownify",
+            "keywords": [
+                "converter",
+                "html",
+                "markdown",
+                "markdownify"
+            ],
+            "time": "2019-01-22T16:33:43+00:00"
         },
         {
             "name": "psr/log",
