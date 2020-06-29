@@ -484,7 +484,7 @@ class DriverManager
             foreach ($list as & $item) {
 
                 if (!isset($item['target']) || $item['target'] == '') {
-                    $item = array_merge($item, ['target' => 'string']);
+                    $item['target'] = 'string';
                 }
             }
 
