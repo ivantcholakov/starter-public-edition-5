@@ -16,8 +16,11 @@ class Views extends BaseConfig
             'handlebars',
             'markdown',
             'textile',
+            'markownify',
         ];
 
+        // PHP in views is not allowed as predecessor renderer,
+        // if there is a file extension here.
         $this->config['fileExtensions'] = [
             'twig' => ['twig', 'html.twig'],
             'mustache' => 'mustache',
@@ -26,16 +29,14 @@ class Views extends BaseConfig
             'textile' => 'textile',
         ];
 
-        // 'renderer', 'parser' - Engines that use templates with standard file extensions.
-        //                        PHP is not allowed as predecessor renderer.
-        // 'filter'             - Simple text post-processors, no standard file extensions.
-        //                        PHP is allowed if there is no predecessor renderer.
+        // 'renderer', 'parser'
         $this->config['driverTypes'] = [
             'twig' => 'renderer',
             'mustache' => 'renderer',
             'handlebars' => 'renderer',
             'markdown' => 'parser',
             'textile' => 'parser',
+            'markdownify' => 'renderer',
         ];
 
         $this->config['driverClasses'] = [
@@ -44,6 +45,7 @@ class Views extends BaseConfig
             'handlebars' => '\Common\Modules\Handlebars\Handlebars',
             'markdown' => '\Common\Modules\Markdown\Markdown',
             'textile' => '\Common\Modules\Textile\Textile',
+            'markdownify' => '\Common\Modules\Markdownify\Markdownify',
         ];
     }
 

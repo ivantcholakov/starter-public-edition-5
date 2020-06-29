@@ -374,6 +374,10 @@ class DriverManager
             throw \CodeIgniter\View\Exceptions\ViewException::forInvalidFile((string) $fileName);
         }
 
+        if (pathinfo($file, PATHINFO_EXTENSION) == 'php') {
+            $extension = 'php';
+        }
+
         $driverName = $extension != 'php'
             ? $this->getDriversByFileExtensions($extension)
             : 'php';
@@ -436,12 +440,12 @@ class DriverManager
                 if (!$list[0]['hasFileExtension']) {
 
                     $list = array_merge(
-                        $this->findView(
+                        [$this->findView(
                             pathinfo($view, PATHINFO_FILENAME),
                             array_merge(['php'], $this->getFileExtensions(null, true)),
                             $viewPath,
                             $loader
-                        ),
+                        )],
                         $list
                     );
 
@@ -480,7 +484,7 @@ class DriverManager
             foreach ($list as & $item) {
 
                 if (!isset($item['target']) || $item['target'] == '') {
-                    $item['target'] = 'string';
+                    $item = array_merge($item, ['target' => 'string']);
                 }
             }
 
@@ -500,13 +504,13 @@ class DriverManager
             throw new \InvalidArgumentException('No renderer-driver name has been provided.');
         }
 
-        if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {
-            throw new \InvalidArgumentException('Invalid renderer-driver name has been provided.');
-        }
-
         if ($driverName == 'php') {
 
             return new \Common\Modules\System\View\PHP();
+        }
+
+        if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {
+            throw new \InvalidArgumentException('Invalid renderer-driver name has been provided.');
         }
 
         $class = (string) $this->getDriverClass($driverName);

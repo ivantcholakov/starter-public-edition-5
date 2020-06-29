@@ -18,7 +18,17 @@ class Markdownify extends \Common\Modules\Markdownify\Config\Markdownify
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
+        // Whether or not to flush stacked links after each paragraph.
+        // 0 - after content;
+        // 1 - after each paragraph;
+        // 2 - in paragraph.
+        $this->linkPosition = 0;
 
+        // Whether or not to wrap the output to the given width.
+        $this->bodyWidth = false;
+
+        // Whether to keep non markdownable HTML or to discard it.
+        $this->keepHTML = false;
 
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line

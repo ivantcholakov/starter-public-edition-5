@@ -23,9 +23,10 @@ class Views extends \Common\Modules\System\Config\Views
         $this->validDrivers = [
             ['twig' => true],
             ['mustache' => true],
-        //    ['handlebars' => true],
+            ['handlebars' => true],
             ['markdown' => true],
-        //    ['textile' => true],
+            ['textile' => true],
+            ['markdownify' => true],
         ];
 
         //--------------------------------------------------------------------

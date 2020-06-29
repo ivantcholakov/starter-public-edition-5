@@ -70,7 +70,6 @@ class Textile
         $options['strict'] = !empty($options['strict']);
         $options['rel'] = (string) $options['rel'];
 
-
         $this->renderer = new \Netcarver\Textile\Parser($options['doctype']);
 
         if ($options['encode']) {
