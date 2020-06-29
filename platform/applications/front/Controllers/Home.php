@@ -12,7 +12,7 @@ class Home extends BaseController
             $readme = render_string(file_get_contents($readme_file), null, 'markdown');
         }
 
-        registry_set('test', render_string($readme, null, 'markdownify'));
+        registry_set('test', render('markdownify.php', null, 'markdownify'));
 
         return view('welcome_message', compact('readme'));
     }
