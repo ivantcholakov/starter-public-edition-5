@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f8c13d8cc9f6c560e61394262cc28c8",
+    "content-hash": "f23c7614778403c591a1ffbcc1fa5c1e",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -558,10 +558,10 @@
         },
         {
             "name": "npm-asset/jquery",
-            "version": "1.12.4",
+            "version": "3.5.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/jquery/-/jquery-1.12.4.tgz"
+                "url": "https://registry.npmjs.org/jquery/-/jquery-3.5.1.tgz"
             },
             "type": "npm-asset",
             "license": [
