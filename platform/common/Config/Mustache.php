@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Mustache extends \Common\Modules\Mustache\Config\Mustache
+class Mustache extends \Common\Modules\Renderers\Config\Mustache
 {
     public function __construct()
     {

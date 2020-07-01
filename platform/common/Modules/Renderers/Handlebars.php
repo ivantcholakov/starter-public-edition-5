@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Handlebars;
+namespace Common\Modules\Renderers;
 
 class Handlebars
 {

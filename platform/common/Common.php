@@ -99,7 +99,7 @@ if (!function_exists('render_string')) {
             $options = $options != '' ? [$options] : [];
         }
 
-        $driverManager = new \Common\Modules\System\View\DriverManager();
+        $driverManager = new \Common\Modules\Renderers\Renderers();
         $driverChain = $driverManager->getDriverChain('string', $options);
 
         if (empty($driverChain)) {
@@ -146,7 +146,7 @@ if (!function_exists('render')) {
             $options = $options != '' ? [$options] : [];
         }
 
-        $driverManager = new \Common\Modules\System\View\DriverManager();
+        $driverManager = new \Common\Modules\Renderers\Renderers();
         $driverChain = $driverManager->getDriverChain('view', $options, $view);
 
         $currentDriver = null;

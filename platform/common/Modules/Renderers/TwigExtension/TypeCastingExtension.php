@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Twig\Extension;
+namespace Common\Modules\Renderers\TwigExtension;
 
 /**
  * This is an integration class for CodeIgniter.

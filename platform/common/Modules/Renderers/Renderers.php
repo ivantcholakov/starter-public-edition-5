@@ -1,8 +1,8 @@
 <?php
 
-namespace Common\Modules\System\View;
+namespace Common\Modules\Renderers;
 
-class DriverManager
+class Renderers
 {
     protected static $sharedConfig = [];
 
@@ -19,7 +19,7 @@ class DriverManager
 
     protected function loadValidDrivers()
     {
-        $config = config('Views')->config;
+        $config = config('Renderers')->config;
 
         $options = $config['validDrivers'] ?? [];
 
@@ -63,7 +63,7 @@ class DriverManager
 
     protected function loadDriverTypes()
     {
-        $config = config('Views')->config;
+        $config = config('Renderers')->config;
 
         $options = $config['driverTypes'] ?? [];
 
@@ -91,7 +91,7 @@ class DriverManager
 
     protected function loadFileExtensions()
     {
-        $config = config('Views')->config;
+        $config = config('Renderers')->config;
 
         $options = $config['fileExtensions'] ?? [];
 
@@ -129,7 +129,7 @@ class DriverManager
 
     protected function loadDriverClasses()
     {
-        $config = config('Views')->config;
+        $config = config('Renderers')->config;
 
         $options = $config['driverClasses'] ?? [];
 
@@ -506,7 +506,7 @@ class DriverManager
 
         if ($driverName == 'php') {
 
-            return new \Common\Modules\System\View\PHP();
+            return new \Common\Modules\Renderers\PHP();
         }
 
         if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {

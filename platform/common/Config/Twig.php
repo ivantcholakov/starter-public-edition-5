@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Twig extends \Common\Modules\Twig\Config\Twig
+class Twig extends \Common\Modules\Renderers\Config\Twig
 {
     public function __construct()
     {

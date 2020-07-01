@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Textile extends \Common\Modules\Textile\Config\Textile
+class Textile extends \Common\Modules\Renderers\Config\Textile
 {
     public function __construct()
     {

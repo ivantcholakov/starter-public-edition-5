@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Markdown;
+namespace Common\Modules\Renderers;
 
 class Markdown
 {

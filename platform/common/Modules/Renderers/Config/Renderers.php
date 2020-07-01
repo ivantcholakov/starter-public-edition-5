@@ -1,8 +1,8 @@
-<?php namespace Common\Modules\System\Config;
+<?php namespace Common\Modules\Renderers\Config;
 
 use CodeIgniter\Config\BaseConfig;
 
-class Views extends BaseConfig
+class Renderers extends BaseConfig
 {
     public $config = [];
 
@@ -40,12 +40,12 @@ class Views extends BaseConfig
         ];
 
         $this->config['driverClasses'] = [
-            'twig' => '\Common\Modules\Twig\Twig',
-            'mustache' => '\Common\Modules\Mustache\Mustache',
-            'handlebars' => '\Common\Modules\Handlebars\Handlebars',
-            'markdown' => '\Common\Modules\Markdown\Markdown',
-            'textile' => '\Common\Modules\Textile\Textile',
-            'markdownify' => '\Common\Modules\Markdownify\Markdownify',
+            'twig' => '\Common\Modules\Renderers\Twig',
+            'mustache' => '\Common\Modules\Renderers\Mustache',
+            'handlebars' => '\Common\Modules\Renderers\Handlebars',
+            'markdown' => '\Common\Modules\Renderers\Markdown',
+            'textile' => '\Common\Modules\Renderers\Textile',
+            'markdownify' => '\Common\Modules\Renderers\Markdownify',
         ];
     }
 

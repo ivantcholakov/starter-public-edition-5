@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Twig;
+namespace Common\Modules\Renderers;
 
 class Twig
 {

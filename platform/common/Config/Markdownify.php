@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Markdownify extends \Common\Modules\Markdownify\Config\Markdownify
+class Markdownify extends \Common\Modules\Renderers\Config\Markdownify
 {
     public function __construct()
     {

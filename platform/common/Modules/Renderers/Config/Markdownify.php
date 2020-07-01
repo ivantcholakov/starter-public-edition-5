@@ -1,4 +1,4 @@
-<?php namespace Common\Modules\Markdownify\Config;
+<?php namespace Common\Modules\Renderers\Config;
 
 use CodeIgniter\Config\BaseConfig;
 

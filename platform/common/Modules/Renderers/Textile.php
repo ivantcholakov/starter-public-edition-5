@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Textile;
+namespace Common\Modules\Renderers;
 
 class Textile
 {

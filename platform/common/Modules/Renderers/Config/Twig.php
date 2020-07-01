@@ -1,4 +1,4 @@
-<?php namespace Common\Modules\Twig\Config;
+<?php namespace Common\Modules\Renderers\Config;
 
 use CodeIgniter\Config\BaseConfig;
 
@@ -75,8 +75,8 @@ class Twig extends BaseConfig
 
         $this->config['functions'] = [
             // Static Class Methods and Properties
-            ['call_static', ['\Common\Modules\Twig\Extension\StaticExtension', 'call_static']],
-            ['get_static', ['\Common\Modules\Twig\Extension\StaticExtension', 'get_static']],
+            ['call_static', ['\Common\Modules\Renderers\TwigExtension\StaticExtension', 'call_static']],
+            ['get_static', ['\Common\Modules\Renderers\TwigExtension\StaticExtension', 'get_static']],
             // Platform Routines
             'registry',
             // URL/URI Handling
@@ -88,31 +88,31 @@ class Twig extends BaseConfig
 
         $this->config['filters'] = [
             // Type Casting
-            ['boolean', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'boolean'], ['is_safe' => ['html']]],
-            ['bool', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'boolean'], ['is_safe' => ['html']]],
-            ['integer', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'integer'], ['is_safe' => ['html']]],
-            ['int', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'integer'], ['is_safe' => ['html']]],
-            ['float', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
-            ['double', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
-            ['real', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
-            ['string', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'string']],
-            ['array', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'twig_array']],
-            ['object', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'object']],
-            ['null', ['\Common\Modules\Twig\Extension\TypeCastingExtension', 'null'], ['is_safe' => ['html']]],
+            ['boolean', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'boolean'], ['is_safe' => ['html']]],
+            ['bool', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'boolean'], ['is_safe' => ['html']]],
+            ['integer', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'integer'], ['is_safe' => ['html']]],
+            ['int', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'integer'], ['is_safe' => ['html']]],
+            ['float', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
+            ['double', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
+            ['real', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'float'], ['is_safe' => ['html']]],
+            ['string', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'string']],
+            ['array', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'twig_array']],
+            ['object', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'object']],
+            ['null', ['\Common\Modules\Renderers\TwigExtension\TypeCastingExtension', 'null'], ['is_safe' => ['html']]],
             // PHP
             'base64_decode',
             ['base64_encode', 'base64_encode', ['is_safe' => ['html', 'html_attr', 'js']]],
             ['count', 'count', ['is_safe' => ['html']]],
             ['gettype', 'gettype', ['is_safe' => ['html']]],
-            ['ltrim', ['\Common\Modules\Twig\Extension\PHPExtension', 'ltrim']],
-            ['rtrim', ['\Common\Modules\Twig\Extension\PHPExtension', 'rtrim']],
+            ['ltrim', ['\Common\Modules\Renderers\TwigExtension\PHPExtension', 'ltrim']],
+            ['rtrim', ['\Common\Modules\Renderers\TwigExtension\PHPExtension', 'rtrim']],
             'sprintf',
             'str_repeat',
             ['stripos', 'stripos', ['is_safe' => ['html']]],
             ['strpos', 'strpos', ['is_safe' => ['html']]],
-            ['wordwrap', ['\Common\Modules\Twig\Extension\PHPExtension', 'wordwrap']],
-            ['array_plus', ['\Common\Modules\Twig\Extension\PHPExtension', 'array_plus']],
-            ['array_replace', ['\Common\Modules\Twig\Extension\PHPExtension', 'array_replace']],
+            ['wordwrap', ['\Common\Modules\Renderers\TwigExtension\PHPExtension', 'wordwrap']],
+            ['array_plus', ['\Common\Modules\Renderers\TwigExtension\PHPExtension', 'array_plus']],
+            ['array_replace', ['\Common\Modules\Renderers\TwigExtension\PHPExtension', 'array_replace']],
             ['ord', 'ord', ['is_safe' => ['html', 'html_attr', 'js', 'css']]],
             'chr',
             // CodeIgniter's Helpers
@@ -132,7 +132,7 @@ class Twig extends BaseConfig
             ['object', 'is_object'],
             ['scalar', 'is_scalar'],
             ['string', 'is_string'],
-            ['zero', ['\Common\Modules\Twig\Extension\PHPExtension', 'php_empty']],
+            ['zero', ['\Common\Modules\Renderers\TwigExtension\PHPExtension', 'php_empty']],
         ];
 
         // Global Variables --------------------------------------------------

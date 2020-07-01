@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Handlebars extends \Common\Modules\Handlebars\Config\Handlebars
+class Handlebars extends \Common\Modules\Renderers\Config\Handlebars
 {
     public function __construct()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\System\View;
+namespace Common\Modules\Renderers;
 
 class PHP
 {

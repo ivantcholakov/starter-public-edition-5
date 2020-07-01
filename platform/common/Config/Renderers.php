@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Views extends \Common\Modules\System\Config\Views
+class Renderers extends \Common\Modules\Renderers\Config\Renderers
 {
     public function __construct()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Markdownify;
+namespace Common\Modules\Renderers;
 
 class Markdownify
 {

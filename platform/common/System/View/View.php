@@ -153,7 +153,7 @@ class View implements RendererInterface
     /**
      * Selects a renderer-driver to be applied on a view.
      *
-     * @var \Common\Modules\System\View\DriverManager
+     * @var \Common\Modules\Renderers\Renderers
      */
     protected $driverManager;
 
@@ -176,7 +176,7 @@ class View implements RendererInterface
         $this->logger   = is_null($logger) ? Services::logger() : $logger;
         $this->debug    = is_null($debug) ? CI_DEBUG : $debug;
         $this->saveData = $config->saveData ?? null;
-        $this->driverManager = new \Common\Modules\System\View\DriverManager();
+        $this->driverManager = new \Common\Modules\Renderers\Renderers();
     }
 
     //--------------------------------------------------------------------

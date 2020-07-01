@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Mustache;
+namespace Common\Modules\Renderers;
 
 class Mustache
 {

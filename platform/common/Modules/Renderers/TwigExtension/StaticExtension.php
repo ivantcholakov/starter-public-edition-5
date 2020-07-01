@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Modules\Twig\Extension;
+namespace Common\Modules\Renderers\TwigExtension;
 
 /**
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016-2020

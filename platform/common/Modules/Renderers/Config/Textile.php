@@ -1,4 +1,4 @@
-<?php namespace Common\Modules\Textile\Config;
+<?php namespace Common\Modules\Renderers\Config;
 
 use CodeIgniter\Config\BaseConfig;
 
