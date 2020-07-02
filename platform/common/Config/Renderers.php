@@ -27,6 +27,7 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
             ['markdown' => true],
             ['textile' => true],
             ['markdownify' => true],
+            ['scss' => true],
         ];
 
         //--------------------------------------------------------------------

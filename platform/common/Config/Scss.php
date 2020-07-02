@@ -18,7 +18,18 @@ class Scss extends \Common\Modules\Renderers\Config\Scss
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
+        // Import Paths
+        $this->import_paths = [''];
 
+        // Number Precision
+        $this->number_precision = 5;
+
+        // Output Formatting
+        // 'expanded', 'nested', 'compressed', 'compact', or 'crunched'
+        $this->formatter = 'expanded';
+
+        // Line Number Style
+        $this->line_number_style = null;
 
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line

@@ -17,6 +17,7 @@ class Renderers extends BaseConfig
             'markdown',
             'textile',
             'markownify',
+            'scss',
         ];
 
         // PHP in views is not allowed as predecessor renderer,
@@ -27,6 +28,7 @@ class Renderers extends BaseConfig
             'handlebars' => ['handlebars', 'hbs'],
             'markdown' => ['md', 'markdown', 'fbmd'],
             'textile' => 'textile',
+            'scss' => 'scss',
         ];
 
         // 'renderer', 'parser'
@@ -36,7 +38,8 @@ class Renderers extends BaseConfig
             'handlebars' => 'renderer',
             'markdown' => 'parser',
             'textile' => 'parser',
-            'markdownify' => 'renderer',
+            'markdownify' => 'parser',
+            'scss' => 'parser',
         ];
 
         $this->config['driverClasses'] = [
@@ -46,6 +49,7 @@ class Renderers extends BaseConfig
             'markdown' => '\Common\Modules\Renderers\Markdown',
             'textile' => '\Common\Modules\Renderers\Textile',
             'markdownify' => '\Common\Modules\Renderers\Markdownify',
+            'scss' => '\Common\Modules\Renderers\Scss',
         ];
     }
 
