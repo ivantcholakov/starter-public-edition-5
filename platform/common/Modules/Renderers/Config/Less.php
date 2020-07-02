@@ -40,7 +40,6 @@ class Less extends BaseConfig
 
         // Indentation characters for the output css content, if it is not to be compressed.
         $this->config['indentation'] = '  ';
-
     }
 
     //------------------------------------------------------------------------

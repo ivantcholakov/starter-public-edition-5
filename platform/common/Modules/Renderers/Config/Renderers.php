@@ -19,7 +19,8 @@ class Renderers extends BaseConfig
             'markownify',
             'less',
             'scss',
-            'autoprefixer'
+            'autoprefixer',
+            'cssmin',
         ];
 
         // PHP in views is not allowed as predecessor renderer,
@@ -45,6 +46,7 @@ class Renderers extends BaseConfig
             'less' => 'parser',
             'scss' => 'parser',
             'autoprefixer' => 'parser',
+            'cssmin' => 'parser',
         ];
 
         $this->config['driverClasses'] = [
@@ -57,6 +59,7 @@ class Renderers extends BaseConfig
             'less' => '\Common\Modules\Renderers\Less',
             'scss' => '\Common\Modules\Renderers\Scss',
             'autoprefixer' => '\Common\Modules\Renderers\Autoprefixer',
+            'cssmin' => '\Common\Modules\Renderers\Cssmin',
         ];
     }
 

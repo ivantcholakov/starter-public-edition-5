@@ -18,8 +18,7 @@ class Less extends \Common\Modules\Renderers\Config\Less
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
-        // For less.js - the compiler's executable path.
-        $this->lessc_path = 'lessc';
+
 
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line

@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Renderers extends \Common\Modules\Renderers\Config\Renderers
+class Cssmin extends \Common\Modules\Renderers\Config\Cssmin
 {
     public function __construct()
     {
@@ -18,26 +18,16 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
-        // Enable/Disable View Drivers ---------------------------------------
-
-        $this->validDrivers = [
-            ['twig' => true],
-            ['mustache' => true],
-            ['handlebars' => true],
-            ['markdown' => true],
-            ['textile' => true],
-            ['markdownify' => true],
-            ['less' => true],
-            ['scss' => true],
-            ['autoprefixer' => true],
-            ['cssmin' => true],
-        ];
+        // Which CSS minifier is to be used:
+        // 'cssnano'            - http://cssnano.co
+        // 'minifycss'          - https://github.com/matthiasmullie/minify
+        $this->implementation = 'cssnano';
 
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------
 
-        $this->config = array_merge_recursive_distinct(
+        $this->config = array_merge(
             $this->config, $parent_vars,
             array_except(
                 get_object_vars($this), array_merge(
@@ -48,6 +38,6 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
         );
     }
 
-    //--------------------------------------------------------------------
+    //------------------------------------------------------------------------
 
 }

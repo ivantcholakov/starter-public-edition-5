@@ -84,7 +84,6 @@ class Mustache extends BaseConfig
         // use an inline "change delimiters" tag at the start of
         // the template file: {{=<% %>=}}."
         $this->config['delimiters'] = null;
-
     }
 
     //------------------------------------------------------------------------
