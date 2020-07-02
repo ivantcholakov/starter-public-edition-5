@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Renderers extends \Common\Modules\Renderers\Config\Renderers
+class Less extends \Common\Modules\Renderers\Config\Less
 {
     public function __construct()
     {
@@ -18,18 +18,8 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
-        // Enable/Disable View Drivers ---------------------------------------
-
-        $this->validDrivers = [
-            ['twig' => true],
-            ['mustache' => true],
-            ['handlebars' => true],
-            ['markdown' => true],
-            ['textile' => true],
-            ['markdownify' => true],
-            ['less' => true],
-            ['scss' => true],
-        ];
+        // For less.js - the compiler's executable path.
+        $this->lessc_path = 'lessc';
 
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line
@@ -46,6 +36,6 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
         );
     }
 
-    //--------------------------------------------------------------------
+    //------------------------------------------------------------------------
 
 }

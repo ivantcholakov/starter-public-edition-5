@@ -17,6 +17,7 @@ class Renderers extends BaseConfig
             'markdown',
             'textile',
             'markownify',
+            'less',
             'scss',
         ];
 
@@ -28,6 +29,7 @@ class Renderers extends BaseConfig
             'handlebars' => ['handlebars', 'hbs'],
             'markdown' => ['md', 'markdown', 'fbmd'],
             'textile' => 'textile',
+            'less' => 'less',
             'scss' => 'scss',
         ];
 
@@ -39,6 +41,7 @@ class Renderers extends BaseConfig
             'markdown' => 'parser',
             'textile' => 'parser',
             'markdownify' => 'parser',
+            'less' => 'parser',
             'scss' => 'parser',
         ];
 
@@ -49,6 +52,7 @@ class Renderers extends BaseConfig
             'markdown' => '\Common\Modules\Renderers\Markdown',
             'textile' => '\Common\Modules\Renderers\Textile',
             'markdownify' => '\Common\Modules\Renderers\Markdownify',
+            'less' => '\Common\Modules\Renderers\Less',
             'scss' => '\Common\Modules\Renderers\Scss',
         ];
     }

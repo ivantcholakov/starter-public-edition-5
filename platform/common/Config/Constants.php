@@ -32,6 +32,24 @@ defined('DECADE') || define('DECADE', 315360000);
 
 /*
 |--------------------------------------------------------------------------
+| File and Directory Modes
+|--------------------------------------------------------------------------
+|
+| These prefs are used when checking and setting modes when working
+| with the file system.  The defaults are fine on servers with proper
+| security, but you may wish (or even need) to change the values in
+| certain environments (Apache running a separate process for each
+| user, PHP under CGI with Apache suEXEC, etc.).  Octal values should
+| always be used to set the mode correctly.
+|
+*/
+defined('FILE_READ_MODE')  OR define('FILE_READ_MODE', 0644);
+defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0664);
+defined('DIR_READ_MODE')   OR define('DIR_READ_MODE', 0755);
+defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0775);
+
+/*
+|--------------------------------------------------------------------------
 | Exit Status Codes
 |--------------------------------------------------------------------------
 |
@@ -65,6 +83,11 @@ defined('EXIT_USER_INPUT')     || define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       || define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+//--------------------------------------------------------------------
+// A Directory for Temporary Files
+//--------------------------------------------------------------------
+defined('TMP_PATH') || define('TMP_PATH', WRITABLEPATH.'tmp/');
 
 //--------------------------------------------------------------------
 // Twig Cache Directory
