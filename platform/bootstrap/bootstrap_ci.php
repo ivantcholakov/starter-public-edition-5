@@ -281,6 +281,8 @@ if (!empty($appConfig->restrictAccessToTrustedHostsOnly) && !is_cli())
     unset($trustedHost);
 }
 
+file_exists(TMP_PATH) OR @mkdir(TMP_PATH, DIR_WRITE_MODE, TRUE);
+
 $app = new \CodeIgniter\CodeIgniter($appConfig);
 $app->initialize();
 
