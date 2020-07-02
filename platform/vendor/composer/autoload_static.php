@@ -69,6 +69,8 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         ),
         'M' => 
         array (
+            'MatthiasMullie\\PathConverter\\' => 29,
+            'MatthiasMullie\\Minify\\' => 22,
             'Markdownify\\' => 12,
         ),
         'L' => 
@@ -187,6 +189,14 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Netcarver\\Textile\\' => 
         array (
             0 => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile',
+        ),
+        'MatthiasMullie\\PathConverter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
+        ),
+        'MatthiasMullie\\Minify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
         ),
         'Markdownify\\' => 
         array (
@@ -687,6 +697,16 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Markdownify\\Converter' => __DIR__ . '/..' . '/pixel418/markdownify/src/Converter.php',
         'Markdownify\\ConverterExtra' => __DIR__ . '/..' . '/pixel418/markdownify/src/ConverterExtra.php',
         'Markdownify\\Parser' => __DIR__ . '/..' . '/pixel418/markdownify/src/Parser.php',
+        'MatthiasMullie\\Minify\\CSS' => __DIR__ . '/..' . '/matthiasmullie/minify/src/CSS.php',
+        'MatthiasMullie\\Minify\\Exception' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exception.php',
+        'MatthiasMullie\\Minify\\Exceptions\\BasicException' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/BasicException.php',
+        'MatthiasMullie\\Minify\\Exceptions\\FileImportException' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/FileImportException.php',
+        'MatthiasMullie\\Minify\\Exceptions\\IOException' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/IOException.php',
+        'MatthiasMullie\\Minify\\JS' => __DIR__ . '/..' . '/matthiasmullie/minify/src/JS.php',
+        'MatthiasMullie\\Minify\\Minify' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Minify.php',
+        'MatthiasMullie\\PathConverter\\Converter' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/Converter.php',
+        'MatthiasMullie\\PathConverter\\ConverterInterface' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/ConverterInterface.php',
+        'MatthiasMullie\\PathConverter\\NoConverter' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/NoConverter.php',
         'MessageFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/MessageFormatter.php',
         'Mustache_Autoloader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Autoloader.php',
         'Mustache_Cache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache.php',
