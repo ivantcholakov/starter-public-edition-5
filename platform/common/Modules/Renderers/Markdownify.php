@@ -19,7 +19,7 @@ class Markdownify
         }
 
         $config = config('Markdownify')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         // Check whether the deprecated option is still used.
@@ -51,7 +51,7 @@ class Markdownify
         }
 
         $config = config('Markdownify')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         // Check whether the deprecated option is still used.

@@ -27,7 +27,7 @@ class Scss
         }
 
         $config = config('Scss')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         $this->renderer = new \ScssPhp\ScssPhp\Compiler();
@@ -63,7 +63,7 @@ class Scss
         }
 
         $config = config('Scss')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         $this->renderer = new \ScssPhp\ScssPhp\Compiler();

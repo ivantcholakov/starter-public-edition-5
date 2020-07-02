@@ -19,7 +19,7 @@ class Less
         }
 
         $config = config('Less')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         $this->renderer = new \Common\Modules\Renderers\Implementations\Lessjs($options);
@@ -40,7 +40,7 @@ class Less
         }
 
         $config = config('Less')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         $this->renderer = new \Common\Modules\Renderers\Implementations\Lessjs($options);

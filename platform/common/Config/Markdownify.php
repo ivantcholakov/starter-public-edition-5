@@ -34,7 +34,7 @@ class Markdownify extends \Common\Modules\Renderers\Config\Markdownify
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------
 
-        $this->config = array_merge_recursive_distinct(
+        $this->config = array_merge(
             $this->config, $parent_vars,
             array_except(
                 get_object_vars($this), array_merge(

@@ -19,7 +19,7 @@ class Textile
         }
 
         $config = config('Textile')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         $options['restricted_mode'] = !empty($options['restricted_mode']);
@@ -60,7 +60,7 @@ class Textile
         }
 
         $config = config('Textile')->config;
-        $options = array_merge_recursive_distinct($config, $options);
+        $options = array_merge($config, $options);
         unset($config);
 
         $options['restricted_mode'] = !empty($options['restricted_mode']);
