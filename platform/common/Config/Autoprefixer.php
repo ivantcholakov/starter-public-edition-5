@@ -1,6 +1,6 @@
 <?php namespace Common\Config;
 
-class Renderers extends \Common\Modules\Renderers\Config\Renderers
+class Autoprefixer extends \Common\Modules\Renderers\Config\Autoprefixer
 {
     public function __construct()
     {
@@ -18,25 +18,18 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
-        // Enable/Disable View Drivers ---------------------------------------
-
-        $this->validDrivers = [
-            ['twig' => true],
-            ['mustache' => true],
-            ['handlebars' => true],
-            ['markdown' => true],
-            ['textile' => true],
-            ['markdownify' => true],
-            ['less' => true],
-            ['scss' => true],
-            ['autoprefixer' => true],
-        ];
+        // Rules about selecting supported browsers.
+        // See https://github.com/ai/browserslist
+        // Examples:
+        // $this->config['browsers'] = ['last 2 versions', 'ie 6-8', 'Firefox > 20'];
+        // $this->config['browsers'] = ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'];
+        $this->browsers = array('> 1%', 'last 2 versions', 'Firefox ESR');
 
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line
         //--------------------------------------------------------------------
 
-        $this->config = array_merge_recursive_distinct(
+        $this->config = array_merge(
             $this->config, $parent_vars,
             array_except(
                 get_object_vars($this), array_merge(
@@ -47,6 +40,6 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
         );
     }
 
-    //--------------------------------------------------------------------
+    //------------------------------------------------------------------------
 
 }
