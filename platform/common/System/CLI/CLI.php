@@ -715,11 +715,7 @@ class CLI
                 continue;
             }
 
-            // Modified by Ivan Tcholakov, 03-JUL-2020.
-            //$arg   = str_replace('-', '', $_SERVER['argv'][$i]);
-            // See https://github.com/codeigniter4/CodeIgniter4/issues/3205
-            $arg   = ltrim($_SERVER['argv'][$i], '-');
-            //
+            $arg   = str_replace('-', '', $_SERVER['argv'][$i]);
             $value = null;
 
             // if there is a following segment, and it doesn't start with a dash, it's a value.

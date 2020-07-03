@@ -239,10 +239,7 @@ class CLIRequest extends Request
                 continue;
             }
 
-            // Modified by Ivan Tcholakov, 03-JUL-2020.
-            //$arg   = filter_var(str_replace('-', '', $argv[$i]), FILTER_SANITIZE_STRING);
-            $arg   = filter_var(ltrim($argv[$i], '-'), FILTER_SANITIZE_STRING);
-            //
+            $arg   = filter_var(str_replace('-', '', $argv[$i]), FILTER_SANITIZE_STRING);
             $value = null;
 
             // If the next item starts with a dash it's a value
