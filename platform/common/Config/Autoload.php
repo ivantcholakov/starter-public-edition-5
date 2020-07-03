@@ -80,6 +80,7 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
             'CodeIgniter\View\View' => COMMONPATH.'System/View/View.php',
             'CodeIgniter\Debug\Toolbar\Collectors\BaseCollector' => COMMONPATH.'System/Debug/Toolbar/Collectors/BaseCollector.php',
             'CodeIgniter\CLI\CLI' => COMMONPATH.'System/CLI/CLI.php',
+            'CodeIgniter\HTTP\CLIRequest' => COMMONPATH.'System/HTTP/CLIRequest.php',
         ];
 
         //--------------------------------------------------------------------
