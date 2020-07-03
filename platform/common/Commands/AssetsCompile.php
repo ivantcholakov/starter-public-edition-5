@@ -131,7 +131,7 @@ class AssetsCompile extends BaseCommand
             }
         }
 
-        CLI::write('');
+        CLI::newLine();
     }
 
     protected function find($name)
