@@ -11,38 +11,15 @@ class Home extends BaseController
 
             $readme = render_string(file_get_contents($readme_file), null, 'markdown');
         }
-/*
-        registry_set('test', render_string("
 
-$(function() {
+        registry_set('test', render_string('
+{
+    "a": "b", /* A comment (not officially supported, see RFC 4627). */
+    "c": "d"  // Yet another comment.
+}
+'
+        , null, 'jsonmin'));
 
-    $('#sidebar_toggle').on('click', function(e) {
-
-        var body = $('body');
-        var state = '';
-
-        if (body.hasClass('sidebar-collapse')) {
-            state = 'sidebar-collapse';
-        }
-
-        $.ajax({
-            type: 'post',
-            mode: 'queue',
-            url: '/main-sidebar/toggle-ajax', // Adjust the URL here..
-            data: {
-                state: state
-            },
-            success: function(data) {
-
-            }
-        });
-    });
-
-});
-
-"
-        , null, 'jsmin'));
-*/
         return view('welcome_message', compact('readme'));
     }
 
