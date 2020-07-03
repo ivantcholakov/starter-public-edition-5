@@ -371,6 +371,7 @@ class Renderers
         }
 
         if (!$found) {
+
             throw \CodeIgniter\View\Exceptions\ViewException::forInvalidFile((string) $fileName);
         }
 
@@ -418,6 +419,7 @@ class Renderers
     public function getDriverChain(string $target, $options = null, string $view = null, string $viewPath = null, $loader = null)
     {
         if (!in_array($target, ['view', 'string'])) {
+
             throw new \InvalidArgumentException('The $target argument should be \'view\' or \'string\'.');
         }
 
@@ -536,12 +538,14 @@ class Renderers
         }
 
         if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {
+
             throw new \InvalidArgumentException('Invalid renderer-driver name has been provided.');
         }
 
         $class = (string) $this->getDriverClass($driverName);
 
         if ($class == '') {
+
             throw new \RuntimeException('No class name of renderer-driver has been configured.');
         }
 
