@@ -116,6 +116,12 @@ class AssetsCompile extends BaseCommand
     {
         switch ($task['type']) {
 
+            case 'copy':
+
+                $this->copy($task);
+
+                break;
+
             case 'less':
 
                 $this->less($task);
@@ -152,6 +158,11 @@ class AssetsCompile extends BaseCommand
 
                 break;
         }
+    }
+
+    protected function copy(& $task)
+    {
+        $task['result'] = file_get_contents($task['source']);
     }
 
     protected function less(& $task)
