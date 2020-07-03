@@ -11,11 +11,8 @@ class Home extends BaseController
 
             $readme = render_string(file_get_contents($readme_file), null, 'markdown');
         }
-
-        registry_set('test', render_string("
 /*
- * test.js
- */
+        registry_set('test', render_string("
 
 $(function() {
 
@@ -45,7 +42,7 @@ $(function() {
 
 "
         , null, 'jsmin'));
-
+*/
         return view('welcome_message', compact('readme'));
     }
 
