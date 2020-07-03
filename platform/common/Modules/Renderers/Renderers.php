@@ -374,17 +374,36 @@ class Renderers
             throw \CodeIgniter\View\Exceptions\ViewException::forInvalidFile((string) $fileName);
         }
 
-        if (pathinfo($file, PATHINFO_EXTENSION) == 'php') {
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+
+        if ($ext == 'php') {
+
+            $driverName = 'php';
+            $driverType = 'renderer';
+            $hasFileExtension = true;
             $extension = 'php';
+
+        } else {
+
+            $driverName = $this->getDriversByFileExtensions($extension);
+
+            if ($driverName != '') {
+
+                $driverType = $this->getDriverType($driverName);
+                $hasFileExtension = $this->hasFileExtension($driverName);
+
+            } else {
+
+                $driverName = 'dummy';
+                $driverType = 'parser';
+                $hasFileExtension = false;
+                $extension = $ext;
+            }
         }
 
-        $driverName = $extension != 'php'
-            ? $this->getDriversByFileExtensions($extension)
-            : 'php';
-
         $result['name'] = $driverName;
-        $result['type'] = $driverName != 'php' ? $this->getDriverType($driverName) : 'renderer';
-        $result['hasFileExtension'] = $driverName != 'php' ? $this->hasFileExtension($driverName) : true;
+        $result['type'] = $driverType;
+        $result['hasFileExtension'] = $hasFileExtension;
         $result['options'] = [];
         $result['view'] = $fileName;
         $result['viewName'] = $view;
@@ -439,10 +458,12 @@ class Renderers
 
                 if (!$list[0]['hasFileExtension']) {
 
+                    $provided_extension = trim(pathinfo($view, PATHINFO_EXTENSION));
+
                     $list = array_merge(
                         [$this->findView(
                             pathinfo($view, PATHINFO_FILENAME),
-                            array_merge(['php'], $this->getFileExtensions(null, true)),
+                            array_merge([$provided_extension != '' ? $provided_extension : 'php'], $this->getFileExtensions(null, true)),
                             $viewPath,
                             $loader
                         )],
@@ -507,6 +528,11 @@ class Renderers
         if ($driverName == 'php') {
 
             return new \Common\Modules\Renderers\PHP();
+        }
+
+        if ($driverName == 'dummy') {
+
+            return new \Common\Modules\Renderers\Dummy();
         }
 
         if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {

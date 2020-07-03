@@ -21,6 +21,7 @@ class Renderers extends BaseConfig
             'scss',
             'autoprefixer',
             'cssmin',
+            'jsmin',
         ];
 
         // PHP in views is not allowed as predecessor renderer,
@@ -47,6 +48,7 @@ class Renderers extends BaseConfig
             'scss' => 'parser',
             'autoprefixer' => 'parser',
             'cssmin' => 'parser',
+            'jsmin' => 'parser',
         ];
 
         $this->config['driverClasses'] = [
@@ -60,6 +62,7 @@ class Renderers extends BaseConfig
             'scss' => '\Common\Modules\Renderers\Scss',
             'autoprefixer' => '\Common\Modules\Renderers\Autoprefixer',
             'cssmin' => '\Common\Modules\Renderers\Cssmin',
+            'jsmin' => '\Common\Modules\Renderers\Jsmin',
         ];
     }
 

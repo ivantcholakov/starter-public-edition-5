@@ -11,20 +11,9 @@ class Home extends BaseController
 
             $readme = render_string(file_get_contents($readme_file), null, 'markdown');
         }
-/*
-        registry_set('test', render_string('
-.example {
-    display: grid;
-    transition: all .5s;
-    user-select: none;
-    background: linear-gradient(to bottom, white, black);
-}
-', null, [
-        'less',
-        'autoprefixer' => ['browsers' => ['> 0.1%', 'last 2 versions', 'Firefox ESR', 'ie 9-11']],
-        'cssmin'
-    ]));
-*/
+
+        registry_set('test', render('test.js', null, 'jsmin'));
+
         return view('welcome_message', compact('readme'));
     }
 

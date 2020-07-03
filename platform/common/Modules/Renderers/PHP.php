@@ -4,10 +4,6 @@ namespace Common\Modules\Renderers;
 
 class PHP
 {
-    public function __construct()
-    {
-    }
-
     public function render($____TeMpLaTe____, array $____DaTa____ = null, array $____OpTiOnS____ = null)
     {
         unset($____OpTiOnS____);

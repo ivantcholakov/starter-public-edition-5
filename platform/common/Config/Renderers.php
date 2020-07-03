@@ -31,6 +31,7 @@ class Renderers extends \Common\Modules\Renderers\Config\Renderers
             ['scss' => true],
             ['autoprefixer' => true],
             ['cssmin' => true],
+            ['jsmin' => true],
         ];
 
         //--------------------------------------------------------------------
