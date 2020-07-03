@@ -118,13 +118,13 @@ class AssetsCompile extends BaseCommand
 
             case 'merge_css':
 
-                $this->mergeCss($task);
+                $this->merge_css($task);
 
                 break;
 
             case 'merge_js':
 
-                $this->mergeJs($task);
+                $this->merge_js($task);
 
                 break;
 
@@ -177,12 +177,66 @@ class AssetsCompile extends BaseCommand
         $task['result'] = file_get_contents($task['source']);
     }
 
-    protected function mergeCss(& $task) {
-        // TODO
+    protected function merge_css(& $task) {
+
+        $task['result'] = '';
+
+        $sources = [];
+
+        if (!empty($task['sources'])) {
+
+            $first = true;
+
+            foreach ($task['sources'] as & $subtask) {
+
+                if (!in_array($subtask['type'], ['copy', 'less', 'scss', 'autoprefixer', 'cssmin'])) {
+                    continue;
+                }
+
+                $this->execute($subtask);
+
+                if ($first) {
+                    $task['result'] = trim($subtask['result']);
+                } else {
+                    $task['result'] .= "\n\n".trim($subtask['result']);
+                }
+
+                unset($subtask['result']);
+
+                $first = false;
+            }
+        }
     }
 
-    protected function mergeJs(& $task) {
-        // TODO
+    protected function merge_js(& $task) {
+
+        $task['result'] = '';
+
+        $sources = [];
+
+        if (!empty($task['sources'])) {
+
+            $first = true;
+
+            foreach ($task['sources'] as & $subtask) {
+
+                if (!in_array($subtask['type'], ['copy', 'jsmin'])) {
+                    continue;
+                }
+
+                $this->execute($subtask);
+
+                if ($first) {
+                    $task['result'] = trim($subtask['result']);
+                } else {
+                    $task['result'] .= "\n\n".trim($subtask['result']);
+                }
+
+                unset($subtask['result']);
+
+                $first = false;
+            }
+        }
     }
 
     protected function less(& $task)
