@@ -28,8 +28,6 @@ class AssetsCompile extends BaseCommand
 
         if (empty($params)) {
 
-            // No specific name provided, process all the tasks.
-            // TODO: Revise the condition later.
             $tasks = $this->tasks;
 
         } else {
