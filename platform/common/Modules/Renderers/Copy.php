@@ -2,7 +2,7 @@
 
 namespace Common\Modules\Renderers;
 
-class Dummy
+class Copy
 {
     public function render($template, $data = null, array $options = null)
     {

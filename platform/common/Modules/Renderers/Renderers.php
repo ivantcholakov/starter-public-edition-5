@@ -394,7 +394,7 @@ class Renderers
 
             } else {
 
-                $driverName = 'dummy';
+                $driverName = 'copy';
                 $driverType = 'parser';
                 $hasFileExtension = false;
                 $extension = $ext;
@@ -530,9 +530,9 @@ class Renderers
             return new \Common\Modules\Renderers\PHP();
         }
 
-        if ($driverName == 'dummy') {
+        if ($driverName == 'copy') {
 
-            return new \Common\Modules\Renderers\Dummy();
+            return new \Common\Modules\Renderers\Copy();
         }
 
         if (!in_array($driverName, self::$sharedConfig['validDrivers'])) {
