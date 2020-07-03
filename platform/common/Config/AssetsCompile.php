@@ -13,9 +13,9 @@ class AssetsCompile extends BaseConfig
 
         $this->tasks = [
 
-            // php spark assets:compile test-less-min
+            // php spark assets:compile test_less_min
             [
-                'name' => 'test-less-min',
+                'name' => 'test_less_min',
                 'type' => 'less',
                 'source' => DEFAULTFCPATH.'assets/test-less.less',
                 'destination' => DEFAULTFCPATH.'assets/test-less.min.css',
@@ -24,9 +24,9 @@ class AssetsCompile extends BaseConfig
                 'cssmin' => [],
             ],
 
-            // php spark assets:compile test-scss-min
+            // php spark assets:compile test_scss_min
             [
-                'name' => 'test-scss-min',
+                'name' => 'test_scss_min',
                 'type' => 'scss',
                 'source' => DEFAULTFCPATH.'assets/test-scss.scss',
                 'destination' => DEFAULTFCPATH.'assets/test-scss.min.css',
@@ -34,9 +34,9 @@ class AssetsCompile extends BaseConfig
                 'cssmin' => [],
             ],
 
-            // php spark assets:compile test-jsmin
+            // php spark assets:compile test_jsmin
             [
-                'name' => 'test-jsmin',
+                'name' => 'test_jsmin',
                 'type' => 'jsmin',
                 'source' => DEFAULTFCPATH.'assets/test-jsmin.js',
                 'destination' => DEFAULTFCPATH.'assets/test-jsmin.min.js',

@@ -706,6 +706,7 @@ class CLI
             // If there's no '-' at the beginning of the argument
             // then add it to our segments.
             // Modified by Ivan Tcholakov, 03-JUL-2020.
+            // See https://github.com/codeigniter4/CodeIgniter4/issues/3205
             //if (mb_strpos($_SERVER['argv'][$i], '-') === false)
             if (mb_strpos($_SERVER['argv'][$i], '-') !== 0)
             //
@@ -716,6 +717,7 @@ class CLI
 
             // Modified by Ivan Tcholakov, 03-JUL-2020.
             //$arg   = str_replace('-', '', $_SERVER['argv'][$i]);
+            // See https://github.com/codeigniter4/CodeIgniter4/issues/3205
             $arg   = ltrim($_SERVER['argv'][$i], '-');
             //
             $value = null;
