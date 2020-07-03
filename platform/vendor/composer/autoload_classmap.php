@@ -878,4 +878,5 @@ return array(
     'Twig\\Util\\DeprecationCollector' => $vendorDir . '/twig/twig/src/Util/DeprecationCollector.php',
     'Twig\\Util\\TemplateDirIterator' => $vendorDir . '/twig/twig/src/Util/TemplateDirIterator.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+    't1st3\\JSONMin\\JSONMin' => $vendorDir . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
 );

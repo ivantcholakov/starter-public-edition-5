@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    't1st3\\' => array($vendorDir . '/t1st3/php-json-minify/src/t1st3'),
     'Twig\\Extra\\String\\' => array($vendorDir . '/twig/string-extra/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Test\\Markdownify\\' => array($vendorDir . '/pixel418/markdownify/test'),

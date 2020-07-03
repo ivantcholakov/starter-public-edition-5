@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e184defc6a4f0ec61316b84787791fce",
+    "content-hash": "767233417fd1c729eaa34389d02d109e",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -2759,6 +2759,51 @@
                 }
             ],
             "time": "2020-06-11T12:16:36+00:00"
+        },
+        {
+            "name": "t1st3/php-json-minify",
+            "version": "0.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t1st3/php-json-minify.git",
+                "reference": "f48327a253632128139a1d0a728d6fcb517f6f25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t1st3/php-json-minify/zipball/f48327a253632128139a1d0a728d6fcb517f6f25",
+                "reference": "f48327a253632128139a1d0a728d6fcb517f6f25",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "5.*",
+                "sebastian/phpcpd": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "t1st3\\": "src/t1st3/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "t1st3",
+                    "homepage": "https://github.com/t1st3",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/t1st3/php-json-minify",
+            "keywords": [
+                "php"
+            ],
+            "time": "2016-08-03T14:17:41+00:00"
         },
         {
             "name": "twig/string-extra",

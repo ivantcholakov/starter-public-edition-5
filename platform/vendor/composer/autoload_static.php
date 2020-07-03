@@ -27,6 +27,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
     );
 
     public static $prefixLengthsPsr4 = array (
+        't' => 
+        array (
+            't1st3\\' => 6,
+        ),
         'T' => 
         array (
             'Twig\\Extra\\String\\' => 18,
@@ -90,6 +94,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
     );
 
     public static $prefixDirsPsr4 = array (
+        't1st3\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3',
+        ),
         'Twig\\Extra\\String\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/string-extra/src',
@@ -1125,6 +1133,7 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Twig\\Util\\DeprecationCollector' => __DIR__ . '/..' . '/twig/twig/src/Util/DeprecationCollector.php',
         'Twig\\Util\\TemplateDirIterator' => __DIR__ . '/..' . '/twig/twig/src/Util/TemplateDirIterator.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        't1st3\\JSONMin\\JSONMin' => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
