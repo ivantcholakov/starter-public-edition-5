@@ -79,46 +79,9 @@ class AssetsCompile extends BaseCommand
                 $task['destination'] = $destination;
             }
 
-            switch ($task['type']) {
+            $this->execute($task);
 
-                case 'less':
-
-                    $this->less($task);
-
-                    break;
-
-                case 'scss':
-
-                    $this->scss($task);
-
-                    break;
-
-                case 'autoprefixer':
-
-                    $this->autoprefixer($task);
-
-                    break;
-
-                case 'cssmin':
-
-                    $this->cssmin($task);
-
-                    break;
-
-                case 'jsmin':
-
-                    $this->jsmin($task);
-
-                    break;
-
-                case 'jsonmin':
-
-                    $this->jsonmin($task);
-
-                    break;
-            }
-
-            if (isset($task['destination'])) {
+            if ($task['destination'] != '') {
 
                 try {
 
@@ -147,6 +110,48 @@ class AssetsCompile extends BaseCommand
         }
 
         return $key;
+    }
+
+    protected function execute(& $task)
+    {
+        switch ($task['type']) {
+
+            case 'less':
+
+                $this->less($task);
+
+                break;
+
+            case 'scss':
+
+                $this->scss($task);
+
+                break;
+
+            case 'autoprefixer':
+
+                $this->autoprefixer($task);
+
+                break;
+
+            case 'cssmin':
+
+                $this->cssmin($task);
+
+                break;
+
+            case 'jsmin':
+
+                $this->jsmin($task);
+
+                break;
+
+            case 'jsonmin':
+
+                $this->jsonmin($task);
+
+                break;
+        }
     }
 
     protected function less(& $task)
