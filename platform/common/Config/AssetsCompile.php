@@ -8,6 +8,9 @@ class AssetsCompile extends BaseConfig
 
     public function __construct() {
 
+        // The following command-line runs all the tasks:
+        // php spark assets:compile
+
         $this->tasks = [
 
             // php spark assets:compile test-less-min
