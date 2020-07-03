@@ -112,6 +112,12 @@ class AssetsCompile extends BaseCommand
                     $this->jsmin($task);
 
                     break;
+
+                case 'jsonmin':
+
+                    $this->jsonmin($task);
+
+                    break;
             }
 
             if (isset($task['destination'])) {
@@ -151,7 +157,7 @@ class AssetsCompile extends BaseCommand
 
         $renderers = [];
 
-        $renderers['less'] = isset($task['less']) ? $task['less'] : [];
+        $renderers['less'] = isset($task['less']) ? $task['less'] : ['less' => []];
 
         if (isset($task['autoprefixer'])) {
             $renderers['autoprefixer'] = $task['autoprefixer'];
@@ -170,7 +176,7 @@ class AssetsCompile extends BaseCommand
 
         $renderers = [];
 
-        $renderers['scss'] = isset($task['scss']) ? $task['scss'] : [];
+        $renderers['scss'] = isset($task['scss']) ? $task['scss'] : ['scss' => []];
 
         if (isset($task['autoprefixer'])) {
             $renderers['autoprefixer'] = $task['autoprefixer'];
@@ -189,7 +195,7 @@ class AssetsCompile extends BaseCommand
 
         $renderers = [];
 
-        $renderers['autoprefixer'] = isset($task['autoprefixer']) ? $task['autoprefixer'] : [];
+        $renderers['autoprefixer'] = isset($task['autoprefixer']) ? $task['autoprefixer'] : ['autoprefixer' => []];
 
         if (isset($task['cssmin'])) {
             $renderers['cssmin'] = $task['cssmin'];
@@ -204,7 +210,7 @@ class AssetsCompile extends BaseCommand
 
         $renderers = [];
 
-        $renderers['cssmin'] = isset($task['cssmin']) ? $task['cssmin'] : [];
+        $renderers['cssmin'] = isset($task['cssmin']) ? $task['cssmin'] : ['cssmin' => []];
 
         $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
     }
@@ -215,7 +221,18 @@ class AssetsCompile extends BaseCommand
 
         $renderers = [];
 
-        $renderers['jsmin'] = isset($task['jsmin']) ? $task['jsmin'] : [];
+        $renderers['jsmin'] = isset($task['jsmin']) ? $task['jsmin'] : ['jsmin' => []];
+
+        $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
+    }
+
+    protected function jsonmin(& $task)
+    {
+        $task['result'] = '';
+
+        $renderers = [];
+
+        $renderers['jsonmin'] = isset($task['jsonmin']) ? $task['jsonmin'] : ['jsonmin' => []];
 
         $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
     }
