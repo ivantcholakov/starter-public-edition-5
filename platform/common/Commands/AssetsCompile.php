@@ -126,7 +126,7 @@ class AssetsCompile extends BaseCommand
 
                 } catch(Exception $e) {
 
-                    echo CLI::write(CLI::color($e->getMessage(), 'yellow'));
+                    CLI::write(CLI::color($e->getMessage(), 'yellow'));
                 }
             }
         }
