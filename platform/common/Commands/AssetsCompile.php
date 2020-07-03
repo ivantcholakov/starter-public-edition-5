@@ -116,6 +116,18 @@ class AssetsCompile extends BaseCommand
     {
         switch ($task['type']) {
 
+            case 'merge_css':
+
+                $this->mergeCss($task);
+
+                break;
+
+            case 'merge_js':
+
+                $this->mergeJs($task);
+
+                break;
+
             case 'copy':
 
                 $this->copy($task);
@@ -163,6 +175,14 @@ class AssetsCompile extends BaseCommand
     protected function copy(& $task)
     {
         $task['result'] = file_get_contents($task['source']);
+    }
+
+    protected function mergeCss(& $task) {
+        // TODO
+    }
+
+    protected function mergeJs(& $task) {
+        // TODO
     }
 
     protected function less(& $task)
