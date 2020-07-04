@@ -73,6 +73,24 @@ class AssetsCompile extends BaseConfig
                 ],
             ],
 
+            // php spark assets:compile front_default_css
+            [
+                'name' => 'front_default_css',
+                'type' => 'merge_css',
+                'destination' => DEFAULTFCPATH.'themes/front_default/css/front.min.css',
+                'sha384' => true,
+                'sha384.base64' => true,
+                'sources' => [
+                    [
+                        'source' => DEFAULTFCPATH.'themes/front_default/src/front.less',
+                        'type' => 'less',
+                        'less' => ['relativeUrls' => false],
+                        'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
+                        'cssmin' => [],
+                    ],
+                ]
+            ],
+
         ];
     }
 }
