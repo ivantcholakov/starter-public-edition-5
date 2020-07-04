@@ -84,7 +84,12 @@ class AssetsCompile extends BaseConfig
                     [
                         'source' => DEFAULTFCPATH.'themes/front_default/src/front.less',
                         'type' => 'less',
-                        'less' => ['relativeUrls' => false],
+                        'less' => [
+                            'include_path' => [
+                                DEFAULTFCPATH.'themes/front_default/src/definitions/include_path/',
+                            ],
+                            'rewrite_urls' => 'all'
+                        ],
                         'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
                         'cssmin' => [],
                     ],
