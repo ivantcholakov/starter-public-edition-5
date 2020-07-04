@@ -426,7 +426,16 @@ class Renderers
         if ($target == 'view') {
 
             if (is_null($viewPath)) {
-                $viewPath = config('Paths')->viewDirectory;
+
+                if (!empty($options['full_path']) && $view != '') {
+
+                    $viewPath = pathinfo($view, PATHINFO_DIRNAME);
+                    $view = pathinfo($view, PATHINFO_BASENAME);
+
+                } else {
+
+                    $viewPath = config('Paths')->viewDirectory;
+                }
             }
 
             $viewPath = rtrim($viewPath, '/ ') . '/';
