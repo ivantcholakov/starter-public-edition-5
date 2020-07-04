@@ -34,7 +34,7 @@ class AssetsCompile extends BaseCommand
 
             foreach ($params as $name) {
 
-                if ($key = $this->find($name) !== false) {
+                if (is_int($key = $this->find($name))) {
                     $tasks[] = $this->tasks[$key];
                 }
             }
