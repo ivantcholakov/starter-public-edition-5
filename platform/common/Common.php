@@ -35,7 +35,7 @@ if (!function_exists('escape_shell_arg')) {
      */
     function escape_shell_arg($arg)
     {
-        if (stripos(PHP_OS, 'win') === 0) { // Beware about 'Darwin', etc.
+        if (IS_WINDOWS_OS) {
 
             // PHP engine is built for Windows.
 
