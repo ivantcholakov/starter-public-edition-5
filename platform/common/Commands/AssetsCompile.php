@@ -272,7 +272,7 @@ class AssetsCompile extends BaseCommand
             $renderers['cssmin'] = $task['cssmin'];
         }
 
-        $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
+        $task['result'] = render($task['source'], null, $renderers);
     }
 
     protected function scss(& $task)
@@ -291,7 +291,7 @@ class AssetsCompile extends BaseCommand
             $renderers['cssmin'] = $task['cssmin'];
         }
 
-        $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
+        $task['result'] = render($task['source'], null, $renderers);
     }
 
     protected function autoprefixer(& $task)
@@ -306,7 +306,7 @@ class AssetsCompile extends BaseCommand
             $renderers['cssmin'] = $task['cssmin'];
         }
 
-        $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
+        $task['result'] = render($task['source'], null, $renderers);
     }
 
     protected function cssmin(& $task)
@@ -317,7 +317,7 @@ class AssetsCompile extends BaseCommand
 
         $renderers['cssmin'] = isset($task['cssmin']) ? $task['cssmin'] : [];
 
-        $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
+        $task['result'] = render($task['source'], null, $renderers);
     }
 
     protected function jsmin(& $task)
@@ -328,7 +328,7 @@ class AssetsCompile extends BaseCommand
 
         $renderers['jsmin'] = isset($task['jsmin']) ? $task['jsmin'] : [];
 
-        $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
+        $task['result'] = render($task['source'], null, $renderers);
     }
 
     protected function jsonmin(& $task)
@@ -339,7 +339,7 @@ class AssetsCompile extends BaseCommand
 
         $renderers['jsonmin'] = isset($task['jsonmin']) ? $task['jsonmin'] : [];
 
-        $task['result'] = render_string(file_get_contents($task['source']), null, $renderers);
+        $task['result'] = render($task['source'], null, $renderers);
     }
 
 }
