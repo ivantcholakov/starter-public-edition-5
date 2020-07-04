@@ -43,7 +43,7 @@ require BOOTSTRAPPATH.'versions.php';
  * --------------------------------------------------------------------
  */
 
-define('IS_WINDOWS_OS', strtolower(substr(php_uname('s'), 0, 3 )) == 'win');
+define('IS_WINDOWS_OS', stripos(PHP_OS, 'WIN') === 0);
 define('IS_CLI', (PHP_SAPI == 'cli') || defined('STDIN'));
 define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
