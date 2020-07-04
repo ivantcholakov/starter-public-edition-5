@@ -83,6 +83,7 @@ class Cssnano {
         $cmd = $this->getCompilerPath().' --no-map --use cssnano'.$this->parseOptions().' '.escape_shell_arg($filename);
 
         $process = Process::fromShellCommandline($cmd);
+        $process->setTimeout(3600);
 
         try {
 

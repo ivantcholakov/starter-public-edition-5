@@ -82,6 +82,7 @@ class Lessjs {
         $cmd = $this->getCompilerPath().$this->parseOptions().' '.escape_shell_arg($filename);
 
         $process = Process::fromShellCommandline($cmd);
+        $process->setTimeout(3600);
 
         try {
 
