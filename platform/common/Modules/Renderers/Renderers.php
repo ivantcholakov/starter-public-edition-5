@@ -426,12 +426,10 @@ class Renderers
         if ($target == 'view') {
 
             if (is_null($viewPath)) {
-
-                $paths = config('Paths');
-
-                $viewPath = $paths->viewDirectory;
-                $viewPath = rtrim($viewPath, '/ ') . '/';
+                $viewPath = config('Paths')->viewDirectory;
             }
+
+            $viewPath = rtrim($viewPath, '/ ') . '/';
 
             $loader = is_null($loader) ? \Config\Services::locator() : $loader;
 
