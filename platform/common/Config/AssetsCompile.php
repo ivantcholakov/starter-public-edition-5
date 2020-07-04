@@ -36,6 +36,8 @@ class AssetsCompile extends BaseConfig
                 'name' => 'welcome_message_css',
                 'type' => 'merge_css',
                 'destination' => DEFAULTFCPATH.'assets/welcome_message.min.css',
+                'sha384' => true,
+                'sha384.base64' => true,
                 'sources' => [
                     [
                         'source' => DEFAULTFCPATH.'assets/welcome_message.css',
@@ -57,6 +59,8 @@ class AssetsCompile extends BaseConfig
                 'name' => 'welcome_message_js',
                 'type' => 'merge_js',
                 'destination' => DEFAULTFCPATH.'assets/welcome_message.min.js',
+                'sha384' => true,
+                'sha384.base64' => true,
                 'sources' => [
                     [
                         'source' => DEFAULTFCPATH.'assets/npm-asset/jquery/dist/jquery.min.js',
