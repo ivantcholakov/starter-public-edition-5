@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "767233417fd1c729eaa34389d02d109e",
+    "content-hash": "dc87ecac40994377d6f452f8d8358c21",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -279,6 +279,55 @@
                 "parser"
             ],
             "time": "2019-12-30T23:20:37+00:00"
+        },
+        {
+            "name": "fomantic/ui",
+            "version": "2.8.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fomantic/Fomantic-UI.git",
+                "reference": "0269a8213ac2ff438965c6a82503e7561d2024ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fomantic/Fomantic-UI/zipball/0269a8213ac2ff438965c6a82503e7561d2024ae",
+                "reference": "0269a8213ac2ff438965c6a82503e7561d2024ae",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Lukic",
+                    "email": "jacklukic@gmail.com",
+                    "homepage": "http://www.jacklukic.com",
+                    "role": "Creator"
+                }
+            ],
+            "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
+            "homepage": "https://fomantic-ui.com",
+            "keywords": [
+                "css",
+                "fomantic",
+                "fomantic-ui",
+                "framework",
+                "semantic",
+                "ui"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/hammy2899",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/lubber-de",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-06-17T16:03:31+00:00"
         },
         {
             "name": "kint-php/kint",
@@ -870,12 +919,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "9ec84501a85a3b0c7b260042ae81a8efb2f234ce"
+                "reference": "57353ec1a34527a2dbbd3c0fb9418ffc008c6f60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9ec84501a85a3b0c7b260042ae81a8efb2f234ce",
-                "reference": "9ec84501a85a3b0c7b260042ae81a8efb2f234ce",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/57353ec1a34527a2dbbd3c0fb9418ffc008c6f60",
+                "reference": "57353ec1a34527a2dbbd3c0fb9418ffc008c6f60",
                 "shasum": ""
             },
             "conflict": {
@@ -969,6 +1018,7 @@
                 "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.2-p.2",
                 "monolog/monolog": ">=1.8,<1.12",
                 "namshi/jose": "<2.2",
+                "nystudio107/craft-seomatic": "<3.3",
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
                 "october/october": ">=1.0.319,<1.0.467",
                 "onelogin/php-saml": "<2.10.4",
@@ -1147,7 +1197,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-02T17:01:23+00:00"
+            "time": "2020-07-03T16:50:03+00:00"
         },
         {
             "name": "salesforce/handlebars-php",

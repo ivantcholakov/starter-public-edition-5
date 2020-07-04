@@ -282,6 +282,57 @@
         ]
     },
     {
+        "name": "fomantic/ui",
+        "version": "2.8.6",
+        "version_normalized": "2.8.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fomantic/Fomantic-UI.git",
+            "reference": "0269a8213ac2ff438965c6a82503e7561d2024ae"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fomantic/Fomantic-UI/zipball/0269a8213ac2ff438965c6a82503e7561d2024ae",
+            "reference": "0269a8213ac2ff438965c6a82503e7561d2024ae",
+            "shasum": ""
+        },
+        "time": "2020-06-17T16:03:31+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jack Lukic",
+                "email": "jacklukic@gmail.com",
+                "homepage": "http://www.jacklukic.com",
+                "role": "Creator"
+            }
+        ],
+        "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
+        "homepage": "https://fomantic-ui.com",
+        "keywords": [
+            "css",
+            "fomantic",
+            "fomantic-ui",
+            "framework",
+            "semantic",
+            "ui"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/hammy2899",
+                "type": "github"
+            },
+            {
+                "url": "https://github.com/lubber-de",
+                "type": "github"
+            }
+        ]
+    },
+    {
         "name": "kint-php/kint",
         "version": "3.3",
         "version_normalized": "3.3.0.0",
@@ -896,12 +947,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Roave/SecurityAdvisories.git",
-            "reference": "9ec84501a85a3b0c7b260042ae81a8efb2f234ce"
+            "reference": "57353ec1a34527a2dbbd3c0fb9418ffc008c6f60"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9ec84501a85a3b0c7b260042ae81a8efb2f234ce",
-            "reference": "9ec84501a85a3b0c7b260042ae81a8efb2f234ce",
+            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/57353ec1a34527a2dbbd3c0fb9418ffc008c6f60",
+            "reference": "57353ec1a34527a2dbbd3c0fb9418ffc008c6f60",
             "shasum": ""
         },
         "conflict": {
@@ -995,6 +1046,7 @@
             "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.2-p.2",
             "monolog/monolog": ">=1.8,<1.12",
             "namshi/jose": "<2.2",
+            "nystudio107/craft-seomatic": "<3.3",
             "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
             "october/october": ">=1.0.319,<1.0.467",
             "onelogin/php-saml": "<2.10.4",
@@ -1145,7 +1197,7 @@
             "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
             "zfr/zfr-oauth2-server-module": "<0.1.2"
         },
-        "time": "2020-07-02T17:01:23+00:00",
+        "time": "2020-07-03T16:50:03+00:00",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
