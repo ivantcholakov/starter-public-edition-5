@@ -423,11 +423,13 @@ class Renderers
             throw new \InvalidArgumentException('The $target argument should be \'view\' or \'string\'.');
         }
 
+        $list = $this->parseDriverOptions($options);
+
         if ($target == 'view') {
 
             if (is_null($viewPath)) {
 
-                if (!empty($options['full_path']) && $view != '') {
+                if (!empty($list) && !empty($list[0]['options']['full_path']) && $view != '') {
 
                     $viewPath = pathinfo($view, PATHINFO_DIRNAME);
                     $view = pathinfo($view, PATHINFO_BASENAME);
@@ -441,18 +443,6 @@ class Renderers
             $viewPath = rtrim($viewPath, '/ ') . '/';
 
             $loader = is_null($loader) ? \Config\Services::locator() : $loader;
-
-        } else {
-
-            // Clear non-relevant parameters, just in case.
-            $view = null;
-            unset($viewPath);
-            unset($loader);
-        }
-
-        $list = $this->parseDriverOptions($options);
-
-        if ($target == 'view') {
 
             if (empty($list)) {
 
