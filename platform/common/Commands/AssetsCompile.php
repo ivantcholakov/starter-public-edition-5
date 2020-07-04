@@ -263,6 +263,7 @@ class AssetsCompile extends BaseCommand
         $renderers = [];
 
         $renderers['less'] = isset($task['less']) ? $task['less'] : [];
+        $renderers['less']['full_path'] = true;
 
         if (isset($task['autoprefixer'])) {
             $renderers['autoprefixer'] = $task['autoprefixer'];
@@ -282,6 +283,7 @@ class AssetsCompile extends BaseCommand
         $renderers = [];
 
         $renderers['scss'] = isset($task['scss']) ? $task['scss'] : [];
+        $renderers['scss']['full_path'] = true;
 
         if (isset($task['autoprefixer'])) {
             $renderers['autoprefixer'] = $task['autoprefixer'];
@@ -301,6 +303,7 @@ class AssetsCompile extends BaseCommand
         $renderers = [];
 
         $renderers['autoprefixer'] = isset($task['autoprefixer']) ? $task['autoprefixer'] : [];
+        $renderers['autoprefixer']['full_path'] = true;
 
         if (isset($task['cssmin'])) {
             $renderers['cssmin'] = $task['cssmin'];
@@ -316,6 +319,7 @@ class AssetsCompile extends BaseCommand
         $renderers = [];
 
         $renderers['cssmin'] = isset($task['cssmin']) ? $task['cssmin'] : [];
+        $renderers['cssmin']['full_path'] = true;
 
         $task['result'] = render($task['source'], null, $renderers);
     }
@@ -327,6 +331,7 @@ class AssetsCompile extends BaseCommand
         $renderers = [];
 
         $renderers['jsmin'] = isset($task['jsmin']) ? $task['jsmin'] : [];
+        $renderers['jsmin']['full_path'] = true;
 
         $task['result'] = render($task['source'], null, $renderers);
     }
@@ -338,6 +343,7 @@ class AssetsCompile extends BaseCommand
         $renderers = [];
 
         $renderers['jsonmin'] = isset($task['jsonmin']) ? $task['jsonmin'] : [];
+        $renderers['jsonmin']['full_path'] = true;
 
         $task['result'] = render($task['source'], null, $renderers);
     }
