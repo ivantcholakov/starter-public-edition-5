@@ -28,6 +28,12 @@ https://codeigniter.com/user_guide/index.html
 
 Very useful videos by Lonnie Ezell about CodeIgniter 4 may be found at https://www.youtube.com/channel/UCXeSAhgqDXHHfZXwa1Gk2uw
 
+See also CodeIgniter Home Page: https://codeigniter.com/
+
+CodeIgniter's forum: https://forum.codeigniter.com/
+
+The GitHub repository of CodeIgniter 4: https://github.com/codeigniter4/CodeIgniter4
+
 Requirements
 ------------
 
