@@ -79,6 +79,10 @@ class AssetsCompile extends BaseCommand
                 $task['destination'] = $destination;
             }
 
+            if (isset($task['before']) && is_callable($task['before'])) {
+                call_user_func_array($task['before'], [$task]);
+            }
+
             $this->execute($task);
 
             if ($task['destination'] != '') {
@@ -104,14 +108,21 @@ class AssetsCompile extends BaseCommand
                         @chmod($destination_hash, FILE_WRITE_MODE);
                     }
 
-                    unset($task['result']);
-
                     CLI::write(CLI::color($task['destination'], 'green'));
 
                 } catch(Exception $e) {
 
                     CLI::write(CLI::color($e->getMessage(), 'yellow'));
+                    continue;
                 }
+            }
+
+            if (isset($task['after']) && is_callable($task['after'])) {
+                call_user_func_array($task['after'], [$task]);
+            }
+
+            if (isset($task['result'])) {
+                unset($task['result']);
             }
         }
 
