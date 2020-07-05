@@ -57,6 +57,6 @@
         "matthiasmullie/minify": "^1.3",
         "t1st3/php-json-minify": "^0.6.2",
         "npm-asset/jquery": "3.5.1",
-        "fomantic/ui": "^2.8.6"
+        "fomantic/ui": "2.8.6"
     }
 }
