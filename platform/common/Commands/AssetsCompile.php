@@ -228,11 +228,6 @@ class AssetsCompile extends BaseCommand
         }
     }
 
-    protected function copy(& $task)
-    {
-        $task['result'] = file_get_contents($task['source']);
-    }
-
     protected function merge_css(& $task) {
 
         $task['result'] = '';
@@ -293,6 +288,11 @@ class AssetsCompile extends BaseCommand
                 $first = false;
             }
         }
+    }
+
+    protected function copy(& $task)
+    {
+        $task['result'] = file_get_contents($task['source']);
     }
 
     protected function less(& $task)
