@@ -18,7 +18,8 @@ class Less extends \Common\Modules\Renderers\Config\Less
         // Configuration Options, You May Edit Them
         //--------------------------------------------------------------------
 
-
+        // Be verbose.
+        $this->verbose = false;
 
         //--------------------------------------------------------------------
         // Do Not Edit Below This Line

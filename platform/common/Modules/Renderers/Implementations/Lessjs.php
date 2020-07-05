@@ -124,6 +124,7 @@ class Lessjs {
         $this->options['global_var'] = '';
         $this->options['modify_var'] = '';
         $this->options['url_args'] = '';
+        $this->options['verbose'] = false;
     }
 
     protected function setOption($key, $value) {
@@ -242,6 +243,14 @@ class Lessjs {
 
                     if ($value != '') {
                         $result[] = '--url-args='.escape_shell_arg($value);
+                    }
+
+                    break;
+
+                case 'verbose':
+
+                    if (!empty($value)) {
+                        $result[] = '--verbose';
                     }
 
                     break;

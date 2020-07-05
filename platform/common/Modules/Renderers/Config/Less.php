@@ -73,6 +73,9 @@ class Less extends BaseConfig
         // This option allows you to specify a argument to go on to every URL. This may be
         // used for cache-busting for instance.
         $this->config['url_args'] = '';
+
+        // Be verbose.
+        $this->config['verbose'] = false;
     }
 
     //------------------------------------------------------------------------
