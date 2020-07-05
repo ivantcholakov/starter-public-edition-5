@@ -36,8 +36,6 @@ class AssetsCompile extends BaseConfig
                 'name' => 'welcome_message_css',
                 'type' => 'merge_css',
                 'destination' => DEFAULTFCPATH.'assets/welcome_message.min.css',
-                'sha384' => true,
-                'sha384.base64' => true,
                 'sources' => [
                     [
                         'source' => DEFAULTFCPATH.'assets/welcome_message.css',
@@ -59,8 +57,6 @@ class AssetsCompile extends BaseConfig
                 'name' => 'welcome_message_js',
                 'type' => 'merge_js',
                 'destination' => DEFAULTFCPATH.'assets/welcome_message.min.js',
-                'sha384' => true,
-                'sha384.base64' => true,
                 'sources' => [
                     [
                         'source' => DEFAULTFCPATH.'assets/npm-asset/jquery/dist/jquery.min.js',
@@ -82,8 +78,6 @@ class AssetsCompile extends BaseConfig
                 'name' => 'front_default_css',
                 'type' => 'merge_css',
                 'destination' => DEFAULTFCPATH.'themes/front_default/css/front.min.css',
-                'sha384' => true,
-                'sha384.base64' => true,
                 'sources' => [
                     [
                         'source' => DEFAULTFCPATH.'themes/front_default/src/front.less',
@@ -96,9 +90,29 @@ class AssetsCompile extends BaseConfig
                     ],
                 ],
                 'before' => [$this, 'prepare_semantic_source'],
+                'after' => [
+                    [$this, 'create_sha384'],
+                    [$this, 'create_sha384_base64'],
+                ],
             ],
 
         ];
+    }
+
+    public function create_sha384($task) {
+
+        $destination_hash = $task['destination'].'.sha384';
+        $hash = hash('sha384', $task['result']);
+        write_file($destination_hash, $hash);
+        @chmod($destination_hash, FILE_WRITE_MODE);
+    }
+
+    public function create_sha384_base64($task) {
+
+        $destination_hash = $task['destination'].'.sha384.base64';
+        $hash = base64_encode(hash('sha384', $task['result']));
+        write_file($destination_hash, $hash);
+        @chmod($destination_hash, FILE_WRITE_MODE);
     }
 
     public function prepare_semantic_source($task) {
