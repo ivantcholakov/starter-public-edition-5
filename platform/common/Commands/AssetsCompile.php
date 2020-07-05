@@ -114,22 +114,6 @@ class AssetsCompile extends BaseCommand
                     write_file($task['destination'], $task['result']);
                     @chmod($task['destination'], FILE_WRITE_MODE);
 
-                    if (!empty($task['sha384'])) {
-
-                        $destination_hash = $task['destination'].'.sha384';
-                        $hash = hash('sha384', $task['result']);
-                        write_file($destination_hash, $hash);
-                        @chmod($destination_hash, FILE_WRITE_MODE);
-                    }
-
-                    if (!empty($task['sha384.base64'])) {
-
-                        $destination_hash = $task['destination'].'.sha384.base64';
-                        $hash = base64_encode(hash('sha384', $task['result']));
-                        write_file($destination_hash, $hash);
-                        @chmod($destination_hash, FILE_WRITE_MODE);
-                    }
-
                     CLI::write(CLI::color($task['destination'], 'green'));
 
                 } catch(Exception $e) {
