@@ -12,62 +12,6 @@ class AssetsCompile extends BaseConfig
         // php spark assets:compile
 
         $this->tasks = [
-/*
-            // php spark assets:compile welcome_message_css_min
-            [
-                'name' => 'welcome_message_css_min',
-                'type' => 'autoprefixer',
-                'source' => DEFAULTFCPATH.'assets/welcome_message.css',
-                'destination' => DEFAULTFCPATH.'assets/welcome_message.min.css',
-                'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
-                'cssmin' => [],
-            ],
-
-            // php spark assets:compile welcome_message_js_min
-            [
-                'name' => 'welcome_message_js_min',
-                'type' => 'jsmin',
-                'source' => DEFAULTFCPATH.'assets/welcome_message.js',
-                'destination' => DEFAULTFCPATH.'assets/welcome_message.min.js',
-            ],
-*/
-            // php spark assets:compile welcome_message_css
-            [
-                'name' => 'welcome_message_css',
-                'type' => 'merge_css',
-                'destination' => DEFAULTFCPATH.'assets/welcome_message.min.css',
-                'sources' => [
-                    [
-                        'source' => DEFAULTFCPATH.'assets/welcome_message.css',
-                        'type' => 'autoprefixer',
-                        'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
-                        'cssmin' => [],
-                    ],
-                    [
-                        'source' => DEFAULTFCPATH.'assets/welcome_message_2.css',
-                        'type' => 'autoprefixer',
-                        'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
-                        'cssmin' => [],
-                    ],
-                ]
-            ],
-
-            // php spark assets:compile welcome_message_js
-            [
-                'name' => 'welcome_message_js',
-                'type' => 'merge_js',
-                'destination' => DEFAULTFCPATH.'assets/welcome_message.min.js',
-                'sources' => [
-                    [
-                        'source' => DEFAULTFCPATH.'assets/npm-asset/jquery/dist/jquery.min.js',
-                        'type' => 'copy',
-                    ],
-                    [
-                        'source' => DEFAULTFCPATH.'assets/welcome_message.js',
-                        'type' => 'jsmin',
-                    ],
-                ],
-            ],
 
             // Compiling visual themes with Semantic/Fomantic UI might require a lot
             // of memory for node.js. In such case try from a command line this:
@@ -118,6 +62,7 @@ class AssetsCompile extends BaseConfig
     public function prepare_semantic_source($task) {
 
         $semantic_file = DEFAULTFCPATH.'assets/composer-asset/fomantic/ui/src/semantic.less';
+
         file_put_contents($semantic_file, <<<'EOT'
 @theme-loader-path: ''; // Added by Ivan Tcholakov, 05-JUL-2020.
 
@@ -195,11 +140,13 @@ class AssetsCompile extends BaseConfig
 & { @import "definitions/modules/transition"; }
 EOT
         );
+
         @chmod($semantic_file, FILE_WRITE_MODE);
 
 //------------------------------------------------------------------------------
 
         $semantic_theme_config_file = DEFAULTFCPATH.'assets/composer-asset/fomantic/ui/src/theme.config';
+
         file_put_contents($semantic_theme_config_file, <<<'EOT'
 /*
 
@@ -304,6 +251,7 @@ EOT
 /* End Config */
 EOT
         );
+
         @chmod($semantic_theme_config_file, FILE_WRITE_MODE);
     }
 
