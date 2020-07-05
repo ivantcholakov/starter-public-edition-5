@@ -21,14 +21,14 @@ If you are a beginner with little or no PHP experience, you might need to read a
 
 PHP Tutorial for Beginners: Learn in 7 Days, https://www.guru99.com/php-tutorials.html
 
-CodeIgniter 4 Documentation
------------------------------
+CodeIgniter 4 Documentation and Other Information
+-------------------------------------------------
 
-https://codeigniter.com/user_guide/index.html
+CodeIgniter4 User Guide: https://codeigniter.com/user_guide/index.html
 
 Very useful videos by Lonnie Ezell about CodeIgniter 4 may be found at https://www.youtube.com/channel/UCXeSAhgqDXHHfZXwa1Gk2uw
 
-See also CodeIgniter Home Page: https://codeigniter.com/
+See also CodeIgniter's home page: https://codeigniter.com/
 
 CodeIgniter's forum: https://forum.codeigniter.com/
 
