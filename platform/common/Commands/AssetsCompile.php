@@ -79,8 +79,30 @@ class AssetsCompile extends BaseCommand
                 $task['destination'] = $destination;
             }
 
-            if (isset($task['before']) && is_callable($task['before'])) {
-                call_user_func_array($task['before'], [$task]);
+            if (isset($task['before'])) {
+
+                if (is_array($task['before'])) {
+
+                    if (is_callable($task['before'])) {
+
+                        call_user_func_array($task['before'], [$task]);
+
+                    } else {
+
+                        foreach($task['before'] as $before) {
+
+                            if (is_callable($before)) {
+                                call_user_func_array($before, [$task]);
+                            }
+                        }
+                    }
+
+                } else {
+
+                    if (is_callable($task['before'])) {
+                        call_user_func_array($task['before'], [$task]);
+                    }
+                }
             }
 
             $this->execute($task);
@@ -117,8 +139,30 @@ class AssetsCompile extends BaseCommand
                 }
             }
 
-            if (isset($task['after']) && is_callable($task['after'])) {
-                call_user_func_array($task['after'], [$task]);
+            if (isset($task['after'])) {
+
+                if (is_array($task['after'])) {
+
+                    if (is_callable($task['after'])) {
+
+                        call_user_func_array($task['after'], [$task]);
+
+                    } else {
+
+                        foreach($task['after'] as $after) {
+
+                            if (is_callable($after)) {
+                                call_user_func_array($after, [$task]);
+                            }
+                        }
+                    }
+
+                } else {
+
+                    if (is_callable($task['after'])) {
+                        call_user_func_array($task['after'], [$task]);
+                    }
+                }
             }
 
             if (isset($task['result'])) {
