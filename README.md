@@ -297,10 +297,10 @@ $result = render(                                               // A chain of re
 ### Web-assets
 
 Fomantic-UI CSS/JS framework is used in this application starter, although there is no restriction on what you would
-desire to use. But these big resources need effort for intallation and upgrade, Gulp/Webpack and etc. package managers
-from the Javascript world might be annoying burden for a PHP-developer. In order to make this matter easier a web-asset
-compilator has been impremented, it uses internally the corresponding renderers that were previouly mentioned. First, the
-compiler's tasks must be specified by names, see the configuration file platform/common/Config/AssetsCompile.php .
+desire to use. But these big resources need efforts for intallation and upgrade, Gulp/Webpack and etc. package managers
+from the Javascript world might be annoying burden for a PHP-developer. In order to make this matter easier, a web-asset
+compilator has been implemented, it uses internally the corresponding renderers that were previouly descibed. First, the
+compiler's tasks must be specified by names, see the configuration file platform/common/Config/AssetsCompile.php.
 A simple example:
 
 ```php
