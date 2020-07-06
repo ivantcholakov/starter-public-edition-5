@@ -27,7 +27,7 @@ class Less extends BaseConfig
         // When this option is on, the following example would be treated as an error:
         // .class {
         //   property: 1px * 2px; /* This is an area? There is no such feature in CSS. */
-        //   /* On $this->config['strictUnits'] = FALSE the property would be evaluated to 2px. */
+        //   /* On $this->config['strict_units'] = FALSE the property would be evaluated to 2px. */
         // }
         $this->config['strict_units'] = false;
 
