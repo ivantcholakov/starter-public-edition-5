@@ -1,2 +1,6 @@
 User-agent: *
-Disallow: 
+Disallow: /assets/
+Disallow: /themes/
+
+# Update the site address and enable this line.
+# Sitemap: http://my-site.com/sitemap.xml
