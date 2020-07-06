@@ -197,6 +197,13 @@ This command should work:
 tsc -v
 ```
 
+On compilation of huge web-resources Node.js might exaust its memory, in such case try
+(the value may vary):
+
+```sh
+export NODE_OPTIONS=--max-old-space-size=8192
+```
+
 Coding Rules
 ------------
 
@@ -204,6 +211,131 @@ For originally written code a tab is turned into four spaces. This is the only
 strict rule. Standard PSR rules are welcome, but it is desirable code not to be
 'compressed' vertically, use more meaningful empty lines that would make code
 more readable and comfortable.
+
+Additional Features
+-------------------
+
+### Template engines, renderers and parsers
+
+* Twig 3.x
+* Mustache
+* Handlebars
+* Markdown (Parsedown implementation)
+* Markdownify
+* Textile
+* Less
+* Scss
+* Autoprefixer
+* Cssmin
+* Jsmin
+* Jsonmin
+
+See platform/common/Config/Renderers.php on enabling/disbling these engines.
+Within platform/common/Config/ there are specific configuration files for every
+engine, but probably you would not need to modify them. There is a deeply
+hidden (for dicouraging modifications) configuration file with more options
+platform/common/Modules/Renderers/Config/Renderers.php, there you can see the
+file extensions that are associated with some renderers/parsers, like this:
+
+```php
+// PHP in views is not allowed as predecessor renderer,
+// if there is a file extension here.
+$this->config['fileExtensions'] = [
+    'twig' => ['twig', 'html.twig'],
+    'mustache' => 'mustache',
+    'handlebars' => ['handlebars', 'hbs'],
+    'markdown' => ['md', 'markdown', 'fbmd'],
+    'textile' => 'textile',
+    'less' => 'less',
+    'scss' => 'scss',
+];
+```
+
+How to use them, examples on rendering views: 
+
+```php
+return view('welcome_message', $data);          // The renderer would be chosen by file extension of the found view.
+                                                // If there is a view welcome_message.php - PHP would be rendered;
+                                                // welcome_message.html.twig or welcome_message.twig - Twig syntax would
+                                                // be rendered and etc., the same is for other engines;
+
+return view('welcome_message.html', $data);     // A coventional for Symfony notation. I this case welcome_message.html.twig
+                                                // is expected to be found;
+
+return view('README');                          // If README.md view is found if t would be parsed as Markdown syntax.
+                                                // Parsers don't need to be provided with data;
+
+return view('README.textile');                  // Specifying explicitly the parser by its associated file extension.
+return view('welcome_message.php', $data);      // The same, ensuring that PHP would be applied;
+
+return view('README', null, ['textile']);       // Specifying explicitly the parser by using an option;
+
+return view('welcome_message.html', $data, ['twig' => ['debug' => true]]);  // Passing an option, specific to the renderer.
+```
+
+Outside, independently from CodeIgniter's view-management system there are two functions, render() and render_string(),
+passing parameters to them is similar:
+
+```php
+$result = render('email_template.mustache', $data);             // A trivial example;
+
+$result = render_string('# Hello There!', null, 'markdown');    // Here the parser should be specified explicitly;
+
+$result = render(DEFAULTFCPATH.'assets/my.less', null, 'less' => ['full_path' = true]); // Accessing by a full file name;
+
+$result = render(                                               // A chain of renderer/parsers can be applied too.
+    DEFAULTFCPATH.'assets/my.less',
+    null,
+    [
+        'less' => ['full_path' = true],
+        'autoprefixer',
+        'cssmin'
+    ]
+);
+```
+
+### Web-assets
+
+Fomantic-UI CSS/JS framework is used in this application starter, although there is no restriction on what you would
+desire to use. But these big resources need effort for intallation and upgrade, Gulp/Webpack and etc. package managers
+from the Javascript world might be annoying burden for a PHP-developer. In order to make this matter easier a web-asset
+compilator has been impremented, it uses internally the corresponding renderers that were previouly mentioned. First, the
+compiler's tasks must be specified by names, see the configuration file platform/common/Config/AssetsCompile.php .
+A simple example:
+
+```php
+    ...
+    [
+        'source' => DEFAULTFCPATH.'themes/front_default/src/my.less',
+        'type' => 'less',
+        'less' => [
+            'rewrite_urls' => 'all',
+        ],
+        'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
+        'cssmin' => [],
+        'destination' => DEFAULTFCPATH.'themes/front_default/src/my.min.css',
+    ],
+    ...
+```
+
+As you can see, there are source and destinations files, and a chain of parsers with their specific options.
+The type of the task here is the name of the first parser to be applied. Practically, more complex tasks
+might be needed when CSS and Javascripts are merged into a single result file, there are two special task-types:
+'merge_css' and 'merge_js', see within the configuration file hpw they are done.
+
+How the prepared web-assets to be compiled. Open the command prompt at the directory platform/applications/front/
+and write the command:
+
+```sh
+php spark assets:compile
+```
+
+Thus, all the prepared tasks within the configuration file would be executed. A command like the following
+would execute only one or many tasks you have specified (separate with intervals):
+
+```sh
+php spark assets:compile task_1 task_2 task_3
+```
 
 License Information
 -------------------
