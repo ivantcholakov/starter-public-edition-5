@@ -306,14 +306,15 @@ A simple example:
 ```php
     ...
     [
-        'source' => DEFAULTFCPATH.'themes/front_default/src/my.less',
+        'name' => 'my_task',
         'type' => 'less',
+        'source' => DEFAULTFCPATH.'themes/front_default/src/my.less',
+        'destination' => DEFAULTFCPATH.'themes/front_default/src/my.min.css',
         'less' => [
             'rewrite_urls' => 'all',
         ],
         'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
         'cssmin' => [],
-        'destination' => DEFAULTFCPATH.'themes/front_default/src/my.min.css',
     ],
     ...
 ```
