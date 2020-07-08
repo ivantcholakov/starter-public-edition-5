@@ -322,7 +322,7 @@ A simple example:
 As you can see, there are source and destinations files, and a chain of parsers with their specific options.
 The type of the task here is the name of the first parser to be applied. Practically, more complex tasks
 might be needed when CSS and Javascripts are merged into a single result file, there are two special task-types:
-'merge_css' and 'merge_js', see within the configuration file hpw they are done.
+'merge_css' and 'merge_js', see within the configuration file about how they are done.
 
 How the prepared web-assets to be compiled. Open the command prompt at the directory platform/applications/front/
 and write the command:
