@@ -5,19 +5,9 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
     "extra": {
-        "installer-types": ["library", "component", "bower-asset", "npm-asset"],
+        "installer-types": ["library", "component"],
         "installer-paths": {
-            "../public/assets/{$vendor}/{$name}/": [
-                "type:bower-asset",
-                "type:npm-asset"
-            ],
             "../public/assets/composer-asset/{$vendor}/{$name}/": [
                 "type:component",
                 "fomantic/ui"
