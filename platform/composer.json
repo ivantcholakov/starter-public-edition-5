@@ -12,14 +12,15 @@
         }
     ],
     "extra": {
-        "installer-types": ["library", "bower-asset", "npm-asset"],
+        "installer-types": ["library", "component", "bower-asset", "npm-asset"],
         "installer-paths": {
             "../public/assets/{$vendor}/{$name}/": [
                 "type:bower-asset",
                 "type:npm-asset"
             ],
             "../public/assets/composer-asset/{$vendor}/{$name}/": [
-                "fomantic/ui"
+                "fomantic/ui",
+                "components/highlightjs"
             ]
         }
     },
@@ -57,6 +58,7 @@
         "matthiasmullie/minify": "^1.3",
         "t1st3/php-json-minify": "^0.6.2",
         "npm-asset/jquery": "3.5.1",
-        "fomantic/ui": "2.8.6"
+        "fomantic/ui": "2.8.6",
+        "components/highlightjs": "v9.16.2"
     }
 }
