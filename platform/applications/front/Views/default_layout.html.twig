@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Application Starter 5 Public Edition</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="{{ base_url('themes/front_default/css/front.min.css')|e('html_attr') }}" />
+    <script src="{{ base_url('assets/composer-asset/components/jquery/jquery.min.js')|e('html_attr') }}"></script>
+
+</head>
+
+<body>
+
+    <nav id="main_navigation">
+
+        <div class="main_navigation_wrapper">
+
+            <div class="ui grid">
+
+                <div class="mobile hidden row">
+
+                    <div class="column">
+
+                        <div id="main_navigation_expanded" class="ui inverted blue borderless attached menu page grid">
+
+                            <a href="{{ site_url() }}" class="brand item"><strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
+
+                            <div class="right menu">
+                                <div class="item">{{ constant('ENVIRONMENT')|upper|e('html') }}</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div id="main_content">
+
+        <div class="ui vertically padded grid page">
+
+            <div class="row">
+
+                <div class="sixteen wide column">
+
+                    {% block content %}
+                    {% endblock %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer id="footer">
+
+        <div class="ui vertically padded grid page">
+
+            <div class="row">
+
+                <div class="sixteen wide column">
+
+                    <div>
+
+                       <p>Page rendered in {elapsed_time} seconds</p>
+
+                    </div>
+
+                    <div>
+
+                       <p>&copy; {{ 'now'|date('Y') }} The MIT open source licence.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="{{ base_url('assets/composer-asset/fomantic/ui/dist/semantic.min.js')|e('html_attr') }}"></script>
+
+    <link rel="stylesheet" href="{{ base_url('assets/composer-asset/components/highlightjs/styles/default.css')|e('html_attr') }}">
+    <script src="{{ base_url('assets/composer-asset/components/highlightjs/highlight.pack.min.js')|e('html_attr') }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
