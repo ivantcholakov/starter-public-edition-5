@@ -335,7 +335,7 @@ Thus, all the prepared tasks within the configuration file would be executed. A 
 would execute only one or many tasks you have specified (separate with intervals):
 
 ```sh
-php spark assets:compile task_1 task_2 task_3
+php spark assets:compile task_name_1 task_name_2 task_name_3 ...
 ```
 
 License Information

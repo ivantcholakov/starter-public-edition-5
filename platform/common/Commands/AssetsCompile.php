@@ -5,6 +5,21 @@ namespace Common\Commands;
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
 
+/**
+ * Web Assets Compiler
+ *
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2020
+ * @license The MIT License, http://opensource.org/licenses/MIT
+ *
+ * Synopsis
+ *
+ * Executes all the configured tasks:
+ * php spark assets:compile
+ *
+ * Executes only specifyed task (interval-separates names):
+ * php spark assets:compile task_name_1 task_name_2 task_name_3 ...
+ */
+
 class AssetsCompile extends BaseCommand
 {
     protected $group       = 'Assets';
@@ -73,7 +88,10 @@ class AssetsCompile extends BaseCommand
                 file_exists($dir) OR mkdir($dir, DIR_WRITE_MODE, TRUE);
 
                 if (!is_dir($dir)) {
-                    continue;
+
+                    CLI::write(CLI::color($task['name'].': '.sprintf('Failed to create the destination directory "%s".', $dir)));
+
+                    return;
                 }
 
                 $task['destination'] = $destination;
@@ -118,8 +136,9 @@ class AssetsCompile extends BaseCommand
 
                 } catch(Exception $e) {
 
-                    CLI::write(CLI::color($e->getMessage(), 'yellow'));
-                    continue;
+                    CLI::write(CLI::color($task['name'].': '.$e->getMessage(), 'yellow'));
+
+                    return;
                 }
             }
 
