@@ -8,6 +8,19 @@ class AssetsCompile extends BaseConfig
 
     public function __construct() {
 
+        // An autoprefixer option: Supported browsers.
+
+        $this->autoprefixer_browsers = [
+            '>= 0.1%',
+            'last 2 versions',
+            'Firefox ESR',
+            'Safari >= 7',
+            'iOS >= 7',
+            'ie >= 10',
+            'Edge >= 12',
+            'Android >= 4',
+        ];
+
         // The following command-line runs all the tasks:
         // php spark assets:compile
 
@@ -27,7 +40,7 @@ class AssetsCompile extends BaseConfig
                         'source' => DEFAULTFCPATH.'themes/front_default/src/front.less',
                         'type' => 'less',
                         'less' => [],
-                        'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
+                        'autoprefixer' => ['browsers' => $this->autoprefixer_browsers],
                         'cssmin' => [],
                     ],
                 ],
