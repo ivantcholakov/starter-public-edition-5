@@ -90,6 +90,50 @@
         "description": "Highlight.js highlights syntax in code examples on blogs, forums and in fact on any web pages."
     },
     {
+        "name": "components/jquery",
+        "version": "3.5.1",
+        "version_normalized": "3.5.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/components/jquery.git",
+            "reference": "b33e8f0f9a1cb2ae390cf05d766a900b53d2125b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/components/jquery/zipball/b33e8f0f9a1cb2ae390cf05d766a900b53d2125b",
+            "reference": "b33e8f0f9a1cb2ae390cf05d766a900b53d2125b",
+            "shasum": ""
+        },
+        "time": "2020-05-05T13:21:02+00:00",
+        "type": "component",
+        "extra": {
+            "component": {
+                "scripts": [
+                    "jquery.js"
+                ],
+                "files": [
+                    "jquery.min.js",
+                    "jquery.min.map",
+                    "jquery.slim.js",
+                    "jquery.slim.min.js",
+                    "jquery.slim.min.map"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "JS Foundation and other contributors"
+            }
+        ],
+        "description": "jQuery JavaScript Library",
+        "homepage": "http://jquery.com"
+    },
+    {
         "name": "composer/installers",
         "version": "v1.9.0",
         "version_normalized": "1.9.0.0",
@@ -773,20 +817,6 @@
             "php-textile",
             "plaintext",
             "textile"
-        ]
-    },
-    {
-        "name": "npm-asset/jquery",
-        "version": "3.5.1",
-        "version_normalized": "3.5.1.0",
-        "dist": {
-            "type": "tar",
-            "url": "https://registry.npmjs.org/jquery/-/jquery-3.5.1.tgz"
-        },
-        "type": "npm-asset",
-        "installation-source": "dist",
-        "license": [
-            "MIT"
         ]
     },
     {

@@ -19,8 +19,8 @@
                 "type:npm-asset"
             ],
             "../public/assets/composer-asset/{$vendor}/{$name}/": [
-                "fomantic/ui",
-                "components/highlightjs"
+                "type:component",
+                "fomantic/ui"
             ]
         }
     },
@@ -57,8 +57,8 @@
         "scssphp/scssphp": "^1.1",
         "matthiasmullie/minify": "^1.3",
         "t1st3/php-json-minify": "^0.6.2",
-        "npm-asset/jquery": "3.5.1",
         "fomantic/ui": "2.8.6",
-        "components/highlightjs": "v9.16.2"
+        "components/jquery": "3.5.1",
+        "components/highlightjs": "^9.16"
     }
 }
