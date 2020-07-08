@@ -351,7 +351,10 @@ two special task-types: 'merge_css' and 'merge_js', see an example:
 ```
 
 Within the example 'before' and 'after' elements are callbacks that do additional user-defined
-actions before and after the correspinding task is executed. 
+actions before and after the correspinding task is executed.
+
+There is a defined special task-type 'copy' that allows merging already minified CSS or JavaScript without
+any processing.
 
 How the configeured web-assets to be compiled. Open the command prompt at the directory platform/applications/front/
 and write the command:
