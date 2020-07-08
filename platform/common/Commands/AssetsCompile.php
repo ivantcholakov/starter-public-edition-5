@@ -132,7 +132,7 @@ class AssetsCompile extends BaseCommand
                     write_file($task['destination'], $task['result']);
                     @chmod($task['destination'], FILE_WRITE_MODE);
 
-                    CLI::write(CLI::color($task['destination'], 'green'));
+                    CLI::write(CLI::color($task['name'].': '.$task['destination'], 'green'));
 
                 } catch(Exception $e) {
 
