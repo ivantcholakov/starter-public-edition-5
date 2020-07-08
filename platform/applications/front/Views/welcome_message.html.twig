@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="{{ base_url('themes/front_default/css/front.min.css')|e('html_attr') }}" />
-    <script src="{{ base_url('assets/welcome_message.min.js')|e('html_attr') }}"></script>
 
 </head>
 
@@ -110,6 +109,10 @@
     </footer>
 
     <script src="{{ base_url('assets/composer-asset/fomantic/ui/dist/semantic.min.js')|e('html_attr') }}"></script>
+
+    <link rel="stylesheet" href="{{ base_url('assets/composer-asset/components/highlightjs/styles/default.css')|e('html_attr') }}">
+    <script src="{{ base_url('assets/composer-asset/components/highlightjs/highlight.pack.min.js')|e('html_attr') }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>
