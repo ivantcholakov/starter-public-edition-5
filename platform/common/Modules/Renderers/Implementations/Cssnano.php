@@ -95,7 +95,7 @@ class Cssnano {
 
             $this->stderr = '\Cssnano: Can\'t execute a command.';
 
-            if (ENVIRONMENT !== 'production') {
+            if (IS_CLI || ENVIRONMENT !== 'production') {
                 $this->stderr .= PHP_EOL.$exception->getMessage();
             }
 
