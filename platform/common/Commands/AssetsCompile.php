@@ -31,6 +31,8 @@ class AssetsCompile extends BaseCommand
     public function __construct()
     {
         $this->tasks = config('AssetsCompile')->tasks;
+
+        helper('filesystem');
     }
 
     public function run(array $params)
@@ -70,7 +72,10 @@ class AssetsCompile extends BaseCommand
                 }
 
                 if (!is_file($source)) {
-                    continue;
+
+                    CLI::write(CLI::color($task['name'].': '.sprintf('Failed to find the source file "%s".', $source), 'yellow'));
+
+                    return;
                 }
 
                 $task['source'] = $source;
@@ -89,7 +94,7 @@ class AssetsCompile extends BaseCommand
 
                 if (!is_dir($dir)) {
 
-                    CLI::write(CLI::color($task['name'].': '.sprintf('Failed to create the destination directory "%s".', $dir)));
+                    CLI::write(CLI::color($task['name'].': '.sprintf('Failed to create the destination directory "%s".', $dir), 'yellow'));
 
                     return;
                 }
@@ -127,19 +132,16 @@ class AssetsCompile extends BaseCommand
 
             if ($task['destination'] != '') {
 
-                try {
+                if (!write_file($task['destination'], $task['result'])) {
 
-                    write_file($task['destination'], $task['result']);
-                    @chmod($task['destination'], FILE_WRITE_MODE);
-
-                    CLI::write(CLI::color($task['name'].': '.$task['destination'], 'green'));
-
-                } catch(Exception $e) {
-
-                    CLI::write(CLI::color($task['name'].': '.$e->getMessage(), 'yellow'));
+                    CLI::write(CLI::color($task['name'].': '.sprintf('Failed to write the destination file "%s".', $task['destination']), 'yellow'));
 
                     return;
                 }
+
+                @chmod($task['destination'], FILE_WRITE_MODE);
+
+                CLI::write(CLI::color($task['name'].': '.$task['destination'], 'green'));
             }
 
             if (isset($task['after'])) {
