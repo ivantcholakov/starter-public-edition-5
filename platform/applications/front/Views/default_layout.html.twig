@@ -51,7 +51,7 @@ https://google-webfonts-helper.herokuapp.com
 
     <nav id="main_navigation">
 
-        <div class="main_navigation_wrapper">
+        <div class="main_navigation_wrapper headroom--pinned">
 
             <div class="ui grid">
 
@@ -199,12 +199,89 @@ https://google-webfonts-helper.herokuapp.com
     </script>
 
     <script src="{{ base_url('assets/composer-asset/fomantic/ui/dist/semantic.min.js')|e('html_attr') }}"></script>
+    <script src="{{ base_url('assets/headroom/headroom.min.js')|e('html_attr') }}"></script>
+    <script src="{{ base_url('assets/headroom/jQuery.headroom.min.js')|e('html_attr') }}"></script>
     <script src="{{ base_url('assets/composer-asset/components/highlightjs/highlight.pack.min.js')|e('html_attr') }}"></script>
 
     <script type="text/javascript">
     //<![CDATA[
 
-hljs.initHighlightingOnLoad();
+    (function($) {
+
+        // See http://appglobe.com/scroll-to-top-animation/
+
+        addScrollTopAnimation();
+
+        function addScrollTopAnimation() {
+
+            var $scrolltop_link = $('.ui.button.scroll.top');
+
+            $scrolltop_link.on('click', function (ev) {
+
+                ev.preventDefault();
+
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 700 );
+
+            }).data('hidden', 1).hide(); 
+
+            var scroll_event_fired = false;
+
+            $(window).on('scroll', function() {
+                scroll_event_fired = true;
+            });
+
+            // Checks every 300 ms if a scroll event has been fired.
+            setInterval(function() {
+
+                if( scroll_event_fired ) {
+
+                    // Main menu shadow.
+                    if ($(this).scrollTop() > 2) {
+                        $('#main_navigation .main_navigation_wrapper').addClass('with-shadow');
+                    } else {
+                        $('#main_navigation .main_navigation_wrapper').removeClass('with-shadow');
+                    }
+
+                    // Stop code below from being executed until the next scroll event. 
+                    scroll_event_fired = false; 
+
+                    var is_hidden =  $scrolltop_link.data('hidden'); 
+
+                    // Display the scroll top link when the page is scrolled 
+                    // down the height of half a viewport from top,  Hide it otherwise. 
+                    if ($(this).scrollTop() > $(this).height() / 2) {
+
+                        if (is_hidden) {
+                            $scrolltop_link.fadeIn(600).data('hidden', 0);
+                        }
+
+                    } else {
+
+                        if (!is_hidden) {
+                            $scrolltop_link.fadeOut(600).data('hidden', 1);
+                        }
+                    }
+                }
+
+            }, 300); 
+        }
+
+    })(jQuery);
+
+    $('.main_navigation_wrapper').visibility({
+        type: 'fixed'
+    });
+
+    $('.main_navigation_wrapper:not(:first-of-type) [id]').removeAttr('id');
+
+    $('.main_navigation_wrapper:first-of-type').headroom({
+        offset : 50,
+        tolerance : 5
+    });
+
+    hljs.initHighlightingOnLoad();
 
     //]]>
     </script>
