@@ -9,6 +9,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="{{ base_url('favicon.ico')|e('html_attr') }}" />
     <link rel="apple-touch-icon-precomposed" href="{{ base_url('apple-touch-icon-precomposed.png')|e('html_attr') }}" />
+    <script type="text/javascript" src="{{ base_url('assets/composer-asset/components/webfontloader/webfontloader.js')|e('html_attr') }}"></script>
+
+    <script type="text/javascript">
+    //<![CDATA[
+{#
+
+https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization
+https://developers.google.com/fonts/docs/webfont_loader
+https://github.com/typekit/webfontloader
+https://github.com/typekit/fvd
+https://google-webfonts-helper.herokuapp.com
+
+#}
+        WebFont.load({
+            custom: {
+                families: [
+                    'Open Sans',
+                    'Open Sans Condensed'
+                ],
+                urls: [
+                    '{{ base_url('assets/open-sans/open-sans.min.css')|e('js') }}',
+                    '{{ base_url('assets/open-sans-condensed/open-sans-condensed.min.css')|e('js') }}'
+                ]
+            },
+            timeout: 2000
+        });
+
+    //]]>
+    </script>
+
     <link rel="stylesheet" type="text/css" href="{{ base_url('themes/front_default/css/front.min.css')|e('html_attr') }}" />
     <link rel="stylesheet" href="{{ base_url('assets/composer-asset/components/highlightjs/styles/github.css')|e('html_attr') }}" />
     <script src="{{ base_url('assets/composer-asset/components/jquery/jquery.min.js')|e('html_attr') }}"></script>
@@ -86,7 +116,7 @@
 
                     </div>
 
-                    <a class="circular ui icon huge blue scroll top button" title="Go to top." style="display: none;"><i class="chevron up icon"></i></a>
+                    <a class="circular ui icon huge blue scroll top button" title="Go to top" style="display: none;"><i class="chevron up icon"></i></a>
 
                 </div>
 
@@ -96,7 +126,8 @@
 
     </footer>
 
-    <script>
+    <script type="text/javascript">
+    //<![CDATA[
 
 /*
 (function($) {
@@ -165,11 +196,18 @@
 
 })(jQuery);
 */
+
+    //]]>
     </script>
 
     <script src="{{ base_url('assets/composer-asset/fomantic/ui/dist/semantic.min.js')|e('html_attr') }}"></script>
     <script src="{{ base_url('assets/composer-asset/components/highlightjs/highlight.pack.min.js')|e('html_attr') }}"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript">
+    //<![CDATA[
+    hljs.initHighlightingOnLoad();
+    //]]>
+    </script>
 
 </body>
 </html>
