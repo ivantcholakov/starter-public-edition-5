@@ -3,13 +3,14 @@
 
 <head>
 
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Application Starter 5 Public Edition</title>
-    <meta name="description" content="">
+    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="{{ base_url('favicon.ico')|e('html_attr') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ base_url('apple-touch-icon-precomposed.png')|e('html_attr') }}" />
     <link rel="stylesheet" type="text/css" href="{{ base_url('themes/front_default/css/front.min.css')|e('html_attr') }}" />
-    <link rel="stylesheet" href="{{ base_url('assets/composer-asset/components/highlightjs/styles/github.css')|e('html_attr') }}">
+    <link rel="stylesheet" href="{{ base_url('assets/composer-asset/components/highlightjs/styles/github.css')|e('html_attr') }}" />
     <script src="{{ base_url('assets/composer-asset/components/jquery/jquery.min.js')|e('html_attr') }}"></script>
 
 </head>
@@ -75,7 +76,7 @@
 
                     <div style="float: left;">
 
-                       <p>&copy; {{ 'now'|date('Y') }} The MIT open source licence.</p>
+                       <p>&copy; {% if 'now'|date('Y') > 2020 %}2020-{% endif %}{{ 'now'|date('Y') }} The MIT open source licence.</p>
 
                     </div>
 
