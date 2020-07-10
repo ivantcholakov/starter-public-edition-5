@@ -134,6 +134,42 @@
         "homepage": "http://jquery.com"
     },
     {
+        "name": "components/webfontloader",
+        "version": "1.6.3",
+        "version_normalized": "1.6.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/components/webfontloader.git",
+            "reference": "3fdb1367e4e413e26f4587bf03dff0149ad59804"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/components/webfontloader/zipball/3fdb1367e4e413e26f4587bf03dff0149ad59804",
+            "reference": "3fdb1367e4e413e26f4587bf03dff0149ad59804",
+            "shasum": ""
+        },
+        "time": "2015-06-09T19:47:15+00:00",
+        "type": "component",
+        "extra": {
+            "component": {
+                "scripts": [
+                    "webfontloader.js"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Web Font Loader gives you added control when using linked fonts via @font-face.",
+        "homepage": "http://github.com/components/webfontloader/",
+        "keywords": [
+            "components",
+            "webfontloader"
+        ]
+    },
+    {
         "name": "composer/installers",
         "version": "v1.9.0",
         "version_normalized": "1.9.0.0",

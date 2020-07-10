@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e64127262982b6cc1ed40855dca611e",
+    "content-hash": "70b0d698a6bcc001cf5c4ed83ddc89f1",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -133,6 +133,40 @@
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
             "time": "2020-05-05T13:21:02+00:00"
+        },
+        {
+            "name": "components/webfontloader",
+            "version": "1.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/webfontloader.git",
+                "reference": "3fdb1367e4e413e26f4587bf03dff0149ad59804"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/webfontloader/zipball/3fdb1367e4e413e26f4587bf03dff0149ad59804",
+                "reference": "3fdb1367e4e413e26f4587bf03dff0149ad59804",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "webfontloader.js"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Web Font Loader gives you added control when using linked fonts via @font-face.",
+            "homepage": "http://github.com/components/webfontloader/",
+            "keywords": [
+                "components",
+                "webfontloader"
+            ],
+            "time": "2015-06-09T19:47:15+00:00"
         },
         {
             "name": "composer/installers",
