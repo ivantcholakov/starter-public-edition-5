@@ -26,11 +26,13 @@ https://google-webfonts-helper.herokuapp.com
             custom: {
                 families: [
                     'Open Sans',
-                    'Open Sans Condensed'
+                    'Open Sans Condensed',
+                    'icons', 'outline-icons', 'brand-icons'
                 ],
                 urls: [
                     '{{ base_url('assets/open-sans/open-sans.min.css')|e('js') }}',
-                    '{{ base_url('assets/open-sans-condensed/open-sans-condensed.min.css')|e('js') }}'
+                    '{{ base_url('assets/open-sans-condensed/open-sans-condensed.min.css')|e('js') }}',
+                    '{{ base_url('assets/fomantic-icons-default/icons.min.css')|e('js') }}'
                 ]
             },
             timeout: 2000
