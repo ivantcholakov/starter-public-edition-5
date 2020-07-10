@@ -418,10 +418,11 @@ php spark assets:compile task_name_1 task_name_2 task_name_3 ...
 * php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
 * CSS & JavaScript minifier, in PHP, https://github.com/matthiasmullie/minify , http://www.minifier.org
 * Web Font Loader, gives you added control when using linked fonts via @font-face, https://github.com/typekit/webfontloader
-* Function print_d() (enhanced debug print), ~~https://github.com/vikerlane/print_d~~ https://github.com/CesiumComputer/print_d
+* Function print_d() (enhanced debug print), https://github.com/CesiumComputer/print_d
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source), https://github.com/daylightstudio/FUEL-CMS/blob/master/fuel/modules/fuel/libraries/Menu.php
 * Fomantic UI - a component framework based around useful principles from natural language, http://www.semantic-ui.com
 * Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
+* highlight.js - Javascript syntax highlighter, https://github.com/highlightjs/highlight.js
 
 License Information
 -------------------
