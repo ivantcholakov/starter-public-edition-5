@@ -11,8 +11,8 @@
     outline: 0;
     opacity: 0.5;
     transition: none;
-    bottom: 15px;
-    right: 15px;
+    bottom: 48px;
+    right: 16px;
 }
 
 /* End Scroll To Top Button */

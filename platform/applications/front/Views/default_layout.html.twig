@@ -129,7 +129,6 @@ https://google-webfonts-helper.herokuapp.com
     <script type="text/javascript">
     //<![CDATA[
 
-/*
 (function($) {
 
     // See http://appglobe.com/scroll-to-top-animation/
@@ -140,17 +139,15 @@ https://google-webfonts-helper.herokuapp.com
 
         var $scrolltop_link = $('.ui.button.scroll.top');
 
-        $scrolltop_link.on('click' , function (ev) {
+        $scrolltop_link.on('click', function (ev) {
 
             ev.preventDefault();
 
             $('html, body').animate({
                 scrollTop: 0
             }, 700 );
-        });
 
-        // Hides the link initially
-        .data('hidden', 1).hide(); 
+        }).data('hidden', 1).hide(); 
 
         var scroll_event_fired = false;
 
@@ -195,7 +192,6 @@ https://google-webfonts-helper.herokuapp.com
     }
 
 })(jQuery);
-*/
 
     //]]>
     </script>
@@ -205,7 +201,9 @@ https://google-webfonts-helper.herokuapp.com
 
     <script type="text/javascript">
     //<![CDATA[
-    hljs.initHighlightingOnLoad();
+
+hljs.initHighlightingOnLoad();
+
     //]]>
     </script>
 
