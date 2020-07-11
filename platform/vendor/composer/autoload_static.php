@@ -18,6 +18,7 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '04b6576f786ea6b5b4b577af08f8e4d1' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/bootstrap.php',
@@ -253,6 +254,14 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         ),
         'H' => 
         array (
+            'Highlight\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/scrivo/highlight.php',
+            ),
+            'HighlightUtilities\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/scrivo/highlight.php',
+            ),
             'Handlebars' => 
             array (
                 0 => __DIR__ . '/..' . '/salesforce/handlebars-php/src',
@@ -610,6 +619,17 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Handlebars\\Parser' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Parser.php',
         'Handlebars\\Template' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Template.php',
         'Handlebars\\Tokenizer' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Tokenizer.php',
+        'Highlight\\Autoloader' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Autoloader.php',
+        'Highlight\\HighlightResult' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/HighlightResult.php',
+        'Highlight\\Highlighter' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Highlighter.php',
+        'Highlight\\JsonRef' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/JsonRef.php',
+        'Highlight\\Language' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Language.php',
+        'Highlight\\Mode' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Mode.php',
+        'Highlight\\ModeDeprecations' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/ModeDeprecations.php',
+        'Highlight\\RegEx' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegEx.php',
+        'Highlight\\RegExMatch' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExMatch.php',
+        'Highlight\\RegExUtils' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExUtils.php',
+        'Highlight\\Terminators' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Terminators.php',
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/IntlDateFormatter.php',
         'IntlException' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/IntlException.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',

@@ -423,6 +423,7 @@ php spark assets:compile task_name_1 task_name_2 task_name_3 ...
 * Fomantic UI - a component framework based around useful principles from natural language, http://www.semantic-ui.com
 * Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
 * highlight.js - Javascript syntax highlighter, https://github.com/highlightjs/highlight.js
+* highlight.php - A port of highlight.js by Ivan Sagalaev to PHP, https://github.com/scrivo/highlight.php
 
 License Information
 -------------------
