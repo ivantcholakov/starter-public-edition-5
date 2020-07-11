@@ -229,6 +229,7 @@ Additional Features
 * Cssmin
 * Jsmin
 * Jsonmin
+* Highlight
 
 See platform/common/Config/Renderers.php on enabling/disbling these engines.
 Within platform/common/Config/ there are specific configuration files for every
