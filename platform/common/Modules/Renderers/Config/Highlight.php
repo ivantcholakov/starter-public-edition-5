@@ -20,8 +20,6 @@ class Highlight extends BaseConfig
         // If none are set - language autodetection is going to be applied.
         // If only one language is set - it will be assumed explicitly.
         $this->config['languages'] = [];
-
-
     }
 
     //------------------------------------------------------------------------
