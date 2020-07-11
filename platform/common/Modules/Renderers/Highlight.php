@@ -29,11 +29,17 @@ class Highlight
 
         $this->renderer = new \Highlight\Highlighter();
 
+        registry_delete('_highlight_language');
+
         if (count($languages) == 1) {
 
             try {
 
-                return $this->renderer->highlight($languages[0], $template);
+                $this->renderer->highlight($languages[0], $template);
+
+                registry_set('_highlight_language', $this->renderer->language);
+
+                return $this->renderer->value;
 
             } catch (\DomainException $e) {
 
@@ -47,7 +53,11 @@ class Highlight
 
         try {
 
-            return $this->renderer->highlightAuto($template);
+            $this->renderer->highlightAuto($template);
+
+            registry_set('_highlight_language', $this->renderer->language);
+
+            return $this->renderer->value;
 
         } catch (\DomainException $e) {
 
@@ -78,11 +88,17 @@ class Highlight
 
         $this->renderer = new \Highlight\Highlighter();
 
+        registry_delete('_highlight_language');
+
         if (count($languages) == 1) {
 
             try {
 
-                return $this->renderer->highlight($languages[0], $template);
+                $this->renderer->highlight($languages[0], $template);
+
+                registry_set('_highlight_language', $this->renderer->language);
+
+                return $this->renderer->value;
 
             } catch (\DomainException $e) {
 
@@ -96,7 +112,11 @@ class Highlight
 
         try {
 
-            return $this->renderer->highlightAuto($template);
+            $this->renderer->highlightAuto($template);
+
+            registry_set('_highlight_language', $this->renderer->language);
+
+            return $this->renderer->value;
 
         } catch (\DomainException $e) {
 
