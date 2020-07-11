@@ -10,10 +10,6 @@ class Autoprefixer
     {
         $template = (string) $template;
 
-        if (empty($data)) {
-            $data = [];
-        }
-
         if (empty($options)) {
             $options = [];
         }
@@ -30,10 +26,6 @@ class Autoprefixer
     public function renderString($template, $data = null, array $options = null)
     {
         $template = (string) $template;
-
-        if (empty($data)) {
-            $data = [];
-        }
 
         if (empty($options)) {
             $options = [];

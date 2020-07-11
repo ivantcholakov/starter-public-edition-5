@@ -10,10 +10,6 @@ class Textile
     {
         $template = (string) $template;
 
-        if (empty($data)) {
-            $data = [];
-        }
-
         if (empty($options)) {
             $options = [];
         }
@@ -50,10 +46,6 @@ class Textile
     public function renderString($template, $data = null, array $options = null)
     {
         $template = (string) $template;
-
-        if (empty($data)) {
-            $data = [];
-        }
 
         if (empty($options)) {
             $options = [];
