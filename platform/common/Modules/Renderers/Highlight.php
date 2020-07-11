@@ -31,38 +31,26 @@ class Highlight
 
         registry_delete('_highlight_language');
 
-        if (count($languages) == 1) {
+        try {
 
-            try {
+            if (count($languages) == 1) {
 
                 $this->renderer->highlight($languages[0], $template);
 
-                registry_set('_highlight_language', $this->renderer->language);
+            } else {
 
-                return $this->renderer->value;
+                if (count($languages) > 0) {
+                    $this->renderer->setAutodetectLanguages($languages);
+                }
 
-            } catch (\DomainException $e) {
-
-                return $template;
+                $this->renderer->highlightAuto($template);
             }
-        }
-
-        if (count($languages) > 0) {
-            $this->renderer->setAutodetectLanguages($languages);
-        }
-
-        try {
-
-            $this->renderer->highlightAuto($template);
 
             registry_set('_highlight_language', $this->renderer->language);
 
             return $this->renderer->value;
 
-        } catch (\DomainException $e) {
-
-            return $template;
-        }
+        } catch (\Exception $e) {}
 
         return $template;
     }
@@ -90,38 +78,26 @@ class Highlight
 
         registry_delete('_highlight_language');
 
-        if (count($languages) == 1) {
+        try {
 
-            try {
+            if (count($languages) == 1) {
 
                 $this->renderer->highlight($languages[0], $template);
 
-                registry_set('_highlight_language', $this->renderer->language);
+            } else {
 
-                return $this->renderer->value;
+                if (count($languages) > 0) {
+                    $this->renderer->setAutodetectLanguages($languages);
+                }
 
-            } catch (\DomainException $e) {
-
-                return $template;
+                $this->renderer->highlightAuto($template);
             }
-        }
-
-        if (count($languages) > 0) {
-            $this->renderer->setAutodetectLanguages($languages);
-        }
-
-        try {
-
-            $this->renderer->highlightAuto($template);
 
             registry_set('_highlight_language', $this->renderer->language);
 
             return $this->renderer->value;
 
-        } catch (\DomainException $e) {
-
-            return $template;
-        }
+        } catch (\Exception $e) {}
 
         return $template;
     }
