@@ -23,6 +23,7 @@ class Renderers extends BaseConfig
             'cssmin',
             'jsmin',
             'jsonmin',
+            'highlight',
         ];
 
         // PHP in views is not allowed as predecessor renderer,
@@ -51,6 +52,7 @@ class Renderers extends BaseConfig
             'cssmin' => 'parser',
             'jsmin' => 'parser',
             'jsonmin' => 'parser',
+            'highlight' => 'parser',
         ];
 
         $this->config['driverClasses'] = [
@@ -66,6 +68,7 @@ class Renderers extends BaseConfig
             'cssmin' => '\Common\Modules\Renderers\Cssmin',
             'jsmin' => '\Common\Modules\Renderers\Jsmin',
             'jsonmin' => '\Common\Modules\Renderers\Jsonmin',
+            'highlight' => '\Common\Modules\Renderers\Highlight',
         ];
     }
 
