@@ -34,7 +34,7 @@ class Highlight
 
             if (count($languages) == 1) {
 
-                $this->renderer->highlight($languages[0], $template);
+                $result = $this->renderer->highlight($languages[0], $template);
 
             } else {
 
@@ -42,12 +42,12 @@ class Highlight
                     $this->renderer->setAutodetectLanguages($languages);
                 }
 
-                $this->renderer->highlightAuto($template);
+                $result = $this->renderer->highlightAuto($template);
             }
 
-            registry_set('_highlight_language', $this->renderer->language);
+            registry_set('_highlight_language', $result->language);
 
-            return $this->renderer->value;
+            return $result->value;
 
         } catch (\Exception $e) {}
 
@@ -80,7 +80,7 @@ class Highlight
 
             if (count($languages) == 1) {
 
-                $this->renderer->highlight($languages[0], $template);
+                $result = $this->renderer->highlight($languages[0], $template);
 
             } else {
 
@@ -88,12 +88,12 @@ class Highlight
                     $this->renderer->setAutodetectLanguages($languages);
                 }
 
-                $this->renderer->highlightAuto($template);
+                $result = $this->renderer->highlightAuto($template);
             }
 
-            registry_set('_highlight_language', $this->renderer->language);
+            registry_set('_highlight_language', $result->language);
 
-            return $this->renderer->value;
+            return $result->value;
 
         } catch (\Exception $e) {}
 
