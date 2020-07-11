@@ -21,7 +21,6 @@ class Highlight
         $languages = isset($options['languages']) ? $options['languages'] : [];
 
         if (!is_array($languages)) {
-
             $languages = trim($languages) != '' ? [$languages] : [];
         }
 
@@ -70,7 +69,6 @@ class Highlight
         $languages = isset($options['languages']) ? $options['languages'] : [];
 
         if (!is_array($languages)) {
-
             $languages = trim($languages) != '' ? [$languages] : [];
         }
 
