@@ -141,6 +141,7 @@ if (! class_exists(Config\Autoload::class, false))
         class_alias('Common\Config\Autoload', 'Config\Autoload');
     }
 
+    require_once SYSTEMPATH . 'Modules/Modules.php';
     require_once COMMONPATH . 'Config/Modules.php';
 
     if (file_exists(APPPATH . 'Config/Modules.php'))

@@ -16,7 +16,7 @@
     },
     "require": {
         "php": ">=7.2.5",
-        "codeigniter4/framework": "4.0.3",
+        "codeigniter4/framework": "4.0.4",
         "roave/security-advisories": "dev-master",
         "symfony/polyfill-php73": "^1.17",
         "symfony/polyfill-php74": "^1.17",

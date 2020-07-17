@@ -38,6 +38,8 @@
 
 namespace CodeIgniter\Debug\Toolbar\Collectors;
 
+use CodeIgniter\Debug\Exceptions;
+
 /**
  * Base Toolbar collector
  */

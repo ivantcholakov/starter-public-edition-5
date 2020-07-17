@@ -1,4 +1,6 @@
-<?php namespace Common\Config;
+<?php
+
+namespace Common\Config;
 
 require_once SYSTEMPATH . 'Config/AutoloadConfig.php';
 
@@ -32,29 +34,29 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
          * -------------------------------------------------------------------
          * Namespaces
          * -------------------------------------------------------------------
-         * This maps the locations of any namespaces in your application
-         * to their location on the file system. These are used by the
-         * Autoloader to locate files the first time they have been instantiated.
+         * This maps the locations of any namespaces in your application to
+         * their location on the file system. These are used by the autoloader
+         * to locate files the first time they have been instantiated.
          *
-         * The '/app' and '/system' directories are already mapped for
-         * you. You may change the name of the 'App' namespace if you wish,
+         * The '/app' and '/system' directories are already mapped for you.
+         * You may change the name of the 'App' namespace if you wish,
          * but this should be done prior to creating any namespaced classes,
          * else you will need to modify all of those classes for this to work.
          *
-         * DO NOT change the name of the CodeIgniter namespace or your application
-         * WILL break. *
          * Prototype:
          *
-         *   $Config['psr4'] = [
-         *       'CodeIgniter' => SYSPATH
-         *   `];
+         *   $psr4 = [
+         *       'CodeIgniter' => SYSTEMPATH,
+         *       'App'         => APPPATH
+         *   ];
+         *
+         * @var array
          */
         $psr4 = [
             'Common'        => COMMONPATH,
             'Common\Config' => COMMONPATH . 'Config',
 
-            'App'           => APPPATH,                // To ensure filters, etc still found,
-            APP_NAMESPACE   => APPPATH,                // For custom namespace
+            APP_NAMESPACE   => APPPATH,                // For custom app namespace
             'Config'        => APPPATH . 'Config',
 
             'Common\Modules\System' => COMMONPATH . 'Modules/System',
@@ -72,9 +74,11 @@ class Autoload extends \CodeIgniter\Config\AutoloadConfig
          *
          * Prototype:
          *
-         *   $Config['classmap'] = [
+         *   $classmap = [
          *       'MyClass'   => '/path/to/class/file.php'
          *   ];
+         *
+         * @var array
          */
         $classmap = [
             'CodeIgniter\View\View' => COMMONPATH.'System/View/View.php',

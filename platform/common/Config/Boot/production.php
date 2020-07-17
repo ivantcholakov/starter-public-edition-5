@@ -36,4 +36,4 @@ if (!IS_CLI) {
   | release of the framework.
  */
 
-defined('CI_DEBUG') || define('CI_DEBUG', 0);
+defined('CI_DEBUG') || define('CI_DEBUG', false);
