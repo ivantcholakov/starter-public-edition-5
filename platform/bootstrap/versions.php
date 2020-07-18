@@ -4,7 +4,7 @@
  * Platform (Application Starter) Version
  * @var    string
  */
-define('PLATFORM_VERSION', '5.0.0-alpha.3');
+define('PLATFORM_VERSION', '5.0.0-alpha.4');
 
 
 /**
