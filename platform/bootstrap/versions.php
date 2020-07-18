@@ -1,13 +1,6 @@
 <?php
 
 /**
- * CodeIgniter Version
- * @var    string
- */
-define('CI_VERSION', '4.0.4');
-
-
-/**
  * Platform (Application Starter) Version
  * @var    string
  */
