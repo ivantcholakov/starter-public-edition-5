@@ -4,6 +4,8 @@ class Home extends BaseController
 {
     public function index()
     {
+        $this->mainMenu->setActiveItem('home');
+
         $readme = null;
         $readme_file = realpath(PLATFORMPATH.'../'.'README.md');
 

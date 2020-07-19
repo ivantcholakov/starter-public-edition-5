@@ -29,6 +29,11 @@ class BaseController extends Controller
     protected $helpers = [];
 
     /**
+     * @var \App\Libraries\MainMenu
+     */
+    public $mainMenu;
+
+    /**
      * Constructor.
      */
     public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
