@@ -6,17 +6,9 @@ class Home extends BaseController
     {
         $this->mainMenu->setActiveItem('home');
 
-        $readme = null;
-        $readme_file = realpath(PLATFORMPATH.'../'.'README.md');
+        $data = [];
 
-        if (is_file($readme_file)) {
-
-            $readme = render_string(file_get_contents($readme_file), null, 'markdown');
-        }
-
-        return view('welcome_message', compact('readme'));
+        return view('welcome_message', $data);
     }
-
-    //--------------------------------------------------------------------
 
 }
