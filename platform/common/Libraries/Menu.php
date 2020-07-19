@@ -91,9 +91,6 @@ class Menu {
      */
     public function __construct($params = array())
     {
-        $CI =& get_instance();
-        $CI->load->helper('url');
-
         $ignore = array('_reset_params');
         $class_vars = get_class_vars(get_class($this));
         foreach($class_vars as $key => $val)
