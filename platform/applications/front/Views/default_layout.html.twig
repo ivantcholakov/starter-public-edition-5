@@ -49,37 +49,7 @@ https://google-webfonts-helper.herokuapp.com
 
 <body>
 
-    <nav id="main_navigation">
-
-        <div class="main_navigation_wrapper headroom--pinned">
-
-            <div class="ui grid">
-
-                <div class="mobile hidden row">
-
-                    <div class="column">
-
-                        <div id="main_navigation_expanded" class="ui inverted blue borderless attached menu page grid">
-
-                            <a href="{{ site_url() }}" class="brand item"><strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
-
-                            <div class="right menu">
-                                <div class="item">{{ constant('ENVIRONMENT')|upper|e('html') }}</div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-    {# {{ registry('controller').mainMenu.render()|raw }} #}
+    {{ registry('controller').mainMenu.render()|raw }}
 
     <div id="main_content">
 
@@ -211,6 +181,61 @@ https://google-webfonts-helper.herokuapp.com
     $('.main_navigation_wrapper:first-of-type').headroom({
         offset : 50,
         tolerance : 5
+    });
+
+    function show_mobile_menu() {
+
+        $('html, body').animate({
+            scrollTop: 0
+        }, 100);
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        $('#main_navigation .extra').hide();
+
+        menu.transition({
+            animation: 'slide down',
+            onComplete : function() {
+
+                menu.css('display', 'block');
+                $('#main_navigation .menu.toggle i').addClass('close').removeClass('content');
+            }
+        });
+    }
+
+    function hide_mobile_menu() {
+
+        $('html, body').animate({
+            scrollTop: 0
+        }, 100);
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        menu.transition({
+            animation: 'slide down',
+            onComplete : function() {
+
+                menu.css('display', 'none');
+                $('#main_navigation .menu.toggle i').addClass('content').removeClass('close');
+            }
+        });
+    }
+
+    function toggle_mobile_menu() {
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        if (menu.hasClass('hidden')) {
+            show_mobile_menu();
+        } else {
+            hide_mobile_menu();
+        }
+    }
+
+    $('#main_navigation .menu.toggle').on('click', function(e) {
+
+        e.preventDefault();
+        toggle_mobile_menu();
     });
 
     hljs.initHighlightingOnLoad();
