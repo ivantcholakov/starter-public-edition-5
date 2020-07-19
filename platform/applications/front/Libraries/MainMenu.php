@@ -24,7 +24,10 @@ class MainMenu
 
     public function render()
     {
-        // Temporary.
-        return '<div>Main Menu</div>';
+        $menu = new \Common\Libraries\Menu();
+
+        $nav = $menu->render($this->items, $this->activeItem, NULL, 'data');
+
+        return render('main_menu', ['nav' => $nav]);
     }
 }
