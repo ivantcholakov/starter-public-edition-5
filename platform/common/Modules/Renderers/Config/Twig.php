@@ -117,6 +117,7 @@ class Twig extends BaseConfig
             'chr',
             // CodeIgniter's Helpers
             'ellipsize',
+            ['stringify_attributes', 'stringify_attributes', ['is_safe' => ['html', 'html_attr', 'js']]],
         ];
 
         // Tests (is * operators) --------------------------------------------
