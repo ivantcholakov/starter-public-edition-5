@@ -41,6 +41,10 @@ class BaseController extends Controller
         //--------------------------------------------------------------------
         // E.g.:
         // $this->session = \Config\Services::session();
+
+        registry_set('controller', $this);
+
+        $this->mainMenu = new \App\Libraries\MainMenu();
     }
 
 }
