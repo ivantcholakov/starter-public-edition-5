@@ -20,6 +20,51 @@ class Home extends BaseController
                     'path' => WRITABLEPATH,
                     'is_writable' => NULL
                 ],
+            'platform/writable/cache/' =>
+                [
+                    'path' => WRITABLEPATH.'cache/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/debugbar/' =>
+                [
+                    'path' => WRITABLEPATH.'debugbar/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/handlebars/' =>
+                [
+                    'path' => WRITABLEPATH.'handlebars/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/logs/' =>
+                [
+                    'path' => WRITABLEPATH.'logs/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/mustache/' =>
+                [
+                    'path' => WRITABLEPATH.'mustache/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/session/' =>
+                [
+                    'path' => WRITABLEPATH.'session/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/tmp/' =>
+                [
+                    'path' => WRITABLEPATH.'tmp/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/twig/' =>
+                [
+                    'path' => WRITABLEPATH.'twig/',
+                    'is_writable' => NULL
+                ],
+            'platform/writable/uploads/' =>
+                [
+                    'path' => WRITABLEPATH.'uploads/',
+                    'is_writable' => NULL
+                ],
         );
 
         foreach ($writable_folders as $key => $folder) {
