@@ -311,6 +311,47 @@
         ]
     },
     {
+        "name": "desandro/masonry",
+        "version": "v4.2.2",
+        "version_normalized": "4.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/desandro/masonry.git",
+            "reference": "3b0883cf4a4a046896719b9cf282ea74be7ffecd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/desandro/masonry/zipball/3b0883cf4a4a046896719b9cf282ea74be7ffecd",
+            "reference": "3b0883cf4a4a046896719b9cf282ea74be7ffecd",
+            "shasum": ""
+        },
+        "time": "2018-07-04T18:01:15+00:00",
+        "type": "component",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "David DeSandro",
+                "homepage": "http://desandro.com/",
+                "role": "developer"
+            }
+        ],
+        "description": "Cascading grid layout library",
+        "homepage": "https://masonry.desandro.com",
+        "keywords": [
+            "browser",
+            "dom",
+            "grid",
+            "javascript",
+            "layout",
+            "library",
+            "outlayer"
+        ]
+    },
+    {
         "name": "erusev/parsedown",
         "version": "1.7.4",
         "version_normalized": "1.7.4.0",

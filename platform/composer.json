@@ -51,6 +51,7 @@
         "components/jquery": "3.5.1",
         "components/highlightjs": "^9.16",
         "components/webfontloader": "^1.6",
-        "scrivo/highlight.php": "v9.18.1.1"
+        "scrivo/highlight.php": "v9.18.1.1",
+        "desandro/masonry": "4.2.2"
     }
 }
