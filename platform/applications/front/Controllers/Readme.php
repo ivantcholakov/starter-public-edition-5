@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Readme extends BaseController
+class Readme extends \App\Core\BaseController
 {
     public function index()
     {

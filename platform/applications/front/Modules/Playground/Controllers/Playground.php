@@ -2,7 +2,7 @@
 
 namespace Playground\Controllers;
 
-class Playground extends \App\Controllers\BaseController
+class Playground extends \Playground\Core\BaseController
 {
     public function index()
     {
