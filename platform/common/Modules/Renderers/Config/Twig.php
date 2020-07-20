@@ -82,6 +82,8 @@ class Twig extends BaseConfig
             // URL/URI Handling
             'base_url',
             'site_url',
+            'http_build_url',
+            'http_build_query',
         ];
 
         // Filters -----------------------------------------------------------
