@@ -35,6 +35,11 @@ class BaseController extends Controller
     public $mainMenu;
 
     /**
+     * @var \App\Libraries\Breadcrumb
+     */
+    public $breadcrumb;
+
+    /**
      * Constructor.
      */
     public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
@@ -51,6 +56,9 @@ class BaseController extends Controller
         registry_set('controller', $this);
 
         $this->mainMenu = new \App\Libraries\MainMenu();
+        $this->breadcrumb = new \App\Libraries\Breadcrumb();
+
+        $this->breadcrumb->add('Home', site_url(), 'home icon');
     }
 
 }

@@ -7,6 +7,7 @@ class Readme extends \App\Core\BaseController
     public function index()
     {
         $this->mainMenu->setActiveItem('readme');
+        $this->breadcrumb->add('README', site_url('readme'), 'info circle icon');
 
         $readme = null;
         $readme_file = realpath(PLATFORMPATH.'../'.'README.md');
