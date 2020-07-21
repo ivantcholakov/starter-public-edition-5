@@ -1,0 +1,26 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2020
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% extends 'default_layout.html.twig' %}
+
+{% block content %}
+
+                <div class="ui grid">
+
+    {% for video in videos %}
+
+                    <div class="sixteen wide mobile eight wide tablet four wide computer column break word">
+
+                        <div class="ui 16:9 embed">{{ multiplayer.html(video)|raw }}</div>
+
+                        <p><a href="{{ video|e('html_attr') }}" target="_blank" rel="noopener">{{ video }}</a></p>
+
+                    </div>
+
+    {% endfor %}
+
+                </div>
+
+{% endblock %}
