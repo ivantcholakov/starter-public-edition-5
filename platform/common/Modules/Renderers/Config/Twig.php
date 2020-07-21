@@ -69,6 +69,7 @@ class Twig extends BaseConfig
 
         $this->config['helpers'] = [
             'text',
+            'file_type_icons',
         ];
 
         // Functions ---------------------------------------------------------
@@ -84,6 +85,9 @@ class Twig extends BaseConfig
             'site_url',
             'http_build_url',
             'http_build_query',
+            // Platform Routines
+            ['file_type_icon_fa', 'file_type_icon_fa', ['is_safe' => ['html', 'html_attr', 'js']]],
+            ['file_type_icon', 'file_type_icon', ['is_safe' => ['html', 'html_attr', 'js']]],
         ];
 
         // Filters -----------------------------------------------------------
