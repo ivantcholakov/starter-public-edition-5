@@ -33,6 +33,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         array (
             't1st3\\' => 6,
         ),
+        'W' => 
+        array (
+            'WhichBrowser\\' => 13,
+        ),
         'T' => 
         array (
             'Twig\\Extra\\String\\' => 18,
@@ -65,6 +69,7 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Cache\\' => 10,
         ),
         'O' => 
         array (
@@ -100,6 +105,11 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         't1st3\\' => 
         array (
             0 => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3',
+        ),
+        'WhichBrowser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/whichbrowser/parser/src',
+            1 => __DIR__ . '/..' . '/whichbrowser/parser/tests/src',
         ),
         'Twig\\Extra\\String\\' => 
         array (
@@ -196,6 +206,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
         'OomphInc\\ComposerInstallersExtender\\' => 
         array (
@@ -805,6 +819,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
         'ParsedownExtra' => __DIR__ . '/..' . '/erusev/parsedown-extra/ParsedownExtra.php',
         'ParsedownExtraTest' => __DIR__ . '/..' . '/erusev/parsedown-extra/test/ParsedownExtraTest.php',
+        'Psr\\Cache\\CacheException' => __DIR__ . '/..' . '/psr/cache/src/CacheException.php',
+        'Psr\\Cache\\CacheItemInterface' => __DIR__ . '/..' . '/psr/cache/src/CacheItemInterface.php',
+        'Psr\\Cache\\CacheItemPoolInterface' => __DIR__ . '/..' . '/psr/cache/src/CacheItemPoolInterface.php',
+        'Psr\\Cache\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/cache/src/InvalidArgumentException.php',
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
         'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/Psr/Log/LogLevel.php',
@@ -1184,6 +1202,67 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'WhichBrowser\\Analyser' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser.php',
+        'WhichBrowser\\Analyser\\Camouflage' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Camouflage.php',
+        'WhichBrowser\\Analyser\\Corrections' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Corrections.php',
+        'WhichBrowser\\Analyser\\Derive' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Derive.php',
+        'WhichBrowser\\Analyser\\Header' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header.php',
+        'WhichBrowser\\Analyser\\Header\\Baidu' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Baidu.php',
+        'WhichBrowser\\Analyser\\Header\\BrowserId' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/BrowserId.php',
+        'WhichBrowser\\Analyser\\Header\\OperaMini' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/OperaMini.php',
+        'WhichBrowser\\Analyser\\Header\\Puffin' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Puffin.php',
+        'WhichBrowser\\Analyser\\Header\\UCBrowserNew' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/UCBrowserNew.php',
+        'WhichBrowser\\Analyser\\Header\\UCBrowserOld' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/UCBrowserOld.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Application' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Application.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Bot' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Bot.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Browser' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Browser.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Appliance' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Appliance.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Cars' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Cars.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Ereader' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Ereader.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Gaming' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Gaming.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Gps' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Gps.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Media' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Media.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Mobile' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Mobile.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Pda' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Pda.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Phone' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Phone.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Printer' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Printer.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Signage' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Signage.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Tablet' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Tablet.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Device\\Television' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Device/Television.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Engine' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Engine.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Os' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Os.php',
+        'WhichBrowser\\Analyser\\Header\\Useragent\\Using' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Useragent/Using.php',
+        'WhichBrowser\\Analyser\\Header\\Wap' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Header/Wap.php',
+        'WhichBrowser\\Cache' => __DIR__ . '/..' . '/whichbrowser/parser/src/Cache.php',
+        'WhichBrowser\\Constants\\BrowserType' => __DIR__ . '/..' . '/whichbrowser/parser/src/Constants/BrowserType.php',
+        'WhichBrowser\\Constants\\DeviceSubType' => __DIR__ . '/..' . '/whichbrowser/parser/src/Constants/DeviceSubType.php',
+        'WhichBrowser\\Constants\\DeviceType' => __DIR__ . '/..' . '/whichbrowser/parser/src/Constants/DeviceType.php',
+        'WhichBrowser\\Constants\\EngineType' => __DIR__ . '/..' . '/whichbrowser/parser/src/Constants/EngineType.php',
+        'WhichBrowser\\Constants\\Feature' => __DIR__ . '/..' . '/whichbrowser/parser/src/Constants/Feature.php',
+        'WhichBrowser\\Constants\\Flag' => __DIR__ . '/..' . '/whichbrowser/parser/src/Constants/Flag.php',
+        'WhichBrowser\\Constants\\Id' => __DIR__ . '/..' . '/whichbrowser/parser/src/Constants/Id.php',
+        'WhichBrowser\\Data\\Applications' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/Applications.php',
+        'WhichBrowser\\Data\\BrowserIds' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/BrowserIds.php',
+        'WhichBrowser\\Data\\BuildIds' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/BuildIds.php',
+        'WhichBrowser\\Data\\CFNetwork' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/CFNetwork.php',
+        'WhichBrowser\\Data\\Chrome' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/Chrome.php',
+        'WhichBrowser\\Data\\Darwin' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/Darwin.php',
+        'WhichBrowser\\Data\\DeviceModels' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/DeviceModels.php',
+        'WhichBrowser\\Data\\DeviceProfiles' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/DeviceProfiles.php',
+        'WhichBrowser\\Data\\Manufacturers' => __DIR__ . '/..' . '/whichbrowser/parser/src/Data/Manufacturers.php',
+        'WhichBrowser\\Model\\Browser' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Browser.php',
+        'WhichBrowser\\Model\\Device' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Device.php',
+        'WhichBrowser\\Model\\Engine' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Engine.php',
+        'WhichBrowser\\Model\\Family' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Family.php',
+        'WhichBrowser\\Model\\Main' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Main.php',
+        'WhichBrowser\\Model\\Os' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Os.php',
+        'WhichBrowser\\Model\\Primitive\\Base' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Primitive/Base.php',
+        'WhichBrowser\\Model\\Primitive\\NameVersion' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Primitive/NameVersion.php',
+        'WhichBrowser\\Model\\Using' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Using.php',
+        'WhichBrowser\\Model\\Version' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Version.php',
+        'WhichBrowser\\Parser' => __DIR__ . '/..' . '/whichbrowser/parser/src/Parser.php',
         't1st3\\JSONMin\\JSONMin' => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
     );
 

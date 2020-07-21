@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     't1st3\\' => array($vendorDir . '/t1st3/php-json-minify/src/t1st3'),
+    'WhichBrowser\\' => array($vendorDir . '/whichbrowser/parser/src', $vendorDir . '/whichbrowser/parser/tests/src'),
     'Twig\\Extra\\String\\' => array($vendorDir . '/twig/string-extra/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Test\\Markdownify\\' => array($vendorDir . '/pixel418/markdownify/test'),
@@ -31,6 +32,7 @@ return array(
     'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
     'ScssPhp\\ScssPhp\\' => array($vendorDir . '/scssphp/scssphp/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'OomphInc\\ComposerInstallersExtender\\' => array($vendorDir . '/oomphinc/composer-installers-extender/src'),
     'Netcarver\\Textile\\' => array($vendorDir . '/netcarver/textile/src/Netcarver/Textile'),
     'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
