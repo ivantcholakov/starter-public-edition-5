@@ -1,3 +1,3 @@
 
-@importOutlineIcons: false;
-@importBrandIcons: false;
+@importOutlineIcons: true;
+@importBrandIcons: true;
