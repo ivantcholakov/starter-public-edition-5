@@ -14,9 +14,11 @@ The MIT License, http://opensource.org/licenses/MIT
                             <thead>
 
                                 <tr>
-                                    <th>File Name</th>
-                                    <th>Icon Class</th>
-                                    <th>Icon</th>
+                                    <th class="four wide">File Name</th>
+                                    <th class="four wide">Icon Class</th>
+                                    <th class="two wide">Icon</th>
+                                    <th class="four wide">Icon Class (Outline)</th>
+                                    <th class="two wide">Icon (Outline)</th>
                                 </tr>
 
                             </thead>
@@ -27,6 +29,8 @@ The MIT License, http://opensource.org/licenses/MIT
                                     <th>File Name</th>
                                     <th>Icon Class</th>
                                     <th>Icon</th>
+                                    <th>Icon Class (Outline)</th>
+                                    <th>Icon (Outline)</th>
                                 </tr>
 
                             </tfoot>
@@ -38,6 +42,8 @@ The MIT License, http://opensource.org/licenses/MIT
                                 <tr>
                                     <td>{{ file_name }}</td>
                                     <td>file {{ file_type_icon(file_name) }} icon</td>
+                                    <td><i class="file {{ file_type_icon(file_name) }} big icon"></i></td>
+                                    <td>file {{ file_type_icon(file_name) }} outline icon</td>
                                     <td><i class="file {{ file_type_icon(file_name) }} outline big icon"></i></td>
                                 </tr>
     {% endfor %}
