@@ -54,6 +54,30 @@ https://google-webfonts-helper.herokuapp.com
 
     {{ registry('controller').mainMenu.render()|raw }}
 
+    {% if registry('controller').breadcrumb.count() > 1 %}
+
+    <header id="header">
+
+        <div class="ui vertically padded grid page">
+
+            <div class="row">
+                <div class="column">
+                    {{ registry('controller').breadcrumb.render()|raw }}
+                </div>
+            </div>
+{#
+            <div class="row">
+                <div class="column">
+                    <h1 class="ui header"></h1>
+                </div>
+            </div>
+#}
+        </div>
+
+    </header>
+
+    {% endif %}
+
     <div id="main_content">
 
         <div class="ui vertically padded grid page">
