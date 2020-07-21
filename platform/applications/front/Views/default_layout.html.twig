@@ -112,7 +112,7 @@ https://google-webfonts-helper.herokuapp.com
     <script type="text/javascript">
     //<![CDATA[
 
-    (function($) {
+    $(function() {
 
         // See http://appglobe.com/scroll-to-top-animation/
 
@@ -174,38 +174,7 @@ https://google-webfonts-helper.herokuapp.com
             }, 300); 
         }
 
-    })(jQuery);
-
-    $('.main_navigation_wrapper').visibility({
-        type: 'fixed'
     });
-
-    $('.main_navigation_wrapper:not(:first-of-type) [id]').removeAttr('id');
-
-    $('.main_navigation_wrapper:first-of-type').headroom({
-        offset : 50,
-        tolerance : 5
-    });
-
-    function show_mobile_menu() {
-
-        $('html, body').animate({
-            scrollTop: 0
-        }, 100);
-
-        var menu = $('#main_navigation .ui.vertical.menu');
-
-        $('#main_navigation .extra').hide();
-
-        menu.transition({
-            animation: 'slide down',
-            onComplete : function() {
-
-                menu.css('display', 'block');
-                $('#main_navigation .menu.toggle i').addClass('close').removeClass('content');
-            }
-        });
-    }
 
     function hide_mobile_menu() {
 
@@ -236,10 +205,61 @@ https://google-webfonts-helper.herokuapp.com
         }
     }
 
-    $('#main_navigation .menu.toggle').on('click', function(e) {
+    function show_mobile_menu() {
 
-        e.preventDefault();
-        toggle_mobile_menu();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 100);
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        $('#main_navigation .extra').hide();
+
+        menu.transition({
+            animation: 'slide down',
+            onComplete : function() {
+
+                menu.css('display', 'block');
+                $('#main_navigation .menu.toggle i').addClass('close').removeClass('content');
+            }
+        });
+    }
+
+    $(function() {
+
+        $('.ui.dropdown:not(.native):not(.special)[multiple]').dropdown();
+
+        $('body').on('click', '.message .close', function() {
+
+            $(this)
+              .closest('.message')
+              .transition('fade')
+            ;
+        });
+
+        $('.ui.accordion')
+          .accordion()
+        ;
+
+        //$('.popover').popup({ 'on': Modernizr.touch ? 'click' : 'hover' });
+
+        $('.main_navigation_wrapper').visibility({
+            type: 'fixed'
+        });
+
+        $('.main_navigation_wrapper:not(:first-of-type) [id]').removeAttr('id');
+
+        $('.main_navigation_wrapper:first-of-type').headroom({
+            offset : 50,
+            tolerance : 5
+        });
+
+        $('#main_navigation .menu.toggle').on('click', function(e) {
+
+            e.preventDefault();
+            toggle_mobile_menu();
+        });
+
     });
 
     hljs.initHighlightingOnLoad();
