@@ -418,9 +418,14 @@ php spark assets:compile task_name_1 task_name_2 task_name_3 ...
 * TSCompiler, https://github.com/ComFreek/TSCompiler
 * php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
 * CSS & JavaScript minifier, in PHP, https://github.com/matthiasmullie/minify , http://www.minifier.org
+* jQuery JavaScript Library - https://github.com/jquery/jquery
+* Modernizr, a JavaScript library that detects HTML5 and CSS3 features in the user’s browser, http://modernizr.com
 * Web Font Loader, gives you added control when using linked fonts via @font-face, https://github.com/typekit/webfontloader
 * Function print_d() (enhanced debug print), https://github.com/CesiumComputer/print_d
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source), https://github.com/daylightstudio/FUEL-CMS/blob/master/fuel/modules/fuel/libraries/Menu.php
+* Multiplayer - A tiny library to build nice HTML embed codes for videos, https://github.com/felixgirault/multiplayer, https://packagist.org/packages/fg/multiplayer
+* imagesLoaded - "You images done yet or what?", https://github.com/desandro/imagesloaded
+* Masonry - a cascading grid layout library, https://github.com/desandro/masonry
 * Fomantic UI - a component framework based around useful principles from natural language, http://www.semantic-ui.com
 * Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
 * highlight.js - Javascript syntax highlighter, https://github.com/highlightjs/highlight.js
