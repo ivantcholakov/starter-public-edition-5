@@ -8,7 +8,7 @@ class Multiplayer extends \Playground\Core\BaseController
     {
         $title = 'Multiplayer Library Test';
 
-        $this->breadcrumb->add($title, site_url('multiplayer'));
+        $this->breadcrumb->add($title, site_url('playground/multiplayer'));
         $this->header->setTitle($title);
 
         $multiplayer = new \Common\Libraries\Multiplayer();
