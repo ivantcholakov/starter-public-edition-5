@@ -54,6 +54,7 @@
         "components/webfontloader": "^1.6",
         "scrivo/highlight.php": "v9.18.1.1",
         "desandro/imagesloaded": "4.1.4",
-        "desandro/masonry": "4.2.2"
+        "desandro/masonry": "4.2.2",
+        "components/modernizr": "^3.5"
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d6dcf9848473bcb9576318839dd976b",
+    "content-hash": "6de90c6158b3161f8d2638f77ff5ebf1",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -135,6 +135,68 @@
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
             "time": "2020-05-05T13:21:02+00:00"
+        },
+        {
+            "name": "components/modernizr",
+            "version": "3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/modernizr.git",
+                "reference": "f4fc5301da393558235c8c927937ed21a5a7c344"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/modernizr/zipball/f4fc5301da393558235c8c927937ed21a5a7c344",
+                "reference": "f4fc5301da393558235c8c927937ed21a5a7c344",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "modernizr.js"
+                    ],
+                    "shim": {
+                        "exports": "window.Modernizr"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faruk Ates"
+                },
+                {
+                    "name": "Paul Irish"
+                },
+                {
+                    "name": "Alex Sexton"
+                },
+                {
+                    "name": "Ryan Seddon"
+                },
+                {
+                    "name": "Stu Cox"
+                },
+                {
+                    "name": "Patrick Kettner"
+                },
+                {
+                    "name": "Richard Herrera"
+                }
+            ],
+            "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user's browser.",
+            "homepage": "https://modernizr.com",
+            "keywords": [
+                "CSS3",
+                "HTML5",
+                "browser",
+                "feature detection"
+            ],
+            "time": "2017-07-06T07:27:29+00:00"
         },
         {
             "name": "components/webfontloader",

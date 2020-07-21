@@ -136,6 +136,70 @@
         "homepage": "http://jquery.com"
     },
     {
+        "name": "components/modernizr",
+        "version": "3.5.0",
+        "version_normalized": "3.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/components/modernizr.git",
+            "reference": "f4fc5301da393558235c8c927937ed21a5a7c344"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/components/modernizr/zipball/f4fc5301da393558235c8c927937ed21a5a7c344",
+            "reference": "f4fc5301da393558235c8c927937ed21a5a7c344",
+            "shasum": ""
+        },
+        "time": "2017-07-06T07:27:29+00:00",
+        "type": "component",
+        "extra": {
+            "component": {
+                "scripts": [
+                    "modernizr.js"
+                ],
+                "shim": {
+                    "exports": "window.Modernizr"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Faruk Ates"
+            },
+            {
+                "name": "Paul Irish"
+            },
+            {
+                "name": "Alex Sexton"
+            },
+            {
+                "name": "Ryan Seddon"
+            },
+            {
+                "name": "Stu Cox"
+            },
+            {
+                "name": "Patrick Kettner"
+            },
+            {
+                "name": "Richard Herrera"
+            }
+        ],
+        "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user's browser.",
+        "homepage": "https://modernizr.com",
+        "keywords": [
+            "CSS3",
+            "HTML5",
+            "browser",
+            "feature detection"
+        ]
+    },
+    {
         "name": "components/webfontloader",
         "version": "1.6.3",
         "version_normalized": "1.6.3.0",
