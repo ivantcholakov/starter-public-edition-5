@@ -36,6 +36,7 @@
         "symfony/filesystem": "^5.1",
         "symfony/finder": "^5.1",
         "oomphinc/composer-installers-extender": "^1.1",
+        "fg/multiplayer": "^1.2.1",
         "erusev/parsedown": "^1.7",
         "erusev/parsedown-extra": "^0.8.1",
         "pixel418/markdownify": "^2.3",

@@ -257,6 +257,10 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
             array (
                 0 => __DIR__ . '/..' . '/mustache/mustache/src',
             ),
+            'Multiplayer' => 
+            array (
+                0 => __DIR__ . '/..' . '/fg/multiplayer/lib',
+            ),
         ),
         'H' => 
         array (
@@ -753,6 +757,8 @@ class ComposerStaticInit5ca793f51c206ba19a86682f9a762b75
         'MatthiasMullie\\PathConverter\\ConverterInterface' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/ConverterInterface.php',
         'MatthiasMullie\\PathConverter\\NoConverter' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/NoConverter.php',
         'MessageFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/Resources/stubs/MessageFormatter.php',
+        'Multiplayer\\Multiplayer' => __DIR__ . '/..' . '/fg/multiplayer/lib/Multiplayer/Multiplayer.php',
+        'Multiplayer\\Param' => __DIR__ . '/..' . '/fg/multiplayer/lib/Multiplayer/Param.php',
         'Mustache_Autoloader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Autoloader.php',
         'Mustache_Cache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache.php',
         'Mustache_Cache_AbstractCache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache/AbstractCache.php',
