@@ -225,3 +225,23 @@ if (!function_exists('registry_destroy')) {
 
 }
 
+// Files -----------------------------------------------------------------------
+
+if (!function_exists('extension')) {
+
+    function extension($path) {
+
+        $qpos = strpos($path, '?');
+
+        if ($qpos !== false) {
+
+            // Eliminate query string.
+            $path = substr($path, 0, $qpos);
+        }
+
+        return substr(strrchr($path, '.'), 1);
+    }
+
+}
+
+// -----------------------------------------------------------------------------
