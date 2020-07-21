@@ -10,9 +10,6 @@ class Playground extends \Playground\Core\BaseController
 
         $this->header->setTitle($title);
 
-        // TODO: See why this is not working.
-        //return view('Playground\Views\playground.html.twig');
-
         return view('Playground\Views\playground');
     }
 

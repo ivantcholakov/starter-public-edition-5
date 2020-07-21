@@ -354,6 +354,18 @@ class Renderers
 
         foreach ($extensions as $extension) {
 
+            $e = '.'.$extension;
+
+            if (strlen($fileName) > strlen($e) && substr_compare($fileName, $e, -strlen($e)) === 0) {
+
+                $fileName = substr($fileName, 0, -strlen($e));
+                $extensions = [$extension];
+                break;
+            }
+        }
+
+        foreach ($extensions as $extension) {
+
             $view = $fileName.'.'.$extension;
 
             $file = $viewPath . $view;
