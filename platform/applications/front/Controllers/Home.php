@@ -80,7 +80,11 @@ class Home extends \App\Core\BaseController
 
         //----------------------------------------------------------------------
 
-        $diagnostics[] = '<strong>Writable folders check:</strong>';
+        $diagnostics[] = '<strong>CodeIgniter Version:</strong> '.\CodeIgniter\CodeIgniter::CI_VERSION;
+
+        //----------------------------------------------------------------------
+
+        $diagnostics[] = '<br /><strong>Writable folders check:</strong>';
 
         foreach ($writable_folders as $key => $folder) {
 
