@@ -9,6 +9,7 @@ class BaseController extends \App\Core\BaseController
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        $this->mainMenu->setActiveItem('playground');
         $this->breadcrumb->add('The Playground', site_url('playground'), 'sun icon');
     }
 }

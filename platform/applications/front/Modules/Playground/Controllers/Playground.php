@@ -8,7 +8,6 @@ class Playground extends \Playground\Core\BaseController
     {
         $title = 'The Playground';
 
-        $this->mainMenu->setActiveItem('playground');
         $this->header->setTitle($title);
 
         // TODO: See why this is not working.
