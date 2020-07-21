@@ -12,6 +12,9 @@ class MainMenu
         $this->items['home'] = array('label' => 'Home', 'icon' => 'home icon', 'location' => site_url());
         $this->items['readme'] = array('label' => 'README', 'icon' => 'info circle icon', 'location' => 'readme');
         $this->items['playground'] = array('label' => 'The Playground', 'icon' => 'sun icon', 'location' => 'playground');
+
+        //// Sub-menu demostration.
+        //$this->items['multiplayer'] = array('label' => 'Multiplayer Library Test', 'location' => 'playground/multiplayer', 'parent_id' => 'playground');
     }
 
     public function getActiveItem()

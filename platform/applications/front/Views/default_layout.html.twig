@@ -228,6 +228,7 @@ https://google-webfonts-helper.herokuapp.com
     $(function() {
 
         $('.ui.dropdown:not(.native):not(.special)[multiple]').dropdown();
+        $('.ui.dropdown:not(.native):not(.special):not([multiple])').dropdown();
 
         $('body').on('click', '.message .close', function() {
 
