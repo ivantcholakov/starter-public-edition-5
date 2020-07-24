@@ -168,6 +168,33 @@ if (!function_exists('render')) {
 
 }
 
+if (!function_exists('locate')) {
+
+    /**
+     * Returns the full path of a given view.
+     *
+     * @param string $view
+     *
+     * @return string
+     */
+    function locate($view)
+    {
+        $view = (string) $view;
+
+        $options = [];
+
+        $driverManager = new \Common\Modules\Renderers\Renderers();
+        $driverChain = $driverManager->getDriverChain('view', $options, $view);
+
+        if (empty($driverChain)) {
+            return null;
+        }
+
+        return $driverChain[0]['file'];
+    }
+
+}
+
 // Global Registry -------------------------------------------------------------
 
 if (!function_exists('registry')) {
