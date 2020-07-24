@@ -4,6 +4,8 @@ $routes->group('playground', ['namespace' => 'Playground\Controllers'], function
 
     $routes->get('/', 'Playground::index');
 
+    $routes->get('textile', 'Textile::index');
+
     $routes->get('multiplayer', 'Multiplayer::index');
 
     $routes->get('file-type-icons', 'FileTypeIcons::index');
