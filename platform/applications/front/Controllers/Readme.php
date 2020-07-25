@@ -16,8 +16,7 @@ class Readme extends \App\Core\BaseController
         $readme_file = realpath(PLATFORMPATH.'../'.'README.md');
 
         if (is_file($readme_file)) {
-
-            $readme = render_string(file_get_contents($readme_file), null, 'markdown');
+            $readme = render($readme_file, null, ['markdown' => ['full_path' => true]]);
         }
 
         return view('readme', compact('readme'));
