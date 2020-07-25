@@ -421,6 +421,7 @@ php spark assets:compile task_name_1 task_name_2 task_name_3 ...
 * jQuery JavaScript Library - https://github.com/jquery/jquery
 * Modernizr, a JavaScript library that detects HTML5 and CSS3 features in the user’s browser, http://modernizr.com
 * Web Font Loader, gives you added control when using linked fonts via @font-face, https://github.com/typekit/webfontloader
+* An icon subset of flags from GoSquared, https://www.gosquared.com/resources/flag-icons/ , https://github.com/gosquared/flags
 * Function print_d() (enhanced debug print), https://github.com/CesiumComputer/print_d
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source), https://github.com/daylightstudio/FUEL-CMS/blob/master/fuel/modules/fuel/libraries/Menu.php
 * Multiplayer - A tiny library to build nice HTML embed codes for videos, https://github.com/felixgirault/multiplayer, https://packagist.org/packages/fg/multiplayer
