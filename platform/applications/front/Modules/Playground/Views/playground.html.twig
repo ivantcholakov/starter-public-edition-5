@@ -64,7 +64,7 @@
 
                             <div class="ui vertical fluid menu">
 
-                                <a class="item">TODO</a>
+                                <a href="{{ site_url('playground/masonry')|e('html_attr') }}" class="item">Masonry Test</a>
 
                             </div>
 
@@ -92,20 +92,20 @@
     <script type="text/javascript">
     //<![CDATA[
 
-    (function( $ ) {
+    $(function() {
 
-        var $container = $('.masonry-container');
+        var container = $('.masonry-container');
 
-        $container.imagesLoaded( function () {
+        container.imagesLoaded( function () {
 
-            $container.masonry({
+            container.masonry({
                 columnWidth: '.masonry-item',
                 itemSelector: '.masonry-item',
                 percentPosition: true
             });
         });
 
-    })(jQuery);
+    });
 
     //]]>
     </script>

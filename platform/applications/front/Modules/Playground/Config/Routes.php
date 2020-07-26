@@ -15,4 +15,6 @@ $routes->group('playground', ['namespace' => 'Playground\Controllers'], function
     $routes->get('multiplayer', 'Multiplayer::index');
 
     $routes->get('file-type-icons', 'FileTypeIcons::index');
+
+    $routes->get('masonry', 'Masonry::index');
 });
