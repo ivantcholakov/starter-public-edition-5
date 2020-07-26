@@ -18,5 +18,7 @@ $routes->group('playground', ['namespace' => 'Playground\Controllers'], function
 
     $routes->get('file-type-icons', 'FileTypeIcons::index');
 
+    $routes->get('which-browser', 'WhichBrowser::index');
+
     $routes->get('masonry', 'Masonry::index');
 });
