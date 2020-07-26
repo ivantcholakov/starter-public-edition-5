@@ -8,6 +8,8 @@ $routes->group('playground', ['namespace' => 'Playground\Controllers'], function
 
     $routes->get('handlebars', 'Handlebars::index');
 
+    $routes->get('markdown', 'Markdown::index');
+
     $routes->get('markdownify', 'Markdownify::index');
 
     $routes->get('textile', 'Textile::index');
