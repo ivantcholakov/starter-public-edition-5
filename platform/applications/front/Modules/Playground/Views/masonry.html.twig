@@ -12,7 +12,7 @@
 
                         <div class="ui grid masonry-container">
 
-                          <div class="sixteen wide mobile eight wide tablet four wide computer column item">
+                          <div class="sixteen wide mobile eight wide tablet four wide computer column item masonry-item">
                             <div class="ui segment">
                               <img src="{{ base_url('assets/playground/300x300/1.jpg')|e('html_attr') }}" class="ui fluid image">
                               <div class="ui hidden divider"></div>
@@ -24,7 +24,7 @@
                             </div>
                           </div><!--/.item  -->
 
-                          <div class="sixteen wide mobile eight wide tablet four wide computer column item">
+                          <div class="sixteen wide mobile eight wide tablet four wide computer column item masonry-item">
                             <div class="ui segment">
                               <div class="caption">
                                 <h3>Thumbnail label</h3>
@@ -34,7 +34,7 @@
                             </div>
                           </div><!--/.item  -->
 
-                          <div class="sixteen wide mobile eight wide tablet four wide computer column item">
+                          <div class="sixteen wide mobile eight wide tablet four wide computer column item masonry-item">
                             <div class="ui segment">
                               <img src="{{ base_url('assets/playground/300x300/2.jpg')|e('html_attr') }}" class="ui fluid image">
                               <div class="ui hidden divider"></div>
@@ -46,7 +46,7 @@
                             </div>
                           </div><!--/.item  -->
 
-                          <div class="sixteen wide mobile eight wide tablet four wide computer column item">
+                          <div class="sixteen wide mobile eight wide tablet four wide computer column item masonry-item">
                             <div class="ui segment">
                               <img src="{{ base_url('assets/playground/300x300/3.jpg')|e('html_attr') }}" class="ui fluid image">
                               <div class="ui hidden divider"></div>
@@ -57,7 +57,7 @@
                             </div>
                           </div><!--/.item  -->
 
-                          <div class="sixteen wide mobile eight wide tablet four wide computer column item">
+                          <div class="sixteen wide mobile eight wide tablet four wide computer column item masonry-item">
                             <div class="ui segment">
                               <img src="{{ base_url('assets/playground/300x300/4.jpg')|e('html_attr') }}" class="ui fluid image">
                               <div class="ui hidden divider"></div>
@@ -69,7 +69,7 @@
                             </div>
                           </div><!--/.item  -->
 
-                          <div class="sixteen wide mobile eight wide tablet four wide computer column item">
+                          <div class="sixteen wide mobile eight wide tablet four wide computer column item masonry-item">
                             <div class="ui segment">
                               <img src="{{ base_url('assets/playground/300x300/5.jpg')|e('html_attr') }}" class="ui fluid image">
                               <div class="ui hidden divider"></div>
@@ -82,33 +82,5 @@
                           </div>
 
                         </div> <!--/.masonry-container  -->
-
-{% endblock %}
-
-{% block bottom %}
-
-    <script src="{{ base_url('assets/composer-asset/desandro/imagesloaded/imagesloaded.pkgd.min.js')|e('html_attr') }}"></script>
-    <script src="{{ base_url('assets/composer-asset/desandro/masonry/dist/masonry.pkgd.min.js')|e('html_attr') }}"></script>
-
-    <script type="text/javascript">
-    //<![CDATA[
-
-    $(function() {
-
-        var container = $('.masonry-container');
-
-        container.imagesLoaded( function () {
-
-            container.masonry({
-                columnWidth: '.item',
-                itemSelector: '.item',
-                percentPosition: true
-            });
-        });
-
-    });
-
-    //]]>
-    </script>
 
 {% endblock %}

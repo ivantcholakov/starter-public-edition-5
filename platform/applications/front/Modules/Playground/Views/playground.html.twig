@@ -83,31 +83,3 @@
             </div>
 
 {% endblock %}
-
-{% block bottom %}
-
-    <script src="{{ base_url('assets/composer-asset/desandro/imagesloaded/imagesloaded.pkgd.min.js')|e('html_attr') }}"></script>
-    <script src="{{ base_url('assets/composer-asset/desandro/masonry/dist/masonry.pkgd.min.js')|e('html_attr') }}"></script>
-
-    <script type="text/javascript">
-    //<![CDATA[
-
-    $(function() {
-
-        var container = $('.masonry-container');
-
-        container.imagesLoaded( function () {
-
-            container.masonry({
-                columnWidth: '.masonry-item',
-                itemSelector: '.masonry-item',
-                percentPosition: true
-            });
-        });
-
-    });
-
-    //]]>
-    </script>
-
-{% endblock %}
