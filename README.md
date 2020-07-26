@@ -431,6 +431,7 @@ php spark assets:compile task_name_1 task_name_2 task_name_3 ...
 * Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
 * highlight.js - Javascript syntax highlighter, https://github.com/highlightjs/highlight.js
 * highlight.php - A port of highlight.js by Ivan Sagalaev to PHP, https://github.com/scrivo/highlight.php
+* Turbolinks - makes navigating your web application faster, https://github.com/turbolinks/turbolinks
 
 License Information
 -------------------
