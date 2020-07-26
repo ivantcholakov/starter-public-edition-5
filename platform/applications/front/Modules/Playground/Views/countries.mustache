@@ -1,0 +1,16 @@
+<table class="ui celled striped compact table">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Flag</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#items}}<tr>
+            <td>{{code}}</td>
+            <td>{{name}}</td>
+            <td><img src="{{FLAGS_BASE_URL}}/{{code}}.png" /></td>
+        </tr>{{/items}}
+    </tbody>
+</table>

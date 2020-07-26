@@ -1,0 +1,34 @@
+
+{% extends 'default_layout.html.twig' %}
+
+{% block content %}
+
+            <div class="ui grid">
+
+                <div class="sixteen wide mobile eight wide tablet five wide computer column">
+
+                    <h4>Data (JSON Notation)</h4>
+
+                    <pre><code>{{ data|json_encode(constant('JSON_PRETTY_PRINT')) }}</code></pre>
+
+                </div>
+
+                <div class="sixteen wide mobile eight wide tablet five wide computer column">
+
+                    <h4>The Template</h4>
+
+                    <pre><code>{{ template }}</code></pre>
+
+                </div>
+
+                <div class="sixteen wide mobile sixteen wide tablet six wide computer column">
+
+                    <h4>The HTML Result</h4>
+
+                    {{ render_string(template, data, {'mustache': []})|raw }}
+
+                </div>
+
+            </div>
+
+{% endblock %}
