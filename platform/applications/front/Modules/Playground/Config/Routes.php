@@ -6,6 +6,8 @@ $routes->group('playground', ['namespace' => 'Playground\Controllers'], function
 
     $routes->get('mustache', 'Mustache::index');
 
+    $routes->get('handlebars', 'Handlebars::index');
+
     $routes->get('markdownify', 'Markdownify::index');
 
     $routes->get('textile', 'Textile::index');
