@@ -51,6 +51,61 @@ https://google-webfonts-helper.herokuapp.com
     <script src="{{ base_url('assets/lib/headroom/headroom.min.js')|e('html_attr') }}"></script>
     <script src="{{ base_url('assets/lib/headroom/jQuery.headroom.min.js')|e('html_attr') }}"></script>
 
+    <script type="text/javascript">
+    //<![CDATA[
+
+    function hide_mobile_menu() {
+
+        $('html, body').animate({
+            scrollTop: 0
+        }, 100);
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        menu.transition({
+            animation: 'slide down',
+            onComplete : function() {
+
+                menu.css('display', 'none');
+                $('#main_navigation .menu.toggle i').addClass('content').removeClass('close');
+            }
+        });
+    }
+
+    function toggle_mobile_menu() {
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        if (menu.hasClass('hidden')) {
+            show_mobile_menu();
+        } else {
+            hide_mobile_menu();
+        }
+    }
+
+    function show_mobile_menu() {
+
+        $('html, body').animate({
+            scrollTop: 0
+        }, 100);
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        $('#main_navigation .extra').hide();
+
+        menu.transition({
+            animation: 'slide down',
+            onComplete : function() {
+
+                menu.css('display', 'block');
+                $('#main_navigation .menu.toggle i').addClass('close').removeClass('content');
+            }
+        });
+    }
+
+    //]]>
+    </script>
+
     <script src="{{ base_url('assets/composer-asset/components/highlightjs/highlight.pack.min.js')|e('html_attr') }}"></script>
     <script type="text/javascript">
     //<![CDATA[
@@ -234,55 +289,6 @@ https://google-webfonts-helper.herokuapp.com
         }
 
     });
-
-    function hide_mobile_menu() {
-
-        $('html, body').animate({
-            scrollTop: 0
-        }, 100);
-
-        var menu = $('#main_navigation .ui.vertical.menu');
-
-        menu.transition({
-            animation: 'slide down',
-            onComplete : function() {
-
-                menu.css('display', 'none');
-                $('#main_navigation .menu.toggle i').addClass('content').removeClass('close');
-            }
-        });
-    }
-
-    function toggle_mobile_menu() {
-
-        var menu = $('#main_navigation .ui.vertical.menu');
-
-        if (menu.hasClass('hidden')) {
-            show_mobile_menu();
-        } else {
-            hide_mobile_menu();
-        }
-    }
-
-    function show_mobile_menu() {
-
-        $('html, body').animate({
-            scrollTop: 0
-        }, 100);
-
-        var menu = $('#main_navigation .ui.vertical.menu');
-
-        $('#main_navigation .extra').hide();
-
-        menu.transition({
-            animation: 'slide down',
-            onComplete : function() {
-
-                menu.css('display', 'block');
-                $('#main_navigation .menu.toggle i').addClass('close').removeClass('content');
-            }
-        });
-    }
 
     $(function() {
 
