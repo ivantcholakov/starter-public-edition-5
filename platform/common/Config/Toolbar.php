@@ -50,7 +50,8 @@ class Toolbar extends BaseConfig
     | MUST have a trailing slash.
     |
     */
-    public $viewsPath = SYSTEMPATH . 'Debug/Toolbar/Views/';
+    //public $viewsPath = SYSTEMPATH . 'Debug/Toolbar/Views/';
+    public $viewsPath = COMMONPATH . 'System/Debug/Toolbar/Views/';
 
     /*
     |--------------------------------------------------------------------------
