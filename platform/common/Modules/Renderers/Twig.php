@@ -26,7 +26,7 @@ class Twig
         $options = array_merge_recursive_distinct($config, $options);
         unset($config);
 
-        $paths = $options['paths'] ?? [];
+        $options['paths'] = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
 
         $directory = pathinfo($template, PATHINFO_DIRNAME);
@@ -76,7 +76,7 @@ class Twig
         $options = array_merge_recursive_distinct($config, $options);
         unset($config);
 
-        $paths = $options['paths'] ?? [];
+        $options['paths'] = $options['paths'] ?? [];
         $filesystemLoader = $this->createFilesystemLoader(array_only($options, 'paths'));
 
         $this->renderer = new \Twig\Environment($filesystemLoader, array_only(
