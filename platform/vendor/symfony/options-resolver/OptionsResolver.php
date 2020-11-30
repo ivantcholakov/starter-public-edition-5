@@ -27,6 +27,26 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
  */
 class OptionsResolver implements Options
 {
+    private const VALIDATION_FUNCTIONS = [
+        'bool' => 'is_bool',
+        'boolean' => 'is_bool',
+        'int' => 'is_int',
+        'integer' => 'is_int',
+        'long' => 'is_int',
+        'float' => 'is_float',
+        'double' => 'is_float',
+        'real' => 'is_float',
+        'numeric' => 'is_numeric',
+        'string' => 'is_string',
+        'scalar' => 'is_scalar',
+        'array' => 'is_array',
+        'iterable' => 'is_iterable',
+        'countable' => 'is_countable',
+        'callable' => 'is_callable',
+        'object' => 'is_object',
+        'resource' => 'is_resource',
+    ];
+
     /**
      * The names of all defined options.
      */
@@ -109,12 +129,6 @@ class OptionsResolver implements Options
     private $locked = false;
 
     private $parentsOptions = [];
-
-    private static $typeAliases = [
-        'boolean' => 'bool',
-        'integer' => 'int',
-        'double' => 'float',
-    ];
 
     /**
      * Sets the default value of a given option.
@@ -206,7 +220,7 @@ class OptionsResolver implements Options
                 return $this;
             }
 
-            if (isset($params[0]) && null !== ($type = $params[0]->getType()) && self::class === $type->getName() && (!isset($params[1]) || (null !== ($type = $params[1]->getType()) && Options::class === $type->getName()))) {
+            if (isset($params[0]) && null !== ($type = $params[0]->getType()) && self::class === $type->getName() && (!isset($params[1]) || (($type = $params[1]->getType()) instanceof \ReflectionNamedType && Options::class === $type->getName()))) {
                 // Store closure for later evaluation
                 $this->nested[$option][] = $value;
                 $this->defaults[$option] = [];
@@ -556,6 +570,7 @@ class OptionsResolver implements Options
         }
 
         if ($forcePrepend) {
+            $this->normalizers[$option] = $this->normalizers[$option] ?? [];
             array_unshift($this->normalizers[$option], $normalizer);
         } else {
             $this->normalizers[$option][] = $normalizer;
@@ -995,8 +1010,6 @@ class OptionsResolver implements Options
             $invalidTypes = [];
 
             foreach ($this->allowedTypes[$option] as $type) {
-                $type = self::$typeAliases[$type] ?? $type;
-
                 if ($valid = $this->verifyTypes($type, $value, $invalidTypes)) {
                     break;
                 }
@@ -1007,7 +1020,7 @@ class OptionsResolver implements Options
                 $fmtAllowedTypes = implode('" or "', $this->allowedTypes[$option]);
                 $fmtProvidedTypes = implode('|', array_keys($invalidTypes));
                 $allowedContainsArrayType = \count(array_filter($this->allowedTypes[$option], static function ($item) {
-                    return '[]' === substr(self::$typeAliases[$item] ?? $item, -2);
+                    return '[]' === substr($item, -2);
                 })) > 0;
 
                 if (\is_array($value) && $allowedContainsArrayType) {
@@ -1066,7 +1079,7 @@ class OptionsResolver implements Options
 
         // Check whether the option is deprecated
         // and it is provided by the user or is being called from a lazy evaluation
-        if ($triggerDeprecation && isset($this->deprecated[$option]) && (isset($this->given[$option]) || ($this->calling && \is_string($this->deprecated[$option])))) {
+        if ($triggerDeprecation && isset($this->deprecated[$option]) && (isset($this->given[$option]) || ($this->calling && \is_string($this->deprecated[$option]['message'])))) {
             $deprecation = $this->deprecated[$option];
             $message = $this->deprecated[$option]['message'];
 
@@ -1135,7 +1148,7 @@ class OptionsResolver implements Options
             return $valid;
         }
 
-        if (('null' === $type && null === $value) || (\function_exists($func = 'is_'.$type) && $func($value)) || $value instanceof $type) {
+        if (('null' === $type && null === $value) || (isset(self::VALIDATION_FUNCTIONS[$type]) ? self::VALIDATION_FUNCTIONS[$type]($value) : $value instanceof $type)) {
             return true;
         }
 
@@ -1283,7 +1296,7 @@ class OptionsResolver implements Options
 
     private function getParameterClassName(\ReflectionParameter $parameter): ?string
     {
-        if (!($type = $parameter->getType()) || $type->isBuiltin()) {
+        if (!($type = $parameter->getType()) instanceof \ReflectionNamedType || $type->isBuiltin()) {
             return null;
         }
 
