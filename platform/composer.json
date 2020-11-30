@@ -16,6 +16,7 @@
     },
     "require": {
         "php": ">=7.2.5",
+        "oomphinc/composer-installers-extender": "^2.0",
         "codeigniter4/framework": "4.0.4",
         "roave/security-advisories": "dev-master",
         "symfony/polyfill-php73": "^1.17",
@@ -35,7 +36,6 @@
         "symfony/process": "^5.1",
         "symfony/filesystem": "^5.1",
         "symfony/finder": "^5.1",
-        "oomphinc/composer-installers-extender": "^2.0",
         "fg/multiplayer": "^1.2.1",
         "erusev/parsedown": "^1.7",
         "erusev/parsedown-extra": "^0.8.1",
@@ -48,14 +48,14 @@
         "scssphp/scssphp": "^1.1",
         "matthiasmullie/minify": "^1.3",
         "t1st3/php-json-minify": "^0.6.2",
-        "fomantic/ui": "2.8.6",
+        "whichbrowser/parser": "^2.0",
         "components/jquery": "3.5.1",
-        "components/highlightjs": "^9.16",
+        "components/modernizr": "^3.5",
         "components/webfontloader": "^1.6",
+        "fomantic/ui": "2.8.6",
+        "components/highlightjs": "^9.16",
         "scrivo/highlight.php": "v9.18.1.1",
         "desandro/imagesloaded": "4.1.4",
-        "desandro/masonry": "4.2.2",
-        "components/modernizr": "^3.5",
-        "whichbrowser/parser": "^2.0"
+        "desandro/masonry": "4.2.2"
     }
 }
