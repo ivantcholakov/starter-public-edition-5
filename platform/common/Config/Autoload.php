@@ -83,6 +83,8 @@ class Autoload extends AutoloadConfig
         $classmap = [
             'CodeIgniter\View\View' => COMMONPATH.'System/View/View.php',
             'CodeIgniter\Debug\Toolbar\Collectors\BaseCollector' => COMMONPATH.'System/Debug/Toolbar/Collectors/BaseCollector.php',
+            // PHP 8 Compatibility Fixes:
+            'CodeIgniter\HTPP\IncomingRequest' => COMMONPATH.'System/HTPP/IncomingRequest.php',
         ];
 
         //--------------------------------------------------------------------
