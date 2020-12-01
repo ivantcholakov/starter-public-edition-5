@@ -1,5 +1,4 @@
 <?php if (ENVIRONMENT !== 'testing') : ?>
-document.addEventListener('turbolinks:load', loadDoc, false);
 document.addEventListener('DOMContentLoaded', loadDoc, false);
 
 function loadDoc(time) {
@@ -87,7 +86,5 @@ function newXHR() {
 	return realXHR;
 }
 
-if (typeof window.XMLHttpRequest === 'undefined') {
-    window.XMLHttpRequest = newXHR;
-}
+window.XMLHttpRequest = newXHR;
 <?php endif; ?>
