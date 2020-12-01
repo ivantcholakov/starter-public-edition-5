@@ -4,6 +4,8 @@ $routes->group('playground', ['namespace' => 'Playground\Controllers'], function
 
     $routes->get('/', 'Playground::index');
 
+    $routes->get('twig', 'Twig::index');
+
     $routes->get('mustache', 'Mustache::index');
 
     $routes->get('handlebars', 'Handlebars::index');
