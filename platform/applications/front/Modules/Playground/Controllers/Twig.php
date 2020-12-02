@@ -32,6 +32,8 @@ class Twig extends \Playground\Core\BaseController
             'float_value' => 250.5,
             'dog' => "I'll \"walk\" the <b>dog</b> now.",
             'dog_entities' => htmlentities("I'll \"walk\" the <b>dog</b> now.", ENT_QUOTES, 'UTF-8'),
+            'string_markdown' => 'Formatted **text**',
+            'string_textile' => 'Formatted _text_',
         ];
 
         return view('Playground\Views\twig', $data);

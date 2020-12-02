@@ -127,6 +127,9 @@ class Twig extends BaseConfig
             // CodeIgniter's Helpers
             'ellipsize',
             ['stringify_attributes', 'stringify_attributes', ['is_safe' => ['html', 'html_attr', 'js']]],
+            // Formatters, Parsers
+            ['markdown', ['\Common\Modules\Renderers\TwigExtension\FormatExtension', 'markdown'], ['is_safe' => ['html']]],
+            ['textile', ['\Common\Modules\Renderers\TwigExtension\FormatExtension', 'textile'], ['is_safe' => ['html']]],
         ];
 
         // Tests (is * operators) --------------------------------------------
