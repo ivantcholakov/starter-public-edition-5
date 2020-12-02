@@ -113,3 +113,8 @@ defined('MUSTACHE_CACHE') || define('MUSTACHE_CACHE', WRITABLEPATH.'mustache/'.A
 // Handlebars Cache Directory
 //--------------------------------------------------------------------
 defined('HANDLEBARS_CACHE') || define('HANDLEBARS_CACHE', WRITABLEPATH.'handlebars/'.APPNAME.'/');
+
+//--------------------------------------------------------------------
+// URL / URI Constants
+//--------------------------------------------------------------------
+defined('BASE_URL') || define('BASE_URL', DETECTED_BASE_URL);
