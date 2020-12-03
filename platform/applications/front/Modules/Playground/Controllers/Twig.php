@@ -11,6 +11,9 @@ class Twig extends \Playground\Core\BaseController
         $this->breadcrumb->add($title, site_url('playground/twig'));
         $this->header->setTitle($title);
 
+        $countries = (new \Playground\Models\CountryList())->all();
+        $countries_10 = array_slice($countries, 0, 10);
+
         $data = [
             'br' => '<br />',
             'hr' => '<hr />',
@@ -32,6 +35,8 @@ class Twig extends \Playground\Core\BaseController
             'float_value' => 250.5,
             'dog' => "I'll \"walk\" the <b>dog</b> now.",
             'dog_entities' => htmlentities("I'll \"walk\" the <b>dog</b> now.", ENT_QUOTES, 'UTF-8'),
+            'countries' => $countries,
+            'countries_10' => $countries_10,
             'string_markdown' => 'Formatted **text**',
             'string_textile' => 'Formatted _text_',
         ];
