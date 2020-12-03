@@ -253,7 +253,7 @@ class Renderers
             : null;
     }
 
-    protected function detectDriverFromFilename(string $view)
+    public function detectDriverFromFilename(string $view)
     {
         $detectedDriverName = null;
         $detectedExtension = null;

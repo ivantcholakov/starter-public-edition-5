@@ -31,6 +31,13 @@ class FilesystemLoader implements LoaderInterface
     private $rootPath;
 
     /**
+     * Selects a renderer-driver to be applied on a view.
+     *
+     * @var \Common\Modules\Renderers\Renderers
+     */
+    protected $driverManager;
+
+    /**
      * @param string|array $paths    A path or an array of paths where to look for templates
      * @param string|null  $rootPath The root path common to all relative paths (null for getcwd())
      */
@@ -44,6 +51,8 @@ class FilesystemLoader implements LoaderInterface
         if ($paths) {
             $this->setPaths($paths);
         }
+
+        $this->driverManager = new \Common\Modules\Renderers\Renderers();
     }
 
     /**
@@ -174,6 +183,17 @@ class FilesystemLoader implements LoaderInterface
             return $this->cache[$name];
         }
 
+        if (strpos($name, '..') === false)  {
+
+            $detectedDriver = $this->driverManager->detectDriverFromFilename($name);
+
+            if ($detectedDriver['detectedDriverName'] === 'twig' && is_file($detectedDriver['detectedViewName'])) {
+
+                // Full file name has been given.
+                return $this->cache[$name] = $detectedDriver['detectedViewName'];
+            }
+        }
+
         if (isset($this->errorCache[$name])) {
             if (!$throw) {
                 return null;
@@ -209,13 +229,16 @@ class FilesystemLoader implements LoaderInterface
                 $path = $this->rootPath.$path;
             }
 
-            if (is_file($path.'/'.$shortname)) {
-                if (false !== $realpath = realpath($path.'/'.$shortname)) {
-                    return $this->cache[$name] = $realpath;
-                }
+            $full_path = $path.'/'.$shortname;
+            $options = ['twig' => ['full_path' => true]];
+            $driverChain = $this->driverManager->getDriverChain('view', $options, $full_path);
 
-                return $this->cache[$name] = $path.'/'.$shortname;
+            if (!empty($driverChain)) {
+
+                return $this->cache[$name] = $driverChain[0]['file'];
             }
+
+            return $driverChain[0]['file'];
         }
 
         $this->errorCache[$name] = sprintf('Unable to find template "%s" (looked into: %s).', $name, implode(', ', $this->paths[$namespace]));
