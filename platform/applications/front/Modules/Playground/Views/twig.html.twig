@@ -1068,17 +1068,19 @@ limp bizkit
 {{ print_d(array_1|sort) }}
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{{ <strong>source</strong>('test.html')|escape }}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/functions/source.html" target="_blank" rel="noopener">source</a>
                                         </td>
                                         <td>
+
 <pre><code>{{ source('test.html')|escape }}</code></pre>
+
                                         </td>
                                     </tr>
-#}
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% apply spaceless|escape('html') %}

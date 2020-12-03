@@ -87,8 +87,6 @@ class Twig extends BaseConfig
             'registry',
             'render',
             'render_string',
-            'locate',
-            'source',
             ['file_type_icon', 'file_type_icon', ['is_safe' => ['html', 'html_attr', 'js']]],
             ['file_type_icon_fa', 'file_type_icon_fa', ['is_safe' => ['html', 'html_attr', 'js']]],
         ];

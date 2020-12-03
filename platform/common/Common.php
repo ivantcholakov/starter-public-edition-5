@@ -88,7 +88,7 @@ if (!function_exists('render')) {
             $data = [];
         }
 
-        if (!is_array($options) && !is_object($data)) {
+        if (!is_array($options) && !is_object($options)) {
 
             $options = (string) $options;
             $options = $options != '' ? [$options] : [];
@@ -122,19 +122,33 @@ if (!function_exists('locate')) {
      * Returns the full path of a given view.
      *
      * @param string $view
+     * @param string|array $options - driver-specific options.
      *
      * @return string
      */
-    function locate($view)
+    function locate($view, $options = [])
     {
         $view = (string) $view;
 
-        $options = [];
+        if (!is_array($options) && !is_object($options)) {
+
+            $options = (string) $options;
+            $options = $options != '' ? [$options] : [];
+        }
 
         $driverManager = new \Common\Modules\Renderers\Renderers();
-        $driverChain = $driverManager->getDriverChain('view', $options, $view);
+
+        try {
+
+            $driverChain = $driverManager->getDriverChain('view', $options, $view);
+
+        } catch (\Exception $ex) {
+
+            $driverChain = [];
+        }
 
         if (empty($driverChain)) {
+
             return null;
         }
 
@@ -149,12 +163,20 @@ if (!function_exists('source')) {
      * Returns the source of a given view.
      *
      * @param string $view
+     * @param string|array $options - driver-specific options.
      *
      * @return string
      */
-    function source($view)
+    function source($view, $options = [])
     {
-        return file_get_contents(locate($view));
+        $file = locate($view, $options);
+
+        if ($file != '' && is_file($file)) {
+
+            return file_get_contents($file);
+        }
+
+        return null;
     }
 
 }
