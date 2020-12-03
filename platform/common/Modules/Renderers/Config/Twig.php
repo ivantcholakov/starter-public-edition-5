@@ -123,7 +123,10 @@ class Twig extends BaseConfig
             ['ord', 'ord', ['is_safe' => ['html', 'html_attr', 'js', 'css']]],
             'chr',
             // CodeIgniter's Helpers
+            'character_limiter',
             'ellipsize',
+            'word_limiter',
+            'word_wrap',
             ['stringify_attributes', 'stringify_attributes', ['is_safe' => ['html', 'html_attr', 'js']]],
             // Formatters, Parsers
             ['markdown', ['\Common\Modules\Renderers\TwigExtension\FormatExtension', 'markdown'], ['is_safe' => ['html']]],
