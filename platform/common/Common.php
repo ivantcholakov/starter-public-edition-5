@@ -309,4 +309,34 @@ if (!function_exists('escape_shell_arg')) {
 
 }
 
+// Security --------------------------------------------------------------------
+
+if (!function_exists('xss_clean')) {
+
+    /**
+     * XSS Clean
+     *
+     * <p>
+     * <br />
+     * Sanitizes data so that "Cross Site Scripting" hacks can be
+     * prevented.
+     * </p>
+     *
+     * @param array|mixed $str <p>input data e.g. string or array of strings</p>
+     *
+     * @return mixed
+     */
+    function xss_clean($str)
+    {
+        static $antiXss;
+
+        if ($antiXss === null) {
+            $antiXss = new \voku\helper\AntiXSS();
+        }
+
+        return $antiXss->xss_clean($str);
+    }
+
+}
+
 // -----------------------------------------------------------------------------

@@ -125,9 +125,12 @@ class Twig extends BaseConfig
             // CodeIgniter's Helpers
             'character_limiter',
             'ellipsize',
+            array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
             'word_limiter',
             'word_wrap',
             ['stringify_attributes', 'stringify_attributes', ['is_safe' => ['html', 'html_attr', 'js']]],
+            // Platform Routines
+            ['xss_clean', 'xss_clean', ['is_safe' => ['html']]],
             // Formatters, Parsers
             ['markdown', ['\Common\Modules\Renderers\TwigExtension\FormatExtension', 'markdown'], ['is_safe' => ['html']]],
             ['textile', ['\Common\Modules\Renderers\TwigExtension\FormatExtension', 'textile'], ['is_safe' => ['html']]],
