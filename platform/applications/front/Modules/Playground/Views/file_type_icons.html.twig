@@ -39,12 +39,13 @@ The MIT License, http://opensource.org/licenses/MIT
 
     {% for ext in file_extensions %}
         {% set file_name = 'x.' ~ ext %}
+        {% set icon_class = file_type_icon(file_name) %}
                                 <tr>
                                     <td>{{ file_name }}</td>
-                                    <td>file {{ file_type_icon(file_name) }} icon</td>
-                                    <td><i class="file {{ file_type_icon(file_name) }} big icon"></i></td>
-                                    <td>file {{ file_type_icon(file_name) }} outline icon</td>
-                                    <td><i class="file {{ file_type_icon(file_name) }} outline big icon"></i></td>
+                                    <td>file {{ icon_class }} icon</td>
+                                    <td><i class="file {{ icon_class }} big icon"></i></td>
+                                    <td>file {{ icon_class }} outline icon</td>
+                                    <td><i class="file {{ icon_class }} outline big icon"></i></td>
                                 </tr>
     {% endfor %}
 
