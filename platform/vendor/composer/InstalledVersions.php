@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'a203c6032c2aaf898f216aaf453097ad576026f9',
+    'reference' => 'dc590fec8ec4edba6427d3f8b0f0be4e958bd642',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'a203c6032c2aaf898f216aaf453097ad576026f9',
+      'reference' => 'dc590fec8ec4edba6427d3f8b0f0be4e958bd642',
     ),
     'codeigniter4/framework' => 
     array (
@@ -496,6 +496,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b02fa41f3783a2616eccef7b92fbc2343ffed737',
+    ),
+    'voku/anti-xss' => 
+    array (
+      'pretty_version' => '4.1.31',
+      'version' => '4.1.31.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '22dea9be8dbffa466995ea87a12da5f3bce874bb',
     ),
     'voku/portable-ascii' => 
     array (
