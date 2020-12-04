@@ -68,6 +68,7 @@ class Twig extends BaseConfig
         // Load Helpers ------------------------------------------------------
 
         $this->config['helpers'] = [
+            'inflector',
             'text',
             'file_type_icons',
         ];
@@ -83,7 +84,10 @@ class Twig extends BaseConfig
             'site_url',
             'http_build_url',
             'http_build_query',
+            // CodeIgniter's Helpers
+            ['is_php', 'is_php', ['is_safe' => ['html']]],
             // Platform Routines
+            ['is_https', 'is_https', ['is_safe' => ['html']]],
             'registry',
             'render',
             'render_string',
@@ -125,7 +129,8 @@ class Twig extends BaseConfig
             // CodeIgniter's Helpers
             'character_limiter',
             'ellipsize',
-            array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
+            ['highlight_phrase', 'highlight_phrase', ['is_safe' => ['html']]],
+            'humanize',
             'word_limiter',
             'word_wrap',
             ['stringify_attributes', 'stringify_attributes', ['is_safe' => ['html', 'html_attr', 'js']]],
