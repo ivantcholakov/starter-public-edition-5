@@ -70,6 +70,7 @@ class Twig extends BaseConfig
         $this->config['helpers'] = [
             'inflector',
             'text',
+            'url',
             'file_type_icons',
         ];
 
@@ -131,10 +132,17 @@ class Twig extends BaseConfig
             'ellipsize',
             ['highlight_phrase', 'highlight_phrase', ['is_safe' => ['html']]],
             'humanize',
+            ['mailto', 'mailto', ['is_safe' => ['html']]],
+            ['safe_mailto', 'safe_mailto', ['is_safe' => ['html']]],
+            ['auto_link', 'auto_link', ['is_safe' => ['html']]],
+            //['timespan', ['Parser_Twig_Extension_DateTime', 'timespan']],
+            'url_title',
+            'mb_url_title',
             'word_limiter',
             'word_wrap',
             ['stringify_attributes', 'stringify_attributes', ['is_safe' => ['html', 'html_attr', 'js']]],
             // Platform Routines
+            'slugify',
             ['xss_clean', 'xss_clean', ['is_safe' => ['html']]],
             // Formatters, Parsers
             ['markdown', ['\Common\Modules\Renderers\TwigExtension\FormatExtension', 'markdown'], ['is_safe' => ['html']]],
