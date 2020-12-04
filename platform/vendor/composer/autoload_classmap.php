@@ -974,4 +974,7 @@ return array(
     'WhichBrowser\\Model\\Version' => $vendorDir . '/whichbrowser/parser/src/Model/Version.php',
     'WhichBrowser\\Parser' => $vendorDir . '/whichbrowser/parser/src/Parser.php',
     't1st3\\JSONMin\\JSONMin' => $vendorDir . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
+    'voku\\helper\\ASCII' => $vendorDir . '/voku/portable-ascii/src/voku/helper/ASCII.php',
+    'voku\\helper\\Bootup' => $vendorDir . '/voku/portable-utf8/src/voku/helper/Bootup.php',
+    'voku\\helper\\UTF8' => $vendorDir . '/voku/portable-utf8/src/voku/helper/UTF8.php',
 );

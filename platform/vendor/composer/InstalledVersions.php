@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b1e827b810e9b3e85386f34a6bcd32cbef6e9e2d',
+    'reference' => 'a203c6032c2aaf898f216aaf453097ad576026f9',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b1e827b810e9b3e85386f34a6bcd32cbef6e9e2d',
+      'reference' => 'a203c6032c2aaf898f216aaf453097ad576026f9',
     ),
     'codeigniter4/framework' => 
     array (
@@ -247,7 +247,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'fa05999280434eacf621cc78ab9179d9394c7998',
+      'reference' => '676668eda60bb8a32bd2a4efcb12c96d6e1c4bc6',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -496,6 +496,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b02fa41f3783a2616eccef7b92fbc2343ffed737',
+    ),
+    'voku/portable-ascii' => 
+    array (
+      'pretty_version' => '1.5.6',
+      'version' => '1.5.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '80953678b19901e5165c56752d087fc11526017c',
+    ),
+    'voku/portable-utf8' => 
+    array (
+      'pretty_version' => '5.4.51',
+      'version' => '5.4.51.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '578f5266725dc9880483d24ad0cfb39f8ce170f7',
     ),
     'whichbrowser/parser' => 
     array (
