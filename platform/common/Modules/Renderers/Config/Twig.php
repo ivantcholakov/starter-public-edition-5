@@ -87,6 +87,10 @@ class Twig extends BaseConfig
             'http_build_query',
             // CodeIgniter's Helpers
             ['is_php', 'is_php', ['is_safe' => ['html']]],
+            // Session
+            ['session', ['\Common\Modules\Renderers\TwigExtension\SessionExtension', 'session']],
+            ['session_flash', ['\Common\Modules\Renderers\TwigExtension\SessionExtension', 'session_flash']],
+            ['session_temp', ['\Common\Modules\Renderers\TwigExtension\SessionExtension', 'session_temp']],
             // Platform Routines
             ['is_https', 'is_https', ['is_safe' => ['html']]],
             'registry',

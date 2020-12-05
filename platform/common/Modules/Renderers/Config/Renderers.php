@@ -70,6 +70,15 @@ class Renderers extends BaseConfig
             'jsonmin' => '\Common\Modules\Renderers\Jsonmin',
             'highlight' => '\Common\Modules\Renderers\Highlight',
         ];
+
+        $this->config['sessionBlacklist'] = [
+        ];
+
+        $this->config['sessionReadOnly'] = [
+        ];
+
+        $this->config['settingsBlacklist'] = [
+        ];
     }
 
 }
