@@ -1896,16 +1896,16 @@ limp bizkit
 {{ print_d(constant('UA_IS_REFERRAL')) }}
                                         </td>
                                     </tr>
-
+#}
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ constant('<strong>CI_VERSION</strong>') }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ constant('<strong>\\CodeIgniter\\CodeIgniter::CI_VERSION</strong>') }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ constant('CI_VERSION') }}
+{{ constant('\\CodeIgniter\\CodeIgniter::CI_VERSION') }}
                                         </td>
                                     </tr>
-#}
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ constant('<strong>PLATFORM_VERSION</strong>') }}{% endverbatim %}</code></pre>
