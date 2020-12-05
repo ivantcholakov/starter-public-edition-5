@@ -88,12 +88,6 @@ if (!function_exists('url_title')) {
 
     function url_title($str, $separator = '-', $lowercase = FALSE, $transliterate_to_ascii = TRUE, $language = NULL) {
 
-        $language = (string) $language;
-
-        if ($language == '') {
-            $language = config_item('language');
-        }
-
         $str = strip_tags($str);
 
         if ($transliterate_to_ascii) {

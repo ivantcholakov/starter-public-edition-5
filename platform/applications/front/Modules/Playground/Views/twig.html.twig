@@ -1472,17 +1472,7 @@ limp bizkit
 {{ 'contact@example.com'|safe_mailto('Contact Us', 'alt="Contact Us"') }}
                                         </td>
                                     </tr>
-{#
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ 1451529295|<strong>timespan</strong> }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/userguide3/helpers/date_helper.html#timespan" target="_blank" rel="noopener">timespan</a>
-                                        </td>
-                                        <td>
-{{ 1451529295|timespan }}
-                                        </td>
-                                    </tr>
-#}{#
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'Limp Bizkit'|<strong>url_title</strong>('-', true) }}
@@ -1496,7 +1486,7 @@ limp bizkit
 {{ 'Лимп Бизкит'|url_title('-', true, true) }}
                                         </td>
                                     </tr>
-#}{#
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|<strong>word_limiter</strong>(5) }}{% endverbatim %}</code></pre>
@@ -1506,7 +1496,7 @@ limp bizkit
 {{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|word_limiter(5) }}
                                         </td>
                                     </tr>
-#}{#
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'The quick brown fox jumped over the lazy dog.'|<strong>word_wrap</strong>(20)|nl2br }}{% endverbatim %}</code></pre>
@@ -1517,7 +1507,7 @@ limp bizkit
 {{ 'The quick brown fox jumped over the lazy dog.'|word_wrap(20)|nl2br }}
                                         </td>
                                     </tr>
-#}{#
+{#
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Session</h4>

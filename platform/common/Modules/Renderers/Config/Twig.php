@@ -135,7 +135,6 @@ class Twig extends BaseConfig
             ['mailto', 'mailto', ['is_safe' => ['html']]],
             ['safe_mailto', 'safe_mailto', ['is_safe' => ['html']]],
             ['auto_link', 'auto_link', ['is_safe' => ['html']]],
-            //['timespan', ['Parser_Twig_Extension_DateTime', 'timespan']],
             'url_title',
             'mb_url_title',
             'word_limiter',
