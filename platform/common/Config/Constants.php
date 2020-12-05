@@ -117,4 +117,5 @@ defined('HANDLEBARS_CACHE') || define('HANDLEBARS_CACHE', WRITABLEPATH.'handleba
 //--------------------------------------------------------------------
 // URL / URI Constants
 //--------------------------------------------------------------------
-defined('BASE_URL') || define('BASE_URL', DETECTED_BASE_URL);
+defined('BASE_URL') || define('BASE_URL', detect_url('base_url'));
+defined('BASE_URI') || define('BASE_URI', detect_url('base_uri'));
