@@ -14,6 +14,13 @@ class Twig extends \Playground\Core\BaseController
         $countries = (new \Playground\Models\CountryList())->all();
         $countries_10 = array_slice($countries, 0, 10);
 
+        // Miscellaneous Tests
+        $twig_test_name = 'Playground\Views\test.html.twig';
+        $twig_test_path = locate($twig_test_name);
+        $twig_test_source = source($twig_test_name);
+        $twig_test_1 = render_string($twig_test_source, [], ['twig' => ['debug' => true]]);
+        $twig_test_2 = view($twig_test_name, [], ['twig' => ['debug' => true]]);
+
         $data = [
             'br' => '<br />',
             'hr' => '<hr />',
@@ -39,6 +46,12 @@ class Twig extends \Playground\Core\BaseController
             'countries_10' => $countries_10,
             'string_markdown' => 'Formatted **text**',
             'string_textile' => 'Formatted _text_',
+            'dangerous_value' => 'A dangerous value <script>alert("Hi, I am dangerous.")</script>',
+            'my_blog' => ['posts' => [['title' => 'Blog Post One'], ['title' => 'Blog Post Two']]],
+            'twig_test_name' => $twig_test_name,
+            'twig_test_source' => $twig_test_source,
+            'twig_test_1' => $twig_test_1,
+            'twig_test_2' => $twig_test_2,
         ];
 
         return view('Playground\Views\twig', $data);

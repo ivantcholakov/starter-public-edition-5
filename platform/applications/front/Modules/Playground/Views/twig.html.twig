@@ -2271,13 +2271,13 @@ width = 180px, height = 120px
 {{ image_url('lib/default-person.png') }}
                                         </td>
                                     </tr>
-#}
+#}{#
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Template</h4>
                                         </td>
                                     </tr>
-{#
+#}{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>template.title</strong>|raw }} &lt;!-- no tags, HTML escaped --&gt;{% endverbatim %}</code></pre>
@@ -2922,60 +2922,7 @@ width = 180px, height = 120px
 {{ widget('contact_info_widget')}}
                                         </td>
                                     </tr>
-
-                                    <tr class="positive">
-                                        <td colspan="2" class="center aligned">
-                                            <h4>Twig Template Inheritance Test</h4>
-                                        </td>
-                                    </tr>
-#}{#
-                                    <tr>
-                                        <td>
-<p>The layout base: themes/x/views/layouts/default_test.html.twig</p>
-{% apply html_code %}{% verbatim %}<!DOCTYPE html>
-<html>
-
-<head>
-{{ meta_charset() }}
-{{ html_title() }}
-</head>
-
-<body>
-
-    <div>
-        {% block content %}
-            <p>This is a static default text displayed within the template body.</p>
-        {% endblock %}
-    </div>
-
-    <div>
-        {% block sidebar %}
-            <p>The sidebar, default content, defined within a block "sidebar".<p>
-        {% endblock %}
-    </div>
-
-</body>
-
-</html>{% endverbatim %}{% endapply %}
-
-<p>The template body: modules/playground/views/twig_template_inheritance_test.html.twig</p>
-{% apply html_code %}{% verbatim %}{% extends 'layouts/default_test.html' %}
-{% block content %}
-    {{ parent() }}
-    <p>{{ text_in_body }}</p>
-{% endblock %}{% endverbatim %}{% endapply %}
-<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank" rel="noopener">extends</a>
-<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank" rel="noopener">block (tag)</a>
-<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank" rel="noopener">block (function)</a>
-<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank" rel="noopener">parent</a>
-<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank" rel="noopener">use</a>
-
-                                        </td>
-                                        <td>
-{{ twig_template_inheritance_test|html_code }}
-                                        </td>
-                                    </tr>
-#}{#
+#}
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Miscellaneous Tests</h4>
@@ -2988,11 +2935,12 @@ width = 180px, height = 120px
 <pre><code>{{ twig_test_source }}</code></pre>
 
 <p>PHP Code:</p>
-<pre><code>{% verbatim %}$twig_test_name = 'test.html.twig';
-$twig_test_path = $this->load->path($twig_test_name);
-$twig_test_source = @ (string) file_get_contents($twig_test_path);
-$twig_test_1 = $this->parser->parse_string($twig_test_source, array(), true, 'twig');
-$twig_test_2 = $this->load->view($twig_test_name, array(), true);{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}        // Miscellaneous Tests
+        $twig_test_name = 'Playground\Views\test.html.twig';
+        $twig_test_path = locate($twig_test_name);
+        $twig_test_source = source($twig_test_name);
+        $twig_test_1 = render_string($twig_test_source, [], ['twig' => ['debug' => true]]);
+        $twig_test_2 = view($twig_test_name, [], ['twig' => ['debug' => true]]);{% endverbatim %}</code></pre>
 
 <p>Results To Be Shown:</p>
 <pre><code>{% verbatim %}{{ twig_test_1|raw }} &lt;hr /&gt; {{ twig_test_2|raw }}{% endverbatim %}</code></pre>
@@ -3001,7 +2949,7 @@ $twig_test_2 = $this->load->view($twig_test_name, array(), true);{% endverbatim 
 {{ twig_test_1|raw }} <hr /> {{ twig_test_2|raw }}
                                         </td>
                                     </tr>
-#}
+
                                 </tbody>
 
                             </table>
