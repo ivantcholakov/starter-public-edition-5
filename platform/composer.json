@@ -54,9 +54,9 @@
         "components/jquery": "3.5.1",
         "components/modernizr": "^3.5",
         "components/webfontloader": "^1.6",
-        "fomantic/ui": "2.8.6",
+        "fomantic/ui": "2.8.7",
         "components/highlightjs": "^9.16",
-        "scrivo/highlight.php": "v9.18.1.1",
+        "scrivo/highlight.php": "^9.18",
         "desandro/imagesloaded": "4.1.4",
         "desandro/masonry": "4.2.2"
     }
