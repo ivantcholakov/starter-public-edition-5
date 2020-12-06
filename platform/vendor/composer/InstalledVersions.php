@@ -1,5 +1,15 @@
 <?php
 
+
+
+
+
+
+
+
+
+
+
 namespace Composer;
 
 use Composer\Semver\VersionParser;
@@ -19,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'dc590fec8ec4edba6427d3f8b0f0be4e958bd642',
+    'reference' => '37f797c9cddade4756e18b705e202f5d7f9dba4f',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'dc590fec8ec4edba6427d3f8b0f0be4e958bd642',
+      'reference' => '37f797c9cddade4756e18b705e202f5d7f9dba4f',
     ),
     'codeigniter4/framework' => 
     array (
@@ -134,12 +144,12 @@ private static $installed = array (
     ),
     'fomantic/ui' => 
     array (
-      'pretty_version' => '2.8.6',
-      'version' => '2.8.6.0',
+      'pretty_version' => '2.8.7',
+      'version' => '2.8.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0269a8213ac2ff438965c6a82503e7561d2024ae',
+      'reference' => '59d9b409879ad9413ea0a3efa4ab2e51017ad9b9',
     ),
     'kint-php/kint' => 
     array (
@@ -267,12 +277,12 @@ private static $installed = array (
     ),
     'scrivo/highlight.php' => 
     array (
-      'pretty_version' => 'v9.18.1.1',
-      'version' => '9.18.1.1',
+      'pretty_version' => 'v9.18.1.5',
+      'version' => '9.18.1.5',
       'aliases' => 
       array (
       ),
-      'reference' => '52fc21c99fd888e33aed4879e55a3646f8d40558',
+      'reference' => 'fa75a865928a4a5d49e5e77faca6bd2f2410baaf',
     ),
     'scssphp/scssphp' => 
     array (
