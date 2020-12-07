@@ -1,5 +1,55 @@
 <?php
 
+if (! function_exists('safe_mailto'))
+{
+    /**
+     * Encoded Mailto Link
+     *
+     * A weaker alternative implementation because
+     * Javascript's function document.write()
+     * breaks Turbolinks.
+     * @link https://stackoverflow.com/questions/12592363/looking-for-a-php-only-email-address-obfuscator-function
+     *
+     * @param string $email      the email address
+     * @param string $title      the link title
+     * @param mixed  $attributes any attributes
+     *
+     * @return string
+     */
+    function safe_mailto(string $email, string $title = '', $attributes = ''): string
+    {
+        if (!empty($attributes))
+        {
+            $attributes = stringify_attributes($attributes);
+        }
+
+        $email = trim($email);
+        $title = trim($title);
+
+        if ($title == '') {
+            $title = $email;
+        }
+
+        $encoded_email = '';
+
+        for ($a = 0, $b = \UTF8::strlen($email);  $a < $b; $a++)
+        {
+            $letter = \UTF8::substr($email, $a, 1);
+            $encoded_email .= '&#'.(mt_rand(0, 1) == 0  ? 'x'.dechex(\UTF8::ord($letter)) : \UTF8::ord($letter)) . ';';
+        }
+
+        $encoded_title = '';
+
+        for ($a = 0, $b = \UTF8::strlen($title);  $a < $b; $a++)
+        {
+            $letter = \UTF8::substr($title, $a, 1);
+            $encoded_title .= '&#'.(mt_rand(0, 1) == 0  ? 'x'.dechex(\UTF8::ord($letter)) : \UTF8::ord($letter)) . ';';
+        }
+
+        return '<a href="mailto:'.$encoded_email.'" '.$attributes.'>'.$encoded_title.'</a>';
+    }
+}
+
 if (! function_exists('auto_link'))
 {
     /**
@@ -50,7 +100,7 @@ if (! function_exists('auto_link'))
         // Find and replace any URLs.
         // Modified by Ivan Tcholakov, 19-DEC-2013, 09-MAR-2017.
         //if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+\w#i', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
-        if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+(\w|/)#i'.(UTF8_ENABLED ? 'u' : ''), $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
+        if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+(\w|/)#iu', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
         //
         {
             // We process the links in reverse order (last -> first) so that
