@@ -1581,7 +1581,7 @@ limp bizkit
 {{ constant('BASE_URI') }}
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ constant('<strong>SERVER_URL</strong>') }}{% endverbatim %}</code></pre>
@@ -1591,6 +1591,88 @@ limp bizkit
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>SERVER_NAME</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('SERVER_NAME') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>SERVER_PROTOCOL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('SERVER_PROTOCOL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>SERVER_PORT</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('SERVER_PORT') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>IS_HTTPS</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(constant('IS_HTTPS')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>SERVER_PORT</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('SERVER_PORT') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URI_STRING</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URI_STRING') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_QUERY_STRING</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_QUERY_STRING') }}
+                                        </td>
+                                    </tr>
+
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ constant('<strong>SITE_URL</strong>') }}{% endverbatim %}</code></pre>
@@ -1678,24 +1760,6 @@ limp bizkit
                                         </td>
                                         <td>
 {{ constant('CURRENT_URL_PORT') }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URI_STRING</strong>') }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ constant('CURRENT_URI_STRING') }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_QUERY_STRING</strong>') }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ constant('CURRENT_QUERY_STRING') }}
                                         </td>
                                     </tr>
 

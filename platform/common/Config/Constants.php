@@ -119,3 +119,12 @@ defined('HANDLEBARS_CACHE') || define('HANDLEBARS_CACHE', WRITABLEPATH.'handleba
 //--------------------------------------------------------------------
 defined('BASE_URL') || define('BASE_URL', detect_url('base_url'));
 defined('BASE_URI') || define('BASE_URI', detect_url('base_uri'));
+defined('SERVER_URL') || define('SERVER_URL', detect_url('server_url'));
+defined('SERVER_NAME') || define('SERVER_NAME', detect_url('server_name'));
+defined('SERVER_PROTOCOL') || define('SERVER_PROTOCOL', detect_url('server_protocol'));
+defined('SERVER_PORT') || define('SERVER_PORT', detect_url('port'));
+defined('IS_HTTPS') || define('IS_HTTPS', detect_url('is_https'));
+defined('CURRENT_URL') || define('CURRENT_URL', detect_url('current_url'));
+defined('CURRENT_URI') || define('CURRENT_URI', detect_url('current_uri'));
+defined('CURRENT_URI_STRING') || define('CURRENT_URI_STRING', detect_url('current_uri_string'));
+defined('CURRENT_QUERY_STRING') || define('CURRENT_QUERY_STRING', detect_url('current_query_string'));
