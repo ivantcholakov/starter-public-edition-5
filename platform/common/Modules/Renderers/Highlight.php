@@ -49,9 +49,14 @@ class Highlight
 
             return $result->value;
 
+        } catch (DomainException $e) {
+
+            // This is thrown if the specified language does not exist
+            return esc($template);
+
         } catch (\Exception $e) {}
 
-        return $template;
+        return null;
     }
 
     public function renderString($template, $data = null, array $options = null)
@@ -95,9 +100,14 @@ class Highlight
 
             return $result->value;
 
+        } catch (DomainException $e) {
+
+            // This is thrown if the specified language does not exist
+            return esc($template);
+
         } catch (\Exception $e) {}
 
-        return $template;
+        return null;
     }
 
 }
