@@ -76,9 +76,6 @@ class Renderers extends BaseConfig
 
         $this->config['sessionReadOnly'] = [
         ];
-
-        $this->config['settingsBlacklist'] = [
-        ];
     }
 
 }
