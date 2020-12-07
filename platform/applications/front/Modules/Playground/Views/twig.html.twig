@@ -1712,19 +1712,19 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% apply <strong>html_code</strong> %}&lt;div&gt;&lt;/div&gt;{% endapply %}
+<pre><code>{% verbatim %}{% apply <strong>highlight</strong> %}&lt;div&gt;&lt;/div&gt;{% endapply %}
 &lt;br /&gt;
-{% apply <strong>html_code</strong> %}{% verbatim %}&lt;div&gt;{{ dog }}&lt;/div&gt;{&#37; endverbatim %}{% endapply %}
+{% apply <strong>highlight</strong> %}{% verbatim %}&lt;div&gt;{{ dog }}&lt;/div&gt;{&#37; endverbatim %}{% endapply %}
 &lt;br /&gt;
-{{ dog|<strong>html_code</strong> }}
+{{ dog|<strong>highlight</strong> }}
 {% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{% apply html_code %}<div></div>{% endapply %}
+{% apply highlight %}<div></div>{% endapply %}
 <br />
-{% apply html_code %}{% verbatim %}<div>{{ dog }}</div>{% endverbatim %}{% endapply %}
+{% apply highlight %}{% verbatim %}<div>{{ dog }}</div>{% endverbatim %}{% endapply %}
 <br />
-{{ dog|html_code }}
+{{ dog|highlight }}
                                         </td>
                                     </tr>
 
@@ -2091,221 +2091,221 @@ width = 180px, height = 120px
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>html_title</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>html_title</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ html_title()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>metadata</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ metadata()|html_code }}
+{{ html_title()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>html_begin</strong>()|html_code }}
-{{ <strong>html_begin</strong>('class="my-class"')|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>metadata</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ html_begin()|html_code }}
-{{ html_begin('class="my-class"')|html_code }}
+{{ metadata()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>html_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>html_begin</strong>()|highlight }}
+{{ <strong>html_begin</strong>('class="my-class"')|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ html_end()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>head_begin()</strong>|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ head_begin()|html_code }}
+{{ html_begin()|highlight }}
+{{ html_begin('class="my-class"')|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>head_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>html_end</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ head_end()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>body_begin</strong>()|html_code }}
-{{ <strong>body_begin</strong>('class="my-class"')|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ body_begin()|html_code }}
-{{ body_begin('class="my-class"')|html_code }}
+{{ html_end()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>body_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>head_begin()</strong>|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ body_end()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>meta_charset</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ meta_charset()|html_code }}
+{{ head_begin()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>base_href()</strong>|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>head_end</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ base_href()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>ie_edge</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ ie_edge()|html_code }}
+{{ head_end()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>viewport</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>body_begin</strong>()|highlight }}
+{{ <strong>body_begin</strong>('class="my-class"')|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ viewport()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>favicon</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ favicon()|html_code }}
+{{ body_begin()|highlight }}
+{{ body_begin('class="my-class"')|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>apple_touch_icon</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>body_end</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ apple_touch_icon()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>apple_touch_icon_precomposed</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ apple_touch_icon_precomposed()|html_code }}
+{{ body_end()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>css_normalize</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>meta_charset</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ css_normalize()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>js_platform</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ js_platform()|html_code }}
+{{ meta_charset()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>js_modernizr</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>base_href()</strong>|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ js_modernizr()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>js_jquery</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ js_jquery()|html_code }}
+{{ base_href()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>noscript</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>ie_edge</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ noscript()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>unsupported_browser</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ unsupported_browser()|html_code }}
+{{ ie_edge()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>js_bp_plugins</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>viewport</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ js_bp_plugins()|html_code }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>js_mbp_helper</strong>()|html_code }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ js_mbp_helper()|html_code }}
+{{ viewport()|highlight }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>js_scale_fix_ios</strong>()|html_code }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>favicon</strong>()|highlight }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ js_scale_fix_ios()|html_code }}
+{{ favicon()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>apple_touch_icon</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ apple_touch_icon()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>apple_touch_icon_precomposed</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ apple_touch_icon_precomposed()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css_normalize</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css_normalize()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_platform</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_platform()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_modernizr</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_modernizr()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_jquery</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_jquery()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>noscript</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ noscript()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>unsupported_browser</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ unsupported_browser()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_bp_plugins</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_bp_plugins()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_mbp_helper</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_mbp_helper()|highlight }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_scale_fix_ios</strong>()|highlight }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_scale_fix_ios()|highlight }}
                                         </td>
                                     </tr>
 
