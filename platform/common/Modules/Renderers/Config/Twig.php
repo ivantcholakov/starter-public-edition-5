@@ -146,6 +146,9 @@ class Twig extends BaseConfig
             ['stringify_attributes', 'stringify_attributes', ['is_safe' => ['html', 'html_attr', 'js']]],
             // Platform Routines
             'slugify',
+            // HTML
+            ['highlight', 'highlight', ['is_safe' => ['html']]],
+            ['html_code', 'highlight', ['is_safe' => ['html']]],    // BC.
             ['xss_clean', 'xss_clean', ['is_safe' => ['html']]],
             // Formatters, Parsers
             ['markdown', ['\Common\Modules\Renderers\TwigExtension\FormatExtension', 'markdown'], ['is_safe' => ['html']]],

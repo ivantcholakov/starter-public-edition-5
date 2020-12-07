@@ -350,4 +350,26 @@ if (!function_exists('is_https')) {
 
 }
 
+// HTML ------------------------------------------------------------------------
+
+if ( ! function_exists('highlight'))
+{
+    function highlight($code, $languages = [])
+    {
+        $highlighted = render_string($code, null, ['highlight' => ['languages' => $languages]]);
+        $language = registry('_highlight_language');
+
+        if ($language == '') {
+
+            return "<pre><code class=\"hljs nohighlight\">".
+                esc($highlighted, 'html').
+                "</code></pre>";
+        }
+
+        return "<pre><code class=\"hljs nohighlight language-{$language} lang-{$language}\">".
+            $highlighted.
+            "</code></pre>";
+    }
+}
+
 // -----------------------------------------------------------------------------
