@@ -283,6 +283,12 @@ class Twig
             if (!in_array('print_d', $loadedFunctions)) {
                 $this->renderer->addFunction(new \Twig\TwigFunction('print_d', 'print_d', ['is_safe' => ['html']]));
             }
+
+            \Kint::$enabled_mode = true;
+
+            if (!in_array('d', $loadedFunctions)) {
+                $this->renderer->addFunction(new \Twig\TwigFunction('d', 'd', ['is_safe' => ['html']]));
+            }
         }
     }
 

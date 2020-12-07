@@ -193,6 +193,16 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>d</strong>(array_1)|raw }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/dump.html" target="_blank" rel="noopener">d</a>
+                                        </td>
+                                        <td>
+{{ d(array_1)|raw }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Checking if a Variable Exists, and If a Variable is Empty</h4>

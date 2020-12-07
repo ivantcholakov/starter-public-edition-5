@@ -54,7 +54,7 @@ class Twig extends \Playground\Core\BaseController
             'twig_test_2' => $twig_test_2,
         ];
 
-        return view('Playground\Views\twig', $data);
+        return view('Playground\Views\twig', $data, ['twig' => ['debug' => true]]);
     }
 
 }
