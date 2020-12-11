@@ -9,8 +9,7 @@
         "installer-types": ["library", "component"],
         "installer-paths": {
             "../public/assets/composer-asset/{$vendor}/{$name}/": [
-                "type:component",
-                "fomantic/ui"
+                "type:component"
             ]
         }
     },
