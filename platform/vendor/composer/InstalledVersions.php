@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'ab083ea5cd84277f6db30358336fffee40f6a956',
+    'reference' => '4980472a91fca9d2ab828bd4ee2a361dc0d0337b',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'ab083ea5cd84277f6db30358336fffee40f6a956',
+      'reference' => '4980472a91fca9d2ab828bd4ee2a361dc0d0337b',
     ),
     'codeigniter4/framework' => 
     array (
@@ -248,7 +248,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '676668eda60bb8a32bd2a4efcb12c96d6e1c4bc6',
+      'reference' => 'd5961914bf7f90e81af509b81e51450bff419815',
     ),
     'roundcube/plugin-installer' => 
     array (
