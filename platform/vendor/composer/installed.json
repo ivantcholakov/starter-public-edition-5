@@ -659,62 +659,6 @@
             "install-path": "../fg/multiplayer"
         },
         {
-            "name": "fomantic/ui",
-            "version": "2.8.7",
-            "version_normalized": "2.8.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fomantic/Fomantic-UI.git",
-                "reference": "59d9b409879ad9413ea0a3efa4ab2e51017ad9b9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fomantic/Fomantic-UI/zipball/59d9b409879ad9413ea0a3efa4ab2e51017ad9b9",
-                "reference": "59d9b409879ad9413ea0a3efa4ab2e51017ad9b9",
-                "shasum": ""
-            },
-            "time": "2020-09-06T23:16:41+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jack Lukic",
-                    "email": "jacklukic@gmail.com",
-                    "homepage": "http://www.jacklukic.com",
-                    "role": "Creator"
-                }
-            ],
-            "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
-            "homepage": "https://fomantic-ui.com",
-            "keywords": [
-                "css",
-                "fomantic",
-                "fomantic-ui",
-                "framework",
-                "semantic",
-                "ui"
-            ],
-            "support": {
-                "issues": "https://github.com/fomantic/Fomantic-UI/issues",
-                "source": "https://github.com/fomantic/Fomantic-UI"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/hammy2899",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/lubber-de",
-                    "type": "github"
-                }
-            ],
-            "install-path": "../../../public/assets/composer-asset/fomantic/ui"
-        },
-        {
             "name": "kint-php/kint",
             "version": "3.3",
             "version_normalized": "3.3.0.0",

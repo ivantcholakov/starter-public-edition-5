@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '5e94687de43dee3d73719103b043f9b9edb1263d',
+    'reference' => 'ab083ea5cd84277f6db30358336fffee40f6a956',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '5e94687de43dee3d73719103b043f9b9edb1263d',
+      'reference' => 'ab083ea5cd84277f6db30358336fffee40f6a956',
     ),
     'codeigniter4/framework' => 
     array (
@@ -118,15 +118,6 @@
       array (
       ),
       'reference' => '98e7c0e99f5a37b6435b49c67802510c6e915ec8',
-    ),
-    'fomantic/ui' => 
-    array (
-      'pretty_version' => '2.8.7',
-      'version' => '2.8.7.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '59d9b409879ad9413ea0a3efa4ab2e51017ad9b9',
     ),
     'kint-php/kint' => 
     array (
