@@ -45,9 +45,7 @@ class AssetsCompile extends BaseConfig
                     ],
                 ],
                 'after' => [
-                    [$this, 'create_md5'],
                     [$this, 'create_sha384'],
-                    [$this, 'create_sha384_base64'],
                 ],
             ],
 
