@@ -8,6 +8,10 @@ class AssetsCompile extends BaseConfig
 
     public function __construct() {
 
+        // Compiling visual themes with Semantic/Fomantic UI might require a lot
+        // of memory for node.js. In such case try from a command line this (Linux):
+        // export NODE_OPTIONS=--max-old-space-size=8192
+
         // An autoprefixer option: Supported browsers.
 
         $this->autoprefixer_browsers = [
@@ -26,10 +30,6 @@ class AssetsCompile extends BaseConfig
 
         $this->tasks = [
 
-            // Compiling visual themes with Semantic/Fomantic UI might require a lot
-            // of memory for node.js. In such case try from a command line this:
-            // export NODE_OPTIONS=--max-old-space-size=8192
-
             // php spark assets:compile front-default-min
             [
                 'name' => 'front-default-min',
@@ -45,12 +45,21 @@ class AssetsCompile extends BaseConfig
                     ],
                 ],
                 'after' => [
+                    [$this, 'create_md5'],
                     [$this, 'create_sha384'],
                     [$this, 'create_sha384_base64'],
                 ],
             ],
 
         ];
+    }
+
+    public function create_md5($task) {
+
+        $destination_hash = $task['destination'].'.md5';
+        $hash = md5($task['result']);
+        write_file($destination_hash, $hash);
+        @chmod($destination_hash, FILE_WRITE_MODE);
     }
 
     public function create_sha384($task) {
