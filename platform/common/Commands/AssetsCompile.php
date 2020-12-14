@@ -58,18 +58,41 @@ class AssetsCompile extends BaseCommand
         }
 
         if (empty($tasks)) {
+
+            CLI::write(CLI::color('No task has been found.'), 'yellow'));
+
             return;
         }
 
         foreach ($tasks as $task) {
 
-            $source = isset($task['source']) ? (string) $task['source'] : '';
+            if (!isset($task['name']) || trim($task['name']) == '') {
+
+                CLI::write(CLI::color('No task name has been specified.'), 'yellow'));
+
+                return;
+            }
+
+            if (!isset($task['type']) || trim($task['type']) == '') {
+
+                CLI::write(CLI::color('No task type has been specified.'), 'yellow'));
+
+                return;
+            }
+
+            CLI::write(CLI::color('Task: '.$task['name'], 'green'));
+            CLI::write(CLI::color('Type: '.$task['type'], 'green'));
+
+            if (isset($task['source']) && trim($task['source']) == '') {
+
+                CLI::write(CLI::color($task['name'].': Empty source file name.'), 'yellow'));
+
+                return;
+            }
 
             if (isset($task['source'])) {
 
-                if ($source == '') {
-                    continue;
-                }
+                $source = (string) $task['source'];
 
                 if (!is_file($source)) {
 
@@ -79,15 +102,20 @@ class AssetsCompile extends BaseCommand
                 }
 
                 $task['source'] = $source;
+
+                CLI::write(CLI::color('Source: '.$task['source'], 'green'));
             }
 
-            $destination = isset($task['destination']) ? (string) $task['destination'] : '';
+            if (isset($task['destination']) && trim($task['destination']) == '') {
+
+                CLI::write(CLI::color($task['name'].': Empty destination file name.'), 'yellow'));
+
+                return;
+            }
 
             if (isset($task['destination'])) {
 
-                if ($destination == '') {
-                    continue;
-                }
+                $destination = (string) $task['destination'];
 
                 $dir = pathinfo($destination, PATHINFO_DIRNAME);
                 file_exists($dir) OR mkdir($dir, DIR_WRITE_MODE, TRUE);
@@ -100,6 +128,8 @@ class AssetsCompile extends BaseCommand
                 }
 
                 $task['destination'] = $destination;
+
+                CLI::write(CLI::color('Destination: '.$task['destination'], 'green'));
             }
 
             if (isset($task['before'])) {
@@ -137,11 +167,13 @@ class AssetsCompile extends BaseCommand
                     CLI::write(CLI::color($task['name'].': '.sprintf('Failed to write the destination file "%s".', $task['destination']), 'yellow'));
 
                     return;
+
+                } else {
+
+                    CLI::write(CLI::color($task['name'].': Destination file has been written successfully.', 'green'));
                 }
 
                 @chmod($task['destination'], FILE_WRITE_MODE);
-
-                CLI::write(CLI::color($task['name'].': '.$task['destination'], 'green'));
             }
 
             if (isset($task['after'])) {
@@ -173,9 +205,11 @@ class AssetsCompile extends BaseCommand
             if (isset($task['result'])) {
                 unset($task['result']);
             }
-        }
 
-        CLI::newLine();
+            CLI::write(CLI::color($task['name'].': Done.', 'green'));
+
+            CLI::newLine();
+        }
     }
 
     protected function find($name)
@@ -261,8 +295,43 @@ class AssetsCompile extends BaseCommand
 
             foreach ($task['sources'] as & $subtask) {
 
+                if (!isset($subtask['type']) || trim($subtask['type']) == '') {
+
+                    CLI::write(CLI::color('No subtask type has been specified.', 'yellow'));
+
+                    return;
+                }
+
+                CLI::write(CLI::color('Subtask: '.$subtask['type'], 'green'));
+
                 if (!in_array($subtask['type'], ['copy', 'less', 'scss', 'autoprefixer', 'cssmin'])) {
-                    continue;
+
+                    CLI::write(CLI::color('Invalid subtask type: '.$subtask['type'], 'yellow'));
+
+                    return;
+                }
+
+                if (isset($subtask['source']) && trim($subtask['source']) == '') {
+
+                    CLI::write(CLI::color('Subtask: Empty source file name.', 'yellow'));
+
+                    return;
+                }
+
+                if (isset($subtask['source'])) {
+
+                    $source = (string) $subtask['source'];
+
+                    if (!is_file($source)) {
+
+                        CLI::write(CLI::color('Subtask: '.sprintf('Failed to find the source file "%s".', $source), 'yellow'));
+
+                        return;
+                    }
+
+                    $subtask['source'] = $source;
+
+                    CLI::write(CLI::color('Source: '.$subtask['source'], 'green'));
                 }
 
                 $this->execute($subtask);
@@ -295,8 +364,43 @@ class AssetsCompile extends BaseCommand
 
             foreach ($task['sources'] as & $subtask) {
 
+                if (!isset($subtask['type']) || trim($subtask['type']) == '') {
+
+                    CLI::write(CLI::color('No subtask type has been specified.', 'yellow'));
+
+                    return;
+                }
+
+                CLI::write(CLI::color('Subtask: '.$subtask['type'], 'green'));
+
                 if (!in_array($subtask['type'], ['copy', 'jsmin'])) {
-                    continue;
+
+                    CLI::write(CLI::color('Invalid subtask type: '.$subtask['type'], 'yellow'));
+
+                    return;
+                }
+
+                if (isset($subtask['source']) && trim($subtask['source']) == '') {
+
+                    CLI::write(CLI::color('Subtask: Empty source file name.', 'yellow'));
+
+                    return;
+                }
+
+                if (isset($subtask['source'])) {
+
+                    $source = (string) $subtask['source'];
+
+                    if (!is_file($source)) {
+
+                        CLI::write(CLI::color('Subtask: '.sprintf('Failed to find the source file "%s".', $source), 'yellow'));
+
+                        return;
+                    }
+
+                    $subtask['source'] = $source;
+
+                    CLI::write(CLI::color('Source: '.$subtask['source'], 'green'));
                 }
 
                 $this->execute($subtask);
