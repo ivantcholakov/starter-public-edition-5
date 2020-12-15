@@ -206,13 +206,13 @@ class AssetsCompile extends BaseCommand
         if ($message == '') {
             CLI::newLine();
         } else {
-            CLI::write(CLI::color($message), 'green'));
+            CLI::write(CLI::color($message, 'green'));
         }
     }
 
     protected function terminate($message)
     {
-        CLI::write(CLI::color($message), 'yellow'))
+        CLI::write(CLI::color($message, 'yellow'));
         exit(1);
     }
 
