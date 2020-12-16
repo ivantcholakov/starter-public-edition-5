@@ -85,6 +85,7 @@ class Autoload extends AutoloadConfig
             'CodeIgniter\Debug\Toolbar\Collectors\BaseCollector' => COMMONPATH.'System/Debug/Toolbar/Collectors/BaseCollector.php',
             // PHP 8 Compatibility Fixes
             'CodeIgniter\HTTP\IncomingRequest' => COMMONPATH.'System/HTTP/IncomingRequest.php',
+            'CodeIgniter\HTTP\Response' => COMMONPATH.'System/HTTP/Response.php',
             'CodeIgniter\Router\RouteCollection' => COMMONPATH.'System/Router/RouteCollection.php',
             // Twig Integration
             'Twig\Loader\FilesystemLoader' => COMMONPATH.'Modules/Renderers/TwigLoader/FilesystemLoader.php',
