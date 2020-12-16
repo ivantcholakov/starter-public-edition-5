@@ -56,7 +56,11 @@ class AssetsCompile extends BaseConfig
 
         $destination_hash = $task['destination'].'.md5';
         $hash = md5($task['result']);
-        write_file($destination_hash, $hash);
+
+        if (!write_file($destination_hash, $hash)) {
+            return false;
+        }
+
         @chmod($destination_hash, FILE_WRITE_MODE);
     }
 
@@ -64,7 +68,11 @@ class AssetsCompile extends BaseConfig
 
         $destination_hash = $task['destination'].'.sha384';
         $hash = hash('sha384', $task['result']);
-        write_file($destination_hash, $hash);
+
+        if (!write_file($destination_hash, $hash)) {
+            return false;
+        }
+
         @chmod($destination_hash, FILE_WRITE_MODE);
     }
 
@@ -72,7 +80,11 @@ class AssetsCompile extends BaseConfig
 
         $destination_hash = $task['destination'].'.sha384.base64';
         $hash = base64_encode(hash('sha384', $task['result']));
-        write_file($destination_hash, $hash);
+
+        if (!write_file($destination_hash, $hash)) {
+            return false;
+        }
+
         @chmod($destination_hash, FILE_WRITE_MODE);
     }
 
