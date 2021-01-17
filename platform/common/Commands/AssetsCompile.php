@@ -233,6 +233,7 @@ class AssetsCompile extends BaseCommand
     protected function terminate($message)
     {
         CLI::write(CLI::color($message, 'yellow'));
+        CLI::newLine();
         exit(1);
     }
 
