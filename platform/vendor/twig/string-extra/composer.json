@@ -17,24 +17,21 @@
     "require": {
         "php": ">=7.2.5",
         "symfony/string": "^5.0",
+        "symfony/translation-contracts": "^1.1|^2",
         "twig/twig": "^2.4|^3.0"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
     },
     "autoload": {
-        "psr-4" : {
-            "Twig\\Extra\\String\\" : "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4" : {
-            "Twig\\Extra\\String\\Tests\\" : "tests/"
-        }
+        "psr-4" : { "Twig\\Extra\\String\\" : "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.12-dev"
+            "dev-master": "3.2-dev"
         }
     }
 }
