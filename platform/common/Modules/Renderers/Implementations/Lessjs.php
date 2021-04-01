@@ -114,8 +114,10 @@ class Lessjs {
 
         $this->options['lessc_path'] = 'lessc';
         $this->options['tmp_dir'] = sys_get_temp_dir();
+        $this->options['compress'] = false;         // Deprecated.
         $this->options['strict_units'] = false;
         $this->options['rootpath'] = '';
+        $this->options['relative_urls'] = true;     // Deprecated.
         $this->options['include_path'] = '';
         $this->options['rewrite_urls'] = 'off';
         $this->options['math'] = 'always';
@@ -123,6 +125,7 @@ class Lessjs {
         $this->options['modify_var'] = '';
         $this->options['url_args'] = '';
         $this->options['verbose'] = false;
+        $this->options['javascript_enabled'] = false;
     }
 
     protected function setOption($key, $value) {
@@ -246,6 +249,14 @@ class Lessjs {
 
                     if (!empty($value)) {
                         $result[] = '--verbose';
+                    }
+
+                    break;
+
+                case 'javascript_enabled':
+
+                    if (!empty($value)) {
+                        $result[] = '--js';
                     }
 
                     break;

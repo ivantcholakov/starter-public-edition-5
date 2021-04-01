@@ -76,6 +76,9 @@ class Less extends BaseConfig
 
         // Be verbose.
         $this->config['verbose'] = false;
+
+        // Enable inline JavaScript.
+        $this->config['javascript_enabled'] = false;
     }
 
     //------------------------------------------------------------------------
