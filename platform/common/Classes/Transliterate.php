@@ -4,9 +4,9 @@
  * Transliteration Class
  * Adapted for CodeIgniter 4
  *
- * @version 1.1.3
+ * @version 1.1.4
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2020.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2021.
  * @link https://github.com/ivantcholakov/transliterate
  *
  * @license The MIT License (MIT)
